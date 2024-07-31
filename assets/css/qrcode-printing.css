@@ -1,0 +1,42 @@
+@media print {
+    .layout-topmenu,
+    thead,
+    table.table.data td.list-checkbox,
+    table.table.data td.list-setup,
+    .list-header,
+    .list-footer,
+    .flash-message {
+        display: none;
+    }
+    body,
+    table.table.data,
+    table.table.data td {
+        border: none;
+        background-color: Transparent;
+    }
+    table.table.data tbody {
+        padding: 0px;
+    }
+
+    table.table.data tr {
+        display: inline-block;
+        padding-bottom: 20px;
+    }
+    table.table.data tbody tr.rowlink:not(.nolink):hover td {
+        background-color: Transparent!important;
+        color: #666;
+    }
+    table.table.data tr > td {
+        display: block;
+        text-align: center;
+        padding: 0px;
+        width: 100pt;
+        background-color: Transparent!important;
+    }
+    table.table.data td svg {
+        margin: 0px auto;
+    }
+    .list-cell-type-text {
+        height: 1.2em;
+    }
+}

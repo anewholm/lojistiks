@@ -1,0 +1,68 @@
+fields:
+    location[name]:
+        label: acornassociated.lojistiks::lang.models.general.name
+        type: text
+        span: auto
+    # -------------------------------- Existing Address
+    _select_an_existing_address:
+        label: Select an existing Address
+        type: switch
+        span: left
+        context: create
+    location[address]:
+        type: dropdown
+        options: AcornAssociated\Lojistiks\Models\Address::dropdownOptions
+        nameFrom: fully_qualified_name
+        span: left
+        trigger:
+            field: _select_an_existing_address
+            condition: checked
+            action: enable
+        context: create
+    # -------------------------------- New Address
+    location[address][name]:
+        label: acornassociated.lojistiks::lang.models.address.label
+        type: text
+        span: auto
+        trigger:
+            field: _select_an_existing_address
+            condition: checked
+            action: disable
+    location[address][number]:
+        label: Number
+        type: text
+        span: auto
+        trigger:
+            field: _select_an_existing_address
+            condition: checked
+            action: disable
+    location[address][area]:
+        label: acornassociated.lojistiks::lang.models.area.label
+        type: dropdown
+        options: AcornAssociated\Lojistiks\Models\Area::dropdownOptions
+        placeholder: Select
+        span: auto
+        trigger:
+            field: _select_an_existing_address
+            condition: checked
+            action: disable
+    location[address][gps][longitude]:
+        label: longitude
+        type: number
+        span: auto
+        trigger:
+            field: _select_an_existing_address
+            condition: checked
+            action: disable
+    location[address][gps][latitude]:
+        label: latitude
+        type: number
+        span: auto
+        trigger:
+            field: _select_an_existing_address
+            condition: checked
+            action: disable
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode

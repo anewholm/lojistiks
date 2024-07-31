@@ -1,0 +1,25 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: acornassociated.lojistiks::lang.models.general.id
+        searchable: true
+        invisible: true
+    person[full_name]:
+        label: acornassociated.lojistiks::lang.models.person.label
+        type: text
+        searchable: true
+        sortable: false
+    vehicle[registration]:
+        label: acornassociated.lojistiks::lang.models.vehicle.label
+        type: text
+        searchable: true
+        sortable: false
+    created_at:
+        label: acornassociated.lojistiks::lang.models.general.created_at
+        type: datetime
+        searchable: true
+        sortable: true
+        invisible: true

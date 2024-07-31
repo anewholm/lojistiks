@@ -1,0 +1,40 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    user[first_name]:
+        label: acornassociated.lojistiks::lang.models.person.first_name
+        type: text
+        span: auto
+        searchable: true
+    user[last_name]:
+        label: acornassociated.lojistiks::lang.models.person.last_name
+        type: text
+        span: auto
+        searchable: true
+    user[email]:
+        label: acornassociated.lojistiks::lang.models.person.email
+        type: text
+        span: auto
+        default: a@b.com
+        searchable: true
+    user[login]:
+        label: acornassociated.lojistiks::lang.models.person.login
+        type: text
+        span: auto
+        searchable: true
+    user[password]:
+        label: acornassociated.lojistiks::lang.models.person.password
+        type: text
+        span: auto
+        searchable: true
+    user[password_confirmation]:
+        label: acornassociated.lojistiks::lang.models.person.password
+        type: text
+        span: auto
+        searchable: true
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.electronicproduct.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/electronicproduct/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\ElectronicProduct
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/electronicproduct
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/electronicproduct/update/:id
+    redirectClose: acornassociated/lojistiks/electronicproduct
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/electronicproduct
+    redirectClose: acornassociated/lojistiks/electronicproduct
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    person:
+        label: acornassociated.lojistiks::lang.models.person.label
+        type: relation
+        nameFrom: full_name
+        required: true
+        placeholder: acornassociated.lojistiks::lang.models.general.select
+        span: auto
+    vehicle:
+        label: acornassociated.lojistiks::lang.models.vehicle.label
+        type: relation
+        required: true
+        select: registration
+        placeholder: acornassociated.lojistiks::lang.models.general.select
+        span: auto
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        span: auto

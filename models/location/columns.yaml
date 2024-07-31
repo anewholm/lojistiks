@@ -1,0 +1,48 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: acornassociated.lojistiks::lang.models.general.id
+        searchable: true
+    name:
+        label: acornassociated.lojistiks::lang.models.general.name
+        type: text
+        searchable: true
+    address:
+        label: acornassociated.lojistiks::lang.models.address.label
+        relation: address
+        type: number
+        select: id
+        searchable: true
+        sortable: true  
+    server:
+        label: acornassociated.lojistiks::lang.models.location.server
+        relation: server
+        type: number
+        select: id
+        searchable: true
+        sortable: true
+    version:
+        label: acornassociated.lojistiks::lang.models.location.version
+        type: number
+        searchable: false
+    is_current_version:
+        label: acornassociated.lojistiks::lang.models.location.is_current_version
+        type: switch
+    created_at:
+        label: acornassociated.lojistiks::lang.models.general.created_at
+        type: datetime
+        searchable: true
+        sortable: true
+        invisible: true
+    updated_at:
+        label: acornassociated.lojistiks::lang.models.general.updated_at
+        type: datetime
+        searchable: true
+        sortable: true
+    _qrcode:
+        type: partial
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        sortable: false

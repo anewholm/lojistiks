@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.location.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/location/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\Location
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/location
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/location/update/:id
+    redirectClose: acornassociated/lojistiks/location
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/location
+    redirectClose: acornassociated/lojistiks/location
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

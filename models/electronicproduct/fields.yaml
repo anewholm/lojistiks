@@ -1,0 +1,34 @@
+fields:
+    product[name]:
+        label: acornassociated.lojistiks::lang.models.general.name
+        span: auto
+        required: true
+    _create_a_new_brand:
+        label: Create a new Brand
+        type: switch
+        span: left
+    product[brand]:
+        label: Brand
+        type: dropdown
+        options: \AcornAssociated\Lojistiks\Models\Brand::dropdownOptions
+        placeholder: Select
+        span: right
+        trigger:
+            field: _create_a_new_brand
+            condition: checked
+            action: disable
+    product[brand][name]:
+        label: Brand
+        span: right
+        trigger:
+            field: _create_a_new_brand
+            condition: checked
+            action: enable
+    product[model]:
+        label: model
+        span: auto
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        span: auto

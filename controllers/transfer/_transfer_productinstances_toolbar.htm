@@ -1,0 +1,24 @@
+<div data-control="toolbar" data-disposable="">
+    <a
+        data-handler="onRelationButtonCreate"
+        data-control="popup"
+        data-size="huge"
+        href="javascript:;"
+        class="btn btn-sm btn-secondary oc-icon-file">
+        <?= e(trans('acornassociated.lojistiks::lang.models.transfer.add_product_instance')) ?>
+    </a>
+
+    <button
+        onclick="$(this).data('request-data', {checked: $('#Locations-update-RelationController-states-view .control-list').listWidget('getChecked') })"
+        class="btn btn-sm btn-secondary oc-icon-trash-o control-disabled"
+        data-request="onRelationButtonDelete"
+        data-request-confirm="<?= e(trans('winter.location::lang.locations.delete_confirm')) ?>"
+        data-request-success="$.wn.relationBehavior.changed('states', 'deleted')"
+        data-trigger-action="enable"
+        data-trigger="#Locations-update-RelationController-states-view .control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-stripe-load-indicator=""
+        disabled="">
+        <?= e(trans('backend::lang.form.delete')) ?>
+    </button>
+</div>

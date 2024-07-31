@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.measurementunit.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/measurementunit/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\MeasurementUnit
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/measurementunit
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/measurementunit/update/:id
+    redirectClose: acornassociated/lojistiks/measurementunit
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/measurementunit
+    redirectClose: acornassociated/lojistiks/measurementunit
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

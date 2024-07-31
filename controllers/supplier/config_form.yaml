@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.supplier.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/supplier/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\Supplier
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/supplier
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/supplier/update/:id
+    redirectClose: acornassociated/lojistiks/supplier
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/supplier
+    redirectClose: acornassociated/lojistiks/supplier
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

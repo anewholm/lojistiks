@@ -1,0 +1,49 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: acornassociated.lojistiks::lang.models.general.id
+        searchable: true
+        invisible: true
+    electronic_product[product][name]:
+        label: acornassociated.lojistiks::lang.models.general.name
+        type: text
+        searchable: true
+        sortable: true
+    electronic_product[product][brand][name]:
+        label: acornassociated.lojistiks::lang.models.brand.label
+        type: text
+        searchable: true
+        sortable: true
+    electronic_product[product][model]:
+        label: acornassociated.lojistiks::lang.models.product.model
+        type: text
+        searchable: true
+        sortable: true
+    memory:
+       label: acornassociated.lojistiks::lang.models.computerproduct.memory
+       type: number
+       searchable: false
+    HDD_size:
+       label: acornassociated.lojistiks::lang.models.computerproduct.hdd_size
+       type: number
+       searchable: false
+    processor_type:
+       label: acornassociated.lojistiks::lang.models.computerproduct.processor_type
+       type: text
+       searchable: false
+    processor_version:
+        label: acornassociated.lojistiks::lang.models.computerproduct.processor_version
+        type: number
+    created_at:
+        label: acornassociated.lojistiks::lang.models.general.created_at
+        type: datetime
+        searchable: true
+        sortable: true
+        invisible: true
+    _qrcode:
+        type: partial
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        sortable: false

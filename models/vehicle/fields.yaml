@@ -1,0 +1,28 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    registration:
+        label: acornassociated.lojistiks::lang.models.vehicle.registration
+        type: text
+        span: auto
+    vehicle_type:
+        label: acornassociated.lojistiks::lang.models.vehicletype.label
+        type: relation
+        span: auto
+    initial_transfer[source_location]:
+        label: acornassociated.lojistiks::lang.models.transfer.source_location
+        type: dropdown
+        options: AcornAssociated\Lojistiks\Models\Location::dropdownOptions
+        span: auto
+    initial_transfer[destination_location]:
+        label: acornassociated.lojistiks::lang.models.transfer.destination_location
+        type: dropdown
+        options: AcornAssociated\Lojistiks\Models\Location::dropdownOptions
+        span: auto
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        span: auto

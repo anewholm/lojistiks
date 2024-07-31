@@ -1,0 +1,24 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: acornassociated.lojistiks::lang.models.general.name
+        type: text
+        span: auto
+        searchable: true
+    short_name:
+        label: acornassociated.lojistiks::lang.models.measurementunit.short_name
+        type: text
+        span: auto
+        searchable: true
+    uses_quantity:
+        label: acornassociated.lojistiks::lang.models.measurementunit.uses_quantity
+        type: switch
+        span: auto
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+

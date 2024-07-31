@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.area.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/area/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\Area
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/area
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/area/update/:id
+    redirectClose: acornassociated/lojistiks/area
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/area
+    redirectClose: acornassociated/lojistiks/area
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

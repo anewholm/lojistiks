@@ -1,0 +1,67 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    electronic_product[product][name]:
+        label: acornassociated.lojistiks::lang.models.general.name
+        span: auto
+        required: true
+    electronic_product[product][measurement_unit]:
+        label: acornassociated.lojistiks::lang.models.measurementunit.label
+        type: dropdown
+        options: \AcornAssociated\Lojistiks\Models\MeasurementUnit::dropdownOptions
+        select: name
+        span: auto
+        default: 1
+        required: true
+    _create_a_new_brand:
+        label: Create a new Brand
+        type: switch
+        span: left
+    electronic_product[product][brand]:
+        label: Brand
+        type: dropdown
+        options: \AcornAssociated\Lojistiks\Models\Brand::dropdownOptions
+        placeholder: Select
+        span: right
+        trigger:
+            field: _create_a_new_brand
+            condition: checked
+            action: disable
+    electronic_product[product][brand][name]:
+        label: Brand
+        span: right
+        trigger:
+            field: _create_a_new_brand
+            condition: checked
+            action: enable
+    electronic_product[product][model]:
+        label: model
+        span: auto
+    memory:
+       label: acornassociated.lojistiks::lang.models.computerproduct.memory
+       type: number
+       comment: GB
+       span: auto
+    HDD_size:
+       label: acornassociated.lojistiks::lang.models.computerproduct.hdd_size
+       type: number
+       comment: GB
+       span: auto
+    processor_type:
+       label: acornassociated.lojistiks::lang.models.computerproduct.processor_type
+       type: dropdown
+       options:
+          1: Intel
+          2: AMD
+          3: ARM
+       span: auto
+    processor_version:
+        label: acornassociated.lojistiks::lang.models.computerproduct.processor_version
+        type: number
+        span: auto
+    _qrcode:
+        type: partial
+        context: update
+        path: ~/plugins/acornassociated/lojistiks/_qrcode

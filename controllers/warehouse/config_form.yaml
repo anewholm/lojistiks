@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.warehouse.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/warehouse/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\Warehouse
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/warehouse
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/warehouse/update/:id
+    redirectClose: acornassociated/lojistiks/warehouse
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/warehouse
+    redirectClose: acornassociated/lojistiks/warehouse
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

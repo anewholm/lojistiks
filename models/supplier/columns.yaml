@@ -1,0 +1,29 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: acornassociated.lojistiks::lang.models.general.id
+        searchable: true
+        invisible: true
+    location[name]:
+        label: acornassociated.lojistiks::lang.models.location.label
+        type: text
+        searchable: true
+        sortable: true
+    location[address][fully_qualified_name]:
+        label: acornassociated.lojistiks::lang.models.address.label
+        type: text
+        searchable: true
+        sortable: true
+    _qrcode:
+        type: partial
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        sortable: false
+    created_at:
+        label: acornassociated.lojistiks::lang.models.general.created_at
+        type: datetime
+        searchable: true
+        sortable: true
+        invisible: true

@@ -1,0 +1,30 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: 'acornassociated.lojistiks::lang.models.general.id'
+        searchable: true
+    hostname:
+        label: acornassociated.lojistiks::lang.models.general.hostname
+        type: text
+        searchable: true
+    created_at:
+        label: 'acornassociated.lojistiks::lang.models.general.created_at'
+        type: datetime
+        searchable: true
+        sortable: true
+        invisible: true
+    updated_at:
+        label: 'acornassociated.lojistiks::lang.models.general.updated_at'
+        type: datetime
+        searchable: true
+        sortable: true
+    _qrcode:
+        type: partial
+        context: update
+        size: 64
+        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        sortable: false
+

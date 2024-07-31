@@ -1,0 +1,16 @@
+.headless-menu a[href*=acornassociated\/lojistiks\/brand],
+.headless-menu a[href*=acornassociated\/lojistiks\/person] {
+  border-top: 1px dotted #aaa;
+}
+.counter[data-menu-id=lojistics-setup] {
+  background-color: Transparent;
+  border: 1px solid #aaa;
+  color: #fff;
+  font-size:0.5em;
+}
+.headless-menu a[href*=acornassociated] .counter {
+  background-color: Transparent;
+  border: 1px solid #aaa;
+  color: #444;
+  font-size:0.8em;
+}

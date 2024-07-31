@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.vehicle.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/vehicle/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\Vehicle
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/vehicle
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/vehicle/update/:id
+    redirectClose: acornassociated/lojistiks/vehicle
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/vehicle
+    redirectClose: acornassociated/lojistiks/vehicle
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

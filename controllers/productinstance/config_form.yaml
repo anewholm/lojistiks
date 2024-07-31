@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acornassociated.lojistiks::lang.models.productinstance.label'
+
+# Model Form Field configuration
+form: $/acornassociated/lojistiks/models/productinstance/fields.yaml
+
+# Model Class name
+modelClass: AcornAssociated\Lojistiks\Models\ProductInstance
+
+# Default redirect location
+defaultRedirect: acornassociated/lojistiks/productinstance
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acornassociated/lojistiks/productinstance/update/:id
+    redirectClose: acornassociated/lojistiks/productinstance
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acornassociated/lojistiks/productinstance
+    redirectClose: acornassociated/lojistiks/productinstance
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

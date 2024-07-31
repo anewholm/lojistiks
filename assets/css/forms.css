@@ -1,0 +1,14 @@
+@import 'html5-qrcode.css';
+
+.help-block a {
+  color: #4444ff;
+}
+
+.selected-only .field-checkboxlist .custom-checkbox {
+    display: none;
+}
+
+.selected-only .field-checkboxlist .custom-checkbox:has(input[checked]) {
+    display: block;
+}
+
