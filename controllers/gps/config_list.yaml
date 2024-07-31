@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/gp/columns.yaml
+list: $/acorn/lojistiks/models/gp/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\GP
+modelClass: Acorn\Lojistiks\Models\GP
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.gp.label_plural'
+title: 'acorn.lojistiks::lang.models.gp.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/gps/update/:id
+recordUrl: acorn/lojistiks/gps/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

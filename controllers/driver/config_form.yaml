@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.driver.label'
+name: 'acorn.lojistiks::lang.models.driver.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/driver/fields.yaml
+form: $/acorn/lojistiks/models/driver/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Driver
+modelClass: Acorn\Lojistiks\Models\Driver
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/driver
+defaultRedirect: acorn/lojistiks/driver
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/driver/update/:id
-    redirectClose: acornassociated/lojistiks/driver
+    redirect: acorn/lojistiks/driver/update/:id
+    redirectClose: acorn/lojistiks/driver
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/driver
-    redirectClose: acornassociated/lojistiks/driver
+    redirect: acorn/lojistiks/driver
+    redirectClose: acorn/lojistiks/driver
 
 # Preview page
 preview:

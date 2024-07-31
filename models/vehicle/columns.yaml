@@ -4,40 +4,40 @@
 
 columns:
     id:
-        label: acornassociated.lojistiks::lang.models.general.id
+        label: acorn.lojistiks::lang.models.general.id
         searchable: true
         invisible: true
     registration:
-        label: acornassociated.lojistiks::lang.models.vehicle.registration
+        label: acorn.lojistiks::lang.models.vehicle.registration
         type: text
         searchable: true
     vehicle_type:
-        label: acornassociated.lojistiks::lang.models.vehicletype.label
+        label: acorn.lojistiks::lang.models.vehicletype.label
         type: text
         relation: vehicle_type
         select: name
         searchable: true
         sortable: true
     initial_transfer[source_location][name]:
-        label: acornassociated.lojistiks::lang.models.transfer.source_location
+        label: acorn.lojistiks::lang.models.transfer.source_location
         type: text
         searchable: true
         sortable: true
         invisible: true
     initial_transfer[destination_location][name]:
-        label: acornassociated.lojistiks::lang.models.transfer.destination_location
+        label: acorn.lojistiks::lang.models.transfer.destination_location
         type: text
         searchable: true
         sortable: true
         invisible: true
     created_at:
-        label: 'acornassociated.lojistiks::lang.models.general.created_at'
+        label: 'acorn.lojistiks::lang.models.general.created_at'
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
 

@@ -4,25 +4,25 @@
 
 fields:
     product:
-        label: acornassociated.lojistiks::lang.models.product.label
+        label: acorn.lojistiks::lang.models.product.label
         type: relation
-        comment: create new <a target="_blank" href="/backend/acornassociated/lojistiks/computerproduct/create">computer product</a> | <a target="_blank" href="/backend/acornassociated/lojistiks/electronicproduct/create">electronic product</a> | <a target="_blank" href="/backend/acornassociated/lojistiks/product/create">product</a>
+        comment: create new <a target="_blank" href="/backend/acorn/lojistiks/computerproduct/create">computer product</a> | <a target="_blank" href="/backend/acorn/lojistiks/electronicproduct/create">electronic product</a> | <a target="_blank" href="/backend/acorn/lojistiks/product/create">product</a>
         commentHtml: true
         span: auto
         nameFrom: full_name
     product[measurement_unit]:
-        label: acornassociated.lojistiks::lang.models.measurementunit.label
-        comment: <a target="_blank" href="/backend/acornassociated/lojistiks/product">edit the products</a> to change this
+        label: acorn.lojistiks::lang.models.measurementunit.label
+        comment: <a target="_blank" href="/backend/acorn/lojistiks/product">edit the products</a> to change this
         commentHtml: true
         type: dropdown
-        options: AcornAssociated\Lojistiks\Models\MeasurementUnit::dropdownOptions
+        options: Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
         span: auto
         disabled: true
         dependsOn:
           - product
     product[measurement_unit][uses_quantity]:
-        label: acornassociated.lojistiks::lang.models.measurementunit.uses_quantity
-        comment: <a target="_blank" href="/backend/acornassociated/lojistiks/product">edit the products</a> to change this
+        label: acorn.lojistiks::lang.models.measurementunit.uses_quantity
+        comment: <a target="_blank" href="/backend/acorn/lojistiks/product">edit the products</a> to change this
         commentHtml: true
         type: text
         span: auto
@@ -30,7 +30,7 @@ fields:
         dependsOn:
           - product[measurement_unit]
     quantity:
-        label: acornassociated.lojistiks::lang.models.productinstance.quantity
+        label: acorn.lojistiks::lang.models.productinstance.quantity
         type: number
         default: 1
         span: auto
@@ -39,11 +39,11 @@ fields:
           field: product[measurement_unit][uses_quantity]
           condition: value[1]
     external_identifier:
-        label: acornassociated.lojistiks::lang.models.product.external_identifier
+        label: acorn.lojistiks::lang.models.product.external_identifier
         type: text
         span: auto
     asset_class:
-        label: acornassociated.lojistiks::lang.models.product.asset_class
+        label: acorn.lojistiks::lang.models.product.asset_class
         type: radio
         default: F
         options:
@@ -53,7 +53,7 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         span: auto
 
     # Initial Transfer afterCreate()
@@ -62,14 +62,14 @@ fields:
     _source_location:
         label: Supplier
         type: dropdown
-        options: AcornAssociated\Lojistiks\Models\Location::dropdownOptions
+        options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
         context: create
         span: auto
     _destination_location:
         label: Initial Location
         type: dropdown
-        options: AcornAssociated\Lojistiks\Models\Location::dropdownOptions
+        options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
         context: create
         span: auto

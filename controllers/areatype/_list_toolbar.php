@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('acornassociated/lojistiks/areatype/create') ?>"
+        href="<?= Backend::url('acorn/lojistiks/areatype/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acornassociated.lojistiks::lang.models.areatype.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.lojistiks::lang.models.areatype.label')])); ?>
     </a>
 
     <button

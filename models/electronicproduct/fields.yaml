@@ -1,6 +1,6 @@
 fields:
     product[name]:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         span: auto
         required: true
     _create_a_new_brand:
@@ -10,7 +10,7 @@ fields:
     product[brand]:
         label: Brand
         type: dropdown
-        options: \AcornAssociated\Lojistiks\Models\Brand::dropdownOptions
+        options: \Acorn\Lojistiks\Models\Brand::dropdownOptions
         placeholder: Select
         span: right
         trigger:
@@ -30,5 +30,5 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         span: auto

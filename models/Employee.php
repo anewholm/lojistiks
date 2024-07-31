@@ -1,6 +1,6 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
 use Model;
 use Backend\Models\UserRole;
@@ -15,7 +15,7 @@ class Employee extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_employees';
+    public $table = 'acorn_lojistiks_employees';
 
     /**
      * @var array Guarded fields

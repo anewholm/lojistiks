@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/vehicletype/columns.yaml
+list: $/acorn/lojistiks/models/vehicletype/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\VehicleType
+modelClass: Acorn\Lojistiks\Models\VehicleType
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.vehicletype.label_plural'
+title: 'acorn.lojistiks::lang.models.vehicletype.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/vehicletype/update/:id
+recordUrl: acorn/lojistiks/vehicletype/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

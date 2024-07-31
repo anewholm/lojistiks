@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Lojistiks\Classes\QRCodeModel;
+use Acorn\Lojistiks\Classes\QRCodeModel;
 use Flash;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -16,7 +16,7 @@ class Transfer extends QRCodeModel
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_transfers';
+    public $table = 'acorn_lojistiks_transfers';
 
     /**
      * @var array Guarded fields

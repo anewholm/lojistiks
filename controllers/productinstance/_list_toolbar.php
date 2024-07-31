@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('acornassociated/lojistiks/productinstance/create') ?>"
+        href="<?= Backend::url('acorn/lojistiks/productinstance/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acornassociated.lojistiks::lang.models.productinstance.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.lojistiks::lang.models.productinstance.label')])); ?>
     </a>
 
     <button
@@ -20,14 +20,14 @@
     </button>
 
     <a
-        href="/backend/acornassociated/lojistiks/findbyqrcode"
+        href="/backend/acorn/lojistiks/findbyqrcode"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('acornassociated.lojistiks::lang.models.general.find_by_qrcode', ['name' => trans('acornassociated.lojistiks::lang.general.find_by_qrcode')])); ?>
+        <?= e(trans('acorn.lojistiks::lang.models.general.find_by_qrcode', ['name' => trans('acorn.lojistiks::lang.general.find_by_qrcode')])); ?>
     </a>
 
     <a
         href="javascript:print()"
         class="btn btn-primary wn-icon-print">
-        <?= e(trans('acornassociated.lojistiks::lang.models.general.print', ['name' => trans('acornassociated.lojistiks::lang.general.print')])); ?>
+        <?= e(trans('acorn.lojistiks::lang.models.general.print', ['name' => trans('acorn.lojistiks::lang.general.print')])); ?>
     </a>
 </div>

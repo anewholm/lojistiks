@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.product.label'
+name: 'acorn.lojistiks::lang.models.product.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/product/fields.yaml
+form: $/acorn/lojistiks/models/product/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Product
+modelClass: Acorn\Lojistiks\Models\Product
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/product
+defaultRedirect: acorn/lojistiks/product
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/product/update/:id
-    redirectClose: acornassociated/lojistiks/product
+    redirect: acorn/lojistiks/product/update/:id
+    redirectClose: acorn/lojistiks/product
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/product
-    redirectClose: acornassociated/lojistiks/product
+    redirect: acorn/lojistiks/product
+    redirectClose: acorn/lojistiks/product
 
 # Preview page
 preview:

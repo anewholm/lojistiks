@@ -4,12 +4,12 @@
 
 fields:
     hostname:
-        label: acornassociated.lojistiks::lang.models.general.hostname
+        label: acorn.lojistiks::lang.models.general.hostname
         type: text
         span: auto
         searchable: true
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
 

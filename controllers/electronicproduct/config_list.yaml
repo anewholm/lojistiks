@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/electronicproduct/columns.yaml
+list: $/acorn/lojistiks/models/electronicproduct/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\ElectronicProduct
+modelClass: Acorn\Lojistiks\Models\ElectronicProduct
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.electronicproduct.label_plural'
+title: 'acorn.lojistiks::lang.models.electronicproduct.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/electronicproduct/update/:id
+recordUrl: acorn/lojistiks/electronicproduct/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.electronicproduct.label'
+name: 'acorn.lojistiks::lang.models.electronicproduct.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/electronicproduct/fields.yaml
+form: $/acorn/lojistiks/models/electronicproduct/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\ElectronicProduct
+modelClass: Acorn\Lojistiks\Models\ElectronicProduct
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/electronicproduct
+defaultRedirect: acorn/lojistiks/electronicproduct
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/electronicproduct/update/:id
-    redirectClose: acornassociated/lojistiks/electronicproduct
+    redirect: acorn/lojistiks/electronicproduct/update/:id
+    redirectClose: acorn/lojistiks/electronicproduct
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/electronicproduct
-    redirectClose: acornassociated/lojistiks/electronicproduct
+    redirect: acorn/lojistiks/electronicproduct
+    redirectClose: acorn/lojistiks/electronicproduct
 
 # Preview page
 preview:

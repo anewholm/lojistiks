@@ -1,18 +1,18 @@
-<?php namespace AcornAssociated\Lojistiks;
+<?php namespace Acorn\Lojistiks;
 
 use Schema;
 use System\Classes\PluginBase;
 use Illuminate\Support\Facades\Event;
-use \AcornAssociated\Calendar\Listeners\MixinEvents;
-use \AcornAssociated\Messaging\Events\MessageListReady;
+use \Acorn\Calendar\Listeners\MixinEvents;
+use \Acorn\Messaging\Events\MessageListReady;
 use Backend\Models\User;
 use Backend\Models\UserGroup;
 use Backend\Controllers\Users;
-use \AcornAssociated\Messaging\Controllers\Conversations;
-use \AcornAssociated\Messaging\Models\Message;
-use \AcornAssociated\Calendar\Models\Calendar;
-use \AcornAssociated\Calendar\Models\Instance;
-use \AcornAssociated\Calendar\Models\EventPart;
+use \Acorn\Messaging\Controllers\Conversations;
+use \Acorn\Messaging\Models\Message;
+use \Acorn\Calendar\Models\Calendar;
+use \Acorn\Calendar\Models\Instance;
+use \Acorn\Calendar\Models\EventPart;
 
 class Plugin extends PluginBase
 {
@@ -26,10 +26,10 @@ class Plugin extends PluginBase
                 'description' => 'Manage lojistiks based settings.',
                 'category'    => 'Lojistiks',
                 'icon'        => 'icon-cog',
-                'class'       => 'AcornAssociated\Lojistiks\Models\Settings',
+                'class'       => 'Acorn\Lojistiks\Models\Settings',
                 'order'       => 500,
                 'keywords'    => 'lojistiks',
-                'permissions' => ['acornassociated.lojistiks.settings']
+                'permissions' => ['acorn.lojistiks.settings']
             ]
         ];
     }

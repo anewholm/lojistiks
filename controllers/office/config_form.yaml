@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.office.label'
+name: 'acorn.lojistiks::lang.models.office.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/office/fields.yaml
+form: $/acorn/lojistiks/models/office/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Office
+modelClass: Acorn\Lojistiks\Models\Office
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/office
+defaultRedirect: acorn/lojistiks/office
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/office/update/:id
-    redirectClose: acornassociated/lojistiks/office
+    redirect: acorn/lojistiks/office/update/:id
+    redirectClose: acorn/lojistiks/office
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/office
-    redirectClose: acornassociated/lojistiks/office
+    redirect: acorn/lojistiks/office
+    redirectClose: acorn/lojistiks/office
 
 # Preview page
 preview:

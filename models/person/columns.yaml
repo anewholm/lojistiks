@@ -4,32 +4,32 @@
 
 columns:
     id:
-        label: acornassociated.lojistiks::lang.models.general.id
+        label: acorn.lojistiks::lang.models.general.id
         searchable: true
         invisible: true
     user[first_name]:
-        label: acornassociated.lojistiks::lang.models.person.first_name
+        label: acorn.lojistiks::lang.models.person.first_name
         type: text
         searchable: true
     user[last_name]:
-        label: acornassociated.lojistiks::lang.models.person.last_name
+        label: acorn.lojistiks::lang.models.person.last_name
         type: text
         searchable: true
     user[login]:
-        label: acornassociated.lojistiks::lang.models.person.login
+        label: acorn.lojistiks::lang.models.person.login
         type: text
         searchable: true
     user[email]:
-        label: acornassociated.lojistiks::lang.models.person.email
+        label: acorn.lojistiks::lang.models.person.email
         type: text
         searchable: true
     created_at:
-        label: acornassociated.lojistiks::lang.models.general.created_at
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false

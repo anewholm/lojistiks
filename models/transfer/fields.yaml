@@ -5,32 +5,32 @@
 fields:
     qrcode_scan:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode_scan
+        path: ~/plugins/acorn/lojistiks/_qrcode_scan
         span: right
     source_location:
-        label: acornassociated.lojistiks::lang.models.transfer.source_location
+        label: acorn.lojistiks::lang.models.transfer.source_location
         type: relation
         span: left
         comment: create new <a target="_blank" href="../warehouse/create">warehouse</a> | <a target="_blank" href="../office/create">office</a> | <a target="_blank" href="../supplier/create">supplier</a>
         commentHtml: true
-        placeholder: acornassociated.lojistiks::lang.models.general.select
+        placeholder: acorn.lojistiks::lang.models.general.select
         dependsOn:
             - qrcode_scan
     destination_location:
-        label: acornassociated.lojistiks::lang.models.transfer.destination_location
+        label: acorn.lojistiks::lang.models.transfer.destination_location
         type: relation
         span: left
-        placeholder: acornassociated.lojistiks::lang.models.general.select
+        placeholder: acorn.lojistiks::lang.models.general.select
         comment: create new <a target="_blank" href="../warehouse/create">warehouse</a> | <a target="_blank" href="../office/create">office</a>
         commentHtml: true
         dependsOn:
             - qrcode_scan
     vehicle:
-        label: acornassociated.lojistiks::lang.models.vehicle.label
+        label: acorn.lojistiks::lang.models.vehicle.label
         type: relation
         span: left
         select: registration
-        placeholder: acornassociated.lojistiks::lang.models.general.select
+        placeholder: acorn.lojistiks::lang.models.general.select
         comment: create new <a target="_blank" href="../vehicle/create">vehicle</a> | <a target="_blank" href="../driver/create">driver</a>
         commentHtml: true
         dependsOn:
@@ -38,7 +38,7 @@ fields:
     _product_instance:
         label: Add stock to transfer
         type: dropdown
-        options: AcornAssociated\Lojistiks\Models\ProductInstance::dropdownOptions
+        options: Acorn\Lojistiks\Models\ProductInstance::dropdownOptions
         comment: create new <a target="_blank" href="../computerproduct/create">computer product</a> | <a target="_blank" href="../electronicproduct/create">electronic product</a>
         commentHtml: true
         span: left
@@ -54,4 +54,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode

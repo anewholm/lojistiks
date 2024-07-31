@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.measurementunit.label'
+name: 'acorn.lojistiks::lang.models.measurementunit.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/measurementunit/fields.yaml
+form: $/acorn/lojistiks/models/measurementunit/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\MeasurementUnit
+modelClass: Acorn\Lojistiks\Models\MeasurementUnit
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/measurementunit
+defaultRedirect: acorn/lojistiks/measurementunit
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/measurementunit/update/:id
-    redirectClose: acornassociated/lojistiks/measurementunit
+    redirect: acorn/lojistiks/measurementunit/update/:id
+    redirectClose: acorn/lojistiks/measurementunit
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/measurementunit
-    redirectClose: acornassociated/lojistiks/measurementunit
+    redirect: acorn/lojistiks/measurementunit
+    redirectClose: acorn/lojistiks/measurementunit
 
 # Preview page
 preview:

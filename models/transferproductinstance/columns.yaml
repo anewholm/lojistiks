@@ -4,16 +4,16 @@
 
 columns:
     id:
-        label: 'acornassociated.lojistiks::lang.models.general.id'
+        label: 'acorn.lojistiks::lang.models.general.id'
         searchable: true
     created_at:
-        label: 'acornassociated.lojistiks::lang.models.general.created_at'
+        label: 'acorn.lojistiks::lang.models.general.created_at'
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     updated_at:
-        label: 'acornassociated.lojistiks::lang.models.general.updated_at'
+        label: 'acorn.lojistiks::lang.models.general.updated_at'
         type: datetime
         searchable: true
         sortable: true

@@ -1,53 +1,53 @@
 fields:
     area:
-        label: acornassociated.lojistiks::lang.models.area.label
+        label: acorn.lojistiks::lang.models.area.label
         type: relation
         select: id
         searchable: true
         sortable: true
     number:
-        label: acornassociated.lojistiks::lang.models.address.number
+        label: acorn.lojistiks::lang.models.address.number
         type: text
         span: auto
     name:
-        label: acornassociated.lojistiks::lang.models.address.street
+        label: acorn.lojistiks::lang.models.address.street
         type: text
         span: auto
     gps:
-        label: acornassociated.lojistiks::lang.models.gp.label
+        label: acorn.lojistiks::lang.models.gp.label
         relation: gps
         type: number
         select: id
         searchable: true
         sortable: true
     server:
-        label: acornassociated.lojistiks::lang.models.address.server
+        label: acorn.lojistiks::lang.models.address.server
         relation: server
         type: number
         select: id
         searchable: true
         sortable: true
     version:
-        label: acornassociated.lojistiks::lang.models.address.version
+        label: acorn.lojistiks::lang.models.address.version
         type: number
         searchable: false
     is_current_version:
-        label: acornassociated.lojistiks::lang.models.address.is_current_version
+        label: acorn.lojistiks::lang.models.address.is_current_version
         type: switch
     _gps_longitude:
-        label: acornassociated.lojistiks::lang.models.address.longitude
+        label: acorn.lojistiks::lang.models.address.longitude
         type: number
         span: left
     _gps_latitude:
-        label: acornassociated.lojistiks::lang.models.address.latitude
+        label: acorn.lojistiks::lang.models.address.latitude
         type: number
         span: right
     _auto_location:
-        label: acornassociated.lojistiks::lang.models.address.auto_location
+        label: acorn.lojistiks::lang.models.address.auto_location
         type: checkbox
         default: true
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
 

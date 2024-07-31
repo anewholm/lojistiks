@@ -3,10 +3,10 @@
 # ===================================
 
 productinstances:
-    label: acornassociated.lojistiks::lang.models.general.label
-    list: ~/plugins/acornassociated/lojistiks/models/transfer/columns.yaml
-    form: ~/plugins/acornassociated/lojistiks/models/transfer/fields.yaml
+    label: acorn.lojistiks::lang.models.general.label
+    list: ~/plugins/acorn/lojistiks/models/transfer/columns.yaml
+    form: ~/plugins/acorn/lojistiks/models/transfer/fields.yaml
     view:
         showSearch: true
-        toolbarPartial: $/acornassociated/lojistiks/controllers/transfer/_transfer_productinstances_toolbar.htm
-        filter: $/acornassociated/lojistiks/models/transfer/filters.yaml
+        toolbarPartial: $/acorn/lojistiks/controllers/transfer/_transfer_productinstances_toolbar.htm
+        filter: $/acorn/lojistiks/models/transfer/filters.yaml

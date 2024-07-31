@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * MeasurementUnit Model
@@ -14,7 +14,7 @@ class MeasurementUnit extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_measurement_units';
+    public $table = 'acorn_lojistiks_measurement_units';
 
     /**
      * @var array Guarded fields

@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * Address Model
@@ -14,7 +14,7 @@ class Address extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_addresses';
+    public $table = 'acorn_lojistiks_addresses';
 
     /**
      * @var array Guarded fields

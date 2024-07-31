@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/productinstance/columns.yaml
+list: $/acorn/lojistiks/models/productinstance/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\ProductInstance
+modelClass: Acorn\Lojistiks\Models\ProductInstance
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.productinstance.label_plural'
+title: 'acorn.lojistiks::lang.models.productinstance.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/productinstance/update/:id
+recordUrl: acorn/lojistiks/productinstance/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

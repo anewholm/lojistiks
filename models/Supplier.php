@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * Supplier Model
@@ -14,7 +14,7 @@ class Supplier extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_suppliers';
+    public $table = 'acorn_lojistiks_suppliers';
 
     /**
      * @var array Guarded fields

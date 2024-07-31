@@ -7,31 +7,31 @@ columns:
         type: partial
         context: update
         size: 64
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
     product[full_name]:
-        label: acornassociated.lojistiks::lang.models.product.label
+        label: acorn.lojistiks::lang.models.product.label
         searchable: true
         sortable: false
     external_identifier:
-        label: acornassociated.lojistiks::lang.models.product.external_identifier
+        label: acorn.lojistiks::lang.models.product.external_identifier
         type: text
 
     # Invisible
     id:
-        label: acornassociated.lojistiks::lang.models.general.id
+        label: acorn.lojistiks::lang.models.general.id
         searchable: true
         invisible: true
     quantity:
-        label: acornassociated.lojistiks::lang.models.productinstance.quantity
+        label: acorn.lojistiks::lang.models.productinstance.quantity
         type: number
         invisible: true
     asset_class:
-        label: acornassociated.lojistiks::lang.models.product.asset_class
+        label: acorn.lojistiks::lang.models.product.asset_class
         type: text
         invisible: true
     created_at:
-        label: acornassociated.lojistiks::lang.models.general.created_at
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true

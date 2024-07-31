@@ -4,10 +4,10 @@
 
 columns:
     name:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         searchable: true
     created_at:
-        label: 'acornassociated.lojistiks::lang.models.general.created_at'
+        label: 'acorn.lojistiks::lang.models.general.created_at'
         type: datetime
         searchable: true
         sortable: true

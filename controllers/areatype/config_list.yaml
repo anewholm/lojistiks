@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/areatype/columns.yaml
+list: $/acorn/lojistiks/models/areatype/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\AreaType
+modelClass: Acorn\Lojistiks\Models\AreaType
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.areatype.label_plural'
+title: 'acorn.lojistiks::lang.models.areatype.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/areatype/update/:id
+recordUrl: acorn/lojistiks/areatype/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

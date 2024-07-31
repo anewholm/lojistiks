@@ -4,7 +4,7 @@
 
 columns:
     product[name]:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
     product[brand][name]:
         label: Brand
     product[measurement_unit][name]:
@@ -14,14 +14,14 @@ columns:
     voltage:
         label: Voltage
     created_at:
-        label: acornassociated.lojistiks::lang.models.general.created_at
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         size: 32
         searchable: false
         sortable: false

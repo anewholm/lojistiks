@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * ComputerProduct Model
@@ -14,7 +14,7 @@ class ComputerProduct extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_computer_products';
+    public $table = 'acorn_lojistiks_computer_products';
 
     /**
      * @var array Guarded fields

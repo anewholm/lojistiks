@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.vehicletype.label'
+name: 'acorn.lojistiks::lang.models.vehicletype.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/vehicletype/fields.yaml
+form: $/acorn/lojistiks/models/vehicletype/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\VehicleType
+modelClass: Acorn\Lojistiks\Models\VehicleType
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/vehicletype
+defaultRedirect: acorn/lojistiks/vehicletype
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/vehicletype/update/:id
-    redirectClose: acornassociated/lojistiks/vehicletype
+    redirect: acorn/lojistiks/vehicletype/update/:id
+    redirectClose: acorn/lojistiks/vehicletype
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/vehicletype
-    redirectClose: acornassociated/lojistiks/vehicletype
+    redirect: acorn/lojistiks/vehicletype
+    redirectClose: acorn/lojistiks/vehicletype
 
 # Preview page
 preview:

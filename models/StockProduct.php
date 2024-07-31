@@ -1,6 +1,6 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
 use Model;
 
@@ -14,7 +14,7 @@ class StockProduct extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_stock_products';
+    public $table = 'acorn_lojistiks_stock_products';
 
     /**
      * @var array Guarded fields

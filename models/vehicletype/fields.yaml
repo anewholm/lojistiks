@@ -4,5 +4,5 @@
 
 fields:
     name:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         type: text

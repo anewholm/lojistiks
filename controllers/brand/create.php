@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('acornassociated/lojistiks/brand') ?>"><?= e(trans('acornassociated.lojistiks::lang.models.brand.label_plural')); ?></a></li>
+        <li><a href="<?= Backend::url('acorn/lojistiks/brand') ?>"><?= e(trans('acorn.lojistiks::lang.models.brand.label_plural')); ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -19,7 +19,7 @@
                     type="button"
                     data-request="onSave"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acornassociated.lojistiks::lang.models.brand.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.brand.label')])); ?>"
                     class="btn btn-primary">
                     <?= e(trans('backend::lang.form.create')); ?>
                 </button>
@@ -28,12 +28,12 @@
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acornassociated.lojistiks::lang.models.brand.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.brand.label')])); ?>"
                     class="btn btn-default">
                     <?= e(trans('backend::lang.form.create_and_close')); ?>
                 </button>
                 <span class="btn-text">
-                    or <a href="<?= Backend::url('acornassociated/lojistiks/brand') ?>"><?= e(trans('backend::lang.form.cancel')); ?></a>
+                    or <a href="<?= Backend::url('acorn/lojistiks/brand') ?>"><?= e(trans('backend::lang.form.cancel')); ?></a>
                 </span>
             </div>
         </div>
@@ -43,6 +43,6 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('acornassociated/lojistiks/brand') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')); ?></a></p>
+    <p><a href="<?= Backend::url('acorn/lojistiks/brand') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')); ?></a></p>
 
 <?php endif ?>

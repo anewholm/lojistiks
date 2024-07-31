@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('acornassociated/lojistiks/productinstance') ?>"><?= e(trans('acornassociated.lojistiks::lang.models.productinstance.label_plural')); ?></a></li>
+        <li><a href="<?= Backend::url('acorn/lojistiks/productinstance') ?>"><?= e(trans('acorn.lojistiks::lang.models.productinstance.label_plural')); ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -14,6 +14,6 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('acornassociated/lojistiks/productinstance') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')); ?></a></p>
+    <p><a href="<?= Backend::url('acorn/lojistiks/productinstance') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')); ?></a></p>
 
 <?php endif ?>

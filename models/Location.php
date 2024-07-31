@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -15,7 +15,7 @@ class Location extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_locations';
+    public $table = 'acorn_lojistiks_locations';
 
     /**
      * @var array Guarded fields

@@ -1,7 +1,7 @@
-<?php namespace AcornAssociated\Lojistiks\Controllers;
+<?php namespace Acorn\Lojistiks\Controllers;
 
 use BackendMenu;
-use AcornAssociated\Controller;
+use Acorn\Controller;
 
 /**
  * Computer Product Backend Controller
@@ -20,6 +20,6 @@ class ComputerProduct extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('AcornAssociated.Lojistiks', 'lojistiks', 'computerproduct');
+        BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'computerproduct');
     }
 }

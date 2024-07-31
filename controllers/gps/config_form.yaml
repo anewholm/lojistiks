@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.gp.label'
+name: 'acorn.lojistiks::lang.models.gp.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/gp/fields.yaml
+form: $/acorn/lojistiks/models/gp/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\GP
+modelClass: Acorn\Lojistiks\Models\GP
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/gps
+defaultRedirect: acorn/lojistiks/gps
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/gps/update/:id
-    redirectClose: acornassociated/lojistiks/gps
+    redirect: acorn/lojistiks/gps/update/:id
+    redirectClose: acorn/lojistiks/gps
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/gps
-    redirectClose: acornassociated/lojistiks/gps
+    redirect: acorn/lojistiks/gps
+    redirectClose: acorn/lojistiks/gps
 
 # Preview page
 preview:

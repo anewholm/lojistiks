@@ -4,54 +4,54 @@
 
 columns:
     id:
-        label: 'acornassociated.lojistiks::lang.models.general.id'
+        label: 'acorn.lojistiks::lang.models.general.id'
         searchable: true
     created_at:
-        label: 'acornassociated.lojistiks::lang.models.general.created_at'
+        label: 'acorn.lojistiks::lang.models.general.created_at'
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     source_location:
-        label: acornassociated.lojistiks::lang.models.transfer.source_location
+        label: acorn.lojistiks::lang.models.transfer.source_location
         type: number
         relation: source_location
         select: id
         searchable: true
         sortable: true
     destination_location:
-        label: acornassociated.lojistiks::lang.models.transfer.destination_location
+        label: acorn.lojistiks::lang.models.transfer.destination_location
         type: number
         relation: destination_location
         select: id
         searchable: true
         sortable: true
     sent_at:
-        label: acornassociated.lojistiks::lang.models.transfer.send
+        label: acorn.lojistiks::lang.models.transfer.send
         type: datetime
         searchable: true
         sortable: true
     arrived_at:
-        label: acornassociated.lojistiks::lang.models.transfer.add_product_instance
+        label: acorn.lojistiks::lang.models.transfer.add_product_instance
         type: datetime
         searchable: true
         sortable: true
     # server:
-    #     label: acornassociated.lojistiks::lang.models.general.server
+    #     label: acorn.lojistiks::lang.models.general.server
     #     relation: server
     #     type: number
     #     select: id
     #     searchable: true
     #     sortable: true
     # version:
-    #     label: acornassociated.lojistiks::lang.models.general.version
+    #     label: acorn.lojistiks::lang.models.general.version
     #     type: number
     #     searchable: false
     # is_current_version:
-    #     label: acornassociated.lojistiks::lang.models.general.is_current_version
+    #     label: acorn.lojistiks::lang.models.general.is_current_version
     #     type: switch
     verhicle:
-        label: acornassociated.lojistiks::lang.models.vehicle.label
+        label: acorn.lojistiks::lang.models.vehicle.label
         relation: vehicle
         type: number
         select: id
@@ -59,10 +59,10 @@ columns:
         sortable: true
     _qrcode:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
     updated_at:
-        label: acornassociated.lojistiks::lang.models.general.updated_at
+        label: acorn.lojistiks::lang.models.general.updated_at
         type: datetime
         searchable: true
         sortable: true

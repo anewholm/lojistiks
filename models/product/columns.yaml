@@ -4,48 +4,48 @@
 
 columns:
     id:
-        label: acornassociated.lojistiks::lang.models.general.id
+        label: acorn.lojistiks::lang.models.general.id
         searchable: true
     name:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         type: text
     measurement_unit:
-        label: acornassociated.lojistiks::lang.models.measurementunit.label
+        label: acorn.lojistiks::lang.models.measurementunit.label
         relation: measurement_unit
         type: number
         select: id
         searchable: true
         sortable: true
     brand:
-        label: acornassociated.lojistiks::lang.models.brand.label
+        label: acorn.lojistiks::lang.models.brand.label
         relation: brand
         type: number
         select: id
         searchable: true
         sortable: true
     model:
-        label: acornassociated.lojistiks::lang.models.general.model
+        label: acorn.lojistiks::lang.models.general.model
         type: text
     server:
-        label: acornassociated.lojistiks::lang.models.general.server.label
+        label: acorn.lojistiks::lang.models.general.server.label
         relation: server
         type: number
         select: id
         searchable: true
         sortable: true
     version:
-        label: acornassociated.lojistiks::lang.models.general.version
+        label: acorn.lojistiks::lang.models.general.version
         type: number
         searchable: false
     is_current_version:
-        label: acornassociated.lojistiks::lang.models.general.is_current_version
+        label: acorn.lojistiks::lang.models.general.is_current_version
         type: switch
     _qrcode:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
     created_at:
-        label: acornassociated.lojistiks::lang.models.general.created_at
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         sortable: true
         invisible: true

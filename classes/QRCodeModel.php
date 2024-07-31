@@ -1,7 +1,7 @@
 <?php
-namespace AcornAssociated\Lojistiks\Classes;
+namespace Acorn\Lojistiks\Classes;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 use Flash;
 
 /* QRCodeModel fields can be set by the QRCode reader
@@ -11,7 +11,7 @@ class QRCodeModel extends Model {
     protected static function getShortName($object)
     {
         // Short name for debugging output
-        // AcornAssociated\Lojistiks\Model\Area => Area
+        // Acorn\Lojistiks\Model\Area => Area
         if (!is_string($object)) {
             $object = get_class($object);
         }

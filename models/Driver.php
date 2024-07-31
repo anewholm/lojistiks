@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * Driver Model
@@ -14,7 +14,7 @@ class Driver extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_drivers';
+    public $table = 'acorn_lojistiks_drivers';
 
     /**
      * @var array Guarded fields

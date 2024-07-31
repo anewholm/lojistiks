@@ -1,6 +1,6 @@
 fields:
     location[name]:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
     # -------------------------------- Existing Address
@@ -11,7 +11,7 @@ fields:
         context: create
     location[address]:
         type: dropdown
-        options: AcornAssociated\Lojistiks\Models\Address::dropdownOptions
+        options: Acorn\Lojistiks\Models\Address::dropdownOptions
         nameFrom: fully_qualified_name
         span: left
         trigger:
@@ -21,7 +21,7 @@ fields:
         context: create
     # -------------------------------- New Address
     location[address][name]:
-        label: acornassociated.lojistiks::lang.models.address.label
+        label: acorn.lojistiks::lang.models.address.label
         type: text
         span: auto
         trigger:
@@ -37,9 +37,9 @@ fields:
             condition: checked
             action: disable
     location[address][area]:
-        label: acornassociated.lojistiks::lang.models.area.label
+        label: acorn.lojistiks::lang.models.area.label
         type: dropdown
-        options: AcornAssociated\Lojistiks\Models\Area::dropdownOptions
+        options: Acorn\Lojistiks\Models\Area::dropdownOptions
         placeholder: Select
         span: auto
         trigger:
@@ -65,4 +65,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode

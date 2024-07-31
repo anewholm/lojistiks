@@ -4,29 +4,29 @@
 
 fields:
     name:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
     area_type:
-        label: acornassociated.lojistiks::lang.models.areatype.label
+        label: acorn.lojistiks::lang.models.areatype.label
         type: relation
         span: auto
         searchable: true
         sortable: true
     parent_area:
-        label: acornassociated.lojistiks::lang.models.area.parent_area
+        label: acorn.lojistiks::lang.models.area.parent_area
         type: relation
         span: auto
-        placeholder: acornassociated.lojistiks::lang.models.general.select
+        placeholder: acorn.lojistiks::lang.models.general.select
     gps[longitude]:
-        label: acornassociated.lojistiks::lang.models.gp.longitude
+        label: acorn.lojistiks::lang.models.gp.longitude
         relation: gps
         type: number
         span: left
         searchable: true
         sortable: true
     gps[latitude]:
-        label: acornassociated.lojistiks::lang.models.gp.latitude
+        label: acorn.lojistiks::lang.models.gp.latitude
         relation: gps
         type: number
         span: right
@@ -35,4 +35,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode

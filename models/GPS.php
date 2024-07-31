@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * GPS Model
@@ -14,7 +14,7 @@ class GPS extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_gps';
+    public $table = 'acorn_lojistiks_gps';
 
     /**
      * @var array Guarded fields

@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.lojistiks::lang.models.warehouse.label'
+name: 'acorn.lojistiks::lang.models.warehouse.label'
 
 # Model Form Field configuration
-form: $/acornassociated/lojistiks/models/warehouse/fields.yaml
+form: $/acorn/lojistiks/models/warehouse/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Warehouse
+modelClass: Acorn\Lojistiks\Models\Warehouse
 
 # Default redirect location
-defaultRedirect: acornassociated/lojistiks/warehouse
+defaultRedirect: acorn/lojistiks/warehouse
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/lojistiks/warehouse/update/:id
-    redirectClose: acornassociated/lojistiks/warehouse
+    redirect: acorn/lojistiks/warehouse/update/:id
+    redirectClose: acorn/lojistiks/warehouse
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/lojistiks/warehouse
-    redirectClose: acornassociated/lojistiks/warehouse
+    redirect: acorn/lojistiks/warehouse
+    redirectClose: acorn/lojistiks/warehouse
 
 # Preview page
 preview:

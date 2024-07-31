@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * AreaType Model
@@ -14,7 +14,7 @@ class AreaType extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_area_types';
+    public $table = 'acorn_lojistiks_area_types';
 
     /**
      * @var array Guarded fields

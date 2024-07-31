@@ -2,15 +2,15 @@
 
 ## Installation
 
-This assumes you have `git clone`d or linked [office/scripts](https://gitlab.acornassociated.org/office/scripts) in to `/var/www`. It also assumes you have the full Apache2, PostGreSQL**@16**, PHP stack installed. The script `acorn-setup-laptop` will install everything you need including the necessary PostGreSQL extensions. The `psql` command will ask for a password. The password is **QueenPool1@**.
+This assumes you have `git clone`d or linked [office/scripts](https://gitlab.acorn.org/office/scripts) in to `/var/www`. It also assumes you have the full Apache2, PostGreSQL**@16**, PHP stack installed. The script `acorn-setup-laptop` will install everything you need including the necessary PostGreSQL extensions. The `psql` command will ask for a password. The password is **QueenPool1@**.
 
 ```
 cd /var/www/
 scripts/acorn-setup-new-winter acorn-lojistiks
 cd acorn-lojistiks
 composer require simplesoftwareio/simple-qrcode
-cd plugins/acornassociated
-git clone git@gitlab.acornassociated.org:office/lojistiks.git
+cd plugins/acorn
+git clone git@gitlab.acorn.org:office/lojistiks.git
 cd lojistiks
 # This will ask for a password. The password is QueenPool1@
 psql -U acornlojistiks -W -d acornlojistiks -a -f acornlojistiks.sql

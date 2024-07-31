@@ -1,7 +1,7 @@
-<?php namespace AcornAssociated\Lojistiks\Controllers;
+<?php namespace Acorn\Lojistiks\Controllers;
 
 use BackendMenu;
-use AcornAssociated\Controller;
+use Acorn\Controller;
 
 /**
  * Warehouse Backend Controller
@@ -20,6 +20,6 @@ class Warehouse extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('AcornAssociated.Lojistiks', 'lojistiks', 'warehouse');
+        BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'warehouse');
     }
 }

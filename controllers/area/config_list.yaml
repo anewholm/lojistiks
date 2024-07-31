@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/area/columns.yaml
+list: $/acorn/lojistiks/models/area/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Area
+modelClass: Acorn\Lojistiks\Models\Area
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.area.label_plural'
+title: 'acorn.lojistiks::lang.models.area.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/area/update/:id
+recordUrl: acorn/lojistiks/area/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

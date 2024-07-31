@@ -1,7 +1,7 @@
-<?php namespace AcornAssociated\Lojistiks\Controllers;
+<?php namespace Acorn\Lojistiks\Controllers;
 
 use BackendMenu;
-use AcornAssociated\Controller;
+use Acorn\Controller;
 
 /**
  * Vehicle Backend Controller
@@ -20,6 +20,6 @@ class Vehicle extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('AcornAssociated.Lojistiks', 'lojistiks', 'vehicle');
+        BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'vehicle');
     }
 }

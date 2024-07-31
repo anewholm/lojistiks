@@ -4,23 +4,23 @@
 
 columns:
     id:
-        label: acornassociated.lojistiks::lang.models.general.id
+        label: acorn.lojistiks::lang.models.general.id
         searchable: true
         invisible: true
     name:
-        label: acornassociated.lojistiks::lang.models.general.name
+        label: acorn.lojistiks::lang.models.general.name
         type: text
         searchable: true
     uses_quantity:
-        label: acornassociated.lojistiks::lang.models.general.uses_quantity
+        label: acorn.lojistiks::lang.models.general.uses_quantity
         type: switch
     created_at:
-        label: acornassociated.lojistiks::lang.models.general.created_at
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acornassociated/lojistiks/_qrcode
+        path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
