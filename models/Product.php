@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use System\Models\File;
 
 /**
  * Product Model
@@ -29,7 +30,9 @@ class Product extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'image' => 'nullable',
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -60,11 +63,18 @@ class Product extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne = [
+        'electronic_product' => ElectronicProduct::class,
+    ];
     public $hasMany = [
         'product_instances' => ProductInstance::class,
-     ];
-    public $hasOneThrough = [];
+    ];
+    public $hasOneThrough = [
+        'computer_product' => [
+            ComputerProduct::class,
+            'through' => ElectronicProduct::class,
+        ],
+    ];
     public $hasManyThrough = [];
     public $belongsTo = [
         'measurement_unit' => MeasurementUnit::class,
@@ -75,14 +85,41 @@ class Product extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
+
+    public function getUsesQuantityAttribute()
+    {
+        $this->load('measurement_unit');
+        return (bool) $this->measurement_unit?->usesQuantity();
+    }
+
+    public function usesQuantity()
+    {
+        return $this->uses_quantity;
+    }
+
+    public function qrCodeName()
+    {
+        return $this->qr_code_name;
+    }
+
+    public function getQrCodeNameAttribute()
+    {
+        return $this->fullName();
+    }
 
     public function getFullNameAttribute()
     {
         $this->load('brand');
-        $brandName = $this->brand->name();
-        return ($this->name ? "$this->name ": '') . "$brandName $this->model";
+        $isRecordContext = is_string($this->brand);
+        $brandName       = ($isRecordContext ? $this->brand : $this->brand?->name());
+        $leafProduct     = $this->getLeafTypeObject();
+        $leafProductName = ($leafProduct ? $leafProduct->name() : $this->getShortClassName());
+        $type            = ($this->type ? "($this->type)" : '');
+        return "$leafProductName $type, $brandName $this->model";
     }
 
     public function fullName()

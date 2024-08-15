@@ -34,6 +34,7 @@ columns:
        label: acorn.lojistiks::lang.models.computerproduct.processor_type
        type: text
        searchable: false
+       select: case when processor_type = 1 then 'Intel' when processor_type = 2 then 'AMD' when processor_type = 3 then 'ARM' end
     processor_version:
         label: acorn.lojistiks::lang.models.computerproduct.processor_version
         type: number

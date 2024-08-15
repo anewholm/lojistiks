@@ -7,14 +7,14 @@ use Acorn\Model;
 /**
  * ComputerProduct Model
  */
-class ComputerProduct extends Model
+class ComputerProduct extends ElectronicProduct
 {
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_computer_products';
+    public $table = 'product.acorn_lojistiks_computer_products';
 
     /**
      * @var array Guarded fields
@@ -61,7 +61,9 @@ class ComputerProduct extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'product_instances' => ProductInstance::class,
+    ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
@@ -72,8 +74,16 @@ class ComputerProduct extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
+
+    public function name()
+    {
+        $this->load('electronic_product');
+        return $this->electronic_product->name();
+    }
 
     public static function menuitemCount()
     {

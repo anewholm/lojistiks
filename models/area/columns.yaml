@@ -24,7 +24,7 @@ columns:
         type: text
         select: name
     gps[name]:
-        label: acorn.lojistiks::lang.models.gp.label
+        label: acorn.lojistiks::lang.models.gps.label
         type: text
     server:
         label: acorn.lojistiks::lang.models.area.server

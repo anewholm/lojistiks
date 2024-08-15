@@ -7,7 +7,7 @@ use Acorn\Model;
 /**
  * Office Model
  */
-class Office extends Model
+class Office extends Location
 {
     use \Winter\Storm\Database\Traits\Validation;
 
@@ -67,7 +67,6 @@ class Office extends Model
     public $belongsTo = [
         'location' => Location::class,
         'server' => Server::class,
-
     ];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -75,6 +74,12 @@ class Office extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function name()
+    {
+        $this->load('location');
+        return $this->location->name();
+    }
 
     public static function menuitemCount()
     {

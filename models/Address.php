@@ -60,12 +60,9 @@ class Address extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [
-        // 'gps' => GPS::class,
-    ];
+    public $hasOne = [];
     public $hasMany = [
-        'location'     => [Location::class, 'key' => 'address_id'],
-
+        'location' => Location::class,
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];

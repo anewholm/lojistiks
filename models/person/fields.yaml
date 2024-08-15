@@ -34,6 +34,17 @@ fields:
         type: text
         span: auto
         searchable: true
+    image:
+        label: acorn.lojistiks::lang.models.general.image
+        type: fileupload
+        mode: image
+        useCaption: true
+        imageHeight: 150
+        imageWidth: 150
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
     _qrcode:
         type: partial
         context: update

@@ -7,7 +7,7 @@ use Acorn\Model;
 /**
  * Supplier Model
  */
-class Supplier extends Model
+class Supplier extends Location
 {
     use \Winter\Storm\Database\Traits\Validation;
 
@@ -74,6 +74,12 @@ class Supplier extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function name()
+    {
+        $this->load('location');
+        return $this->location->name();
+    }
 
     public static function menuitemCount()
     {

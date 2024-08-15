@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use System\Models\File;
 
 /**
  * Vehicle Model
@@ -62,9 +63,15 @@ class Vehicle extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'transfers'     => [Transfer::class, 'key' => 'vehicle_id'],
+        'transfers' => Transfer::class,
     ];
-    public $hasOneThrough = [];
+    public $hasOneThrough = [
+        'last_transfer' => [
+            Transfer::class,
+            'through' => VehicleLast::class,
+            'throughKey' => 'vehicle_id',
+        ],
+    ];
     public $hasManyThrough = [];
     public $belongsTo = [
         'vehicle_type' => VehicleType::class,
@@ -75,8 +82,22 @@ class Vehicle extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
+
+    public function getFullNameAttribute()
+    {
+        $this->load('vehicle_type');
+        $type = $this->vehicle_type->name();
+        return "$this->registration ($type)";
+    }
+
+    public function fullName()
+    {
+        return $this->full_name;
+    }
 
     public static function menuitemCount()
     {

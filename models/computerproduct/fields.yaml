@@ -6,14 +6,24 @@ fields:
     electronic_product[product][name]:
         label: acorn.lojistiks::lang.models.general.name
         span: auto
-        required: true
+    #electronic_product[product][image]:
+        #label: acorn.lojistiks::lang.models.general.image
+        #type: mediafinder
+        #mode: image
+        #useCaption: true
+        #imageHeight: 150
+        #imageWidth: 150
+        #thumbOptions:
+            #mode: crop
+            #extension: auto
+        #span: auto
     electronic_product[product][measurement_unit]:
         label: acorn.lojistiks::lang.models.measurementunit.label
         type: dropdown
         options: \Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
-        select: name
         span: auto
         default: 1
+        readOnly: true
         required: true
     _create_a_new_brand:
         label: Create a new Brand
@@ -25,6 +35,7 @@ fields:
         options: \Acorn\Lojistiks\Models\Brand::dropdownOptions
         placeholder: Select
         span: right
+        required: true
         trigger:
             field: _create_a_new_brand
             condition: checked

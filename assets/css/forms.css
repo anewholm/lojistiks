@@ -1,7 +1,13 @@
 @import 'html5-qrcode.css';
 
-.help-block a {
+.help-block a,
+.goto-form-group-selection {
   color: #4444ff;
+}
+
+.goto-form-group-selection {
+  float:right;
+  margin-left: 5px;
 }
 
 .selected-only .field-checkboxlist .custom-checkbox {
@@ -12,3 +18,7 @@
     display: block;
 }
 
+.form-preview {
+  margin:0px auto;
+  max-width: 900px;
+}

@@ -5,45 +5,48 @@
 columns:
     id:
         label: acorn.lojistiks::lang.models.general.id
-        searchable: true
-    name:
+        searchable: false
+        invisible: true
+    full_name:
         label: acorn.lojistiks::lang.models.general.name
         type: text
+        searchable: true
+        sortable: false
+    type:
+        label: acorn.lojistiks::lang.models.general.type
+        type: text
+        searchable: true
+        sortable: false
     measurement_unit:
         label: acorn.lojistiks::lang.models.measurementunit.label
         relation: measurement_unit
-        type: number
-        select: id
+        type: text
+        select: name
         searchable: true
-        sortable: true
+        sortable: false
     brand:
         label: acorn.lojistiks::lang.models.brand.label
         relation: brand
-        type: number
-        select: id
+        type: text
+        select: name
         searchable: true
-        sortable: true
+        sortable: false
     model:
-        label: acorn.lojistiks::lang.models.general.model
+        label: acorn.lojistiks::lang.models.product.model
         type: text
     server:
-        label: acorn.lojistiks::lang.models.general.server.label
+        label: acorn.lojistiks::lang.models.server.label
         relation: server
         type: number
         select: id
         searchable: true
         sortable: true
-    version:
-        label: acorn.lojistiks::lang.models.general.version
-        type: number
-        searchable: false
-    is_current_version:
-        label: acorn.lojistiks::lang.models.general.is_current_version
-        type: switch
+        invisible: true
     _qrcode:
         type: partial
         path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
+        invisible: true
     created_at:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime

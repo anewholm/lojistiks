@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/gp/columns.yaml
 modelClass: Acorn\Lojistiks\Models\GP
 
 # List Title
-title: 'acorn.lojistiks::lang.models.gp.label_plural'
+title: 'acorn.lojistiks::lang.models.gps.label_plural'
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/gps/update/:id

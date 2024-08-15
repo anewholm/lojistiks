@@ -62,25 +62,24 @@ class Server extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'address'     => [Address::class, 'key' => 'server_id'],
-        'areas'     => [Area::class, 'key' => 'server_id'],
-        'area_types'     => [AreaType::class, 'key' => 'server_id'],
-        'brands'     => [Brand::class, 'key' => 'server_id'],
-        'computer_products'     => [ComputerProduct::class, 'key' => 'server_id'],
-        'drivers'     => [Driver::class, 'key' => 'server_id'],
-        'electronic_products'     => [ElectronicProduct::class, 'key' => 'server_id'],
-        'gps'     => [GPS::class, 'key' => 'server_id'],
-        'locations'     => [Location::class, 'key' => 'server_id'],
-        'measurement_units'     => [MeasurementUnit::class, 'key' => 'server_id'],
-        'offices'     => [Office::class, 'key' => 'server_id'],
-        'persons'     => [Person::class, 'key' => 'server_id'],
-        'products'  => [Product::class, 'key' => 'server_id'],
-        'product_instances'  => [ProductInstance::class, 'key' => 'server_id'],
-        'suppliers'  => [Supplier::class, 'key' => 'server_id'],
-        'transfers'  => [Transfer::class, 'key' => 'server_id'],
-        'vehicle'  => [Vehicle::class, 'key' => 'server_id'],
-        'warehouses'  => [Warehouse::class, 'key' => 'server_id'],
-
+        'address'     => Address::class,
+        'areas'     => Area::class,
+        'area_types'     => AreaType::class,
+        'brands'     => Brand::class,
+        'computer_products'     => ComputerProduct::class,
+        'drivers'     => Driver::class,
+        'electronic_products'     => ElectronicProduct::class,
+        'gps'     => GPS::class,
+        'locations'     => Location::class,
+        'measurement_units'     => MeasurementUnit::class,
+        'offices'     => Office::class,
+        'persons'     => Person::class,
+        'products'  => Product::class,
+        'product_instances'  => ProductInstance::class,
+        'suppliers'  => Supplier::class,
+        'transfers'  => Transfer::class,
+        'vehicle'  => Vehicle::class,
+        'warehouses'  => Warehouse::class,
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
@@ -91,6 +90,37 @@ class Server extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function getNameAttribute()
+    {
+        $isLocal = ($this->replicated() ? '*' : '');
+        return "$this->hostname$isLocal";
+    }
+
+    public function name()
+    {
+        return $this->name;
+    }
+
+    public function getReplicatedAttribute()
+    {
+        return (gethostname() != $this->hostname);
+    }
+
+    public function replicated()
+    {
+        return $this->replicated;
+    }
+
+    public function getReplicatedSourceAttribute()
+    {
+        return ($this->replicated() ? $this->hostname : '');
+    }
+
+    public function replicatedSource()
+    {
+        return $this->replicated_source;
+    }
 
     public static function menuitemCount()
     {

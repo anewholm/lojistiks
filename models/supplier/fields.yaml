@@ -3,6 +3,17 @@ fields:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
+    #location[image]:
+        #label: acorn.lojistiks::lang.models.general.image
+        #type: mediafinder
+        #mode: image
+        #useCaption: true
+        #imageHeight: 150
+        #imageWidth: 150
+        #thumbOptions:
+            #mode: crop
+            #extension: auto
+        #span: auto
     # -------------------------------- Existing Address
     _select_an_existing_address:
         label: Select an existing Address
@@ -66,3 +77,33 @@ fields:
         type: partial
         context: update
         path: ~/plugins/acorn/lojistiks/_qrcode
+
+# --------------------------------------- Context Update
+tabs:
+  fields:
+    location[transfers_in]:
+        type: relation
+        context: update
+        nameFrom: source_name
+        cssClass: selected-only
+        tab: Transfers In
+    location[transfers_out]:
+        type: relation
+        context: update
+        nameFrom: destination_name
+        cssClass: selected-only
+        tab: Transfers Out
+    location[stock_products]:
+        type: relation
+        context: update
+        nameFrom: fully_qualified_name
+        # TODO: stock_products is a non-automatically updateable view due to its group-by
+        disabled: true
+        cssClass: selected-only
+        tab: Stock Products
+    location[employees]:
+        type: relation
+        context: update
+        nameFrom: employment
+        cssClass: selected-only
+        tab: Employees

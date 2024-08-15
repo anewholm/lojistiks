@@ -77,6 +77,7 @@ class StockProduct extends Model
 
     public function getFullyQualifiedNameAttribute()
     {
+        $this->load('product', 'location');
         $piName       = $this->product->fullName();
         $locationName = $this->location->fullyQualifiedName();
         return "$piName @ $locationName x $this->quantity";

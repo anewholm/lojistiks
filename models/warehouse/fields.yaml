@@ -3,6 +3,17 @@ fields:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
+    #location[image]:
+        #label: acorn.lojistiks::lang.models.general.image
+        #type: mediafinder
+        #mode: image
+        #useCaption: true
+        #imageHeight: 150
+        #imageWidth: 150
+        #thumbOptions:
+            #mode: crop
+            #extension: auto
+        #span: auto
     # -------------------------------- Existing Address
     _select_an_existing_address:
         label: Select an existing Address
@@ -87,6 +98,8 @@ tabs:
         context: update
         nameFrom: fully_qualified_name
         cssClass: selected-only
+        # TODO: stock_products is a non-automatically updateable view due to its group-by
+        disabled: true
         tab: Stock Products
     location[employees]:
         type: relation

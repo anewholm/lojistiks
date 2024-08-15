@@ -3,17 +3,43 @@
 # ===================================
 
 columns:
-    id:
-        label: 'acorn.lojistiks::lang.models.general.id'
-        searchable: true
-    created_at:
-        label: 'acorn.lojistiks::lang.models.general.created_at'
-        type: datetime
-        searchable: true
+    product_instance[product][name]:
+        label: acorn.lojistiks::lang.models.product.label
         sortable: true
-        invisible: true
-    updated_at:
-        label: 'acorn.lojistiks::lang.models.general.updated_at'
-        type: datetime
         searchable: true
+    product_instance[product][type]:
+        label: acorn.lojistiks::lang.models.general.type
+        sortable: true
+        searchable: true
+    product_instance[product][brand][name]:
+        label: acorn.lojistiks::lang.models.brand.label
+        sortable: true
+        searchable: true
+    product_instance[product][model]:
+        label: acorn.lojistiks::lang.models.product.model
+        sortable: true
+        searchable: true
+    location[name]:
+        label: acorn.lojistiks::lang.models.location.label
+        sortable: true
+        searchable: true
+    location[type]:
+        label: acorn.lojistiks::lang.models.general.type
+        sortable: true
+        searchable: true
+    location[address][fully_qualified_name]:
+        label: acorn.lojistiks::lang.models.address.label
+        sortable: true
+        searchable: true
+    location[address][area][name]:
+        label: acorn.lojistiks::lang.models.area.label
+        sortable: true
+        searchable: true
+    location[address][area][parent_area][name]:
+        label: acorn.lojistiks::lang.models.area.parent_area
+        sortable: true
+        searchable: true
+    quantity:
+        label: acorn.lojistiks::lang.models.transfer.quantity
+        type: number
         sortable: true

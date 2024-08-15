@@ -2,11 +2,12 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Model;
+use Acorn\Model;
 
 /**
  * TransferProductInstance Model
  */
+// TODO: Re-evaluate: is this class necessary? Can we use $hasManyThrough instead?
 class TransferProductInstance extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
@@ -14,7 +15,7 @@ class TransferProductInstance extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_transfer_product_instances';
+    public $table = 'acorn_lojistiks_product_instance_transfer';
 
     /**
      * @var array Guarded fields

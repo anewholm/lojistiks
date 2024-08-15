@@ -2,6 +2,25 @@ fields:
     product[name]:
         label: acorn.lojistiks::lang.models.general.name
         span: auto
+    #product[image]:
+        #label: acorn.lojistiks::lang.models.general.image
+        #type: mediafinder
+        #mode: image
+        #useCaption: true
+        #imageHeight: 150
+        #imageWidth: 150
+        #thumbOptions:
+            #mode: crop
+            #extension: auto
+        #span: auto
+    product[measurement_unit]:
+        label: acorn.lojistiks::lang.models.measurementunit.label
+        type: dropdown
+        options: \Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
+        select: name
+        span: auto
+        default: 1
+        readOnly: true
         required: true
     _create_a_new_brand:
         label: Create a new Brand

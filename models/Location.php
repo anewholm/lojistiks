@@ -4,6 +4,7 @@ namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
 use Illuminate\Database\Eloquent\Collection;
+use System\Models\File;
 
 /**
  * Location Model
@@ -61,19 +62,24 @@ class Location extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne = [
+        'office'     => Office::class,
+        'supplier'   => Supplier::class,
+        'warehouse'  => Warehouse::class,
+    ];
     public $hasMany = [
-        'offices'     => Office::class,
-        'suppliers'   => Supplier::class,
-        'warehouses'  => Warehouse::class,
         'employees'      => Employee::class,
         'transfers_in'   => [Transfer::class, 'key' => 'destination_location_id'],
         'transfers_out'  => [Transfer::class, 'key' => 'source_location_id'],
         'stock'          => Stock::class,
         'stock_products' => StockProduct::class,
+        // TODO: Move these vehicles in to $hasManyThrough
+        'vehicles'       => VehicleLast::class,
     ];
     public $hasOneThrough = [];
-    public $hasManyThrough = [];
+    public $hasManyThrough = [
+
+    ];
     public $belongsTo = [
         'address' => Address::class,
         'server'  => Server::class,
@@ -82,14 +88,22 @@ class Location extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
 
     protected function getFullyQualifiedNameAttribute()
     {
         $this->load('address');
-        $addressFQName = $this->address?->fullyQualifiedName();
-        return "$this->name, $addressFQName";
+        $addressFQName = $this->address->fullyQualifiedName();
+        $leafLocation  = $this->getLeafTypeObject();
+        $leafLocationName = ($leafLocation ? $leafLocation->name() : $this->name());
+        // $leafLocationID   = $leafLocation?->id();
+        // $thisID           = $this->id();
+        // $leafLocationName .= "($leafLocationID/$thisID)";
+
+        return "$leafLocationName, $addressFQName";
     }
 
     public function fullyQualifiedName()

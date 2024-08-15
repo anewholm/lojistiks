@@ -18,6 +18,15 @@
                 <button
                     type="button"
                     data-request="onSave"
+                    data-request-data="action: 'acorn/lojistiks/transfer/preview'"
+                    data-hotkey="ctrl+s, cmd+s"
+                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.transfer.label')])); ?>"
+                    class="btn btn-primary">
+                    <?= e(trans('acorn.lojistiks::lang.models.transfer.correct_and_print')); ?>
+                </button>
+                <button
+                    type="button"
+                    data-request="onSave"
                     data-request-data="redirect:0"
                     data-hotkey="ctrl+s, cmd+s"
                     data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name' => trans('acorn.lojistiks::lang.models.transfer.label')])); ?>"

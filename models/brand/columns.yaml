@@ -13,6 +13,11 @@ columns:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         searchable: true
+    image:
+        label: acorn.lojistiks::lang.models.general.image
+        type: image
+        width: 150
+        height: 150
     created_at:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
@@ -22,4 +27,18 @@ columns:
     _qrcode:
         type: partial
         path: ~/plugins/acorn/lojistiks/_qrcode
+        sortable: false
+        invisible: true
+    server[name]:
+        label: acorn.lojistiks::lang.models.server.label
+        invisible: true
+        sortable: false
+    server[replicated_source]:
+        label: acorn.lojistiks::lang.models.server.replicated_source
+        invisible: true
+        sortable: false
+    response:
+        label: Response
+        type: text
+        invisible: true
         sortable: false

@@ -2,7 +2,7 @@
     <a
         href="<?= Backend::url('acorn/lojistiks/gps/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.lojistiks::lang.models.gp.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.lojistiks::lang.models.gps.label')])); ?>
     </a>
 
     <button

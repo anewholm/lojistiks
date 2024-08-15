@@ -9,18 +9,31 @@ navigation:
         label: acorn.lojistiks::lang.models.general.find_by_qrcode
         url: acorn/lojistiks/findbyqrcode
         icon: icon-calendar
-    lojistics-warehousing:
-        label: acorn.lojistiks::lang.plugin.warehousing
+    lojistics-actions:
+        label: acorn.lojistiks::lang.plugin.actions
         url:
         icon: icon-calendar
         sideMenu:
-            product-instances:
-                label: acorn.lojistiks::lang.plugin.stock_take
-                url: acorn/lojistiks/productinstance
+            inventory:
+                label: acorn.lojistiks::lang.plugin.inventory
+                url: acorn/lojistiks/productinstance/create
                 icon: icon-calendar
             transfer_items:
                 label: acorn.lojistiks::lang.plugin.transfer_items
                 url: acorn/lojistiks/transfer/create
+                icon: icon-calendar
+    lojistics-reports:
+        label: acorn.lojistiks::lang.plugin.reports
+        url:
+        icon: icon-calendar
+        sideMenu:
+            stock_products:
+                label: acorn.lojistiks::lang.models.stockproduct.label_plural
+                url: acorn/lojistiks/stockproducts
+                icon: icon-calendar
+            stocks:
+                label: acorn.lojistiks::lang.models.stock.label_plural
+                url: acorn/lojistiks/stocks
                 icon: icon-calendar
     lojistics-setup:
         label: acorn.lojistiks::lang.plugin.setup

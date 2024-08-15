@@ -4,6 +4,7 @@ namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
 use Backend\Models\User;
+use System\Models\File;
 
 /**
  * Person Model
@@ -73,7 +74,9 @@ class Person extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
 
     public function getFullNameAttribute()

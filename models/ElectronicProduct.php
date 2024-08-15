@@ -3,18 +3,19 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use System\Models\File;
 
 /**
  * ElectronicProduct Model
  */
-class ElectronicProduct extends Model
+class ElectronicProduct extends Product
 {
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_electronic_products';
+    public $table = 'product.acorn_lojistiks_electronic_products';
 
     /**
      * @var array Guarded fields
@@ -61,7 +62,9 @@ class ElectronicProduct extends Model
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'product_instances' => ProductInstance::class,
+    ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
@@ -72,8 +75,16 @@ class ElectronicProduct extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
+
+    public function name()
+    {
+        $this->load('product');
+        return $this->product->name();
+    }
 
     public static function menuitemCount()
     {

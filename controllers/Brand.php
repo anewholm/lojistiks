@@ -20,6 +20,17 @@ class Brand extends Controller
     {
         parent::__construct();
 
+        // TODO: Add acorn.websocket.js globally
+        $this->addJs('/modules/acorn/assets/js/acorn.websocket.js', array('type' => 'module'));
+        $this->addJs('/modules/acorn/assets/js/acorn.js');
+        $this->addCss('/modules/acorn/assets/css/forms.css');
+
         BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'brand');
+    }
+
+    public function onRefreshList()
+    {
+        $this->makeLists();
+        return $this->listRender();
     }
 }

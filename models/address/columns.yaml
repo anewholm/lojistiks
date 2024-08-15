@@ -23,7 +23,7 @@ columns:
         searchable: true
         sortable: true
     gps:
-        label: acorn.lojistiks::lang.models.gp.label
+        label: acorn.lojistiks::lang.models.gps.label
         relation: gps
         type: number
         select: id

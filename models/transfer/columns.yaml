@@ -6,63 +6,63 @@ columns:
     id:
         label: 'acorn.lojistiks::lang.models.general.id'
         searchable: true
+        invisible: true
+    source_location[fully_qualified_name]:
+        label: acorn.lojistiks::lang.models.transfer.source_location
+        searchable: true
+        sortable: true
+    destination_location[fully_qualified_name]:
+        label: acorn.lojistiks::lang.models.transfer.destination_location
+        searchable: true
+        sortable: true
+    sent_at:
+        label: acorn.lojistiks::lang.models.transfer.sent_at
+        type: datetime
+        searchable: true
+        sortable: true
+    arrived_at:
+        label: acorn.lojistiks::lang.models.transfer.arrived_at
+        type: datetime
+        sortable: true
+    distance:
+        label: acorn.lojistiks::lang.models.transfer.distance
+        type: number
+        format: "%.0f km"
+        select: fn_acorn_lojistiks_distance(source_location_id::uuid, destination_location_id::uuid)
+    vehicle[full_name]:
+        label: acorn.lojistiks::lang.models.vehicle.label
+        searchable: true
+        sortable: true
     created_at:
         label: 'acorn.lojistiks::lang.models.general.created_at'
         type: datetime
         searchable: true
         sortable: true
         invisible: true
-    source_location:
-        label: acorn.lojistiks::lang.models.transfer.source_location
-        type: number
-        relation: source_location
-        select: id
-        searchable: true
-        sortable: true
-    destination_location:
-        label: acorn.lojistiks::lang.models.transfer.destination_location
-        type: number
-        relation: destination_location
-        select: id
-        searchable: true
-        sortable: true
-    sent_at:
-        label: acorn.lojistiks::lang.models.transfer.send
-        type: datetime
-        searchable: true
-        sortable: true
-    arrived_at:
-        label: acorn.lojistiks::lang.models.transfer.add_product_instance
-        type: datetime
-        searchable: true
-        sortable: true
-    # server:
-    #     label: acorn.lojistiks::lang.models.general.server
-    #     relation: server
-    #     type: number
-    #     select: id
-    #     searchable: true
-    #     sortable: true
-    # version:
-    #     label: acorn.lojistiks::lang.models.general.version
-    #     type: number
-    #     searchable: false
-    # is_current_version:
-    #     label: acorn.lojistiks::lang.models.general.is_current_version
-    #     type: switch
-    verhicle:
-        label: acorn.lojistiks::lang.models.vehicle.label
-        relation: vehicle
-        type: number
-        select: id
-        searchable: true
-        sortable: true
     _qrcode:
         type: partial
         path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
-    updated_at:
-        label: acorn.lojistiks::lang.models.general.updated_at
-        type: datetime
-        searchable: true
+        invisible: true
+
+    server[name]:
+        label: acorn.lojistiks::lang.models.server.label
+        invisible: true
+        sortable: false
+    server[replicated_source]:
+        label: acorn.lojistiks::lang.models.server.replicated_source
+        invisible: true
+        sortable: false
+
+    # Calculated transfer contents info
+    product_instance_count:
+        label: acorn.lojistiks::lang.models.transfer.product_instance_count
         sortable: true
+    product_instance_quantity:
+        label: acorn.lojistiks::lang.models.transfer.product_instance_quantity
+        sortable: true
+    product_instance_contents:
+        label: acorn.lojistiks::lang.models.transfer.product_instance_contents
+    product_contents:
+        label: acorn.lojistiks::lang.models.transfer.product_contents
+

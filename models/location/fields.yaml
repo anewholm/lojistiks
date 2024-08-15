@@ -7,28 +7,16 @@ fields:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
+    type:
+        label: acorn.lojistiks::lang.models.general.type
+        type: text
+        disabled: true
+        span: auto
     address:
         label: acorn.lojistiks::lang.models.address.label
         type: relation
-        select: id
         span: auto
         nameFrom: fully_qualified_name
-    server:
-        label: acorn.lojistiks::lang.models.location.server
-        type: relation
-        select: id
-        span: auto
-        searchable: true
-        sortable: true
-    version:
-        label: acorn.lojistiks::lang.models.location.version
-        type: number
-        span: auto
-        searchable: false
-    is_current_version:
-        label: acorn.lojistiks::lang.models.location.is_current_version
-        type: switch
-        span: auto
     _qrcode:
         type: partial
         context: update

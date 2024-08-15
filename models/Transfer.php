@@ -64,29 +64,31 @@ class Transfer extends QRCodeModel
      */
     public $hasOne = [];
     public $hasMany = [
-        'transfer_product_instances' => TransferProductInstance::class,
+        'product_instance_transfer' => TransferProductInstance::class,
         'vehicles' => Vehicle::class,
     ];
     public $hasOneThrough = [];
-    public $hasManyThrough = [
-        'product_instances' => [
-            ProductInstance::class,
-            'through' => TransferProductInstance::class,
-        ],
-    ];
+    public $hasManyThrough = [];
     public $belongsTo = [
         'source_location' => Location::class,
         'destination_location' => Location::class,
         'vehicle' => Vehicle::class,
+        'driver' => Driver::class,
         'server' => Server::class,
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'product_instances' => [
+            ProductInstance::class,
+            'table' => 'acorn_lojistiks_product_instance_transfer',
+        ],
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
 
+    // --------------------------------------------- Attributes
     public function getDestinationNameAttribute()
     {
         $this->load('destination_location');
@@ -109,6 +111,12 @@ class Transfer extends QRCodeModel
         return $this->full_name;
     }
 
+    public static function menuitemCount()
+    {
+        return self::all()->count();
+    }
+
+    // --------------------------------------------- belongsToMany[product_instances]
     public function setProductInstance(ProductInstance $pi)
     {
         $this->setProductInstances(new Collection([$pi]));
@@ -118,17 +126,37 @@ class Transfer extends QRCodeModel
     {
         $tpis = new Collection();
         foreach ($pis as $pi) $tpis->push(TransferProductInstance::create(['transfer' => $this, 'product_instance' => $pi]));
-        $this->transfer_product_instances = $tpis;
+        $this->product_instance_transfer = $tpis;
     }
 
     public function singleTransferProductInstance()
     {
-        if (count($this->transfer_product_instances) != 1) throw new Exception('Transfer was not singular');
-        return $this->transfer_product_instances[0];
+        if (count($this->product_instance_transfer) != 1) throw new Exception('Transfer was not singular');
+        return $this->product_instance_transfer[0];
     }
 
-    public static function menuitemCount()
+    public function getProductInstanceCountAttribute()
     {
-        return self::all()->count();
+        $this->load('product_instances');
+        return $this->product_instances->count();
+    }
+
+    public function getProductInstanceQuantityAttribute()
+    {
+        $this->load('product_instances');
+        return $this->product_instances->sum('quantity');
+    }
+
+    public function getProductInstanceContentsAttribute()
+    {
+        $this->load('product_instances');
+        return $this->product_instances->pluck('name');
+    }
+
+    public function getProductContentsAttribute()
+    {
+        // TODO: getProductContentsAttribute()
+        $this->load('product_instances');
+        return ''; //$this->product_instances->pluck('name');
     }
 }

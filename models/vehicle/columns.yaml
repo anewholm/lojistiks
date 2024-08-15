@@ -3,10 +3,6 @@
 # ===================================
 
 columns:
-    id:
-        label: acorn.lojistiks::lang.models.general.id
-        searchable: true
-        invisible: true
     registration:
         label: acorn.lojistiks::lang.models.vehicle.registration
         type: text
@@ -18,6 +14,28 @@ columns:
         select: name
         searchable: true
         sortable: true
+    last_transfer[destination_location][fully_qualified_name]:
+        label: acorn.lojistiks::lang.models.location.label
+        type: text
+        searchable: true
+        sortable: true
+    last_transfer[sent_at]:
+        label: acorn.lojistiks::lang.models.transfer.sent_at
+        type: datetime
+    last_transfer[arrived_at]:
+        label: acorn.lojistiks::lang.models.transfer.arrived_at
+        type: datetime
+    last_transfer[driver][person][full_name]:
+        label: acorn.lojistiks::lang.models.driver.label
+        type: text
+        searchable: true
+        sortable: true
+
+    # Invisible
+    id:
+        label: acorn.lojistiks::lang.models.general.id
+        searchable: true
+        invisible: true
     initial_transfer[source_location][name]:
         label: acorn.lojistiks::lang.models.transfer.source_location
         type: text
@@ -40,4 +58,5 @@ columns:
         type: partial
         path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
+        invisible: true
 

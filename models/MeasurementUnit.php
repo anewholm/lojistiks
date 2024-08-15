@@ -78,4 +78,9 @@ class MeasurementUnit extends Model
     {
         return self::all()->count();
     }
+
+    public function usesQuantity()
+    {
+        return (bool) $this->uses_quantity;
+    }
 }

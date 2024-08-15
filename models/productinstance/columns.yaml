@@ -6,11 +6,15 @@ columns:
     _qrcode:
         type: partial
         context: update
-        size: 64
+        size: 110
         path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
-    product[full_name]:
-        label: acorn.lojistiks::lang.models.product.label
+    product[qr_code_name]:
+        label: acorn.lojistiks::lang.models.general.qrcode_name
+        searchable: true
+        sortable: false
+    product[model]:
+        label: acorn.lojistiks::lang.models.product.model
         searchable: true
         sortable: false
     external_identifier:
@@ -22,9 +26,24 @@ columns:
         label: acorn.lojistiks::lang.models.general.id
         searchable: true
         invisible: true
-    quantity:
+    product[name]:
+        label: acorn.lojistiks::lang.models.general.name
+        searchable: true
+        sortable: false
+        invisible: true
+    product[brand][name]:
+        label: acorn.lojistiks::lang.models.brand.label
+        searchable: true
+        sortable: false
+        invisible: true
+    product[type]:
+        label: acorn.lojistiks::lang.models.general.type
+        searchable: true
+        sortable: false
+        invisible: true
+    quantity_description:
         label: acorn.lojistiks::lang.models.productinstance.quantity
-        type: number
+        type: text
         invisible: true
     asset_class:
         label: acorn.lojistiks::lang.models.product.asset_class

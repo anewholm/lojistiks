@@ -7,6 +7,22 @@ fields:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
+    image:
+        label: acorn.lojistiks::lang.models.general.image
+        type: fileupload
+        mode: image
+        useCaption: true
+        imageHeight: 150
+        imageWidth: 150
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+    type:
+        label: acorn.lojistiks::lang.models.general.type
+        type: text
+        disabled: true
+        span: auto
         required: true
     measurement_unit:
         label: acorn.lojistiks::lang.models.measurementunit.label

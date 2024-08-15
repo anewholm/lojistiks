@@ -3,26 +3,74 @@
 # ===================================
 
 fields:
+    _qrcode_large:
+        type: partial
+        context: preview
+        span: right
+        size: 196
+        path: ~/plugins/acorn/lojistiks/_qrcode
+    last_transfer[destination_location][fully_qualified_name]:
+        label: acorn.lojistiks::lang.models.location.label
+        type: text
+        comment: <a target="_blank" href="../../transfer/create">Transfer</a> the vehicle to another location
+        commentHtml: true
+        disabled: true
+        span: right
+        context: update
     registration:
         label: acorn.lojistiks::lang.models.vehicle.registration
         type: text
-        span: auto
+        span: left
+    last_transfer[driver][person][full_name]:
+        label: acorn.lojistiks::lang.models.driver.label
+        type: text
+        disabled: true
+        span: right
+        context: update
     vehicle_type:
         label: acorn.lojistiks::lang.models.vehicletype.label
         type: relation
-        span: auto
+        span: left
     initial_transfer[source_location]:
-        label: acorn.lojistiks::lang.models.transfer.source_location
+        label: acorn.lojistiks::lang.models.supplier.label
         type: dropdown
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
-        span: auto
+        span: left
     initial_transfer[destination_location]:
-        label: acorn.lojistiks::lang.models.transfer.destination_location
+        label: acorn.lojistiks::lang.models.location.initial_location
         type: dropdown
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
-        span: auto
+        span: left
+    #last_transfer:
+        #type: relation
+        #span: right
+        #context: update
+    image:
+        label: acorn.lojistiks::lang.models.general.image
+        type: fileupload
+        mode: image
+        useCaption: true
+        imageHeight: 150
+        imageWidth: 150
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: left
     _qrcode:
         type: partial
         context: update
         path: ~/plugins/acorn/lojistiks/_qrcode
         span: auto
+
+
+tabs:
+    fields:
+        transfers:
+            type: relation
+            nameFrom: full_name
+            disabled: true
+            tab: acorn.lojistiks::lang.models.transfer.label_plural
+            cssClass: selected-only
+            context: update
+            containerAttributes:
+              goto-form-group-selection: ../../transfer

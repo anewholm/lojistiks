@@ -3,17 +3,24 @@
 # ===================================
 
 columns:
+    location[id]:
+        label: acorn.lojistiks::lang.models.general.centre_id
+        searchable: true
+        invisible: true
     id:
-        label: acorn.lojistiks::lang.models.general.id
+        label: acorn.lojistiks::lang.models.general.leaf_id
         searchable: true
         invisible: true
     location[name]:
-        label: acorn.lojistiks::lang.models.location.label
-        type: text
+        label: acorn.lojistiks::lang.models.general.name
         searchable: true
-        sortable: true
-    location[address][fully_qualified_name]:
-        label: acorn.lojistiks::lang.models.address.label
+        invisible: true
+    location[type]:
+        label: acorn.lojistiks::lang.models.general.type
+        searchable: true
+        invisible: true
+    location[fully_qualified_name]:
+        label: acorn.lojistiks::lang.models.location.label
         type: text
         searchable: true
         sortable: true
@@ -21,6 +28,7 @@ columns:
         type: partial
         path: ~/plugins/acorn/lojistiks/_qrcode
         sortable: false
+        invisible: true
     created_at:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime

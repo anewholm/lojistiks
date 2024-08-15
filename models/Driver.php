@@ -76,6 +76,12 @@ class Driver extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public function getNameAttribute()
+    {
+        $this->load('person');
+        return $this->person->fullName();
+    }
+
     public static function menuitemCount()
     {
         return self::all()->count();

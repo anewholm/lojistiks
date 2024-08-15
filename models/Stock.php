@@ -75,8 +75,19 @@ class Stock extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public function scopeUsesQuantity($query)
+    {
+        return $query->where('uses_quantity', true);
+    }
+
+    public function scopeSingleUnits($query)
+    {
+        return $query->where('uses_quantity', false);
+    }
+
     public function getFullyQualifiedNameAttribute()
     {
+        $this->load('product_instance', 'location');
         $piName       = $this->product_instance->name();
         $locationName = $this->location->fullyQualifiedName();
         return "$piName @ $locationName x $this->quantity";

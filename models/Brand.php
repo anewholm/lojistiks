@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use System\Models\File;
 
 /**
  * Brand Model
@@ -14,7 +15,7 @@ class Brand extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_brands';
+    public $table = 'public.acorn_lojistiks_brands';
 
     /**
      * @var array Guarded fields
@@ -29,7 +30,9 @@ class Brand extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'name'  => 'required',
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -71,7 +74,9 @@ class Brand extends Model
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => File::class,
+    ];
     public $attachMany = [];
 
     public function name()

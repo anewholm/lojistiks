@@ -3,20 +3,38 @@
 # ===================================
 
 fields:
+    _qrcode_large:
+        type: partial
+        context: preview
+        span: right
+        size: 196
+        path: ~/plugins/acorn/lojistiks/_qrcode
     person:
         label: acorn.lojistiks::lang.models.person.label
         type: relation
         nameFrom: full_name
         required: true
         placeholder: acorn.lojistiks::lang.models.general.select
-        span: auto
+        span: left
     vehicle:
         label: acorn.lojistiks::lang.models.vehicle.label
         type: relation
         required: true
         select: registration
         placeholder: acorn.lojistiks::lang.models.general.select
-        span: auto
+        span: left
+    person[image]:
+        label: acorn.lojistiks::lang.models.general.image
+        type: fileupload
+        mode: image
+        useCaption: true
+        imageHeight: 150
+        imageWidth: 150
+        thumbOptions:
+            mode: crop
+            extension: auto
+        context: preview
+        span: left
     _qrcode:
         type: partial
         context: update

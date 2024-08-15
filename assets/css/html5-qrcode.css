@@ -21,6 +21,11 @@
     height: 100px !important;
 }
 
+#my-qr-reader__dashboard {
+    z-index:1000;
+    position:relative;
+}
+
 button {
     padding: 10px 20px;
     border: 1px solid #b2b2b2;

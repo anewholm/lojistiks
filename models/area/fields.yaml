@@ -19,14 +19,14 @@ fields:
         span: auto
         placeholder: acorn.lojistiks::lang.models.general.select
     gps[longitude]:
-        label: acorn.lojistiks::lang.models.gp.longitude
+        label: acorn.lojistiks::lang.models.gps.longitude
         relation: gps
         type: number
         span: left
         searchable: true
         sortable: true
     gps[latitude]:
-        label: acorn.lojistiks::lang.models.gp.latitude
+        label: acorn.lojistiks::lang.models.gps.latitude
         relation: gps
         type: number
         span: right

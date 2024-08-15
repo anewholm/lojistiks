@@ -3,6 +3,17 @@ fields:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
+    #location[image]:
+        #label: acorn.lojistiks::lang.models.general.image
+        #type: mediafinder
+        #mode: image
+        #useCaption: true
+        #imageHeight: 150
+        #imageWidth: 150
+        #thumbOptions:
+            #mode: crop
+            #extension: auto
+        #span: auto
     # -------------------------------- Existing Address
     _select_an_existing_address:
         label: Select an existing Address
@@ -86,11 +97,33 @@ tabs:
         type: relation
         context: update
         nameFrom: fully_qualified_name
+        # TODO: stock_products is a non-automatically updateable view due to its group-by
+        disabled: true
         cssClass: selected-only
         tab: Stock Products
+    location[stock]:
+        type: relation
+        context: update
+        scope: singleUnits
+        nameFrom: fully_qualified_name
+        # NOTE: stock_products is a non-automatically updateable view due to its group-by
+        disabled: true
+        cssClass: selected-only
+        tab: acorn.lojistiks::lang.models.stock.label_plural
+        #containerAttributes:
+          # TODO: goto-form-group-selection: ../../productinstance
     location[employees]:
         type: relation
         context: update
         nameFrom: employment
         cssClass: selected-only
         tab: Employees
+    location[vehicles]:
+        type: relation
+        context: update
+        disabled: true
+        nameFrom: vehicle_name
+        cssClass: selected-only
+        containerAttributes:
+          goto-form-group-selection: ../../vehicle
+        tab: acorn.lojistiks::lang.models.vehicle.label_plural

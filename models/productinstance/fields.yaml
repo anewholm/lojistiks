@@ -8,6 +8,7 @@ fields:
         type: relation
         comment: create new <a target="_blank" href="/backend/acorn/lojistiks/computerproduct/create">computer product</a> | <a target="_blank" href="/backend/acorn/lojistiks/electronicproduct/create">electronic product</a> | <a target="_blank" href="/backend/acorn/lojistiks/product/create">product</a>
         commentHtml: true
+        placeholder: Select
         span: auto
         nameFrom: full_name
     product[measurement_unit]:
@@ -17,31 +18,32 @@ fields:
         type: dropdown
         options: Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
         span: auto
+        placeholder: Select a product
         disabled: true
         dependsOn:
           - product
-    product[measurement_unit][uses_quantity]:
-        label: acorn.lojistiks::lang.models.measurementunit.uses_quantity
-        comment: <a target="_blank" href="/backend/acorn/lojistiks/product">edit the products</a> to change this
-        commentHtml: true
-        type: text
-        span: auto
-        disabled: true
-        dependsOn:
-          - product[measurement_unit]
+    #uses_quantity:
+        #label: acorn.lojistiks::lang.models.measurementunit.uses_quantity
+        #type: checkbox
+        #default: false
+        #span: auto
+        #dependsOn:
+          #- product[measurement_unit]
     quantity:
         label: acorn.lojistiks::lang.models.productinstance.quantity
         type: number
+        comment: Only relevant for <a target="_blank" href="/backend/acorn/lojistiks/product">products</a> with <a target="_blank" href="/backend/acorn/lojistiks/measurementunits">measurement units</a> that use quantity, like Litres
+        commentHtml: true
         default: 1
         span: auto
-        trigger:
-          action: hide
-          field: product[measurement_unit][uses_quantity]
-          condition: value[1]
+        dependsOn:
+          - product[measurement_unit]
     external_identifier:
         label: acorn.lojistiks::lang.models.product.external_identifier
         type: text
         span: auto
+        dependsOn:
+          - product[measurement_unit]
     asset_class:
         label: acorn.lojistiks::lang.models.product.asset_class
         type: radio
@@ -50,6 +52,7 @@ fields:
             F: Fixed
             C: Current
         span: auto
+        comment: A Fixed asset is something long-term that the company uses like a laptop. Current assets are the company's products, temporary things that the company buys and sells, like oil
     _qrcode:
         type: partial
         context: update
@@ -66,6 +69,8 @@ fields:
         nameFrom: fully_qualified_name
         context: create
         span: auto
+        comment: create new <a target="_blank" href="/backend/acorn/lojistiks/supplier/create">supplier</a> | <a target="_blank" href="/backend/acorn/lojistiks/office/create">office</a> | <a target="_blank" href="/backend/acorn/lojistiks/warehouse/create">warehouse</a>
+        commentHtml: true
     _destination_location:
         label: Initial Location
         type: dropdown
@@ -73,27 +78,33 @@ fields:
         nameFrom: fully_qualified_name
         context: create
         span: auto
+        comment: create new <a target="_blank" href="/backend/acorn/lojistiks/office/create">office</a> | <a target="_blank" href="/backend/acorn/lojistiks/warehouse/create">warehouse</a>
+        commentHtml: true
 
 tabs:
     fields:
       initial_transfer_product_instance[transfer][source_location][fully_qualified_name]:
-          label: Supplier
+          label: acorn.lojistiks::lang.models.supplier.label
           type: text
           readOnly: true
           disabled: true
           context: update
-          tab: Creation
+          tab: acorn.lojistiks::lang.models.location.initial_location
       initial_transfer_product_instance[transfer][destination_location][fully_qualified_name]:
-          label: Initial Location
+          label: acorn.lojistiks::lang.models.location.initial_location
           type: text
           readOnly: true
           disabled: true
           context: update
-          tab: Creation
-      transfer_product_instances:
+          tab: acorn.lojistiks::lang.models.location.initial_location
+      #transfers:
+      product_instance_transfer:
           type: relation
+          #nameFrom: full_name
           nameFrom: transfer_full_name
           readOnly: true
           disabled: true
           context: update
-          tab: Transfers
+          #containerAttributes:
+            # TODO: goto-form-group-selection: ../../transfer
+          tab: acorn.lojistiks::lang.models.transfer.label_plural

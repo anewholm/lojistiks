@@ -51,14 +51,16 @@ domReady(function () {
         }
 	}
 
-	let htmlscanner = new Html5QrcodeScanner(
-		"my-qr-reader",
-		{
-        fps: 10,
-        qrbos: 300,
-        facingMode: "user",
-        formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE]
-    }
-	);
-	htmlscanner.render(onScanSuccess);
+	if ($("#my-qr-reader").length) {
+    let htmlscanner = new Html5QrcodeScanner(
+        "my-qr-reader",
+        {
+            fps: 10,
+            qrbos: 300,
+            facingMode: "user",
+            formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE]
+        }
+    );
+    htmlscanner.render(onScanSuccess);
+  }
 });

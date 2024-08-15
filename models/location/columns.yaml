@@ -3,46 +3,32 @@
 # ===================================
 
 columns:
-    id:
-        label: acorn.lojistiks::lang.models.general.id
-        searchable: true
     name:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         searchable: true
-    address:
+    type:
+        label: acorn.lojistiks::lang.models.general.type
+        type: text
+        searchable: true
+    address[fully_qualified_name]:
         label: acorn.lojistiks::lang.models.address.label
-        relation: address
-        type: number
-        select: id
+        type: text
         searchable: true
         sortable: true  
-    server:
-        label: acorn.lojistiks::lang.models.location.server
-        relation: server
-        type: number
-        select: id
-        searchable: true
+
+    id:
+        label: acorn.lojistiks::lang.models.general.id
         sortable: true
-    version:
-        label: acorn.lojistiks::lang.models.location.version
-        type: number
-        searchable: false
-    is_current_version:
-        label: acorn.lojistiks::lang.models.location.is_current_version
-        type: switch
+        invisible: true
+    _qrcode:
+        type: partial
+        path: ~/plugins/acorn/lojistiks/_qrcode
+        sortable: false
+        invisible: true
     created_at:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true
         invisible: true
-    updated_at:
-        label: acorn.lojistiks::lang.models.general.updated_at
-        type: datetime
-        searchable: true
-        sortable: true
-    _qrcode:
-        type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
-        sortable: false

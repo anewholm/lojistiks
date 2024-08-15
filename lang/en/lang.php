@@ -6,14 +6,15 @@ return [
 
         // Menu-Items
 
-        'warehousing' => 'Warehouse',
-        'product-instances' => 'Items',
-        'stock_take' => 'Stock Take',
+        'actions' => 'Logistiks',
+        'product_instances' => 'Items',
+        'inventory' => 'Inventory',
         'transfer_items' => 'Transfer Items',
+        'setup' => 'Setup',
+        'reports' => 'Reports',
 
         // Setup
 
-        'setup' => 'Setup',
         'measurement_units' => 'Measurement Units',
         'brands' => 'Brands',
         'products' => 'Products',
@@ -31,12 +32,19 @@ return [
     'models' => [
         'general' => [
             'id' => 'ID',
+            'centre_id' => 'Centre ID',
+            'leaf_id' => 'Leaf ID',
             'name' => 'Name',
+            'qrcode_name' => 'QR Code name',
+            'type' => 'Type',
+            'image' => 'Image',
             'select' => 'Select',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'scan_qrcode' => 'Scan A QRCode',
             'find_by_qrcode' => 'Find by QRCode',
+            'save_and_print' => 'Save and Print',
+            'correct_and_print' => 'Save correction and print',
             'print' => 'Print',
         ],
         'product' => [
@@ -59,6 +67,7 @@ return [
         'productinstance' => [
             'label' => 'Product Instance',
             'label_plural' => 'Product Instances',
+            'create_product_instances' => 'Create Items',
             'quantity' => 'Quantity',
         ],
         'area' => [
@@ -112,10 +121,22 @@ return [
             'label' => 'Transfer',
             'label_plural' => 'Transfers',
             'add_product_instance' => 'Add Item',
+            'arrived_at' => 'Arrived at',
+            'sent_at' => 'Sent at',
+            'quantity' => 'Quantity',
+            'product_instance_count' => 'Item count',
+            'product_instance_quantity' => 'Quantity',
+            'product_instance_contents' => 'Contents',
+            'product_contents' => 'Product Contents',
+            'send_and_print' => 'Send and Print',
             'send' => 'Send',
             'send_and_close' => 'Send and Close',
+            'correct_and_print' => 'Save correction and print',
             'source_location' => 'Source Location',
             'destination_location' => 'Destination Location',
+            'transfers_in' => 'Transfers In',
+            'transfers_out' => 'Transfers Out',
+            'distance' => 'Distance',
         ],
         'vehicle' => [
             'label' => 'Vehicle',
@@ -125,8 +146,9 @@ return [
         'location' => [
             'label' => 'Location',
             'label_plural' => 'Locations',
+            'initial_location' => 'Initial Location',
         ],
-        'gp' => [
+        'gps' => [
             'label' => 'GPS',
             'label_plural' => 'GPSs',
             'longitude' => 'Longitude',
@@ -143,6 +165,30 @@ return [
         'vehicletype' => [
             'label' => 'Type',
             'label_plural' => 'Vehicle Types',
+        ],
+        'oilproduct' => [
+            'label' => 'Oil Product',
+            'label_plural' => 'Oil Products',
+            'purity' => 'Purity',
+            'octain_content' => 'Octain Content',
+        ],
+        'stockproduct' => [
+            'label' => 'Stock Product',
+            'label_plural' => 'Stock Products',
+        ],
+        'stock' => [
+            'label' => 'Stock',
+            'label_plural' => 'Stocks',
+        ],
+        'server' => [
+            'label' => 'Server',
+            'label_plural' => 'Servers',
+            'replicated' => 'Replicated',
+            'replicated_source' => 'Replication Source',
+        ],
+        'db' => [
+            'label' => 'D B',
+            'label_plural' => 'D B S',
         ],
     ],
 ];

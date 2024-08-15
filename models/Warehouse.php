@@ -61,7 +61,13 @@ class Warehouse extends Location
      * @var array Relations
      */
     public $hasOne = [];
-//     public $hasMany = []; // Inherited from Location
+    public $hasMany = [
+        'employees'      => Employee::class,
+        'transfers_in'   => [Transfer::class, 'key' => 'destination_location_id'],
+        'transfers_out'  => [Transfer::class, 'key' => 'source_location_id'],
+        'stock'          => Stock::class,
+        'stock_products' => StockProduct::class,
+    ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
@@ -74,6 +80,12 @@ class Warehouse extends Location
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
+
+    public function name()
+    {
+        $this->load('location');
+        return $this->location->name();
+    }
 
     public static function menuitemCount()
     {

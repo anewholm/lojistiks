@@ -63,10 +63,15 @@ class ProductInstance extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'transfer_product_instances' => TransferProductInstance::class,
+        'product_instance_transfer' => TransferProductInstance::class,
     ];
     public $hasOneThrough = [];
-    public $hasManyThrough = [];
+    public $hasManyThrough = [
+        'transfers' => [
+            Transfer::class,
+            'through' => TransferProductInstance::class,
+        ],
+    ];
     public $belongsTo = [
         'product'  => Product::class,
         'server' => Server::class,
@@ -79,9 +84,44 @@ class ProductInstance extends Model
     public $attachOne = [];
     public $attachMany = [];
 
+    public static function menuitemCount()
+    {
+        return self::all()->count();
+    }
+
+    public function getUsesQuantityAttribute()
+    {
+        $this->load('product');
+        return $this->product?->usesQuantity();
+    }
+
+    public function usesQuantity()
+    {
+        return $this->uses_quantity;
+    }
+
+    public function getQuantityDescriptionAttribute()
+    {
+        $this->load('product');
+        $this->product?->load('measurement_unit');
+        $miName = $this->product->measurement_unit->name();
+        return ($this->product?->usesQuantity() ? "$this->quantity $miName" : $miName);
+    }
+
+    public function quantityDescription()
+    {
+        return $this->quantity_description;
+    }
+
+    public function getNameAttribute()
+    {
+        $this->load('product');
+        return $this->product->fullName() . " ($this->external_identifier)" . ($this->quantity == 1 ? '' : " x $this->quantity");
+    }
+
     public function name()
     {
-        return $this->product->name . " ($this->external_identifier)" . ($this->quantity == 1 ? '' : " x $this->quantity");
+        return $this->name;
     }
 
     public function afterCreate()
@@ -101,8 +141,17 @@ class ProductInstance extends Model
         $this->save();
     }
 
-    public static function menuitemCount()
+    public function filterFields($fields, $context = NULL)
     {
-        return self::all()->count();
+        $is_update = ($context == 'update');
+        $is_create = ($context == 'create');
+
+        if ($is_update || $is_create) {
+            if ($fields->product->value) {
+                $product = Product::findOrFail($fields->product->value);
+                $fields->quantity->disabled            = !$product->usesQuantity();
+                $fields->external_identifier->disabled = $product->usesQuantity();
+            }
+        }
     }
 }
