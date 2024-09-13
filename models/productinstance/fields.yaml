@@ -6,42 +6,39 @@ fields:
     product:
         label: acorn.lojistiks::lang.models.product.label
         type: relation
-        comment: create new <a target="_blank" href="/backend/acorn/lojistiks/computerproduct/create">computer product</a> | <a target="_blank" href="/backend/acorn/lojistiks/electronicproduct/create">electronic product</a> | <a target="_blank" href="/backend/acorn/lojistiks/product/create">product</a>
+        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ComputerProducts@create'" data-control="popup" tabindex="-1">computer product</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ElectronicProducts@create'" data-control="popup" tabindex="-1">electronic product</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">product</a>
         commentHtml: true
-        placeholder: Select
-        span: auto
+        placeholder: acorn.lojistiks::lang.models.general.select
+        span: storm
+        cssClass: 'col-xs-8 initial-focus'
         nameFrom: full_name
-    product[measurement_unit]:
-        label: acorn.lojistiks::lang.models.measurementunit.label
-        comment: <a target="_blank" href="/backend/acorn/lojistiks/product">edit the products</a> to change this
-        commentHtml: true
-        type: dropdown
-        options: Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
-        span: auto
-        placeholder: Select a product
-        disabled: true
-        dependsOn:
-          - product
-    #uses_quantity:
-        #label: acorn.lojistiks::lang.models.measurementunit.uses_quantity
-        #type: checkbox
-        #default: false
-        #span: auto
-        #dependsOn:
-          #- product[measurement_unit]
     quantity:
         label: acorn.lojistiks::lang.models.productinstance.quantity
         type: number
-        comment: Only relevant for <a target="_blank" href="/backend/acorn/lojistiks/product">products</a> with <a target="_blank" href="/backend/acorn/lojistiks/measurementunits">measurement units</a> that use quantity, like Litres
+        comment: Only relevant for <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">products</a> with <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'MeasurementUnits@create'" data-control="popup" tabindex="-1">measurement units</a> that use quantity, like Litres
         commentHtml: true
         default: 1
-        span: auto
+        span: storm
+        cssClass: 'col-xs-2'
         dependsOn:
           - product[measurement_unit]
+    product[measurement_unit]:
+        label: acorn.lojistiks::lang.models.measurementunit.label
+        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">products</a> to change this
+        commentHtml: true
+        type: dropdown
+        options: Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
+        span: storm
+        cssClass: 'col-xs-2'
+        placeholder: acorn.lojistiks::lang.models.general.select
+        disabled: true
+        dependsOn:
+          - product
+
     external_identifier:
         label: acorn.lojistiks::lang.models.product.external_identifier
         type: text
-        span: auto
+        span: left
         dependsOn:
           - product[measurement_unit]
     asset_class:
@@ -52,34 +49,37 @@ fields:
             F: Fixed
             C: Current
         span: auto
-        comment: A Fixed asset is something long-term that the company uses like a laptop. Current assets are the company's products, temporary things that the company buys and sells, like oil
+        comment: A <a tabindex="-1" target="_blank" href="https://en.wikipedia.org/wiki/Current_asset">Fixed asset</a> is something long-term that the company uses like a laptop. Current assets are the company's products, temporary things that the company buys and sells, like oil
+        commentHtml: true
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         span: auto
 
     # Initial Transfer afterCreate()
     transfer:
         type: section
     _source_location:
-        label: Supplier
+        label: acorn.lojistiks::lang.models.transfer.source_location
         type: dropdown
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
         context: create
         span: auto
-        comment: create new <a target="_blank" href="/backend/acorn/lojistiks/supplier/create">supplier</a> | <a target="_blank" href="/backend/acorn/lojistiks/office/create">office</a> | <a target="_blank" href="/backend/acorn/lojistiks/warehouse/create">warehouse</a>
+        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Suppliers@create'" data-control="popup" tabindex="-1">supplier</a>
         commentHtml: true
+        placeholder: acorn.lojistiks::lang.models.general.select
     _destination_location:
-        label: Initial Location
+        label: acorn.lojistiks::lang.models.location.initial_location
         type: dropdown
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
         context: create
         span: auto
-        comment: create new <a target="_blank" href="/backend/acorn/lojistiks/office/create">office</a> | <a target="_blank" href="/backend/acorn/lojistiks/warehouse/create">warehouse</a>
+        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create'" data-control="popup" tabindex="-1">office</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create'" data-control="popup" tabindex="-1">warehouse</a>
         commentHtml: true
+        placeholder: acorn.lojistiks::lang.models.general.select
 
 tabs:
     fields:
@@ -106,5 +106,5 @@ tabs:
           disabled: true
           context: update
           #containerAttributes:
-            # TODO: goto-form-group-selection: ../../transfer
+            # TODO: goto-form-group-selection: ../../transfers
           tab: acorn.lojistiks::lang.models.transfer.label_plural

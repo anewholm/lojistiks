@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.lojistiks::lang.models.transfer.label
+
+# Model Form Field configuration
+form: $/acorn/lojistiks/models/transfer/fields.yaml
+
+# Model Class name
+modelClass: Acorn\Lojistiks\Models\Transfer
+
+# Default redirect location
+defaultRedirect: acorn/lojistiks/transfers
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acorn/lojistiks/transfers/update/:id
+    redirectClose: acorn/lojistiks/transfers
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acorn/lojistiks/transfers
+    redirectClose: acorn/lojistiks/transfers
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

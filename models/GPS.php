@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 
 /**
  * GPS Model
@@ -19,7 +20,7 @@ class GPS extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields

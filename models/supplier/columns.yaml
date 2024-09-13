@@ -26,7 +26,7 @@ columns:
         sortable: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
         invisible: true
     created_at:

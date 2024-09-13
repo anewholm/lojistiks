@@ -13,10 +13,13 @@ fields:
         span: auto
         searchable: true
         sortable: true
-    parent_area:
-        label: acorn.lojistiks::lang.models.area.parent_area
-        type: relation
+    parent:
+        label: acorn.lojistiks::lang.models.area.parent
+        type: dropdown
         span: auto
+        #hierarchical: true
+        indentation_string: -
+        options: Acorn\Lojistiks\Models\Area::dropdownOptions
         placeholder: acorn.lojistiks::lang.models.general.select
     gps[longitude]:
         label: acorn.lojistiks::lang.models.gps.longitude
@@ -35,4 +38,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode

@@ -21,7 +21,10 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
+
     response:
+        label: acorn.lojistiks::lang.plugin.trigger_http_call_response
         type: richeditor
+        context: update
         size: huge

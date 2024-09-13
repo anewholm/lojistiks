@@ -3,11 +3,19 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
+
+// Useful
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
 
 /**
  * Office Model
  */
-class Office extends Location
+class Office extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
@@ -19,7 +27,7 @@ class Office extends Location
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields

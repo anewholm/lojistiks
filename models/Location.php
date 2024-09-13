@@ -3,8 +3,16 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 use Illuminate\Database\Eloquent\Collection;
 use System\Models\File;
+
+// Useful
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
 
 /**
  * Location Model
@@ -31,7 +39,9 @@ class Location extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'name' => 'required',
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -82,6 +92,7 @@ class Location extends Model
     ];
     public $belongsTo = [
         'address' => Address::class,
+        'userGroup' => [UserGroup::class, 'key' => 'backend_user_group_id'],
         'server'  => Server::class,
     ];
     public $belongsToMany = [];
@@ -97,7 +108,7 @@ class Location extends Model
     {
         $this->load('address');
         $addressFQName = $this->address->fullyQualifiedName();
-        $leafLocation  = $this->getLeafTypeObject();
+        $leafLocation  = $this->getLeafTypeModel();
         $leafLocationName = ($leafLocation ? $leafLocation->name() : $this->name());
         // $leafLocationID   = $leafLocation?->id();
         // $thisID           = $this->id();

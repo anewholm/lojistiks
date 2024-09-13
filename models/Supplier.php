@@ -3,11 +3,12 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 
 /**
  * Supplier Model
  */
-class Supplier extends Location
+class Supplier extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
@@ -19,7 +20,7 @@ class Supplier extends Location
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields

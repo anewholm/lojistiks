@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 
 /**
  * ComputerProduct Model
@@ -19,7 +20,7 @@ class ComputerProduct extends ElectronicProduct
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields
@@ -88,5 +89,18 @@ class ComputerProduct extends ElectronicProduct
     public static function menuitemCount()
     {
         return self::all()->count();
+    }
+
+    public function filterFields($fields, $context = NULL)
+    {
+        // Set default for electronic_product[product][measurement_unit]
+        // Because we are using UUIDs
+        $fieldName = 'electronic_product[product][measurement_unit]';
+        $measurementUnitValue = &$fields->$fieldName->value;
+        if (is_null($measurementUnitValue)) {
+            if ($units = MeasurementUnit::where('name', 'Units')->first()) {
+                $measurementUnitValue = $units->id();
+            }
+        }
     }
 }

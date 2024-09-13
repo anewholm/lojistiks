@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.lojistiks::lang.models.computerproduct.label
+
+# Model Form Field configuration
+form: $/acorn/lojistiks/models/computerproduct/fields.yaml
+
+# Model Class name
+modelClass: Acorn\Lojistiks\Models\ComputerProduct
+
+# Default redirect location
+defaultRedirect: acorn/lojistiks/computerproducts
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acorn/lojistiks/computerproducts/update/:id
+    redirectClose: acorn/lojistiks/computerproducts
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acorn/lojistiks/computerproducts
+    redirectClose: acorn/lojistiks/computerproducts
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

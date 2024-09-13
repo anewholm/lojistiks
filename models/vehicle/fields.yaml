@@ -8,7 +8,7 @@ fields:
         context: preview
         span: right
         size: 196
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
     last_transfer[destination_location][fully_qualified_name]:
         label: acorn.lojistiks::lang.models.location.label
         type: text
@@ -59,7 +59,7 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         span: auto
 
 
@@ -73,4 +73,4 @@ tabs:
             cssClass: selected-only
             context: update
             containerAttributes:
-              goto-form-group-selection: ../../transfer
+              goto-form-group-selection: ../../transfers

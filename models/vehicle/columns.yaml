@@ -49,14 +49,14 @@ columns:
         sortable: true
         invisible: true
     created_at:
-        label: 'acorn.lojistiks::lang.models.general.created_at'
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
         invisible: true
 

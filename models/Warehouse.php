@@ -3,11 +3,12 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 
 /**
  * Warehouse Model
  */
-class Warehouse extends Location
+class Warehouse extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 

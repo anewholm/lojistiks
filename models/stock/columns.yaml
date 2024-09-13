@@ -35,8 +35,8 @@ columns:
         label: acorn.lojistiks::lang.models.area.label
         sortable: true
         searchable: true
-    location[address][area][parent_area][name]:
-        label: acorn.lojistiks::lang.models.area.parent_area
+    location[address][area][parent][name]:
+        label: acorn.lojistiks::lang.models.area.parent
         sortable: true
         searchable: true
     quantity:

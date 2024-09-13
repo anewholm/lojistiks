@@ -26,7 +26,7 @@ columns:
         sortable: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
         invisible: true
     created_at:
@@ -35,3 +35,17 @@ columns:
         searchable: true
         sortable: true
         invisible: true
+
+    server[name]:
+        label: acorn.lojistiks::lang.models.server.label
+        invisible: true
+        sortable: false
+    server[replicated_source]:
+        label: acorn.lojistiks::lang.models.server.replicated_source
+        invisible: true
+        sortable: false
+    response:
+        label: acorn.lojistiks::lang.models.server.response
+        type: text
+        invisible: true
+        sortable: false

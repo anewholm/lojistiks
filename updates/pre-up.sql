@@ -1,6 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS "public";
 -- Extra schema to sandbox extensible product tables
 CREATE SCHEMA IF NOT EXISTS "product";
+SET search_path TO public,product;
 
 -- In-built
 create extension IF NOT EXISTS "cube";

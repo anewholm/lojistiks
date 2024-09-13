@@ -26,9 +26,10 @@ columns:
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
         invisible: true
+
     server[name]:
         label: acorn.lojistiks::lang.models.server.label
         invisible: true
@@ -38,7 +39,7 @@ columns:
         invisible: true
         sortable: false
     response:
-        label: Response
+        label: acorn.lojistiks::lang.models.server.response
         type: text
         invisible: true
         sortable: false

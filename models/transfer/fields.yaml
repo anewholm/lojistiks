@@ -3,9 +3,15 @@
 # ===================================
 
 fields:
+    _query_to_css:
+        type: partial
+        path: ~/modules/acorn/partials/_query_to_css
+        whitelist:
+          - uses-quantity
+          - uses-inventory
     qrcode_scan:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode_scan
+        path: ~/modules/acorn/partials/_qrcode_scan
         span: right
         context:
           - update
@@ -15,83 +21,302 @@ fields:
         context: preview
         span: right
         size: 196
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
     source_location:
         label: acorn.lojistiks::lang.models.transfer.source_location
-        type: relation
-        span: left
-        comment: create new <a target="_blank" href="../../warehouse/create">warehouse</a> | <a target="_blank" href="../../office/create">office</a> | <a target="_blank" href="../../supplier/create">supplier</a> <a target="_blank" href="../../location" class="goto-form-group-selection"></a>
-        commentHtml: true
+        type: dropdown
+        options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
-        required: true
+        span: storm
+        cssClass: 'initial-focus col-xs-4'
+        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create'" data-control="popup" tabindex="-1">warehouse</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create'" data-control="popup" tabindex="-1">office</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Suppliers@create'" data-control="popup" tabindex="-1">supplier</a> <a tabindex="-1" target="_blank" href="../locations" class="goto-form-group-selection"></a>
+        commentHtml: true
         placeholder: acorn.lojistiks::lang.models.general.select
         dependsOn:
             - qrcode_scan
+            - _source_backend_user_group
+    _source_backend_user_group:
+        label: acorn.lojistiks::lang.models.general.from_backend_user_group
+        type: dropdown
+        options: Acorn\Model::dropdownOptions
+        optionsModel: \Backend\Models\UserGroup
+        #where:
+          #has_role: lojistiks
+        context:
+          - create
+          - update
+        span: storm
+        cssClass: 'col-xs-2 hug-left'
+        placeholder: acorn.lojistiks::lang.models.general.select
+
     destination_location:
         label: acorn.lojistiks::lang.models.transfer.destination_location
-        type: relation
-        span: left
-        required: true
-        placeholder: acorn.lojistiks::lang.models.general.select
-        comment: create new <a target="_blank" href="../warehouse/create">warehouse</a> | <a target="_blank" href="../office/create">office</a> <a target="_blank" href="../../location" class="goto-form-group-selection"></a>
-        commentHtml: true
+        type: dropdown
+        options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
-        dependsOn:
-            - qrcode_scan
-    vehicle:
-        label: acorn.lojistiks::lang.models.vehicle.label
-        type: relation
-        span: left
-        select: registration
+        span: storm
+        cssClass: 'col-xs-4'
         placeholder: acorn.lojistiks::lang.models.general.select
-        comment: create new <a target="_blank" href="../vehicle/create">vehicle</a> | <a target="_blank" href="../driver/create">driver</a> <a target="_blank" href="../../vehicle" class="goto-form-group-selection"></a>
+        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create'" data-control="popup" tabindex="-1">warehouse</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create'" data-control="popup" tabindex="-1">office</a> <a tabindex="-1" target="_blank" href="../locations" class="goto-form-group-selection"></a>
         commentHtml: true
         dependsOn:
             - qrcode_scan
-    driver:
-        label: acorn.lojistiks::lang.models.driver.label
-        type: relation
-        span: left
-        comment: <a target="_blank" href="../../driver" class="goto-form-group-selection"></a>
-        commentHtml: true
+            - _destination_backend_user_group
+    _destination_backend_user_group:
+        label: acorn.lojistiks::lang.models.general.from_backend_user_group
+        type: dropdown
+        options: Acorn\Model::dropdownOptions
+        optionsModel: \Backend\Models\UserGroup
+        #where:
+          #has_role: lojistiks
+        context:
+          - create
+          - update
+        span: storm
+        cssClass: 'col-xs-2 hug-left'
         placeholder: acorn.lojistiks::lang.models.general.select
-        dependsOn:
-            - qrcode_scan
-    sent_at:
-        label: acorn.lojistiks::lang.models.transfer.sent_at
-        type: datepicker
-        span: left
-    arrived_at:
-        label: acorn.lojistiks::lang.models.transfer.arrived_at
-        type: datepicker
-        span: right
-        context: update
+        containerAttributes:
+          tab-preshow: .nav-tabs > li > a[href=#primarytab-acornlojistikslangmodelsvehicletransport]
 
+tabs:
+    fields:
+        # --------------------------------------- Transport
+        vehicle:
+            label: acorn.lojistiks::lang.models.vehicle.label
+            type: relation
+            span: storm
+            cssClass: 'col-xs-12 col-sm-6 new-row'
+            select: registration
+            placeholder: acorn.lojistiks::lang.models.general.select
+            comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Vehicles@create'" data-control="popup" title="Add new Vehicle" tabindex="-1">vehicle</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Drivers@create'" data-control="popup" tabindex="-1">driver</a> <a tabindex="-1" target="_blank" href="../../vehicles" class="goto-form-group-selection"></a>
+            commentHtml: true
+            dependsOn:
+                - qrcode_scan
+            tab: acorn.lojistiks::lang.models.vehicle.transport
+        driver:
+            label: acorn.lojistiks::lang.models.driver.label
+            type: relation
+            span: storm
+            cssClass: 'col-xs-12 col-sm-6'
+            comment: <a tabindex="-1" target="_blank" href="../../drivers" class="goto-form-group-selection"></a>
+            commentHtml: true
+            placeholder: acorn.lojistiks::lang.models.general.select
+            dependsOn:
+                - qrcode_scan
+            tab: acorn.lojistiks::lang.models.vehicle.transport
+            containerAttributes:
+              tab-preshow: .nav-tabs > li > a[href=#primarytab-acornlojistikslangmodelstransferdates]
+        _qrcode_small:
+            type: partial
+            context: update
+            path: ~/modules/acorn/partials/_qrcode
+            tab: acorn.lojistiks::lang.models.vehicle.transport
 
-    # TODO: _product_instance:
-        #label: Add stock to transfer
-        #type: dropdown
-        #options: Acorn\Lojistiks\Models\ProductInstance::dropdownOptions
-        #context:
-          #- create
-          #- update
-        #comment: create new <a target="_blank" href="../computerproduct/create">computer product</a> | <a target="_blank" href="../electronicproduct/create">electronic product</a>
-        #commentHtml: true
-        #span: left
-        #dependsOn:
-          #- source_location
-    pi_section:
-        label: Product Instances in the transfer
-        type: section
-        context: preview
-    product_instances:
-        type: relation
-        nameFrom: name
-        cssClass: selected-only
-        dependsOn:
-            - qrcode_scan
-        comment: scan products to add to the list
-    _qrcode_small:
-        type: partial
-        context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        # --------------------------------------- Dates
+        sent_at:
+            label: acorn.lojistiks::lang.models.transfer.sent_at
+            type: datepicker
+            default: now
+            span: storm
+            cssClass: 'col-xs-12 col-sm-12 new-row'
+            tab: acorn.lojistiks::lang.models.transfer.dates
+        arrived_at:
+            label: acorn.lojistiks::lang.models.transfer.arrived_at
+            comment: acorn.lojistiks::lang.models.transfer.arrived_at_comment
+            type: datepicker
+            span: storm
+            cssClass: 'col-xs-12 col-sm-12'
+            tab: acorn.lojistiks::lang.models.transfer.dates
+        pre_marked_arrived:
+            label: acorn.lojistiks::lang.models.transfer.pre_marked_arrived
+            comment: acorn.lojistiks::lang.models.transfer.pre_marked_arrived_comment
+            type: switch
+            span: storm
+            cssClass: 'col-xs-12 col-sm-12'
+            tab: acorn.lojistiks::lang.models.transfer.dates
+            containerAttributes:
+              tab-preshow: .nav-tabs > li > a[href=#primarytab-acornlojistikslangmodelsproductinstancelabel-plural]
+
+        # --------------------------------------- PI section
+        # Manual add
+        _product_instance:
+            label: acorn.lojistiks::lang.models.transfer.add_product_instance
+            type: dropdown
+            options: Acorn\Lojistiks\Models\ProductInstance::dropdownOptions
+            where:
+              uses_quantity: false
+              #location:
+                #field: source_location
+            context:
+              - create
+              - update
+            comment: register new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ProductInstances@create'" data-control="popup" tabindex="-1">inventory</a>
+            commentHtml: true
+            span: storm
+            cssClass: 'col-xs-11 col-sm-4 uses-inventory'
+            dependsOn:
+                - source_location
+                - _add_product_quantity
+                - _add_product_instance
+            placeholder: acorn.lojistiks::lang.models.general.select
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+        _add_product_instance:
+            type: partial
+            path: add_button
+            span: storm
+            cssClass: 'col-xs-1 col-sm-1 p-0 hug-left uses-inventory'
+            context:
+              - create
+              - update
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+
+        _or:
+            type: section
+            comment: acorn.lojistiks::lang.models.general.or
+            span: storm
+            cssClass: 'col-xs-1 uses-quantity uses-inventory'
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+        _product:
+            label: acorn.lojistiks::lang.models.transfer.add_product
+            type: dropdown
+            options: Acorn\Lojistiks\Models\Product::dropdownOptions
+            where:
+              uses_quantity: true
+            context:
+              - create
+              - update
+            comment: define new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">product types</a>
+            commentHtml: true
+            span: storm
+            cssClass: 'col-xs-6 col-sm-4 uses-quantity'
+            dependsOn:
+                - source_location
+                - _add_product_quantity
+                - _add_product_instance
+            placeholder: acorn.lojistiks::lang.models.general.select
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+        _quantity_to_add:
+            label: acorn.lojistiks::lang.models.productinstance.quantity
+            type: number
+            span: storm
+            default: 1
+            cssClass: 'col-xs-4 col-sm-1 uses-quantity'
+            context:
+              - create
+              - update
+            dependsOn:
+                - _add_product_quantity
+                - _add_product_instance
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+        _add_product_quantity:
+            type: partial
+            path: add_button
+            span: storm
+            cssClass: 'col-xs-1 col-sm-1 p-0 hug-left uses-quantity'
+            context:
+              - create
+              - update
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+            containerAttributes:
+              tab-preshow: .nav-tabs > li > a[href=#primarytab-acornfinancelangmodelsinvoicelabel-plural]
+        product_instances:
+            type: relation
+            nameFrom: name
+            cssClass: selected-only
+            dependsOn:
+                - qrcode_scan
+                - _add_product_quantity
+                - _add_product_instance
+            tab: acorn.lojistiks::lang.models.productinstance.label_plural
+
+        # --------------------------------------- Invoices raised
+        _invoice:
+            label: acorn.finance::lang.models.invoice.label
+            type: dropdown
+            options: Acorn\Finance\Models\Invoice::dropdownOptions
+            context:
+              - create
+              - update
+            comment: raise new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Acorn\\Finance\\Controllers\\Invoices@create',fieldName:'_create_invoice'" data-control="popup" tabindex="-1">invoice</a>
+            commentHtml: true
+            span: storm
+            cssClass: 'col-xs-11 col-sm-4'
+            dependsOn:
+                - _add_invoice
+                - _create_invoice
+            placeholder: acorn.lojistiks::lang.models.general.select
+            tab: acorn.finance::lang.models.invoice.label_plural
+        _add_invoice:
+            type: partial
+            path: add_button
+            span: storm
+            cssClass: 'col-xs-1 p-0 hug-left'
+            context:
+              - create
+              - update
+            tab: acorn.finance::lang.models.invoice.label_plural
+        _create_invoice:
+            type: partial
+            path: popup_button
+            controller: Acorn\Finance\Controllers\Invoices
+            span: storm
+            cssClass: 'col-xs-1 p-0'
+            context:
+              - create
+              - update
+            tab: acorn.finance::lang.models.invoice.label_plural
+            containerAttributes:
+              tab-preshow: .nav-tabs > li > a[href=#primarytab-acornfinancelangmodelspurchaselabel-plural]
+        invoices:
+            type: relation
+            nameFrom: name
+            cssClass: selected-only
+            dependsOn:
+                - qrcode_scan
+                - _add_invoice
+            tab: acorn.finance::lang.models.invoice.label_plural
+
+        # --------------------------------------- Puchases made
+        _purchase:
+            label: acorn.finance::lang.models.purchase.label
+            type: dropdown
+            options: Acorn\Finance\Models\Purchase::dropdownOptions
+            context:
+              - create
+              - update
+            comment: raise new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Acorn\\Finance\\Controllers\\Purchases@create'" data-control="popup" tabindex="-1">purchse order</a>
+            commentHtml: true
+            span: storm
+            cssClass: 'col-xs-11 col-sm-4'
+            dependsOn:
+                - _add_purchase
+                - _create_purchase
+            placeholder: acorn.lojistiks::lang.models.general.select
+            tab: acorn.finance::lang.models.purchase.label_plural
+        _add_purchase:
+            type: partial
+            path: add_button
+            span: storm
+            cssClass: 'col-xs-1 col-sm-1 p-0 hug-left'
+            context:
+              - create
+              - update
+            tab: acorn.finance::lang.models.purchase.label_plural
+        _create_purchase:
+            type: partial
+            path: popup_button
+            controller: Acorn\Finance\Controllers\Purchases
+            span: storm
+            cssClass: 'col-xs-1 col-sm-1 p-0'
+            context:
+              - create
+              - update
+            tab: acorn.finance::lang.models.purchase.label_plural
+        purchases:
+            type: relation
+            nameFrom: name
+            cssClass: selected-only
+            dependsOn:
+                - qrcode_scan
+                - _add_purchase
+            tab: acorn.finance::lang.models.purchase.label_plural

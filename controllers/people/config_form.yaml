@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.lojistiks::lang.models.person.label
+
+# Model Form Field configuration
+form: $/acorn/lojistiks/models/person/fields.yaml
+
+# Model Class name
+modelClass: Acorn\Lojistiks\Models\Person
+
+# Default redirect location
+defaultRedirect: acorn/lojistiks/people
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acorn/lojistiks/people/update/:id
+    redirectClose: acorn/lojistiks/people
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acorn/lojistiks/people
+    redirectClose: acorn/lojistiks/people
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

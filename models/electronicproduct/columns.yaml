@@ -6,13 +6,13 @@ columns:
     product[name]:
         label: acorn.lojistiks::lang.models.general.name
     product[brand][name]:
-        label: Brand
+        label: acorn.lojistiks::lang.models.brand.label
     product[measurement_unit][name]:
-        label: Measurement Unit
+        label: acorn.lojistiks::lang.models.measurementunit.label
     product[model]:
-        label: model
+        label: acorn.lojistiks::lang.models.product.model
     voltage:
-        label: Voltage
+        label: acorn.lojistiks::lang.models.electronicproduct.label
     created_at:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
@@ -21,7 +21,7 @@ columns:
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         size: 32
         searchable: false
         sortable: false

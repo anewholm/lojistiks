@@ -19,8 +19,8 @@ columns:
         type: number
         select: name
     parent_area:
-        label: acorn.lojistiks::lang.models.area.parent_area
-        relation: parent_area
+        label: acorn.lojistiks::lang.models.area.parent
+        relation: parent
         type: text
         select: name
     gps[name]:
@@ -42,5 +42,5 @@ columns:
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false

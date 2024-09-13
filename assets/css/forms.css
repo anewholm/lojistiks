@@ -1,24 +1,15 @@
-@import 'html5-qrcode.css';
-
-.help-block a,
-.goto-form-group-selection {
-  color: #4444ff;
+#Form-field-Transfer-_product-group {
+  border-left: 3px double #d7d7d7;
 }
 
-.goto-form-group-selection {
-  float:right;
-  margin-left: 5px;
+#Form-field-Transfer-_or-group p {
+  line-height: 100px;
+  font-style: italic;
 }
 
-.selected-only .field-checkboxlist .custom-checkbox {
-    display: none;
+#Form-field-Transfer-_or-group .field-section {
+  border-bottom: none;
 }
-
-.selected-only .field-checkboxlist .custom-checkbox:has(input[checked]) {
-    display: block;
-}
-
-.form-preview {
-  margin:0px auto;
-  max-width: 900px;
+#Form-field-Transfer-_or-group {
+  width:40px;
 }

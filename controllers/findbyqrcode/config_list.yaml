@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/productinstance/columns.yaml
 modelClass: Acorn\Lojistiks\Models\ProductInstance
 
 # List Title
-title: 'acorn.lojistiks::lang.models.productinstance.label_plural'
+title: acorn.lojistiks::lang.models.productinstance.label_plural
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/productinstance/update/:id

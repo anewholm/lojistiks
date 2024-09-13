@@ -3,6 +3,8 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
+use Acorn\Collection;
 
 /**
  * Area Model
@@ -62,13 +64,14 @@ class Area extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'child_areas' => [Area::class, 'key' => 'parent_area_id'],
-        'address'     => [Address::class, 'key' => 'area_id'],
+        // TODO: acorn-create-system should implant these
+        'children' => [Area::class,    'key' => 'parent_area_id'],
+        'address'  => [Address::class, 'key' => 'area_id'],
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'parent_area' => Area::class,
+        'parent' => [Area::class, 'key' => 'parent_area_id'],
         'area_type' => AreaType::class,
         'gps' => GPS::class,
         'server' => server::class,
@@ -82,8 +85,8 @@ class Area extends Model
 
     protected function getFullyQualifiedNameAttribute()
     {
-        $this->load('parent_area');
-        $parentAreaFQName = ($this->parent_area ? $this->parent_area->fullyQualifiedName() . '/' : '');
+        $this->load('parent');
+        $parentAreaFQName = ($this->parent ? $this->parent->fullyQualifiedName() . '/' : '');
         return "$parentAreaFQName$this->name";
     }
 

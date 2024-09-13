@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 
 /**
  * Driver Model
@@ -29,7 +30,10 @@ class Driver extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'person' => 'required',
+        'vehicle' => 'required',
+    ];
 
     /**
      * @var array Attributes to be cast to native types

@@ -21,15 +21,7 @@ class Plugin extends PluginBase
     /**
      * @var array Plugin dependencies
      */
-    public $require = ['Acorn.Calendar', 'Acorn.Location', 'Acorn.Messaging'];
-
-    public function boot()
-    {
-        Event::listen('backend.page.beforeDisplay', function($controller, $action, $params) {
-            // This javascript on every page, shows data change notifications
-            $controller->addJs('plugins/acorn/lojistiks/assets/js/acorn.lojistiks.monitor.js');
-        });
-    }
+    public $require = ['Acorn.Calendar', 'Acorn.Location', 'Acorn.Messaging', 'Acorn.Finance'];
 
     public function registerSettings()
     {
@@ -44,6 +36,16 @@ class Plugin extends PluginBase
                 'keywords'    => 'lojistiks',
                 'permissions' => ['acorn.lojistiks.settings']
             ]
+        ];
+    }
+
+    public function registerPermissions()
+    {
+        return [
+            'acorn.lojistiks.debug' => [
+                'label' => 'View Debug info',
+                'tab'   => 'Acorn',
+            ],
         ];
     }
 }

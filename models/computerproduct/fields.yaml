@@ -22,18 +22,17 @@ fields:
         type: dropdown
         options: \Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
         span: auto
-        default: 1
         readOnly: true
         required: true
     _create_a_new_brand:
-        label: Create a new Brand
+        label: acorn.lojistiks::lang.models.brand.create
         type: switch
         span: left
     electronic_product[product][brand]:
-        label: Brand
+        label: acorn.lojistiks::lang.models.brand.label
         type: dropdown
         options: \Acorn\Lojistiks\Models\Brand::dropdownOptions
-        placeholder: Select
+        placeholder: acorn.lojistiks::lang.models.general.select
         span: right
         required: true
         trigger:
@@ -41,14 +40,14 @@ fields:
             condition: checked
             action: disable
     electronic_product[product][brand][name]:
-        label: Brand
+        label: acorn.lojistiks::lang.models.brand.label
         span: right
         trigger:
             field: _create_a_new_brand
             condition: checked
             action: enable
     electronic_product[product][model]:
-        label: model
+        label: acorn.lojistiks::lang.models.product.model
         span: auto
     memory:
        label: acorn.lojistiks::lang.models.computerproduct.memory
@@ -75,4 +74,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode

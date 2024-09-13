@@ -7,7 +7,7 @@ fields:
         label: acorn.lojistiks::lang.models.general.name
         type: text
         span: auto
-    type:
+    leaf_type:
         label: acorn.lojistiks::lang.models.general.type
         type: text
         disabled: true
@@ -20,4 +20,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode

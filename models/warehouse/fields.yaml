@@ -14,9 +14,17 @@ fields:
             #mode: crop
             #extension: auto
         #span: auto
+    location[backend_user_group]:
+        label: acorn.lojistiks::lang.models.general.backend_user_group
+        type: dropdown
+        options: Acorn\Model::dropdownOptions
+        optionsModel: \Backend\Models\UserGroup
+        placeholder: acorn.lojistiks::lang.models.general.select
+        span: right
+
     # -------------------------------- Existing Address
     _select_an_existing_address:
-        label: Select an existing Address
+        label: acorn.lojistiks::lang.models.address.select_existing
         type: switch
         span: left
         context: create
@@ -40,7 +48,7 @@ fields:
             condition: checked
             action: disable
     location[address][number]:
-        label: Number
+        label: acorn.lojistiks::lang.models.address.number
         type: text
         span: auto
         trigger:
@@ -51,14 +59,15 @@ fields:
         label: acorn.lojistiks::lang.models.area.label
         type: dropdown
         options: Acorn\Lojistiks\Models\Area::dropdownOptions
-        placeholder: Select
+        placeholder: acorn.lojistiks::lang.models.general.select
         span: auto
+        required: true
         trigger:
             field: _select_an_existing_address
             condition: checked
             action: disable
     location[address][gps][longitude]:
-        label: longitude
+        label: acorn.lojistiks::lang.models.gps.longitude
         type: number
         span: auto
         trigger:
@@ -66,7 +75,7 @@ fields:
             condition: checked
             action: disable
     location[address][gps][latitude]:
-        label: latitude
+        label: acorn.lojistiks::lang.models.gps.latitude
         type: number
         span: auto
         trigger:
@@ -76,7 +85,7 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
 
 # --------------------------------------- Context Update
 tabs:
@@ -86,13 +95,13 @@ tabs:
         context: update
         nameFrom: source_name
         cssClass: selected-only
-        tab: Transfers In
+        tab: acorn.lojistiks::lang.models.transfer.transfers_in
     location[transfers_out]:
         type: relation
         context: update
         nameFrom: destination_name
         cssClass: selected-only
-        tab: Transfers Out
+        tab: acorn.lojistiks::lang.models.transfer.transfers_out
     location[stock_products]:
         type: relation
         context: update
@@ -100,10 +109,10 @@ tabs:
         cssClass: selected-only
         # TODO: stock_products is a non-automatically updateable view due to its group-by
         disabled: true
-        tab: Stock Products
+        tab: acorn.lojistiks::lang.models.stockproduct.label_plural
     location[employees]:
         type: relation
         context: update
         nameFrom: employment
         cssClass: selected-only
-        tab: Employees
+        tab: acorn.lojistiks::lang.models.employee.label_plural

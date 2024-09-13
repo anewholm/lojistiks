@@ -1,0 +1,16 @@
+scopes:
+    source_location:
+        label: acorn.lojistiks::lang.models.transfer.source_location
+        modelClass: Acorn\Lojistiks\Models\Location
+        conditions: source_location_id in (:filtered)
+        nameFrom: fully_qualified_name
+    destination_location:
+        label: acorn.lojistiks::lang.models.transfer.destination_location
+        modelClass: Acorn\Lojistiks\Models\Location
+        conditions: destination_location_id in (:filtered)
+        nameFrom: fully_qualified_name
+    vehicle:
+        label: acorn.lojistiks::lang.models.vehicle.label
+        modelClass: Acorn\Lojistiks\Models\Vehicle
+        conditions: vehicle_id in (:filtered)
+        nameFrom: registration

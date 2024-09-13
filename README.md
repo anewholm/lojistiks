@@ -14,8 +14,11 @@ git clone git@gitlab.acorn.org:office/lojistiks.git
 git clone git@gitlab.acorn.org:office/oil.git
 cd ../..
 ../scripts/acorn-add-websockets
+# Optional scripts
+ln -s ../scripts/acorn-git-all .
 ln -s ../scripts/acorn-git-pull-all .
-ln -s ../scripts/acorn-winter-down-up .
+ln -s ../scripts/acorn-git-push-all .
+ln -s ../scripts/acorn-winter-down-up . # Runs the ./artisan as www-data avoiding permissions issues
 sudo chown -R www-data:www-data .; sudo chmod -R g+rw .
 ```
 
@@ -35,7 +38,7 @@ This system is a **Distributed Database** system with UUIDs. If you wish to conn
 ],
 ```
 
-To serve the websockets server use `./artisan websockets:serve`. All new Database rows will `TRIGGER` a `http` extension call to the `/api/newrow` API in `~/controllers/DB.php` which in turn creates and dispatches a websocket Event object on port 6001. _This is not completely working at time of writing._
+To serve the websockets server use `./artisan websockets:serve`. All new Database rows will `TRIGGER` a `http` extension call to the `/api/datachange` API in `~/controllers/DB.php` which in turn creates and dispatches a websocket Event object on port 6001. _This is not completely working at time of writing._
 
 To create or update a new SUPERUSER in PostGreSQL use `sudo -u postgres psql`, list users with `\du`, and then `CREATE` or `ALTER` users `WITH SUPERUSER`.
 

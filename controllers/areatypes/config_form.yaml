@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.lojistiks::lang.models.areatype.label
+
+# Model Form Field configuration
+form: $/acorn/lojistiks/models/areatype/fields.yaml
+
+# Model Class name
+modelClass: Acorn\Lojistiks\Models\AreaType
+
+# Default redirect location
+defaultRedirect: acorn/lojistiks/areatypes
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acorn/lojistiks/areatypes/update/:id
+    redirectClose: acorn/lojistiks/areatypes
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acorn/lojistiks/areatypes
+    redirectClose: acorn/lojistiks/areatypes
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/stock/columns.yaml
 modelClass: Acorn\Lojistiks\Models\Stock
 
 # List Title
-title: 'acorn.lojistiks::lang.models.stock.label_plural'
+title: acorn.lojistiks::lang.models.stock.label_plural
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

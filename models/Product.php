@@ -3,7 +3,9 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 use System\Models\File;
+use Acorn\Collection;
 
 /**
  * Product Model
@@ -32,6 +34,8 @@ class Product extends Model
      */
     public $rules = [
         'image' => 'nullable',
+        'brand' => 'required',
+        'measurement_unit' => 'required',
     ];
 
     /**
@@ -116,8 +120,8 @@ class Product extends Model
         $this->load('brand');
         $isRecordContext = is_string($this->brand);
         $brandName       = ($isRecordContext ? $this->brand : $this->brand?->name());
-        $leafProduct     = $this->getLeafTypeObject();
-        $leafProductName = ($leafProduct ? $leafProduct->name() : $this->getShortClassName());
+        $leafProduct     = $this->getLeafTypeModel();
+        $leafProductName = ($leafProduct ? $leafProduct->name() : $this->unqualifiedClassName());
         $type            = ($this->type ? "($this->type)" : '');
         return "$leafProductName $type, $brandName $this->model";
     }
@@ -127,8 +131,40 @@ class Product extends Model
         return $this->full_name;
     }
 
+    public function createInstance(string $assetClass = 'C')
+    {
+        return $this->createInstances(1, $assetClass);
+    }
+
+    public function createInstances(float $quantity, string $assetClass = 'C')
+    {
+        $pis = new Collection();
+
+        if ($this->usesQuantity()) {
+            $pis->push(ProductInstance::create(['product' => $this, 'asset_class' => $assetClass, 'quantity' => $quantity]));
+        } else {
+            for ($i = 0; $i < $quantity; $i++) {
+                $pis->push(ProductInstance::create(['product' => $this, 'asset_class' => $assetClass, 'quantity' => 1]));
+            }
+        }
+        return $pis;
+    }
+
     public static function menuitemCount()
     {
         return self::all()->count();
+    }
+
+    public function filterFields($fields, $context = NULL)
+    {
+        // Set default for electronic_product[product][measurement_unit]
+        // Because we are using UUIDs
+        $fieldName            = 'measurement_unit';
+        $measurementUnitValue = &$fields->$fieldName->value;
+        if (is_null($measurementUnitValue)) {
+            if ($units = MeasurementUnit::where('name', 'Units')->first()) {
+                $measurementUnitValue = $units->id();
+            }
+        }
     }
 }

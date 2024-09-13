@@ -3,12 +3,13 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 use System\Models\File;
 
 /**
  * ElectronicProduct Model
  */
-class ElectronicProduct extends Product
+class ElectronicProduct extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
@@ -89,5 +90,18 @@ class ElectronicProduct extends Product
     public static function menuitemCount()
     {
         return self::all()->count();
+    }
+
+    public function filterFields($fields, $context = NULL)
+    {
+        // Set default for electronic_product[product][measurement_unit]
+        // Because we are using UUIDs
+        $fieldName = 'product[measurement_unit]';
+        $measurementUnitValue = &$fields->$fieldName->value;
+        if (is_null($measurementUnitValue)) {
+            if ($units = MeasurementUnit::where('name', 'Units')->first()) {
+                $measurementUnitValue = $units->id();
+            }
+        }
     }
 }

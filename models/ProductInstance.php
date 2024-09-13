@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 use Illuminate\Database\Eloquent\Collection;
 
 /**
@@ -20,7 +21,7 @@ class ProductInstance extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields
@@ -65,7 +66,13 @@ class ProductInstance extends Model
     public $hasMany = [
         'product_instance_transfer' => TransferProductInstance::class,
     ];
-    public $hasOneThrough = [];
+    public $hasOneThrough = [
+        // TODO: location
+        'location' => [
+            Location::class,
+            'through' => Stock::class,
+        ],
+    ];
     public $hasManyThrough = [
         'transfers' => [
             Transfer::class,
@@ -127,24 +134,41 @@ class ProductInstance extends Model
     public function afterCreate()
     {
         // Create the initial transfer to indicate where the PI is
-        $source_location      = Location::findOrFail($this->getOriginalPurgeValue('_source_location'));
-        $destination_location = Location::findOrFail($this->getOriginalPurgeValue('_destination_location'));
-        $tr = Transfer::create([
-            'source_location'      => $source_location,
-            'destination_location' => $destination_location
-        ]);
-        $tr->setProductInstance($this);
-        $tr->save();
+        $source_location      = Location::find($this->getOriginalPurgeValue('_source_location'));
+        $destination_location = Location::find($this->getOriginalPurgeValue('_destination_location'));
 
-        // Store result
-        $this->initial_transfer_product_instance = $tr->singleTransferProductInstance();
-        $this->save();
+        // Sometimes we are creating PIs and then saving them to transfers later
+        if ($source_location && $destination_location) {
+            $tr = Transfer::create([
+                'source_location'      => $source_location,
+                'destination_location' => $destination_location
+            ]);
+            $tr->setProductInstance($this);
+            $tr->save();
+
+            // Store result
+            $this->initial_transfer_product_instance = $tr->singleTransferProductInstance();
+            $this->save();
+        }
+
+        Person::saveLastsToAuthPerson([
+            'source_location'      => $source_location,
+            'destination_location' => $destination_location,
+        ], $this);
     }
 
     public function filterFields($fields, $context = NULL)
     {
         $is_update = ($context == 'update');
         $is_create = ($context == 'create');
+
+        if ($is_create) {
+            foreach (Person::lastsFromAuthPersonFor($this) as $name => $model) {
+                if (property_exists($fields, $name) && !isset($fields->$name->value)) {
+                    if (method_exists($model, 'id')) $fields->$name->value = $model->id();
+                }
+            }
+        }
 
         if ($is_update || $is_create) {
             if ($fields->product->value) {
@@ -153,5 +177,7 @@ class ProductInstance extends Model
                 $fields->external_identifier->disabled = $product->usesQuantity();
             }
         }
+
+        parent::filterFields($fields, $context);
     }
 }

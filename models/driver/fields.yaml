@@ -8,18 +8,16 @@ fields:
         context: preview
         span: right
         size: 196
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
     person:
         label: acorn.lojistiks::lang.models.person.label
         type: relation
         nameFrom: full_name
-        required: true
         placeholder: acorn.lojistiks::lang.models.general.select
         span: left
     vehicle:
         label: acorn.lojistiks::lang.models.vehicle.label
         type: relation
-        required: true
         select: registration
         placeholder: acorn.lojistiks::lang.models.general.select
         span: left
@@ -38,5 +36,5 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         span: auto

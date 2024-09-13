@@ -3,6 +3,7 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 
 /**
  * VehicleType Model
@@ -19,7 +20,7 @@ class VehicleType extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields
@@ -29,7 +30,9 @@ class VehicleType extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'name' => 'required',
+    ];
 
     /**
      * @var array Attributes to be cast to native types

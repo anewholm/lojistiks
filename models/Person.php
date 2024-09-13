@@ -3,8 +3,11 @@
 namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
+use Acorn\Models\Server;
 use Backend\Models\User;
 use System\Models\File;
+use BackendAuth;
+use Str;
 
 /**
  * Person Model
@@ -21,7 +24,7 @@ class Person extends Model
     /**
      * @var array Guarded fields
      */
-    protected $guarded = ['*'];
+    protected $guarded = [];
 
     /**
      * @var array Fillable fields
@@ -67,8 +70,12 @@ class Person extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'user' => User::class,
+        'backend_user' => [User::class, 'key' => 'backend_user_id'],
         'server' => Server::class,
+        'last_transfer_source_location' => Location::class,
+        'last_transfer_destination_location' => Location::class,
+        'last_product_instance_source_location' => Location::class,
+        'last_product_instance_destination_location' => Location::class,
     ];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -81,7 +88,7 @@ class Person extends Model
 
     public function getFullNameAttribute()
     {
-        return $this->user->full_name;
+        return $this->backend_user->full_name;
     }
 
     public function fullName()
@@ -92,5 +99,51 @@ class Person extends Model
     public static function menuitemCount()
     {
         return self::all()->count();
+    }
+
+    public static function auth()
+    {
+        $user = BackendAuth::user();
+        return ($user ? self::where('backend_user_id', $user->id)->first() : NULL);
+    }
+
+    public static function saveLastsToAuthPerson(Array $lastModels, Model $sectionModel = NULL): void
+    {
+        if ($person = Person::auth()) $person->saveLasts($lastModels, $sectionModel);
+    }
+
+    public function saveLasts(Array $lastModels, Model $sectionModel = NULL): void
+    {
+        $sectionModelName = ($sectionModel ? Str::snake($sectionModel->unqualifiedClassName()) : '');
+        $attributePrefix  = "last_$sectionModelName" . ($sectionModelName ? '_' : '');
+        foreach ($lastModels as $name => $model) {
+            $attributeName        = "$attributePrefix$name";
+            $this->$attributeName = $model;
+        }
+        $this->save();
+    }
+
+    public static function lastsFromAuthPersonFor(Model $sectionModel): array
+    {
+        $person = Person::auth();
+        return ($person ? $person->lastsFor($sectionModel) : []);
+    }
+
+    public function lastsFor(Model $sectionModel): array
+    {
+        $lasts = array();
+        $sectionModelName   = ($sectionModel ? Str::snake($sectionModel->unqualifiedClassName()) : '');
+        $attributePrefix    = "last_$sectionModelName" . ($sectionModelName ? '_' : '');
+        $attributePrefixLen = strlen($attributePrefix);
+        $this->load(array_keys($this->belongsTo));
+        foreach ($this->relations as $name => $model) {
+            if ($model && substr($name, 0, $attributePrefixLen) == $attributePrefix) {
+                $attributeName = substr($name, $attributePrefixLen);
+                $pseudoName    = "_$attributeName";
+                $lasts[$attributeName] = $model;
+                $lasts[$pseudoName]    = $model;
+            }
+        }
+        return $lasts;
     }
 }

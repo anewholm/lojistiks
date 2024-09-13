@@ -4,7 +4,7 @@
 
 columns:
     id:
-        label: 'acorn.lojistiks::lang.models.general.id'
+        label: acorn.lojistiks::lang.models.general.id
         searchable: true
         invisible: true
     source_location[fully_qualified_name]:
@@ -34,14 +34,14 @@ columns:
         searchable: true
         sortable: true
     created_at:
-        label: 'acorn.lojistiks::lang.models.general.created_at'
+        label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
         searchable: true
         sortable: true
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
         invisible: true
 
@@ -51,6 +51,11 @@ columns:
         sortable: false
     server[replicated_source]:
         label: acorn.lojistiks::lang.models.server.replicated_source
+        invisible: true
+        sortable: false
+    response:
+        label: acorn.lojistiks::lang.models.server.response
+        type: text
         invisible: true
         sortable: false
 

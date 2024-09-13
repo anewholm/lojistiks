@@ -7,7 +7,7 @@ columns:
         type: partial
         context: update
         size: 110
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
     product[qr_code_name]:
         label: acorn.lojistiks::lang.models.general.qrcode_name

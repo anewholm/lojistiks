@@ -12,7 +12,7 @@ columns:
         type: text
         searchable: true
         sortable: false
-    type:
+    leaf_type:
         label: acorn.lojistiks::lang.models.general.type
         type: text
         searchable: true
@@ -44,7 +44,7 @@ columns:
         invisible: true
     _qrcode:
         type: partial
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode
         sortable: false
         invisible: true
     created_at:

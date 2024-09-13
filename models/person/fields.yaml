@@ -3,33 +3,33 @@
 # ===================================
 
 fields:
-    user[first_name]:
+    backend_user[first_name]:
         label: acorn.lojistiks::lang.models.person.first_name
         type: text
         span: auto
         searchable: true
-    user[last_name]:
+    backend_user[last_name]:
         label: acorn.lojistiks::lang.models.person.last_name
         type: text
         span: auto
         searchable: true
-    user[email]:
+    backend_user[email]:
         label: acorn.lojistiks::lang.models.person.email
         type: text
         span: auto
-        default: a@b.com
+        default: none@nowhere.com
         searchable: true
-    user[login]:
+    backend_user[login]:
         label: acorn.lojistiks::lang.models.person.login
         type: text
         span: auto
         searchable: true
-    user[password]:
+    backend_user[password]:
         label: acorn.lojistiks::lang.models.person.password
         type: text
         span: auto
         searchable: true
-    user[password_confirmation]:
+    backend_user[password_confirmation]:
         label: acorn.lojistiks::lang.models.person.password
         type: text
         span: auto
@@ -48,4 +48,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode

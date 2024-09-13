@@ -23,18 +23,15 @@ fields:
         type: text
         disabled: true
         span: auto
-        required: true
     measurement_unit:
         label: acorn.lojistiks::lang.models.measurementunit.label
         type: relation
-        required: true
-        placeholder: Select
+        placeholder: acorn.lojistiks::lang.models.general.select
         span: auto
     brand:
         label: acorn.lojistiks::lang.models.brand.label
         type: relation
-        required: true
-        placeholder: Select
+        placeholder: acorn.lojistiks::lang.models.general.select
         span: auto
     model:
         label: acorn.lojistiks::lang.models.product.model
@@ -43,4 +40,4 @@ fields:
     _qrcode:
         type: partial
         context: update
-        path: ~/plugins/acorn/lojistiks/_qrcode
+        path: ~/modules/acorn/partials/_qrcode

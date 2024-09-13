@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: 'acorn.lojistiks::lang.models.stockproduct.label'
+name: acorn.lojistiks::lang.models.stockproduct.label
 
 # Model Form Field configuration
 form: $/acorn/lojistiks/models/stockproduct/fields.yaml
