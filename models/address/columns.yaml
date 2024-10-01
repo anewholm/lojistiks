@@ -6,47 +6,32 @@ columns:
     id:
         label: acorn.lojistiks::lang.models.general.id
         type: number
-        searchable: false
-        sortable: true
+        invisible: true
     number:
-        label: acorn.lojistiks::lang.models.address.number
-        type: number
-    name:
-        label: acorn.lojistiks::lang.models.address.street
-        type: text 
-        searchable: true
-    area:
-        label: acorn.lojistiks::lang.models.area.label
-        relation: area
-        type: number
-        select: id
-        searchable: true
-        sortable: true
-    gps:
-        label: acorn.lojistiks::lang.models.gps.label
-        relation: gps
-        type: number
-        select: id
-        searchable: true
-        sortable: true
-    server:
-        label: acorn.lojistiks::lang.models.server.label
-        relation: server
-        type: number
-        select: id
-        searchable: true
-        sortable: true
-    version:
-        label: acorn.lojistiks::lang.models.version.label
+        label: acorn.location::lang.models.address.number
         type: number
         searchable: false
-    is_current_version:
-        label: acorn.lojistiks::lang.models.address.is_current_version
-        type: switch
-    created_at:
+        sortable: true
+    name:
+        label: acorn.location::lang.models.address.street
+        type: text 
+        searchable: false
+        sortable: true
+    area[fully_qualified_name]:
+        label: acorn.location::lang.models.area.label
+        type: number
+        searchable: true
+        sortable: true
+    gps[longitude]:
+        label: acorn.location::lang.models.address.longitude
+        type: number
+    gps[latitude]:
+        label: acorn.location::lang.models.address.latitude
+        type: number
+    created_at_event:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
-        searchable: true
+        select: (select ce.created_at from acorn_calendar_event ce where ce.id = acorn_lojistiks_addresses.created_at)
         sortable: true
         invisible: true
     _qrcode:

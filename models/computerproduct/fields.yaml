@@ -34,7 +34,6 @@ fields:
         options: \Acorn\Lojistiks\Models\Brand::dropdownOptions
         placeholder: acorn.lojistiks::lang.models.general.select
         span: right
-        required: true
         trigger:
             field: _create_a_new_brand
             condition: checked
@@ -46,7 +45,7 @@ fields:
             field: _create_a_new_brand
             condition: checked
             action: enable
-    electronic_product[product][model]:
+    electronic_product[product][model_name]:
         label: acorn.lojistiks::lang.models.product.model
         span: auto
     memory:

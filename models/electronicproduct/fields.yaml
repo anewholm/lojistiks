@@ -43,7 +43,7 @@ fields:
             field: _create_a_new_brand
             condition: checked
             action: enable
-    product[model]:
+    product[model_name]:
         label: acorn.lojistiks::lang.models.product.model
         span: auto
     _qrcode:

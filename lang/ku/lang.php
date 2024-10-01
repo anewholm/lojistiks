@@ -50,9 +50,9 @@ return [
             'correct_and_print' => 'Save correction and print',
             'print' => 'Print',
 
-            'backend_user_group' => 'Group',
-            'backend_user' => 'Person',
-            'from_backend_user_group' => 'From Group',
+            'user_group' => 'Group',
+            'user' => 'Person',
+            'from_user_group' => 'From Group',
         ],
         'product' => [
             'label' => 'Product Type',

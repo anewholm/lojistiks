@@ -5,16 +5,16 @@
 This assumes you have `git clone`d or linked [office/scripts](https://gitlab.acorn.org/office/scripts) in to `/var/www`. It also assumes you have the full Apache2, PostGreSQL**@16**, PHP stack installed. The script `acorn-setup-laptop` will install everything you need including the necessary PostGreSQL extensions `http` and `hostname`.
 
 ```
+# git pull your scripts first!
 cd /var/www/
-scripts/acorn-setup-new-winter acorn-lojistiks
+./scripts/acorn-setup-new-winter acorn-lojistiks
 cd acorn-lojistiks
-composer require simplesoftwareio/simple-qrcode
 cd plugins/acorn
+git clone git@gitlab.acorn.org:office/finance.git
 git clone git@gitlab.acorn.org:office/lojistiks.git
 git clone git@gitlab.acorn.org:office/oil.git
-cd ../..
-../scripts/acorn-add-websockets
-# Optional scripts
+cd -
+# Optional useful script links
 ln -s ../scripts/acorn-git-all .
 ln -s ../scripts/acorn-git-pull-all .
 ln -s ../scripts/acorn-git-push-all .

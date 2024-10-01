@@ -50,9 +50,9 @@ return [
             'correct_and_print' => 'Save correction and print',
             'print' => 'Print',
 
-            'backend_user_group' => 'Group',
-            'backend_user' => 'Person',
-            'from_backend_user_group' => 'From Group',
+            'user_group' => 'Group',
+            'user' => 'Person',
+            'from_user_group' => 'From Group',
         ],
         'product' => [
             'label' => 'Product Type',
@@ -75,25 +75,10 @@ return [
             'new'    => 'New Brand',
         ],
         'productinstance' => [
-            'label' => 'Item',
-            'label_plural' => 'Items',
+            'label' => 'Inventory',
+            'label_plural' => 'Inventory',
             'create_product_instances' => 'Register Inventory',
             'quantity' => 'Quantity',
-        ],
-        'area' => [
-            'label' => 'Area',
-            'label_plural' => 'Areas',
-            'parent' => 'Containing Area',
-        ],
-        'address' => [
-            'label' => 'Address',
-            'label_plural' => 'Addresses',
-            'number' => 'Number',
-            'street' => 'Street',
-            'longitude' => 'Longitude',
-            'latitude' => 'Latitude',
-            'auto_location' => 'Create an associated Location',
-            'select_existing' => 'Select an existing Address',
         ],
         'office' => [
             'label' => 'Office',
@@ -130,7 +115,7 @@ return [
         ],
         'transfer' => [
             'label' => 'Transfer',
-            'label_plural' => 'Transfers',
+            'label_plural' => 'All Transfers',
             'transfer_inventory' => 'Transfer Inventory Units',
             'transfer_quantity' => 'Transfer Quantites',
             'add_product_instance' => 'Add existing Inventory (Units)',
@@ -140,12 +125,12 @@ return [
             'pi_section_comment' => 'Scan inventory QR codes to add to the list, ot add them manually below',
             'dates' => 'Dates',
             'arrived_at' => 'Arrived at',
-            'arrived_at_comment' => 'Items, vehicle and driver will not appear at destination until arrived at date is completed',
+            'arrived_at_comment' => 'Inventory, vehicle and driver will not appear at destination until arrived at date is completed',
             'sent_at' => 'Sent at',
             'pre_marked_arrived' => 'Mark as arrived',
             'pre_marked_arrived_comment' => 'No confirmation or date is required',
             'quantity' => 'Quantity',
-            'product_instance_count' => 'Item count',
+            'product_instance_count' => 'Inventory count',
             'product_instance_quantity' => 'Quantity',
             'product_instance_contents' => 'Contents',
             'product_contents' => 'Product Contents',
@@ -164,21 +149,6 @@ return [
             'label_plural' => 'Vehicles',
             'registration' => 'Registration',
             'transport' => 'Transport',
-        ],
-        'location' => [
-            'label' => 'Location',
-            'label_plural' => 'Locations',
-            'initial_location' => 'Initial Location',
-        ],
-        'gps' => [
-            'label' => 'GPS',
-            'label_plural' => 'GPSs',
-            'longitude' => 'Longitude',
-            'latitude' => 'Latitude',
-        ],
-        'areatype' => [
-            'label' => 'Area Type',
-            'label_plural' => 'Area Types',
         ],
         'employee' => [
             'label' => 'Employee',
@@ -206,16 +176,60 @@ return [
             'label' => 'Inventory',
             'label_plural' => 'Inventories',
         ],
-        'server' => [
-            'label' => 'Server',
-            'label_plural' => 'Servers',
-            'response' => 'Response',
-            'replicated' => 'Replicated',
-            'replicated_source' => 'Replication Source',
+
+
+        // TODO: These location translations return to Location plugin
+        'location' => [
+            'address' => 'Address',
+            'latitude' => 'Latitude',
+            'longitude' => 'Longitude',
+            'parent' => 'Containing facility',
+            'create_area' => 'Create area >>',
+            'add_gps' => 'Set GPS >>',
+            'label' => 'Facility',
+            'label_plural' => 'All Facilities',
+            'initial_location' => 'Initial Facility',
         ],
-        'db' => [
-            'label' => 'D B',
-            'label_plural' => 'D B S',
+        'lookup' => [
+            'label' => 'Lookup',
+            'label_plural' => 'Lookups',
+            'address' => 'Address',
+
+            'google_address' => 'Lookup on Google Maps',
+
+            'vicinity' => 'Vicinity',
+            'city' => 'City',
+            'postalcode' => 'Postal Code',
+            'zip' => 'Postal Code',
+            'country_code' => 'Country Code',
+            'state_code' => 'State Code',
+            'latitude' => 'Latitude',
+            'longitude' => 'Longitude',
+        ],
+        'area' => [
+            'label' => 'Area',
+            'label_plural' => 'Areas',
+            'parent' => 'Containing Area',
+        ],
+        'address' => [
+            'label' => 'Address',
+            'label_plural' => 'Addresses',
+            'number' => 'Number',
+            'street' => 'Street',
+            'longitude' => 'Longitude',
+            'latitude' => 'Latitude',
+            'auto_location' => 'Create an associated Location',
+            'select_existing' => 'Select an existing Address',
+        ],
+        'gps' => [
+            'label' => 'GPS',
+            'label_plural' => 'GPSs',
+            'longitude' => 'Longitude',
+            'latitude' => 'Latitude',
+        ],
+        'areatype' => [
+            'label' => 'Area Type',
+            'label_plural' => 'Area Types',
         ],
     ],
 ];

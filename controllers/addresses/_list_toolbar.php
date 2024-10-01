@@ -2,7 +2,7 @@
     <a
         href="<?= Backend::url('acorn/lojistiks/addresses/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.lojistiks::lang.models.address.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.location::lang.models.address.label')])); ?>
     </a>
 
     <button

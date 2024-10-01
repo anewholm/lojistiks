@@ -1,49 +1,31 @@
 fields:
-    area:
-        label: acorn.lojistiks::lang.models.area.label
-        type: relation
-        select: id
-        searchable: true
-        sortable: true
     number:
-        label: acorn.lojistiks::lang.models.address.number
-        type: text
-        span: auto
+        label: acorn.location::lang.models.address.number
+        type: number
+        span: storm
+        cssClass: col-xs-2
     name:
-        label: acorn.lojistiks::lang.models.address.street
+        label: acorn.location::lang.models.address.street
         type: text
-        span: auto
-    gps:
-        label: acorn.lojistiks::lang.models.gps.label
-        relation: gps
+        span: storm
+        cssClass: col-xs-4
+    area:
+        label: acorn.location::lang.models.area.label
+        type: relation
+        span: storm
+        cssClass: col-xs-6
+    gps[longitude]:
+        label: acorn.location::lang.models.address.longitude
         type: number
-        select: id
-        searchable: true
-        sortable: true
-    server:
-        label: acorn.lojistiks::lang.models.address.server
-        relation: server
+        span: storm
+        cssClass: col-xs-6 new-row
+    gps[latitude]:
+        label: acorn.location::lang.models.address.latitude
         type: number
-        select: id
-        searchable: true
-        sortable: true
-    version:
-        label: acorn.lojistiks::lang.models.address.version
-        type: number
-        searchable: false
-    is_current_version:
-        label: acorn.lojistiks::lang.models.address.is_current_version
-        type: switch
-    _gps_longitude:
-        label: acorn.lojistiks::lang.models.address.longitude
-        type: number
-        span: left
-    _gps_latitude:
-        label: acorn.lojistiks::lang.models.address.latitude
-        type: number
-        span: right
+        span: storm
+        cssClass: col-xs-6
     _auto_location:
-        label: acorn.lojistiks::lang.models.address.auto_location
+        label: acorn.location::lang.models.address.auto_location
         type: checkbox
         default: true
     _qrcode:

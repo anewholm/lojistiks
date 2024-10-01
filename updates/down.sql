@@ -4,6 +4,9 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicle_types DROP CONSTRAINT 
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicles DROP CONSTRAINT IF EXISTS vehicle_type_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_drivers DROP CONSTRAINT IF EXISTS vehicle_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS vehicle_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF EXISTS user_role_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS user_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS user_group_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS transfers_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instance_transfer DROP CONSTRAINT IF EXISTS transfer_product_instances_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS transfer_product_instance_id;
@@ -81,9 +84,6 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_containers DROP CONSTRAINT IF 
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS container_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_brands DROP CONSTRAINT IF EXISTS brands_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products DROP CONSTRAINT IF EXISTS brand_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF EXISTS backend_user_role_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS backend_user_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS backend_user_group_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXISTS areas_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_area_types DROP CONSTRAINT IF EXISTS area_types_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXISTS area_type_id;

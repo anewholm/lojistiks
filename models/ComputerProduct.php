@@ -12,6 +12,8 @@ class ComputerProduct extends ElectronicProduct
 {
     use \Winter\Storm\Database\Traits\Validation;
 
+    // public $translatable = ['electronic_product[product][name]', 'electronic_product[product][model_name]', 'electronic_product[product][brand][name]'];
+
     /**
      * @var string The database table used by the model.
      */

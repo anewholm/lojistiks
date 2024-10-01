@@ -9,7 +9,7 @@ columns:
         label: acorn.lojistiks::lang.models.brand.label
     product[measurement_unit][name]:
         label: acorn.lojistiks::lang.models.measurementunit.label
-    product[model]:
+    product[model_name]:
         label: acorn.lojistiks::lang.models.product.model
     voltage:
         label: acorn.lojistiks::lang.models.electronicproduct.label

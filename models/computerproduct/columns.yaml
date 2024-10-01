@@ -17,7 +17,7 @@ columns:
         type: text
         searchable: true
         sortable: true
-    electronic_product[product][model]:
+    electronic_product[product][model_name]:
         label: acorn.lojistiks::lang.models.product.model
         type: text
         searchable: true

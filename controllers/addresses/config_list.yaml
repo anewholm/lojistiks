@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/address/columns.yaml
 modelClass: Acorn\Lojistiks\Models\Address
 
 # List Title
-title: acorn.lojistiks::lang.models.address.label_plural
+title: acorn.location::lang.models.address.label_plural
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/addresses/update/:id

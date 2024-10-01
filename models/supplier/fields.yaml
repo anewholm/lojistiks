@@ -2,8 +2,9 @@ fields:
     location[name]:
         label: acorn.lojistiks::lang.models.general.name
         type: text
-        span: auto
-    #location[image]:
+        span: storm
+        cssClass: col-xs-6
+    # TODO: location[image]:
         #label: acorn.lojistiks::lang.models.general.image
         #type: mediafinder
         #mode: image
@@ -14,60 +15,79 @@ fields:
             #mode: crop
             #extension: auto
         #span: auto
-    location[backend_user_group]:
-        label: acorn.lojistiks::lang.models.general.backend_user_group
+    location[user_group]:
+        label: acorn.lojistiks::lang.models.general.user_group
         type: dropdown
-        options: Acorn\Model::dropdownOptions
-        optionsModel: \Backend\Models\UserGroup
+        options: Acorn\User\Models\UserGroup::dropdownOptions
         placeholder: acorn.lojistiks::lang.models.general.select
-        span: right
+        span: storm
+        cssClass: col-xs-6
 
     # -------------------------------- Existing Address
     _select_an_existing_address:
-        label: acorn.lojistiks::lang.models.address.select_existing
+        label: acorn.location::lang.models.address.select_existing
         type: switch
-        span: left
+        span: storm
+        cssClass: col-xs-6 new-row
         context: create
     location[address]:
         type: dropdown
         options: Acorn\Lojistiks\Models\Address::dropdownOptions
         nameFrom: fully_qualified_name
-        span: left
+        span: storm
+        cssClass: col-xs-6
         trigger:
             field: _select_an_existing_address
             condition: checked
             action: enable
         context: create
+
+
     # -------------------------------- New Address
-    location[address][name]:
-        label: acorn.lojistiks::lang.models.address.label
+    location[address][number]:
+        label: acorn.location::lang.models.address.number
         type: text
-        span: auto
+        span: storm
+        cssClass: col-xs-2 new-row
         trigger:
             field: _select_an_existing_address
             condition: checked
             action: disable
-    location[address][number]:
-        label: acorn.lojistiks::lang.models.address.number
+    location[address][name]:
+        label: acorn.location::lang.models.address.label
         type: text
-        span: auto
+        span: storm
+        cssClass: col-xs-4
         trigger:
             field: _select_an_existing_address
             condition: checked
             action: disable
     location[address][area]:
-        label: acorn.lojistiks::lang.models.area.label
+        label: acorn.location::lang.models.area.label
         type: dropdown
         options: Acorn\Lojistiks\Models\Area::dropdownOptions
         placeholder: acorn.lojistiks::lang.models.general.select
-        span: auto
-        required: true
+        span: storm
+        cssClass: col-xs-5 popup-col-xs-6
+        dependsOn:
+            - _create_area
         trigger:
             field: _select_an_existing_address
             condition: checked
             action: disable
+    _create_area:
+        type: partial
+        path: popup_button
+        controller: Acorn\Lojistiks\Controllers\Areas
+        span: storm
+        cssClass: col-xs-1 col-sm-1 p-0 hug-left popup-hide
+        context:
+          - create
+          - update
+
+    # -------------------------------- New GPS
     location[address][gps][longitude]:
-        label: acorn.lojistiks::lang.models.gps.longitude
+        label: acorn.location::lang.models.gps.longitude
         type: number
         span: auto
         trigger:
@@ -75,7 +95,7 @@ fields:
             condition: checked
             action: disable
     location[address][gps][latitude]:
-        label: acorn.lojistiks::lang.models.gps.latitude
+        label: acorn.location::lang.models.gps.latitude
         type: number
         span: auto
         trigger:
@@ -110,9 +130,38 @@ tabs:
         disabled: true
         cssClass: selected-only
         tab: acorn.lojistiks::lang.models.stockproduct.label_plural
-    location[employees]:
+    location[stock]:
         type: relation
         context: update
-        nameFrom: employment
+        scope: singleUnits
+        nameFrom: fully_qualified_name
+        # NOTE: stock_products is a non-automatically updateable view due to its group-by
+        disabled: true
         cssClass: selected-only
-        tab: acorn.lojistiks::lang.models.employee.label_plural
+        tab: acorn.lojistiks::lang.models.stock.label_plural
+        #containerAttributes:
+          # TODO: goto-form-group-selection: /backend/acorn/lojistiks/productinstances
+    #location[employees]:
+        #type: relation
+        #context: update
+        #nameFrom: employment
+        #cssClass: selected-only
+        #tab: acorn.lojistiks::lang.models.employee.label_plural
+    location[vehicles]:
+        type: relation
+        context: update
+        disabled: true
+        nameFrom: vehicle_name
+        cssClass: selected-only
+        containerAttributes:
+          goto-form-group-selection: /backend/acorn/lojistiks/vehicles
+        tab: acorn.lojistiks::lang.models.vehicle.label_plural
+
+    response:
+        label: acorn.lojistiks::lang.plugin.trigger_http_call_response
+        type: richeditor
+        size: huge
+        context: update
+        permission:
+          - acorn.lojistiks.debug
+        tab: acorn.lojistiks::lang.plugin.replication_debug

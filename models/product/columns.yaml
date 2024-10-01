@@ -31,11 +31,11 @@ columns:
         select: name
         searchable: true
         sortable: false
-    model:
+    model_name:
         label: acorn.lojistiks::lang.models.product.model
         type: text
     server:
-        label: acorn.lojistiks::lang.models.server.label
+        label: acorn::lang.models.server.label
         relation: server
         type: number
         select: id

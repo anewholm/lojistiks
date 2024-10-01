@@ -14,20 +14,20 @@ columns:
         type: text
         searchable: true
     area_type:
-        label: acorn.lojistiks::lang.models.areatype.label
+        label: acorn.location::lang.models.areatype.label
         relation: area_type
         type: number
         select: name
     parent_area:
-        label: acorn.lojistiks::lang.models.area.parent
+        label: acorn.location::lang.models.area.parent
         relation: parent
         type: text
         select: name
     gps[name]:
-        label: acorn.lojistiks::lang.models.gps.label
+        label: acorn.location::lang.models.gps.label
         type: text
     server:
-        label: acorn.lojistiks::lang.models.area.server
+        label: acorn.location::lang.models.area.server
         relation: server
         type: number
         select: name

@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('acorn/lojistiks/gps') ?>"><?= e(trans('acorn.lojistiks::lang.models.gps.label_plural')); ?></a></li>
+        <li><a href="<?= Backend::url('acorn/lojistiks/gps') ?>"><?= e(trans('acorn.location::lang.models.gps.label_plural')); ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -19,7 +19,7 @@
                     type="button"
                     data-request="onSave"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.gps.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.location::lang.models.gps.label')])); ?>"
                     class="btn btn-primary">
                     <?= e(trans('backend::lang.form.create')); ?>
                 </button>
@@ -28,7 +28,7 @@
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.gps.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.location::lang.models.gps.label')])); ?>"
                     class="btn btn-default">
                     <?= e(trans('backend::lang.form.create_and_close')); ?>
                 </button>

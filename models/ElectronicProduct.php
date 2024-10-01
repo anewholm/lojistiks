@@ -13,6 +13,8 @@ class ElectronicProduct extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
+    // public $translatable = ['product[name]', 'product[model_name]', 'product[brand][name]'];
+
     /**
      * @var string The database table used by the model.
      */

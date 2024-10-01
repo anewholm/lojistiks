@@ -11,8 +11,8 @@ use Acorn\Finance\Models\Purchase;
 
 // Useful
 use BackendAuth;
-use \Backend\Models\User;
-use \Backend\Models\UserGroup;
+use Acorn\User\Models\User;
+use Acorn\User\Models\UserGroup;
 use Exception;
 use Flash;
 
@@ -217,17 +217,17 @@ class Transfer extends Model
 
         // -------------------------------------------- Groups
         if ($is_update || $is_create) {
-            if (isset($post['_source_backend_user_group']) && $post['_source_backend_user_group']) {
-                if ($group = UserGroup::find($post['_source_backend_user_group'])) {
-                    $locations = Location::whereBelongsTo($group)->get();
+            if (isset($post['_source_user_group']) && $post['_source_user_group']) {
+                if ($group = UserGroup::find($post['_source_user_group'])) {
+                    $locations = Location::whereBelongsTo($group, 'user_group')->get();
                     $field     = &$fields->source_location;
                     $nameFrom  = (isset($field->config['nameFrom']) ? $field->config['nameFrom'] : 'name');
                     $fields->source_location->options = $locations->lists($nameFrom);
                 }
             }
-            if (isset($post['_destination_backend_user_group']) && $post['_destination_backend_user_group']) {
-                if ($group = UserGroup::find($post['_destination_backend_user_group'])) {
-                    $locations = Location::whereBelongsTo($group)->get();
+            if (isset($post['_destination_user_group']) && $post['_destination_user_group']) {
+                if ($group = UserGroup::find($post['_destination_user_group'])) {
+                    $locations = Location::whereBelongsTo($group, 'user_group')->get();
                     $field     = &$fields->destination_location;
                     $nameFrom  = (isset($field->config['nameFrom']) ? $field->config['nameFrom'] : 'name');
                     $fields->destination_location->options = $locations->lists($nameFrom);

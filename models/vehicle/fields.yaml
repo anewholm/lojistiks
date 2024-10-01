@@ -10,7 +10,7 @@ fields:
         size: 196
         path: ~/modules/acorn/partials/_qrcode
     last_transfer[destination_location][fully_qualified_name]:
-        label: acorn.lojistiks::lang.models.location.label
+        label: acorn.location::lang.models.location.label
         type: text
         comment: <a target="_blank" href="../../transfer/create">Transfer</a> the vehicle to another location
         commentHtml: true
@@ -37,7 +37,7 @@ fields:
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
         span: left
     initial_transfer[destination_location]:
-        label: acorn.lojistiks::lang.models.location.initial_location
+        label: acorn.location::lang.models.location.initial_location
         type: dropdown
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
         span: left

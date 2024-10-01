@@ -1,10 +1,10 @@
 do $BODY$
 declare pid uuid;
 begin
-	perform setval('acorn_calendar_event_type_id_seq', max(id), true) from public.acorn_calendar_event_type;
-	insert into public.acorn_calendar_event_type(name, color, style) values('Location created', '#091386', 'color:#fff');
-	insert into public.acorn_calendar_event_type(name, color, style) values('Transfer started', '#091386', 'color:#fff');
+	insert into public.acorn_calendar_event_type(name, colour, style) values('Location created', '#091386', 'color:#fff');
+	insert into public.acorn_calendar_event_type(name, colour, style) values('Transfer started', '#091386', 'color:#fff');
 
+	-- ------------------------------------------- TODO: Remove this location stuff (already in AA/Location)
 	insert into public.acorn_lojistiks_area_types(name) values('Country');
 	insert into public.acorn_lojistiks_area_types(name) values('Canton');
 	insert into public.acorn_lojistiks_area_types(name) values('City');

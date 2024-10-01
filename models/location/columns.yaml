@@ -10,9 +10,9 @@ columns:
     leaf_type:
         label: acorn.lojistiks::lang.models.general.type
         type: text
-        searchable: true
+        searchable: false
     address[fully_qualified_name]:
-        label: acorn.lojistiks::lang.models.address.label
+        label: acorn.location::lang.models.address.label
         type: text
         searchable: true
         sortable: true  

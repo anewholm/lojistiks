@@ -13,7 +13,7 @@ columns:
         label: acorn.lojistiks::lang.models.general.qrcode_name
         searchable: true
         sortable: false
-    product[model]:
+    product[model_name]:
         label: acorn.lojistiks::lang.models.product.model
         searchable: true
         sortable: false

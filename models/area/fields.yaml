@@ -8,13 +8,13 @@ fields:
         type: text
         span: auto
     area_type:
-        label: acorn.lojistiks::lang.models.areatype.label
+        label: acorn.location::lang.models.areatype.label
         type: relation
         span: auto
         searchable: true
         sortable: true
     parent:
-        label: acorn.lojistiks::lang.models.area.parent
+        label: acorn.location::lang.models.area.parent
         type: dropdown
         span: auto
         #hierarchical: true
@@ -22,14 +22,14 @@ fields:
         options: Acorn\Lojistiks\Models\Area::dropdownOptions
         placeholder: acorn.lojistiks::lang.models.general.select
     gps[longitude]:
-        label: acorn.lojistiks::lang.models.gps.longitude
+        label: acorn.location::lang.models.gps.longitude
         relation: gps
         type: number
         span: left
         searchable: true
         sortable: true
     gps[latitude]:
-        label: acorn.lojistiks::lang.models.gps.latitude
+        label: acorn.location::lang.models.gps.latitude
         relation: gps
         type: number
         span: right

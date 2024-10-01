@@ -6,16 +6,24 @@ fields:
     product:
         label: acorn.lojistiks::lang.models.product.label
         type: relation
-        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ComputerProducts@create'" data-control="popup" tabindex="-1">computer product</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ElectronicProducts@create'" data-control="popup" tabindex="-1">electronic product</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">product</a>
+        comment: create new
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ComputerProducts@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">computer product</a>
+          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ElectronicProducts@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">electronic product</a>
+          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">product</a>
+          <span data-field-name="_lc_product"/>
         commentHtml: true
         placeholder: acorn.lojistiks::lang.models.general.select
         span: storm
         cssClass: 'col-xs-8 initial-focus'
         nameFrom: full_name
+        dependsOn:
+          - _lc_product
     quantity:
         label: acorn.lojistiks::lang.models.productinstance.quantity
         type: number
-        comment: Only relevant for <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">products</a> with <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'MeasurementUnits@create'" data-control="popup" tabindex="-1">measurement units</a> that use quantity, like Litres
+        comment: Only relevant for
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">products</a> with
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'MeasurementUnits@create',fieldName:'_lc_mu'" data-control="popup" tabindex="-1">measurement units</a> that use quantity, like Litres
         commentHtml: true
         default: 1
         span: storm
@@ -24,7 +32,8 @@ fields:
           - product[measurement_unit]
     product[measurement_unit]:
         label: acorn.lojistiks::lang.models.measurementunit.label
-        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">products</a> to change this
+        comment: create new
+          <a href="#" class="popup-add" data-field-name="_lc_mu" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_mu'" data-control="popup" tabindex="-1">products</a> to change this
         commentHtml: true
         type: dropdown
         options: Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
@@ -34,6 +43,7 @@ fields:
         disabled: true
         dependsOn:
           - product
+          - _lc_mu
 
     external_identifier:
         label: acorn.lojistiks::lang.models.product.external_identifier
@@ -67,19 +77,28 @@ fields:
         nameFrom: fully_qualified_name
         context: create
         span: auto
-        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Suppliers@create'" data-control="popup" tabindex="-1">supplier</a>
+        comment: create new
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-field-name="_lc_source_location" data-request-data="route:'Suppliers@create',fieldName:'_lc_source_location'" data-control="popup" tabindex="-1">supplier</a>
         commentHtml: true
         placeholder: acorn.lojistiks::lang.models.general.select
+        dependsOn:
+          - _lc_source_location
     _destination_location:
-        label: acorn.lojistiks::lang.models.location.initial_location
+        label: acorn.location::lang.models.location.initial_location
         type: dropdown
         options: Acorn\Lojistiks\Models\Location::dropdownOptions
         nameFrom: fully_qualified_name
         context: create
         span: auto
-        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create'" data-control="popup" tabindex="-1">office</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create'" data-control="popup" tabindex="-1">warehouse</a>
+        comment: create new
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create',fieldName:'_lc_destination_location'" data-control="popup" tabindex="-1">warehouse</a>
+          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create',fieldName:'_lc_destination_location'" data-control="popup" tabindex="-1">office</a>
+          <a tabindex="-1" target="_blank" href="/backend/acorn/lojistiks/locations" class="goto-form-group-selection"></a>
+          <span data-field-name="_lc_destination_location"/>
         commentHtml: true
         placeholder: acorn.lojistiks::lang.models.general.select
+        dependsOn:
+            - _lc_destination_location
 
 tabs:
     fields:
@@ -89,14 +108,14 @@ tabs:
           readOnly: true
           disabled: true
           context: update
-          tab: acorn.lojistiks::lang.models.location.initial_location
+          tab: acorn.location::lang.models.location.initial_location
       initial_transfer_product_instance[transfer][destination_location][fully_qualified_name]:
-          label: acorn.lojistiks::lang.models.location.initial_location
+          label: acorn.location::lang.models.location.initial_location
           type: text
           readOnly: true
           disabled: true
           context: update
-          tab: acorn.lojistiks::lang.models.location.initial_location
+          tab: acorn.location::lang.models.location.initial_location
       #transfers:
       product_instance_transfer:
           type: relation
@@ -106,5 +125,5 @@ tabs:
           disabled: true
           context: update
           #containerAttributes:
-            # TODO: goto-form-group-selection: ../../transfers
+            # TODO: goto-form-group-selection: /backend/acorn/lojistiks/transfers
           tab: acorn.lojistiks::lang.models.transfer.label_plural

@@ -29,17 +29,22 @@ fields:
         nameFrom: fully_qualified_name
         span: storm
         cssClass: 'initial-focus col-xs-4'
-        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create'" data-control="popup" tabindex="-1">warehouse</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create'" data-control="popup" tabindex="-1">office</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Suppliers@create'" data-control="popup" tabindex="-1">supplier</a> <a tabindex="-1" target="_blank" href="../locations" class="goto-form-group-selection"></a>
+        comment: create new
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create',fieldName:'_lc_source_location'" data-control="popup" tabindex="-1">warehouse</a>
+          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create',fieldName:'_lc_source_location'" data-control="popup" tabindex="-1">office</a>
+          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Suppliers@create',fieldName:'_lc_source_location'" data-control="popup" tabindex="-1">supplier</a>
+          <a tabindex="-1" target="_blank" href="/backend/acorn/lojistiks/locations" class="goto-form-group-selection"></a>
+          <span data-field-name="_lc_source_location"/>
         commentHtml: true
         placeholder: acorn.lojistiks::lang.models.general.select
         dependsOn:
             - qrcode_scan
-            - _source_backend_user_group
-    _source_backend_user_group:
-        label: acorn.lojistiks::lang.models.general.from_backend_user_group
+            - _source_user_group
+            - _lc_source_location
+    _source_user_group:
+        label: acorn.lojistiks::lang.models.general.from_user_group
         type: dropdown
-        options: Acorn\Model::dropdownOptions
-        optionsModel: \Backend\Models\UserGroup
+        options: Acorn\User\Models\UserGroup::dropdownOptions
         #where:
           #has_role: lojistiks
         context:
@@ -57,16 +62,20 @@ fields:
         span: storm
         cssClass: 'col-xs-4'
         placeholder: acorn.lojistiks::lang.models.general.select
-        comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create'" data-control="popup" tabindex="-1">warehouse</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create'" data-control="popup" tabindex="-1">office</a> <a tabindex="-1" target="_blank" href="../locations" class="goto-form-group-selection"></a>
+        comment: create new
+          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create',fieldName:'_lc_destination_location'" data-control="popup" tabindex="-1">warehouse</a>
+          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create',fieldName:'_lc_destination_location'" data-control="popup" tabindex="-1">office</a>
+          <a tabindex="-1" target="_blank" href="/backend/acorn/lojistiks/locations" class="goto-form-group-selection"></a>
+          <span data-field-name="_lc_destination_location"/>
         commentHtml: true
         dependsOn:
             - qrcode_scan
-            - _destination_backend_user_group
-    _destination_backend_user_group:
-        label: acorn.lojistiks::lang.models.general.from_backend_user_group
+            - _destination_user_group
+            - _lc_destination_location
+    _destination_user_group:
+        label: acorn.lojistiks::lang.models.general.from_user_group
         type: dropdown
-        options: Acorn\Model::dropdownOptions
-        optionsModel: \Backend\Models\UserGroup
+        options: Acorn\User\Models\UserGroup::dropdownOptions
         #where:
           #has_role: lojistiks
         context:
@@ -88,21 +97,26 @@ tabs:
             cssClass: 'col-xs-12 col-sm-6 new-row'
             select: registration
             placeholder: acorn.lojistiks::lang.models.general.select
-            comment: create new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Vehicles@create'" data-control="popup" title="Add new Vehicle" tabindex="-1">vehicle</a> | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Drivers@create'" data-control="popup" tabindex="-1">driver</a> <a tabindex="-1" target="_blank" href="../../vehicles" class="goto-form-group-selection"></a>
+            comment: create new
+              <a href="#" class="popup-add" data-field-name="_lc_vehicles" data-handler="onPopupRoute" data-request-data="route:'Vehicles@create',fieldName:'_lc_vehicles'" data-control="popup" title="Add new Vehicle" tabindex="-1">vehicle</a>
+              | <a href="#" class="popup-add" data-field-name="_lc_drivers" data-handler="onPopupRoute" data-request-data="route:'Drivers@create',fieldName:'_lc_drivers'" data-control="popup" tabindex="-1">driver</a>
+              <a tabindex="-1" target="_blank" href="/backend/acorn/lojistiks/vehicles" class="goto-form-group-selection"></a>
             commentHtml: true
             dependsOn:
                 - qrcode_scan
+                - _lc_vehicles
             tab: acorn.lojistiks::lang.models.vehicle.transport
         driver:
             label: acorn.lojistiks::lang.models.driver.label
             type: relation
             span: storm
             cssClass: 'col-xs-12 col-sm-6'
-            comment: <a tabindex="-1" target="_blank" href="../../drivers" class="goto-form-group-selection"></a>
+            comment: <a tabindex="-1" target="_blank" href="/backend/acorn/lojistiks/drivers" class="goto-form-group-selection"></a>
             commentHtml: true
             placeholder: acorn.lojistiks::lang.models.general.select
             dependsOn:
                 - qrcode_scan
+                - _lc_drivers
             tab: acorn.lojistiks::lang.models.vehicle.transport
             containerAttributes:
               tab-preshow: .nav-tabs > li > a[href=#primarytab-acornlojistikslangmodelstransferdates]
@@ -150,7 +164,8 @@ tabs:
             context:
               - create
               - update
-            comment: register new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ProductInstances@create'" data-control="popup" tabindex="-1">inventory</a>
+            #comment: register new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ProductInstances@create'" data-control="popup" tabindex="-1">inventory</a>
+            comment: register new <a href="/backend/acorn/lojistiks/productinstances/create" tabindex="-1">inventory</a>
             commentHtml: true
             span: storm
             cssClass: 'col-xs-11 col-sm-4 uses-inventory'
@@ -185,7 +200,7 @@ tabs:
             context:
               - create
               - update
-            comment: define new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create'" data-control="popup" tabindex="-1">product types</a>
+            comment: define new <a href="#" data-field-name="_lc_product_types" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_product_types'" data-control="popup" tabindex="-1">product types</a>
             commentHtml: true
             span: storm
             cssClass: 'col-xs-6 col-sm-4 uses-quantity'
@@ -193,6 +208,7 @@ tabs:
                 - source_location
                 - _add_product_quantity
                 - _add_product_instance
+                - _lc_product_types
             placeholder: acorn.lojistiks::lang.models.general.select
             tab: acorn.lojistiks::lang.models.productinstance.label_plural
         _quantity_to_add:
@@ -237,13 +253,14 @@ tabs:
             context:
               - create
               - update
-            comment: raise new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Acorn\\Finance\\Controllers\\Invoices@create',fieldName:'_create_invoice'" data-control="popup" tabindex="-1">invoice</a>
+            comment: raise new <a href="#" class="popup-add" data-field-name="_lc_invoices" data-handler="onPopupRoute" data-request-data="route:'Acorn\\Finance\\Controllers\\Invoices@create',fieldName:'_lc_invoices'" data-control="popup" tabindex="-1">invoice</a>
             commentHtml: true
             span: storm
             cssClass: 'col-xs-11 col-sm-4'
             dependsOn:
                 - _add_invoice
                 - _create_invoice
+                - _lc_invoices
             placeholder: acorn.lojistiks::lang.models.general.select
             tab: acorn.finance::lang.models.invoice.label_plural
         _add_invoice:
@@ -284,13 +301,14 @@ tabs:
             context:
               - create
               - update
-            comment: raise new <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Acorn\\Finance\\Controllers\\Purchases@create'" data-control="popup" tabindex="-1">purchse order</a>
+            comment: raise new <a href="#" class="popup-add" data-handler="onPopupRoute" data-field-name="_lc_purchases" data-request-data="route:'Acorn\\Finance\\Controllers\\Purchases@create',fieldName:'_lc_purchases'" data-control="popup" tabindex="-1">purchse order</a>
             commentHtml: true
             span: storm
             cssClass: 'col-xs-11 col-sm-4'
             dependsOn:
                 - _add_purchase
                 - _create_purchase
+                - _lc_purchases
             placeholder: acorn.lojistiks::lang.models.general.select
             tab: acorn.finance::lang.models.purchase.label_plural
         _add_purchase:

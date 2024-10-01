@@ -4,8 +4,11 @@ namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
 use Acorn\Models\Server;
-use Illuminate\Database\Eloquent\Collection;
 use System\Models\File;
+
+use Acorn\Oil\Models\Refinery;
+use Acorn\Oil\Models\GasStation;
+use Acorn\Oil\Models\OilDepot;
 
 // Useful
 use BackendAuth;
@@ -20,6 +23,8 @@ use Flash;
 class Location extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
+
+    // public $translatable = ['name', 'address[name]'];
 
     /**
      * @var string The database table used by the model.
@@ -73,9 +78,9 @@ class Location extends Model
      * @var array Relations
      */
     public $hasOne = [
-        'office'     => Office::class,
-        'supplier'   => Supplier::class,
-        'warehouse'  => Warehouse::class,
+        'office'       => [Office::class,     'leaf' => TRUE],
+        'supplier'     => [Supplier::class,   'leaf' => TRUE],
+        'warehouse'    => [Warehouse::class,  'leaf' => TRUE],
     ];
     public $hasMany = [
         'employees'      => Employee::class,
@@ -92,7 +97,7 @@ class Location extends Model
     ];
     public $belongsTo = [
         'address' => Address::class,
-        'userGroup' => [UserGroup::class, 'key' => 'backend_user_group_id'],
+        'user_group' => UserGroup::class,
         'server'  => Server::class,
     ];
     public $belongsToMany = [];

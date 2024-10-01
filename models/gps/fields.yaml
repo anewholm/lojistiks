@@ -4,12 +4,12 @@
 
 fields:
     logitude:
-       label: acorn.lojistiks::lang.models.address.logitude
+       label: acorn.location::lang.models.address.logitude
        type: text
        span: auto
        searchable: false
     latitude: 
-       label: acorn.lojistiks::lang.models.address.latitude
+       label: acorn.location::lang.models.address.latitude
        type: text
        span: auto
        searchable: false

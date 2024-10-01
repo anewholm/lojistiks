@@ -141,7 +141,8 @@ class ProductInstance extends Model
         if ($source_location && $destination_location) {
             $tr = Transfer::create([
                 'source_location'      => $source_location,
-                'destination_location' => $destination_location
+                'destination_location' => $destination_location,
+                'pre_marked_arrived'   => TRUE
             ]);
             $tr->setProductInstance($this);
             $tr->save();

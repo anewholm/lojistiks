@@ -1,5 +1,0 @@
-scopes:
-    enabled:
-        label: backend::lang.form.select
-        type: switch
-        scope: isEnabled

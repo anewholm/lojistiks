@@ -21,7 +21,7 @@ class Plugin extends PluginBase
     /**
      * @var array Plugin dependencies
      */
-    public $require = ['Acorn.Calendar', 'Acorn.Location', 'Acorn.Messaging', 'Acorn.Finance'];
+    public $require = ['Acorn.Calendar', 'Acorn.Location', 'Acorn.Messaging', 'Acorn.Finance', 'Acorn.User'];
 
     public function registerSettings()
     {

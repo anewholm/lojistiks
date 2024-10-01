@@ -1,5 +1,6 @@
 .headless-menu a[href*=acorn\/lojistiks\/brand],
-.headless-menu a[href*=acorn\/lojistiks\/person] {
+.headless-menu a[href*=acorn\/lojistiks\/areatypes],
+.headless-menu a[href*=acorn\/lojistiks\/people] {
   border-top: 1px dotted #aaa;
 }
 .counter[data-menu-id=lojistics-setup] {

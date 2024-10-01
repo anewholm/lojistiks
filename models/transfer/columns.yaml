@@ -32,11 +32,10 @@ columns:
     vehicle[full_name]:
         label: acorn.lojistiks::lang.models.vehicle.label
         searchable: true
-        sortable: true
-    created_at:
+    created_at_event:
         label: acorn.lojistiks::lang.models.general.created_at
         type: datetime
-        searchable: true
+        select: (select ce.created_at from acorn_calendar_event ce where ce.id = acorn_lojistiks_transfers.created_at)
         sortable: true
         invisible: true
     _qrcode:
@@ -46,15 +45,15 @@ columns:
         invisible: true
 
     server[name]:
-        label: acorn.lojistiks::lang.models.server.label
+        label: acorn::lang.models.server.label
         invisible: true
         sortable: false
     server[replicated_source]:
-        label: acorn.lojistiks::lang.models.server.replicated_source
+        label: acorn::lang.models.server.replicated_source
         invisible: true
         sortable: false
     response:
-        label: acorn.lojistiks::lang.models.server.response
+        label: acorn::lang.models.server.response
         type: text
         invisible: true
         sortable: false

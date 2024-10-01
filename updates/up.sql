@@ -161,21 +161,28 @@ CREATE FUNCTION public.fn_acorn_lojistiks_transfers_insert_calendar() RETURNS tr
     LANGUAGE plpgsql
     AS $$
 declare
-	event_id integer;
-	event_name text;
-	external_url varchar(2048);
+    pid uuid;
+    event_name text;
 begin
 	-- Use the Calendar system
-	select into event_name        concat('Transfer (', coalesce(name, 'Unknown'), ')')
+	select into event_name concat('Transfer (', coalesce(name, 'Unknown'), ')')
 		from public.acorn_lojistiks_locations
 		where id = new.destination_location_id;
-	external_url := concat('/backend/acorn/lojistiks/transfers/update/', new.id);
 	insert into public.acorn_calendar_event(calendar_id, owner_user_id, owner_user_group_id, external_url) 
-		values(1,1,1, external_url);
-	event_id = currval('acorn_calendar_event_id_seq'::regclass);
-	insert into public.acorn_calendar_event_part(event_id, "name", description, "start", "end", type_id) 
-		values(event_id, event_name, '', now(), now(), 4);
-	new.created_at = event_id;
+		select id,
+        -- TODO: This should be passed through from the transfer BackendAuth::user()
+        (select id from acorn_user_users limit 1),
+        (select id from acorn_user_user_groups limit 1),
+        concat('/backend/acorn/lojistiks/transfers/update/', new.id)
+		from acorn_calendar
+		where name = 'Default'
+		returning id into pid;
+	insert into public.acorn_calendar_event_part(event_id, "name", description, "start", "end", type_id, status_id)
+		select pid, event_name, '', now(), now(), id,
+        (select id from acorn_calendar_event_status where name = 'Normal')
+		from acorn_calendar_event_type
+		where name = 'Transfer started';
+	new.created_at = pid;
 
 	return new;
 end;
@@ -258,6 +265,9 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicle_types DROP CONSTRAINT 
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicles DROP CONSTRAINT IF EXISTS vehicle_type_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_drivers DROP CONSTRAINT IF EXISTS vehicle_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS vehicle_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF EXISTS user_role_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS user_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS user_group_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS transfers_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instance_transfer DROP CONSTRAINT IF EXISTS transfer_product_instances_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS transfer_product_instance_id;
@@ -335,9 +345,6 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_containers DROP CONSTRAINT IF 
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS container_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_brands DROP CONSTRAINT IF EXISTS brands_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products DROP CONSTRAINT IF EXISTS brand_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF EXISTS backend_user_role_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS backend_user_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS backend_user_group_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXISTS areas_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_area_types DROP CONSTRAINT IF EXISTS area_types_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXISTS area_type_id;
@@ -521,10 +528,8 @@ CREATE TABLE product.acorn_lojistiks_computer_products (
     "HDD_size" bigint,
     processor_version double precision,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     processor_type integer,
     response text
 );
@@ -538,11 +543,9 @@ CREATE TABLE product.acorn_lojistiks_electronic_products (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     product_id uuid NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    created_at uuid,
     voltage double precision,
-    created_by_user_id integer,
+    created_by_user_id uuid,
     response text
 );
 
@@ -559,10 +562,8 @@ CREATE TABLE public.acorn_lojistiks_addresses (
     area_id uuid NOT NULL,
     gps_id uuid,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_by_user_id integer,
-    created_at integer,
+    created_by_user_id uuid,
+    created_at uuid,
     response text
 );
 
@@ -575,10 +576,8 @@ CREATE TABLE public.acorn_lojistiks_area_types (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     name character varying(1024) NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -594,10 +593,8 @@ CREATE TABLE public.acorn_lojistiks_areas (
     parent_area_id uuid,
     gps_id uuid,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -612,10 +609,8 @@ CREATE TABLE public.acorn_lojistiks_brands (
     image character varying(2048),
     response text,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer
+    created_at uuid,
+    created_by_user_id uuid
 );
 
 
@@ -626,11 +621,9 @@ CREATE TABLE public.acorn_lojistiks_brands (
 CREATE TABLE public.acorn_lojistiks_containers (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    created_at uuid,
     name character varying(1024),
-    created_by_user_id integer,
+    created_by_user_id uuid,
     response text
 );
 
@@ -643,11 +636,9 @@ CREATE TABLE public.acorn_lojistiks_drivers (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     person_id uuid NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    created_at uuid,
     vehicle_id uuid,
-    created_by_user_id integer,
+    created_by_user_id uuid,
     response text
 );
 
@@ -660,12 +651,10 @@ CREATE TABLE public.acorn_lojistiks_employees (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     location_id uuid NOT NULL,
     person_id uuid NOT NULL,
-    user_role_id integer NOT NULL,
+    user_role_id uuid NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -679,10 +668,8 @@ CREATE TABLE public.acorn_lojistiks_gps (
     longitude double precision,
     latitude double precision,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -697,12 +684,10 @@ CREATE TABLE public.acorn_lojistiks_locations (
     name character varying(2048) NOT NULL,
     image character varying(2048),
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text,
-    backend_user_group_id integer
+    user_group_id uuid
 );
 
 
@@ -716,10 +701,8 @@ CREATE TABLE public.acorn_lojistiks_measurement_units (
     short_name character varying(1024),
     uses_quantity boolean DEFAULT true NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -733,10 +716,8 @@ CREATE TABLE public.acorn_lojistiks_product_instance_transfer (
     transfer_id uuid NOT NULL,
     product_instance_id uuid NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -754,10 +735,8 @@ CREATE TABLE public.acorn_lojistiks_product_instances (
     asset_class "char" DEFAULT 'C'::"char" NOT NULL,
     image character varying(2048),
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -774,11 +753,9 @@ CREATE TABLE public.acorn_lojistiks_transfers (
     sent_at timestamp with time zone DEFAULT now(),
     arrived_at timestamp with time zone,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
     vehicle_id uuid,
-    created_by_user_id integer,
-    created_at integer,
+    created_by_user_id uuid,
+    created_at uuid,
     response text,
     pre_marked_arrived boolean DEFAULT false NOT NULL
 );
@@ -822,10 +799,8 @@ CREATE TABLE public.acorn_lojistiks_offices (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     location_id uuid NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -836,13 +811,11 @@ CREATE TABLE public.acorn_lojistiks_offices (
 
 CREATE TABLE public.acorn_lojistiks_people (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    backend_user_id integer,
+    user_id uuid,
     image character varying(2048),
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text,
     last_transfer_source_location_id uuid,
     last_transfer_destination_location_id uuid,
@@ -861,10 +834,8 @@ CREATE TABLE public.acorn_lojistiks_product_attributes (
     name character varying(1024) NOT NULL,
     value character varying(1024) NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -879,10 +850,8 @@ CREATE TABLE public.acorn_lojistiks_product_categories (
     product_category_type_id uuid NOT NULL,
     parent_product_category_id uuid NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -895,10 +864,8 @@ CREATE TABLE public.acorn_lojistiks_product_category_types (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     name character varying(1024) NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -913,10 +880,8 @@ CREATE TABLE public.acorn_lojistiks_product_products (
     sub_product_id uuid NOT NULL,
     quantity integer NOT NULL,
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -931,12 +896,10 @@ CREATE TABLE public.acorn_lojistiks_products (
     measurement_unit_id uuid NOT NULL,
     brand_id uuid NOT NULL,
     image character varying(2048),
-    model character varying(2048),
+    model_name character varying(2048),
     server_id uuid NOT NULL,
-    version integer DEFAULT 1 NOT NULL,
-    is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -974,8 +937,8 @@ CREATE TABLE public.acorn_lojistiks_products_product_categories (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -1024,8 +987,8 @@ CREATE TABLE public.acorn_lojistiks_suppliers (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -1041,8 +1004,8 @@ CREATE TABLE public.acorn_lojistiks_transfer_container (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -1058,8 +1021,8 @@ CREATE TABLE public.acorn_lojistiks_transfer_container_product_instances (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -1095,7 +1058,7 @@ CREATE VIEW public.acorn_lojistiks_vehicle_lasts AS
     tr.vehicle_id,
     lasts.transfer_id,
         CASE
-            WHEN (tr.arrived_at IS NULL) THEN NULL::uuid
+            WHEN ((tr.arrived_at IS NULL) AND (NOT tr.pre_marked_arrived)) THEN NULL::uuid
             ELSE tr.destination_location_id
         END AS location_id
    FROM (( SELECT acorn_lojistiks_transfers.vehicle_id,
@@ -1120,8 +1083,8 @@ CREATE TABLE public.acorn_lojistiks_vehicle_types (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -1139,8 +1102,8 @@ CREATE TABLE public.acorn_lojistiks_vehicles (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -1155,8 +1118,8 @@ CREATE TABLE public.acorn_lojistiks_warehouses (
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at timestamp with time zone DEFAULT now() NOT NULL,
-    created_by_user_id integer,
+    created_at uuid,
+    created_by_user_id uuid,
     response text
 );
 
@@ -2172,7 +2135,7 @@ CREATE TRIGGER tr_acorn_lojistiks_warehouses_server_id BEFORE INSERT ON public.a
 --
 
 ALTER TABLE ONLY product.acorn_lojistiks_computer_products
-    ADD CONSTRAINT computer_products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id);
+    ADD CONSTRAINT computer_products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id);
 
 
 --
@@ -2188,7 +2151,7 @@ ALTER TABLE ONLY product.acorn_lojistiks_computer_products
 --
 
 ALTER TABLE ONLY product.acorn_lojistiks_electronic_products
-    ADD CONSTRAINT electronic_products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id);
+    ADD CONSTRAINT electronic_products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id);
 
 
 --
@@ -2212,7 +2175,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_locations
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_addresses
-    ADD CONSTRAINT addresses_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT addresses_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2236,7 +2199,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_areas
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_area_types
-    ADD CONSTRAINT area_types_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT area_types_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2244,31 +2207,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_area_types
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_areas
-    ADD CONSTRAINT areas_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
-
-
---
--- Name: acorn_lojistiks_locations backend_user_group_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acorn_lojistiks_locations
-    ADD CONSTRAINT backend_user_group_id FOREIGN KEY (backend_user_group_id) REFERENCES public.backend_user_groups(id) NOT VALID;
-
-
---
--- Name: acorn_lojistiks_people backend_user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acorn_lojistiks_people
-    ADD CONSTRAINT backend_user_id FOREIGN KEY (backend_user_id) REFERENCES public.backend_users(id) NOT VALID;
-
-
---
--- Name: acorn_lojistiks_employees backend_user_role_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acorn_lojistiks_employees
-    ADD CONSTRAINT backend_user_role_id FOREIGN KEY (user_role_id) REFERENCES public.backend_user_roles(id) NOT VALID;
+    ADD CONSTRAINT areas_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2284,7 +2223,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_brands
-    ADD CONSTRAINT brands_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT brands_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2300,7 +2239,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_containers
-    ADD CONSTRAINT containers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT containers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2340,7 +2279,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_drivers
-    ADD CONSTRAINT drivers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT drivers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2348,7 +2287,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_drivers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_employees
-    ADD CONSTRAINT employees_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT employees_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2356,7 +2295,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_employees
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_gps
-    ADD CONSTRAINT gps_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT gps_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2444,7 +2383,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_employees
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_locations
-    ADD CONSTRAINT locations_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT locations_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2460,7 +2399,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_measurement_units
-    ADD CONSTRAINT measurement_units_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT measurement_units_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2468,7 +2407,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_measurement_units
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_offices
-    ADD CONSTRAINT offices_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT offices_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2492,7 +2431,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_categories
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_people
-    ADD CONSTRAINT people_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT people_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2516,7 +2455,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_employees
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_attributes
-    ADD CONSTRAINT product_attributes_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT product_attributes_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2524,7 +2463,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_attributes
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_categories
-    ADD CONSTRAINT product_categories_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT product_categories_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2548,7 +2487,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_categories
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_category_types
-    ADD CONSTRAINT product_category_types_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT product_category_types_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2596,7 +2535,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_instances
-    ADD CONSTRAINT product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2604,7 +2543,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_instances
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_products
-    ADD CONSTRAINT product_products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT product_products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2612,7 +2551,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_products
-    ADD CONSTRAINT products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT products_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2620,7 +2559,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_products_product_categories
-    ADD CONSTRAINT products_product_categories_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT products_product_categories_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2804,7 +2743,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_suppliers
-    ADD CONSTRAINT suppliers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT suppliers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2812,7 +2751,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_suppliers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
-    ADD CONSTRAINT transfer_container_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT transfer_container_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2828,7 +2767,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
-    ADD CONSTRAINT transfer_container_product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT transfer_container_product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2876,7 +2815,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
-    ADD CONSTRAINT transfer_product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT transfer_product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2884,7 +2823,31 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfers
-    ADD CONSTRAINT transfers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT transfers_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_locations user_group_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_locations
+    ADD CONSTRAINT user_group_id FOREIGN KEY (user_group_id) REFERENCES public.acorn_user_user_groups(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_people user_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_people
+    ADD CONSTRAINT user_id FOREIGN KEY (user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_employees user_role_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_employees
+    ADD CONSTRAINT user_role_id FOREIGN KEY (user_role_id) REFERENCES public.acorn_user_roles(id) NOT VALID;
 
 
 --
@@ -2916,7 +2879,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_vehicles
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_vehicle_types
-    ADD CONSTRAINT vehicle_types_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT vehicle_types_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2924,7 +2887,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_vehicle_types
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_vehicles
-    ADD CONSTRAINT vehicles_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT vehicles_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
@@ -2932,7 +2895,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_vehicles
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_warehouses
-    ADD CONSTRAINT warehouses_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.backend_users(id) NOT VALID;
+    ADD CONSTRAINT warehouses_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --

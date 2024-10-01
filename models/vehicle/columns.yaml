@@ -15,7 +15,7 @@ columns:
         searchable: true
         sortable: true
     last_transfer[destination_location][fully_qualified_name]:
-        label: acorn.lojistiks::lang.models.location.label
+        label: acorn.location::lang.models.location.label
         type: text
         searchable: true
         sortable: true

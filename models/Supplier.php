@@ -12,7 +12,9 @@ class Supplier extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
-    /**
+    // public $translatable = ['location[name]', 'location[address][name]'];
+
+   /**
      * @var string The database table used by the model.
      */
     public $table = 'acorn_lojistiks_suppliers';

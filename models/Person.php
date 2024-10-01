@@ -4,7 +4,7 @@ namespace Acorn\Lojistiks\Models;
 
 use Acorn\Model;
 use Acorn\Models\Server;
-use Backend\Models\User;
+use Acorn\User\Models\User;
 use System\Models\File;
 use BackendAuth;
 use Str;
@@ -70,8 +70,9 @@ class Person extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'backend_user' => [User::class, 'key' => 'backend_user_id'],
+        'user' => User::class,
         'server' => Server::class,
+        // Lasts: see below
         'last_transfer_source_location' => Location::class,
         'last_transfer_destination_location' => Location::class,
         'last_product_instance_source_location' => Location::class,
@@ -88,7 +89,8 @@ class Person extends Model
 
     public function getFullNameAttribute()
     {
-        return $this->backend_user->full_name;
+        $this->load('user');
+        return $this->user->name;
     }
 
     public function fullName()
@@ -103,8 +105,11 @@ class Person extends Model
 
     public static function auth()
     {
+        // Any front-end user associated with this backend account
+        // This is usually through a user_id to the User plugin
         $user = BackendAuth::user();
-        return ($user ? self::where('backend_user_id', $user->id)->first() : NULL);
+        # TODO: Temporary HACK: to assign lasts. This needs to be moved in to acorn_user_users with a user_id link from backend_users
+        return ($user ? Person::all()->first() : NULL);
     }
 
     public static function saveLastsToAuthPerson(Array $lastModels, Model $sectionModel = NULL): void
@@ -131,6 +136,7 @@ class Person extends Model
 
     public function lastsFor(Model $sectionModel): array
     {
+        // TODO: Move this up in to User plugin
         $lasts = array();
         $sectionModelName   = ($sectionModel ? Str::snake($sectionModel->unqualifiedClassName()) : '');
         $attributePrefix    = "last_$sectionModelName" . ($sectionModelName ? '_' : '');

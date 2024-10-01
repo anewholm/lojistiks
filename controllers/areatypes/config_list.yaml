@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/areatype/columns.yaml
 modelClass: Acorn\Lojistiks\Models\AreaType
 
 # List Title
-title: acorn.lojistiks::lang.models.areatype.label_plural
+title: acorn.location::lang.models.areatype.label_plural
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/areatypes/update/:id

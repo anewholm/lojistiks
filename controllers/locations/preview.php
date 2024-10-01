@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('acorn/lojistiks/locations') ?>"><?= e(trans('acorn.lojistiks::lang.models.location.label_plural')); ?></a></li>
+        <li><a href="<?= Backend::url('acorn/lojistiks/locations') ?>"><?= e(trans('acorn.location::lang.models.location.label_plural')); ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>

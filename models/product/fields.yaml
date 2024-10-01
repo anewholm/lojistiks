@@ -6,7 +6,31 @@ fields:
     name:
         label: acorn.lojistiks::lang.models.general.name
         type: text
-        span: auto
+        span: storm
+        cssClass: col-xs-6
+    type:
+        label: acorn.lojistiks::lang.models.general.type
+        type: text
+        disabled: true
+        span: storm
+        cssClass: col-xs-6
+    measurement_unit:
+        label: acorn.lojistiks::lang.models.measurementunit.label
+        type: relation
+        placeholder: acorn.lojistiks::lang.models.general.select
+        span: storm
+        cssClass: col-xs-6
+    brand:
+        label: acorn.lojistiks::lang.models.brand.label
+        type: relation
+        placeholder: acorn.lojistiks::lang.models.general.select
+        span: storm
+        cssClass: col-xs-6
+    model_name:
+        label: acorn.lojistiks::lang.models.product.model
+        type: text
+        span: storm
+        cssClass: col-xs-6
     image:
         label: acorn.lojistiks::lang.models.general.image
         type: fileupload
@@ -17,25 +41,6 @@ fields:
         thumbOptions:
             mode: crop
             extension: auto
-        span: auto
-    type:
-        label: acorn.lojistiks::lang.models.general.type
-        type: text
-        disabled: true
-        span: auto
-    measurement_unit:
-        label: acorn.lojistiks::lang.models.measurementunit.label
-        type: relation
-        placeholder: acorn.lojistiks::lang.models.general.select
-        span: auto
-    brand:
-        label: acorn.lojistiks::lang.models.brand.label
-        type: relation
-        placeholder: acorn.lojistiks::lang.models.general.select
-        span: auto
-    model:
-        label: acorn.lojistiks::lang.models.product.model
-        type: text
         span: auto
     _qrcode:
         type: partial

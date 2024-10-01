@@ -3,7 +3,7 @@
 # ===================================
 
 # Record name
-name: acorn.lojistiks::lang.models.location.label
+name: acorn.location::lang.models.location.label
 
 # Model Form Field configuration
 form: $/acorn/lojistiks/models/location/fields.yaml

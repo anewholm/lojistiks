@@ -14,6 +14,8 @@ class Product extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
 
+    public $translatable = ['name', 'model_name'];
+
     /**
      * @var string The database table used by the model.
      */
@@ -68,7 +70,7 @@ class Product extends Model
      * @var array Relations
      */
     public $hasOne = [
-        'electronic_product' => ElectronicProduct::class,
+        'electronic_product' => [ElectronicProduct::class, 'leaf' => TRUE],
     ];
     public $hasMany = [
         'product_instances' => ProductInstance::class,
@@ -77,6 +79,7 @@ class Product extends Model
         'computer_product' => [
             ComputerProduct::class,
             'through' => ElectronicProduct::class,
+            'leaf' => TRUE,
         ],
     ];
     public $hasManyThrough = [];
@@ -120,10 +123,15 @@ class Product extends Model
         $this->load('brand');
         $isRecordContext = is_string($this->brand);
         $brandName       = ($isRecordContext ? $this->brand : $this->brand?->name());
-        $leafProduct     = $this->getLeafTypeModel();
-        $leafProductName = ($leafProduct ? $leafProduct->name() : $this->unqualifiedClassName());
-        $type            = ($this->type ? "($this->type)" : '');
-        return "$leafProductName $type, $brandName $this->model";
+        $leafProduct     = $this->getLeafTypeModel(); // ComputerProduct
+        $name            = ($leafProduct && method_exists($leafProduct, 'name') ? $leafProduct->name() : $this->name);
+
+        // Rendering
+        $nameString      = ($name ? "$name, " : '');
+        $type            = ($this->leaf_type  ? " ($this->leaf_type)" : '');
+        $modelName       = ($this->model_name ? " $this->model_name"  : '');
+
+        return "$nameString$brandName$modelName$type";
     }
 
     public function fullName()
