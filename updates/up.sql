@@ -3,8 +3,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -51,8 +51,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -96,8 +96,8 @@ CREATE FUNCTION public.fn_acorn_lojistiks_is_date(s character varying, d timesta
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -138,8 +138,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -198,8 +198,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -245,8 +245,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.4 (Ubuntu 16.4-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -270,24 +270,31 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXIS
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS user_group_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS transfers_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instance_transfer DROP CONSTRAINT IF EXISTS transfer_product_instances_created_by_user;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS transfer_product_instance_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_purchase DROP CONSTRAINT IF EXISTS transfer_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_invoice DROP CONSTRAINT IF EXISTS transfer_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS transfer_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_containers DROP CONSTRAINT IF EXISTS transfer_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instance_transfer DROP CONSTRAINT IF EXISTS transfer_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS transfer_container_product_instances_created_by_user;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS transfer_container_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS transfer_container_created_by_user;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instance DROP CONSTRAINT IF EXISTS transfer_container_product_instances_created_by_user;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instance DROP CONSTRAINT IF EXISTS transfer_container_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_containers DROP CONSTRAINT IF EXISTS transfer_container_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_suppliers DROP CONSTRAINT IF EXISTS suppliers_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_products DROP CONSTRAINT IF EXISTS sub_product_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS source_location_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_products DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_suppliers DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_warehouses DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instances DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_attributes DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_offices DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_brands DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products_product_categories DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_categories DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_category_types DROP CONSTRAINT IF EXISTS server_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS server_id;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instance DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_containers DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_drivers DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicles DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_containers DROP CONSTRAINT IF EXISTS server_id;
@@ -305,6 +312,7 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products_product_categories DR
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products DROP CONSTRAINT IF EXISTS products_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_products DROP CONSTRAINT IF EXISTS product_products_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instances DROP CONSTRAINT IF EXISTS product_instances_created_by_user;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instance DROP CONSTRAINT IF EXISTS product_instance_transfer_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instance_transfer DROP CONSTRAINT IF EXISTS product_instance_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_attributes DROP CONSTRAINT IF EXISTS product_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_products DROP CONSTRAINT IF EXISTS product_id;
@@ -328,10 +336,13 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF E
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_suppliers DROP CONSTRAINT IF EXISTS location_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_warehouses DROP CONSTRAINT IF EXISTS location_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_offices DROP CONSTRAINT IF EXISTS location_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS last_transfer_source_location_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS last_transfer_destination_location_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS last_product_instance_source_location_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_people DROP CONSTRAINT IF EXISTS last_product_instance_destination_location_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_invoice DROP CONSTRAINT IF EXISTS invoice_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instances DROP CONSTRAINT IF EXISTS initial_transfer_product_instance_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicles DROP CONSTRAINT IF EXISTS initial_transfer_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_addresses DROP CONSTRAINT IF EXISTS gps_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXISTS gps_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_gps DROP CONSTRAINT IF EXISTS gps_created_by_user;
@@ -339,10 +350,12 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_employees DROP CONSTRAINT IF E
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_drivers DROP CONSTRAINT IF EXISTS drivers_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS driver_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS destination_location_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_containers DROP CONSTRAINT IF EXISTS created_at_event_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instance DROP CONSTRAINT IF EXISTS created_at_event_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS created_at;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_addresses DROP CONSTRAINT IF EXISTS created_at;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_containers DROP CONSTRAINT IF EXISTS containers_created_by_user;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS container_id;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_containers DROP CONSTRAINT IF EXISTS container_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_brands DROP CONSTRAINT IF EXISTS brands_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products DROP CONSTRAINT IF EXISTS brand_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXISTS areas_created_by_user;
@@ -351,6 +364,8 @@ ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_areas DROP CONSTRAINT IF EXIST
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_addresses DROP CONSTRAINT IF EXISTS area_id;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_addresses DROP CONSTRAINT IF EXISTS addresses_created_by_user;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_locations DROP CONSTRAINT IF EXISTS address_id;
+ALTER TABLE IF EXISTS ONLY product.acorn_lojistiks_electronic_products DROP CONSTRAINT IF EXISTS server_id;
+ALTER TABLE IF EXISTS ONLY product.acorn_lojistiks_computer_products DROP CONSTRAINT IF EXISTS server_id;
 ALTER TABLE IF EXISTS ONLY product.acorn_lojistiks_electronic_products DROP CONSTRAINT IF EXISTS product_id;
 ALTER TABLE IF EXISTS ONLY product.acorn_lojistiks_electronic_products DROP CONSTRAINT IF EXISTS electronic_products_created_by_user;
 ALTER TABLE IF EXISTS ONLY product.acorn_lojistiks_computer_products DROP CONSTRAINT IF EXISTS electronic_product_id;
@@ -366,9 +381,9 @@ DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfers_server_id ON public.acorn_lo
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfers_new_replicated_row ON public.acorn_lojistiks_transfers;
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfers_insert_calendar ON public.acorn_lojistiks_transfers;
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfers_delete_calendar ON public.acorn_lojistiks_transfers;
-DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfer_container_server_id ON public.acorn_lojistiks_transfer_container;
-DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfer_container_product_instanc ON public.acorn_lojistiks_transfer_container_product_instances;
-DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfer_container_new_replicated_ ON public.acorn_lojistiks_transfer_container;
+DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfer_container_server_id ON public.acorn_lojistiks_transfer_containers;
+DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfer_container_product_instanc ON public.acorn_lojistiks_transfer_container_product_instance;
+DROP TRIGGER IF EXISTS tr_acorn_lojistiks_transfer_container_new_replicated_ ON public.acorn_lojistiks_transfer_containers;
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_suppliers_server_id ON public.acorn_lojistiks_suppliers;
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_suppliers_new_replicated_row ON public.acorn_lojistiks_suppliers;
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_products_server_id ON public.acorn_lojistiks_products;
@@ -417,9 +432,14 @@ DROP TRIGGER IF EXISTS tr_acorn_lojistiks_computer_products_server_id ON product
 DROP TRIGGER IF EXISTS tr_acorn_lojistiks_computer_products_new_replicated_r ON product.acorn_lojistiks_computer_products;
 DROP INDEX IF EXISTS public.fki_transfer_id;
 DROP INDEX IF EXISTS public.fki_purchase_id;
+DROP INDEX IF EXISTS public.fki_parent_product_category_id;
+DROP INDEX IF EXISTS public.fki_last_transfer_source_location_id;
+DROP INDEX IF EXISTS public.fki_last_transfer_destination_location_id;
 DROP INDEX IF EXISTS public.fki_last_product_instance_source_location_id;
 DROP INDEX IF EXISTS public.fki_last_product_instance_destination_location_id;
 DROP INDEX IF EXISTS public.fki_invoice_id;
+DROP INDEX IF EXISTS public.fki_initial_transfer_id;
+DROP INDEX IF EXISTS public.fki_created_at_event_id;
 DROP INDEX IF EXISTS public.dr_acorn_lojistiks_warehouses_replica_identity;
 DROP INDEX IF EXISTS public.dr_acorn_lojistiks_vehicles_replica_identity;
 DROP INDEX IF EXISTS public.dr_acorn_lojistiks_vehicle_types_replica_identity;
@@ -447,14 +467,15 @@ DROP INDEX IF EXISTS public.dr_acorn_lojistiks_brands_replica_identity;
 DROP INDEX IF EXISTS public.dr_acorn_lojistiks_areas_replica_identity;
 DROP INDEX IF EXISTS public.dr_acorn_lojistiks_area_types_replica_identity;
 DROP INDEX IF EXISTS public.dr_acorn_lojistiks_addresses_replica_identity;
+DROP INDEX IF EXISTS product.fki_server_id;
 DROP INDEX IF EXISTS product.dr_acorn_lojistiks_electronic_products_replica_identi;
 DROP INDEX IF EXISTS product.dr_acorn_lojistiks_computer_products_replica_identity;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicles DROP CONSTRAINT IF EXISTS vehicles_pkey;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_vehicle_types DROP CONSTRAINT IF EXISTS vehicle_types_pkey;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfers DROP CONSTRAINT IF EXISTS transfers_pkey;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_product_instance_transfer DROP CONSTRAINT IF EXISTS transfer_product_pkey;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instances DROP CONSTRAINT IF EXISTS transfer_container_products_pkey;
-ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container DROP CONSTRAINT IF EXISTS transfer_container_pkey;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_container_product_instance DROP CONSTRAINT IF EXISTS transfer_container_products_pkey;
+ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_transfer_containers DROP CONSTRAINT IF EXISTS transfer_container_pkey;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_suppliers DROP CONSTRAINT IF EXISTS suppliers_pkey;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products_product_categories DROP CONSTRAINT IF EXISTS products_product_categories_pkey;
 ALTER TABLE IF EXISTS ONLY public.acorn_lojistiks_products DROP CONSTRAINT IF EXISTS products_pkey;
@@ -484,8 +505,8 @@ DROP TABLE IF EXISTS public.acorn_lojistiks_vehicle_types;
 DROP VIEW IF EXISTS public.acorn_lojistiks_vehicle_lasts;
 DROP TABLE IF EXISTS public.acorn_lojistiks_transfer_purchase;
 DROP TABLE IF EXISTS public.acorn_lojistiks_transfer_invoice;
-DROP TABLE IF EXISTS public.acorn_lojistiks_transfer_container_product_instances;
-DROP TABLE IF EXISTS public.acorn_lojistiks_transfer_container;
+DROP TABLE IF EXISTS public.acorn_lojistiks_transfer_containers;
+DROP TABLE IF EXISTS public.acorn_lojistiks_transfer_container_product_instance;
 DROP TABLE IF EXISTS public.acorn_lojistiks_suppliers;
 DROP VIEW IF EXISTS public.acorn_lojistiks_stock_products;
 DROP VIEW IF EXISTS public.acorn_lojistiks_stocks;
@@ -563,7 +584,7 @@ CREATE TABLE public.acorn_lojistiks_addresses (
     gps_id uuid,
     server_id uuid NOT NULL,
     created_by_user_id uuid,
-    created_at uuid,
+    created_at_event_id uuid,
     response text
 );
 
@@ -731,7 +752,7 @@ CREATE TABLE public.acorn_lojistiks_product_instances (
     product_id uuid NOT NULL,
     quantity integer DEFAULT 1 NOT NULL,
     external_identifier character varying(2048),
-    initial_transfer_product_instance_id uuid,
+    initial_product_instance_transfer_id uuid,
     asset_class "char" DEFAULT 'C'::"char" NOT NULL,
     image character varying(2048),
     server_id uuid NOT NULL,
@@ -739,6 +760,13 @@ CREATE TABLE public.acorn_lojistiks_product_instances (
     created_by_user_id uuid,
     response text
 );
+
+
+--
+-- Name: COLUMN acorn_lojistiks_product_instances.initial_product_instance_transfer_id; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.acorn_lojistiks_product_instances.initial_product_instance_transfer_id IS 'system: true';
 
 
 --
@@ -755,7 +783,7 @@ CREATE TABLE public.acorn_lojistiks_transfers (
     server_id uuid NOT NULL,
     vehicle_id uuid,
     created_by_user_id uuid,
-    created_at uuid,
+    created_at_event_id uuid,
     response text,
     pre_marked_arrived boolean DEFAULT false NOT NULL
 );
@@ -905,28 +933,6 @@ CREATE TABLE public.acorn_lojistiks_products (
 
 
 --
--- Name: TABLE acorn_lojistiks_products; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON TABLE public.acorn_lojistiks_products IS 'versioning: normal
-default ordering: name';
-
-
---
--- Name: COLUMN acorn_lojistiks_products.measurement_unit_id; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.acorn_lojistiks_products.measurement_unit_id IS 'field: select_with_create_link';
-
-
---
--- Name: COLUMN acorn_lojistiks_products.brand_id; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.acorn_lojistiks_products.brand_id IS 'field: create_or_select';
-
-
---
 -- Name: acorn_lojistiks_products_product_categories; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -994,34 +1000,48 @@ CREATE TABLE public.acorn_lojistiks_suppliers (
 
 
 --
--- Name: acorn_lojistiks_transfer_container; Type: TABLE; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_container_product_instance; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.acorn_lojistiks_transfer_container (
+CREATE TABLE public.acorn_lojistiks_transfer_container_product_instance (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    transfer_id uuid NOT NULL,
-    container_id uuid NOT NULL,
+    transfer_container_id uuid NOT NULL,
+    product_instance_transfer_id uuid NOT NULL,
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at uuid,
+    created_at_event_id uuid,
     created_by_user_id uuid,
     response text
 );
 
 
 --
--- Name: acorn_lojistiks_transfer_container_product_instances; Type: TABLE; Schema: public; Owner: -
+-- Name: COLUMN acorn_lojistiks_transfer_container_product_instance.transfer_container_id; Type: COMMENT; Schema: public; Owner: -
 --
 
-CREATE TABLE public.acorn_lojistiks_transfer_container_product_instances (
+COMMENT ON COLUMN public.acorn_lojistiks_transfer_container_product_instance.transfer_container_id IS 'todo: true';
+
+
+--
+-- Name: COLUMN acorn_lojistiks_transfer_container_product_instance.product_instance_transfer_id; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.acorn_lojistiks_transfer_container_product_instance.product_instance_transfer_id IS 'todo: true';
+
+
+--
+-- Name: acorn_lojistiks_transfer_containers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.acorn_lojistiks_transfer_containers (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
-    transfer_container_id uuid NOT NULL,
-    transfer_product_instance_id uuid NOT NULL,
+    transfer_id uuid NOT NULL,
+    container_id uuid NOT NULL,
     server_id uuid NOT NULL,
     version integer DEFAULT 1 NOT NULL,
     is_current_version boolean DEFAULT true NOT NULL,
-    created_at uuid,
+    created_at_event_id uuid,
     created_by_user_id uuid,
     response text
 );
@@ -1063,12 +1083,12 @@ CREATE VIEW public.acorn_lojistiks_vehicle_lasts AS
         END AS location_id
    FROM (( SELECT acorn_lojistiks_transfers.vehicle_id,
             public.agg_acorn_last(acorn_lojistiks_transfers.id) AS transfer_id,
-            public.agg_acorn_last(acorn_lojistiks_transfers.created_at) AS created_at,
+            public.agg_acorn_last(acorn_lojistiks_transfers.created_at_event_id) AS created_at,
             count(*) AS count
            FROM public.acorn_lojistiks_transfers
           WHERE (NOT (acorn_lojistiks_transfers.vehicle_id IS NULL))
           GROUP BY acorn_lojistiks_transfers.vehicle_id
-          ORDER BY (public.agg_acorn_last(acorn_lojistiks_transfers.created_at)) DESC
+          ORDER BY (public.agg_acorn_last(acorn_lojistiks_transfers.created_at_event_id)) DESC
          LIMIT 1) lasts
      JOIN public.acorn_lojistiks_transfers tr ON ((lasts.transfer_id = tr.id)));
 
@@ -1309,18 +1329,18 @@ ALTER TABLE ONLY public.acorn_lojistiks_suppliers
 
 
 --
--- Name: acorn_lojistiks_transfer_container transfer_container_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_containers transfer_container_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
     ADD CONSTRAINT transfer_container_pkey PRIMARY KEY (id);
 
 
 --
--- Name: acorn_lojistiks_transfer_container_product_instances transfer_container_products_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_container_product_instance transfer_container_products_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
     ADD CONSTRAINT transfer_container_products_pkey PRIMARY KEY (id);
 
 
@@ -1372,6 +1392,13 @@ ALTER TABLE ONLY product.acorn_lojistiks_computer_products REPLICA IDENTITY USIN
 CREATE UNIQUE INDEX dr_acorn_lojistiks_electronic_products_replica_identi ON product.acorn_lojistiks_electronic_products USING btree (server_id, id);
 
 ALTER TABLE ONLY product.acorn_lojistiks_electronic_products REPLICA IDENTITY USING INDEX dr_acorn_lojistiks_electronic_products_replica_identi;
+
+
+--
+-- Name: fki_server_id; Type: INDEX; Schema: product; Owner: -
+--
+
+CREATE INDEX fki_server_id ON product.acorn_lojistiks_computer_products USING btree (server_id);
 
 
 --
@@ -1567,18 +1594,18 @@ ALTER TABLE ONLY public.acorn_lojistiks_suppliers REPLICA IDENTITY USING INDEX d
 -- Name: dr_acorn_lojistiks_transfer_container_product_instanc; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX dr_acorn_lojistiks_transfer_container_product_instanc ON public.acorn_lojistiks_transfer_container_product_instances USING btree (server_id, id);
+CREATE UNIQUE INDEX dr_acorn_lojistiks_transfer_container_product_instanc ON public.acorn_lojistiks_transfer_container_product_instance USING btree (server_id, id);
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances REPLICA IDENTITY USING INDEX dr_acorn_lojistiks_transfer_container_product_instanc;
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance REPLICA IDENTITY USING INDEX dr_acorn_lojistiks_transfer_container_product_instanc;
 
 
 --
 -- Name: dr_acorn_lojistiks_transfer_container_replica_identit; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX dr_acorn_lojistiks_transfer_container_replica_identit ON public.acorn_lojistiks_transfer_container USING btree (server_id, id);
+CREATE UNIQUE INDEX dr_acorn_lojistiks_transfer_container_replica_identit ON public.acorn_lojistiks_transfer_containers USING btree (server_id, id);
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container REPLICA IDENTITY USING INDEX dr_acorn_lojistiks_transfer_container_replica_identit;
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers REPLICA IDENTITY USING INDEX dr_acorn_lojistiks_transfer_container_replica_identit;
 
 
 --
@@ -1618,6 +1645,20 @@ ALTER TABLE ONLY public.acorn_lojistiks_warehouses REPLICA IDENTITY USING INDEX 
 
 
 --
+-- Name: fki_created_at_event_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fki_created_at_event_id ON public.acorn_lojistiks_transfer_container_product_instance USING btree (created_at_event_id);
+
+
+--
+-- Name: fki_initial_transfer_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fki_initial_transfer_id ON public.acorn_lojistiks_vehicles USING btree (initial_transfer_id);
+
+
+--
 -- Name: fki_invoice_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1636,6 +1677,27 @@ CREATE INDEX fki_last_product_instance_destination_location_id ON public.acorn_l
 --
 
 CREATE INDEX fki_last_product_instance_source_location_id ON public.acorn_lojistiks_people USING btree (last_product_instance_source_location_id);
+
+
+--
+-- Name: fki_last_transfer_destination_location_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fki_last_transfer_destination_location_id ON public.acorn_lojistiks_people USING btree (last_transfer_destination_location_id);
+
+
+--
+-- Name: fki_last_transfer_source_location_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fki_last_transfer_source_location_id ON public.acorn_lojistiks_people USING btree (last_transfer_source_location_id);
+
+
+--
+-- Name: fki_parent_product_category_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fki_parent_product_category_id ON public.acorn_lojistiks_product_categories USING btree (parent_product_category_id);
 
 
 --
@@ -2021,28 +2083,28 @@ CREATE TRIGGER tr_acorn_lojistiks_suppliers_server_id BEFORE INSERT ON public.ac
 
 
 --
--- Name: acorn_lojistiks_transfer_container tr_acorn_lojistiks_transfer_container_new_replicated_; Type: TRIGGER; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_containers tr_acorn_lojistiks_transfer_container_new_replicated_; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER tr_acorn_lojistiks_transfer_container_new_replicated_ BEFORE INSERT ON public.acorn_lojistiks_transfer_container FOR EACH ROW EXECUTE FUNCTION public.fn_acorn_new_replicated_row();
+CREATE TRIGGER tr_acorn_lojistiks_transfer_container_new_replicated_ BEFORE INSERT ON public.acorn_lojistiks_transfer_containers FOR EACH ROW EXECUTE FUNCTION public.fn_acorn_new_replicated_row();
 
-ALTER TABLE public.acorn_lojistiks_transfer_container ENABLE ALWAYS TRIGGER tr_acorn_lojistiks_transfer_container_new_replicated_;
-
-
---
--- Name: acorn_lojistiks_transfer_container_product_instances tr_acorn_lojistiks_transfer_container_product_instanc; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER tr_acorn_lojistiks_transfer_container_product_instanc BEFORE INSERT ON public.acorn_lojistiks_transfer_container_product_instances FOR EACH ROW EXECUTE FUNCTION public.fn_acorn_new_replicated_row();
-
-ALTER TABLE public.acorn_lojistiks_transfer_container_product_instances ENABLE ALWAYS TRIGGER tr_acorn_lojistiks_transfer_container_product_instanc;
+ALTER TABLE public.acorn_lojistiks_transfer_containers ENABLE ALWAYS TRIGGER tr_acorn_lojistiks_transfer_container_new_replicated_;
 
 
 --
--- Name: acorn_lojistiks_transfer_container tr_acorn_lojistiks_transfer_container_server_id; Type: TRIGGER; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_container_product_instance tr_acorn_lojistiks_transfer_container_product_instanc; Type: TRIGGER; Schema: public; Owner: -
 --
 
-CREATE TRIGGER tr_acorn_lojistiks_transfer_container_server_id BEFORE INSERT ON public.acorn_lojistiks_transfer_container FOR EACH ROW EXECUTE FUNCTION public.fn_acorn_server_id();
+CREATE TRIGGER tr_acorn_lojistiks_transfer_container_product_instanc BEFORE INSERT ON public.acorn_lojistiks_transfer_container_product_instance FOR EACH ROW EXECUTE FUNCTION public.fn_acorn_new_replicated_row();
+
+ALTER TABLE public.acorn_lojistiks_transfer_container_product_instance ENABLE ALWAYS TRIGGER tr_acorn_lojistiks_transfer_container_product_instanc;
+
+
+--
+-- Name: acorn_lojistiks_transfer_containers tr_acorn_lojistiks_transfer_container_server_id; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER tr_acorn_lojistiks_transfer_container_server_id BEFORE INSERT ON public.acorn_lojistiks_transfer_containers FOR EACH ROW EXECUTE FUNCTION public.fn_acorn_server_id();
 
 
 --
@@ -2163,6 +2225,22 @@ ALTER TABLE ONLY product.acorn_lojistiks_electronic_products
 
 
 --
+-- Name: acorn_lojistiks_computer_products server_id; Type: FK CONSTRAINT; Schema: product; Owner: -
+--
+
+ALTER TABLE ONLY product.acorn_lojistiks_computer_products
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_electronic_products server_id; Type: FK CONSTRAINT; Schema: product; Owner: -
+--
+
+ALTER TABLE ONLY product.acorn_lojistiks_electronic_products
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
 -- Name: acorn_lojistiks_locations address_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2227,10 +2305,10 @@ ALTER TABLE ONLY public.acorn_lojistiks_brands
 
 
 --
--- Name: acorn_lojistiks_transfer_container container_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_containers container_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
     ADD CONSTRAINT container_id FOREIGN KEY (container_id) REFERENCES public.acorn_lojistiks_containers(id);
 
 
@@ -2247,7 +2325,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_containers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_addresses
-    ADD CONSTRAINT created_at FOREIGN KEY (created_at) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
 
 
 --
@@ -2255,7 +2333,23 @@ ALTER TABLE ONLY public.acorn_lojistiks_addresses
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfers
-    ADD CONSTRAINT created_at FOREIGN KEY (created_at) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_transfer_container_product_instance created_at_event_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_transfer_containers created_at_event_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
 
 
 --
@@ -2315,11 +2409,27 @@ ALTER TABLE ONLY public.acorn_lojistiks_addresses
 
 
 --
+-- Name: acorn_lojistiks_vehicles initial_transfer_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_vehicles
+    ADD CONSTRAINT initial_transfer_id FOREIGN KEY (initial_transfer_id) REFERENCES public.acorn_lojistiks_transfers(id) NOT VALID;
+
+
+--
 -- Name: acorn_lojistiks_product_instances initial_transfer_product_instance_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_instances
-    ADD CONSTRAINT initial_transfer_product_instance_id FOREIGN KEY (initial_transfer_product_instance_id) REFERENCES public.acorn_lojistiks_product_instance_transfer(id) NOT VALID;
+    ADD CONSTRAINT initial_transfer_product_instance_id FOREIGN KEY (initial_product_instance_transfer_id) REFERENCES public.acorn_lojistiks_product_instance_transfer(id) NOT VALID;
+
+
+--
+-- Name: CONSTRAINT initial_transfer_product_instance_id ON acorn_lojistiks_product_instances; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON CONSTRAINT initial_transfer_product_instance_id ON public.acorn_lojistiks_product_instances IS 'type: 1to1
+system: true';
 
 
 --
@@ -2344,6 +2454,22 @@ ALTER TABLE ONLY public.acorn_lojistiks_people
 
 ALTER TABLE ONLY public.acorn_lojistiks_people
     ADD CONSTRAINT last_product_instance_source_location_id FOREIGN KEY (last_product_instance_source_location_id) REFERENCES public.acorn_lojistiks_locations(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_people last_transfer_destination_location_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_people
+    ADD CONSTRAINT last_transfer_destination_location_id FOREIGN KEY (last_transfer_destination_location_id) REFERENCES public.acorn_location_locations(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_people last_transfer_source_location_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_people
+    ADD CONSTRAINT last_transfer_source_location_id FOREIGN KEY (last_transfer_source_location_id) REFERENCES public.acorn_location_locations(id) NOT VALID;
 
 
 --
@@ -2423,7 +2549,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_areas
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_categories
-    ADD CONSTRAINT parent_product_category_id FOREIGN KEY (parent_product_category_id) REFERENCES public.acorn_lojistiks_product_category_types(id);
+    ADD CONSTRAINT parent_product_category_id FOREIGN KEY (parent_product_category_id) REFERENCES public.acorn_lojistiks_product_categories(id) NOT VALID;
 
 
 --
@@ -2528,6 +2654,21 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_attributes
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
     ADD CONSTRAINT product_instance_id FOREIGN KEY (product_instance_id) REFERENCES public.acorn_lojistiks_product_instances(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_transfer_container_product_instance product_instance_transfer_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
+    ADD CONSTRAINT product_instance_transfer_id FOREIGN KEY (product_instance_transfer_id) REFERENCES public.acorn_lojistiks_product_instance_transfer(id) NOT VALID;
+
+
+--
+-- Name: CONSTRAINT product_instance_transfer_id ON acorn_lojistiks_transfer_container_product_instance; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON CONSTRAINT product_instance_transfer_id ON public.acorn_lojistiks_transfer_container_product_instance IS 'todo: true';
 
 
 --
@@ -2667,18 +2808,18 @@ ALTER TABLE ONLY public.acorn_lojistiks_drivers
 
 
 --
--- Name: acorn_lojistiks_transfer_container server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_containers server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
     ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id);
 
 
 --
--- Name: acorn_lojistiks_transfer_container_product_instances server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_container_product_instance server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
     ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id);
 
 
@@ -2723,6 +2864,70 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfers
 
 
 --
+-- Name: acorn_lojistiks_brands server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_brands
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_employees server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_employees
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_offices server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_offices
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_product_attributes server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_product_attributes
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_product_instances server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_product_instances
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_warehouses server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_warehouses
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_suppliers server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_suppliers
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
+-- Name: acorn_lojistiks_product_products server_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_product_products
+    ADD CONSTRAINT server_id FOREIGN KEY (server_id) REFERENCES public.acorn_servers(id) NOT VALID;
+
+
+--
 -- Name: acorn_lojistiks_transfers source_location_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2747,26 +2952,33 @@ ALTER TABLE ONLY public.acorn_lojistiks_suppliers
 
 
 --
--- Name: acorn_lojistiks_transfer_container transfer_container_created_by_user; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_containers transfer_container_created_by_user; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
     ADD CONSTRAINT transfer_container_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
 --
--- Name: acorn_lojistiks_transfer_container_product_instances transfer_container_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_container_product_instance transfer_container_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
-    ADD CONSTRAINT transfer_container_id FOREIGN KEY (transfer_container_id) REFERENCES public.acorn_lojistiks_transfer_container(id);
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
+    ADD CONSTRAINT transfer_container_id FOREIGN KEY (transfer_container_id) REFERENCES public.acorn_lojistiks_transfer_containers(id);
 
 
 --
--- Name: acorn_lojistiks_transfer_container_product_instances transfer_container_product_instances_created_by_user; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: CONSTRAINT transfer_container_id ON acorn_lojistiks_transfer_container_product_instance; Type: COMMENT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
+COMMENT ON CONSTRAINT transfer_container_id ON public.acorn_lojistiks_transfer_container_product_instance IS 'type: Xto1';
+
+
+--
+-- Name: acorn_lojistiks_transfer_container_product_instance transfer_container_product_instances_created_by_user; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
     ADD CONSTRAINT transfer_container_product_instances_created_by_user FOREIGN KEY (created_by_user_id) REFERENCES public.acorn_user_users(id) NOT VALID;
 
 
@@ -2779,10 +2991,10 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
 
 
 --
--- Name: acorn_lojistiks_transfer_container transfer_id; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: acorn_lojistiks_transfer_containers transfer_id; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container
+ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
     ADD CONSTRAINT transfer_id FOREIGN KEY (transfer_id) REFERENCES public.acorn_lojistiks_transfers(id);
 
 
@@ -2800,14 +3012,6 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_invoice
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfer_purchase
     ADD CONSTRAINT transfer_id FOREIGN KEY (transfer_id) REFERENCES public.acorn_lojistiks_transfers(id) NOT VALID;
-
-
---
--- Name: acorn_lojistiks_transfer_container_product_instances transfer_product_instance_id; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instances
-    ADD CONSTRAINT transfer_product_instance_id FOREIGN KEY (transfer_product_instance_id) REFERENCES public.acorn_lojistiks_product_instance_transfer(id) NOT VALID;
 
 
 --

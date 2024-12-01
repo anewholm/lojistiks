@@ -1,18 +1,11 @@
-<?php
-
-return [
+<?php return [
     'plugin' => [
         'name' => 'Lojistiks',
-
-        // Menu-Items
-
         'actions' => 'Logistiks',
         'product_instances' => 'Inventory',
         'inventory' => 'Inventory',
         'setup' => 'Setup',
         'reports' => 'Reports',
-
-        // Setup
         'measurement_units' => 'Measurement Units',
         'brands' => 'Brands',
         'products' => 'Products',
@@ -26,10 +19,8 @@ return [
         'suppliers' => 'External Suppliers',
         'transfers' => 'Transfers',
         'vehicles' => 'Vehicles',
-
-        // Debug
         'replication_debug' => 'Replication Debug',
-        'trigger_http_call_response' => 'Trigger HTTP call response',
+        'trigger_http_call_response' => 'Trigger HTTP call response'
     ],
     'models' => [
         'general' => [
@@ -49,44 +40,43 @@ return [
             'save_and_print' => 'Save and Print',
             'correct_and_print' => 'Save correction and print',
             'print' => 'Print',
-
             'user_group' => 'Group',
             'user' => 'Person',
-            'from_user_group' => 'From Group',
+            'from_user_group' => 'From Group'
         ],
         'product' => [
             'label' => 'Product Type',
             'label_plural' => 'Product Types',
             'model' => 'Model',
             'external_identifier' => 'Serial number',
-            'asset_class' => 'Asset Class',
+            'asset_class' => 'Asset Class'
         ],
         'measurementunit' => [
             'label' => 'Measurement Unit',
             'label_plural' => 'Measurement Units',
             'uses_quantity' => 'Uses Quantity',
-            'short_name' => 'Short Name',
+            'short_name' => 'Short Name'
         ],
         'brand' => [
             'label' => 'Brand',
             'label_plural' => 'Brands',
             'select' => 'Select an existing Brand',
             'create' => 'Create a new Brand',
-            'new'    => 'New Brand',
+            'new' => 'New Brand'
         ],
         'productinstance' => [
             'label' => 'Inventory',
             'label_plural' => 'Inventory',
             'create_product_instances' => 'Register Inventory',
-            'quantity' => 'Quantity',
+            'quantity' => 'Quantity'
         ],
         'office' => [
             'label' => 'Office',
-            'label_plural' => 'Offices',
+            'label_plural' => 'Offices'
         ],
         'warehouse' => [
             'label' => 'Warehouse',
-            'label_plural' => 'Warehouses',
+            'label_plural' => 'Warehouses'
         ],
         'computerproduct' => [
             'label' => 'Computer Product Type',
@@ -94,11 +84,11 @@ return [
             'memory' => 'Memory',
             'hdd_size' => 'HDD Size',
             'processor_type' => 'Processor Type',
-            'processor_version' => 'Processor Version',
+            'processor_version' => 'Processor Version'
         ],
         'electronicproduct' => [
             'label' => 'Electronic Product Type',
-            'label_plural' => 'Electronic Product Types',
+            'label_plural' => 'Electronic Product Types'
         ],
         'person' => [
             'label' => 'Person',
@@ -107,11 +97,11 @@ return [
             'last_name' => 'Last Name',
             'login' => 'Login',
             'email' => 'Email',
-            'password' => 'Password',
+            'password' => 'Password'
         ],
         'supplier' => [
             'label' => 'External Supplier',
-            'label_plural' => 'External Suppliers',
+            'label_plural' => 'External Suppliers'
         ],
         'transfer' => [
             'label' => 'Transfer',
@@ -142,43 +132,40 @@ return [
             'destination_location' => 'Destination Location',
             'transfers_in' => 'Transfers In',
             'transfers_out' => 'Transfers Out',
-            'distance' => 'Distance',
+            'distance' => 'Distance'
         ],
         'vehicle' => [
             'label' => 'Vehicle',
             'label_plural' => 'Vehicles',
             'registration' => 'Registration',
-            'transport' => 'Transport',
+            'transport' => 'Transport'
         ],
         'employee' => [
             'label' => 'Employee',
-            'label_plural' => 'Employees',
+            'label_plural' => 'Employees'
         ],
         'driver' => [
             'label' => 'Driver',
-            'label_plural' => 'Drivers',
+            'label_plural' => 'Drivers'
         ],
         'vehicletype' => [
             'label' => 'Type',
-            'label_plural' => 'Vehicle Types',
+            'label_plural' => 'Vehicle Types'
         ],
         'oilproduct' => [
             'label' => 'Oil Product',
             'label_plural' => 'Oil Products',
             'purity' => 'Purity',
-            'octain_content' => 'Octain Content',
+            'octain_content' => 'Octain Content'
         ],
         'stockproduct' => [
             'label' => 'Product Type Inventory',
-            'label_plural' => 'Product Type Inventories',
+            'label_plural' => 'Product Type Inventories'
         ],
         'stock' => [
             'label' => 'Inventory',
-            'label_plural' => 'Inventories',
+            'label_plural' => 'Inventories'
         ],
-
-
-        // TODO: These location translations return to Location plugin
         'location' => [
             'address' => 'Address',
             'latitude' => 'Latitude',
@@ -188,15 +175,13 @@ return [
             'add_gps' => 'Set GPS >>',
             'label' => 'Facility',
             'label_plural' => 'All Facilities',
-            'initial_location' => 'Initial Facility',
+            'initial_location' => 'Initial Facility'
         ],
         'lookup' => [
             'label' => 'Lookup',
             'label_plural' => 'Lookups',
             'address' => 'Address',
-
             'google_address' => 'Lookup on Google Maps',
-
             'vicinity' => 'Vicinity',
             'city' => 'City',
             'postalcode' => 'Postal Code',
@@ -204,12 +189,12 @@ return [
             'country_code' => 'Country Code',
             'state_code' => 'State Code',
             'latitude' => 'Latitude',
-            'longitude' => 'Longitude',
+            'longitude' => 'Longitude'
         ],
         'area' => [
             'label' => 'Area',
             'label_plural' => 'Areas',
-            'parent' => 'Containing Area',
+            'parent' => 'Containing Area'
         ],
         'address' => [
             'label' => 'Address',
@@ -219,17 +204,17 @@ return [
             'longitude' => 'Longitude',
             'latitude' => 'Latitude',
             'auto_location' => 'Create an associated Location',
-            'select_existing' => 'Select an existing Address',
+            'select_existing' => 'Select an existing Address'
         ],
         'gps' => [
             'label' => 'GPS',
             'label_plural' => 'GPSs',
             'longitude' => 'Longitude',
-            'latitude' => 'Latitude',
+            'latitude' => 'Latitude'
         ],
         'areatype' => [
             'label' => 'Area Type',
-            'label_plural' => 'Area Types',
-        ],
-    ],
+            'label_plural' => 'Area Types'
+        ]
+    ]
 ];
