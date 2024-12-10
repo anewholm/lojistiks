@@ -1,220 +1,193 @@
 <?php return [
     'plugin' => [
         'name' => 'Lojistiks',
-        'actions' => 'Logistiks',
-        'product_instances' => 'Inventory',
-        'inventory' => 'Inventory',
-        'setup' => 'Setup',
-        'reports' => 'Reports',
-        'measurement_units' => 'Measurement Units',
-        'brands' => 'Brands',
-        'products' => 'Products',
-        'addresses' => 'Addresses',
-        'offices' => 'Offices',
-        'warehouses' => 'Warehouses',
-        'areas' => 'Areas',
-        'computer_products' => 'Computer Products',
-        'electronic_products' => 'Electronic Products',
-        'persons' => 'Persons',
-        'suppliers' => 'External Suppliers',
-        'transfers' => 'Transfers',
-        'vehicles' => 'Vehicles',
-        'replication_debug' => 'Replication Debug',
-        'trigger_http_call_response' => 'Trigger HTTP call response'
+        'description' => 'Created By acorn-create-system v1.0'
+    ],
+    'permissions' => [
+        'some_permission' => 'Some permission'
     ],
     'models' => [
         'general' => [
             'id' => 'ID',
-            'or' => 'Or',
-            'centre_id' => 'Centre ID',
-            'leaf_id' => 'Leaf ID',
             'name' => 'Name',
-            'qrcode_name' => 'QR Code name',
+            'short_name' => 'Short name',
+            'description' => 'Description',
             'type' => 'Type',
             'image' => 'Image',
             'select' => 'Select',
+            'select_existing' => 'Selected existing',
+            'created_at_event' => 'Created At',
+            'updated_at_event' => 'Updated At',
+            'created_by_user' => 'Created By',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
-            'scan_qrcode' => 'Scan A QRCode',
-            'find_by_qrcode' => 'Find by QRCode',
-            'save_and_print' => 'Save and Print',
-            'correct_and_print' => 'Save correction and print',
+            'created_by' => 'Created By',
+            'quantity' => 'Quantity',
+            'distance' => 'Distance',
+            'parent' => 'Parent',
+            'actions' => 'Actions',
+            'setup' => 'Setup',
+            'reports' => 'Reports',
+            '_qrcode' => 'QR Code',
+            '_qrcode_scan' => 'QR Code Scan',
+            'find_by_qrcode' => 'Find by QR code',
+            'create' => 'Create',
+            'new' => 'New',
+            'add' => 'Add',
             'print' => 'Print',
-            'user_group' => 'Group',
-            'user' => 'Person',
-            'from_user_group' => 'From Group'
-        ],
-        'product' => [
-            'label' => 'Product Type',
-            'label_plural' => 'Product Types',
-            'model' => 'Model',
-            'external_identifier' => 'Serial number',
-            'asset_class' => 'Asset Class'
-        ],
-        'measurementunit' => [
-            'label' => 'Measurement Unit',
-            'label_plural' => 'Measurement Units',
-            'uses_quantity' => 'Uses Quantity',
-            'short_name' => 'Short Name'
+            'save_and_print' => 'Save and Print',
+            'correct_and_print' => 'Correct and Print',
+            'response' => 'HTTP call response',
+            'replication_debug' => 'Replication Debug',
+            'trigger_http_call_response' => 'Trigger HTTP call response'
         ],
         'brand' => [
             'label' => 'Brand',
             'label_plural' => 'Brands',
-            'select' => 'Select an existing Brand',
-            'create' => 'Create a new Brand',
-            'new' => 'New Brand'
+            'image' => 'Image',
+            '_actions' => ' Actions'
         ],
-        'productinstance' => [
-            'label' => 'Inventory',
-            'label_plural' => 'Inventory',
-            'create_product_instances' => 'Register Inventory',
-            'quantity' => 'Quantity'
-        ],
-        'office' => [
-            'label' => 'Office',
-            'label_plural' => 'Offices'
-        ],
-        'warehouse' => [
-            'label' => 'Warehouse',
-            'label_plural' => 'Warehouses'
+        'product' => [
+            'label_plural' => 'Products',
+            'label' => 'Product',
+            'image' => 'Image',
+            'model_name' => 'Model Name',
+            '_actions' => ' Actions'
         ],
         'computerproduct' => [
-            'label' => 'Computer Product Type',
-            'label_plural' => 'Computer Product Types',
+            'label' => 'Computer Product',
+            'label_plural' => 'Computer Products',
             'memory' => 'Memory',
-            'hdd_size' => 'HDD Size',
+            'HDD_size' => 'Hdd Size',
+            'processor_version' => 'Processor Version',
             'processor_type' => 'Processor Type',
-            'processor_version' => 'Processor Version'
+            '_actions' => ' Actions'
         ],
         'electronicproduct' => [
-            'label' => 'Electronic Product Type',
-            'label_plural' => 'Electronic Product Types'
+            'label' => 'Electronic Product',
+            'label_plural' => 'Electronic Products',
+            'voltage' => 'Voltage',
+            '_actions' => ' Actions'
+        ],
+        'employee' => [
+            'label' => 'Employee',
+            'label_plural' => 'Employees',
+            'user_role' => 'User Role',
+            '_actions' => ' Actions'
         ],
         'person' => [
             'label' => 'Person',
             'label_plural' => 'People',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'login' => 'Login',
-            'email' => 'Email',
-            'password' => 'Password'
-        ],
-        'supplier' => [
-            'label' => 'External Supplier',
-            'label_plural' => 'External Suppliers'
+            'image' => 'Image',
+            'last_transfer_location' => 'Last Transfer Location',
+            'last_product_instance_location' => 'Last Product Instance Location',
+            '_actions' => ' Actions'
         ],
         'transfer' => [
             'label' => 'Transfer',
-            'label_plural' => 'All Transfers',
-            'transfer_inventory' => 'Transfer Inventory Units',
-            'transfer_quantity' => 'Transfer Quantites',
-            'add_product_instance' => 'Add existing Inventory (Units)',
-            'add_product' => 'Add Quantity based Product Types (Litres, Kilograms)',
-            'add' => 'Add',
-            'pi_section' => 'Product Instances in the transfer',
-            'pi_section_comment' => 'Scan inventory QR codes to add to the list, ot add them manually below',
-            'dates' => 'Dates',
-            'arrived_at' => 'Arrived at',
-            'arrived_at_comment' => 'Inventory, vehicle and driver will not appear at destination until arrived at date is completed',
-            'sent_at' => 'Sent at',
-            'pre_marked_arrived' => 'Mark as arrived',
-            'pre_marked_arrived_comment' => 'No confirmation or date is required',
-            'quantity' => 'Quantity',
-            'product_instance_count' => 'Inventory count',
-            'product_instance_quantity' => 'Quantity',
-            'product_instance_contents' => 'Contents',
-            'product_contents' => 'Product Contents',
-            'send_and_print' => 'Send and Print',
-            'send' => 'Send',
-            'send_and_close' => 'Send and Close',
-            'correct_and_print' => 'Save correction and print',
-            'source_location' => 'Source Location',
-            'destination_location' => 'Destination Location',
-            'transfers_in' => 'Transfers In',
-            'transfers_out' => 'Transfers Out',
-            'distance' => 'Distance'
+            'label_plural' => 'Transfers',
+            'pre_marked_arrived' => 'Pre Marked Arrived',
+            'sent_at_event' => 'Sent At Event',
+            'arrived_at_event' => 'Arrived At Event',
+            '_actions' => ' Actions'
+        ],
+        'driver' => [
+            'label' => 'Driver',
+            'label_plural' => 'Drivers',
+            '_actions' => ' Actions'
         ],
         'vehicle' => [
             'label' => 'Vehicle',
             'label_plural' => 'Vehicles',
             'registration' => 'Registration',
-            'transport' => 'Transport'
+            'image' => 'Image',
+            '_actions' => ' Actions'
         ],
-        'employee' => [
-            'label' => 'Employee',
-            'label_plural' => 'Employees'
+        'productinstancetransfer' => [
+            'label_plural' => 'Product Instance Transfer',
+            'label' => 'Product Instance Transfer',
+            '_actions' => ' Actions'
         ],
-        'driver' => [
-            'label' => 'Driver',
-            'label_plural' => 'Drivers'
+        'transferinvoice' => [
+            'label_plural' => 'Transfer Invoice',
+            'label' => 'Transfer Invoice',
+            '_actions' => ' Actions'
+        ],
+        'transferpurchase' => [
+            'label_plural' => 'Transfer Purchase',
+            'label' => 'Transfer Purchase',
+            '_actions' => ' Actions'
+        ],
+        'measurementunit' => [
+            'label' => 'Measurement Unit',
+            'label_plural' => 'Measurement Units',
+            'short_name' => 'Short Name',
+            'uses_quantity' => 'Uses Quantity',
+            '_actions' => ' Actions'
+        ],
+        'offix' => [
+            'label' => 'Offix',
+            'label_plural' => 'Offices',
+            '_actions' => ' Actions'
+        ],
+        'container' => [
+            'label' => 'Container',
+            'label_plural' => 'Containers',
+            '_actions' => ' Actions'
+        ],
+        'productattribute' => [
+            'label' => 'Product Attribute',
+            'label_plural' => 'Product Attributes',
+            'value' => 'Value',
+            '_actions' => ' Actions'
+        ],
+        'productcategory' => [
+            'label' => 'Product Category',
+            'label_plural' => 'Product Categories',
+            'parent_product_category' => 'Parent Product Category',
+            'children' => 'Children',
+            '_actions' => ' Actions'
+        ],
+        'productcategorytype' => [
+            'label' => 'Product Category Type',
+            'label_plural' => 'Product Category Types',
+            '_actions' => ' Actions'
+        ],
+        'productsproductcategory' => [
+            'label_plural' => 'Products Product Categories',
+            'label' => 'Products Product Category',
+            '_actions' => ' Actions'
+        ],
+        'productinstance' => [
+            'label' => 'Product Instance',
+            'label_plural' => 'Product Instances',
+            'quantity' => 'Quantity',
+            'external_identifier' => 'External Identifier',
+            'asset_class' => 'Asset Class',
+            'image' => 'Image',
+            '_actions' => ' Actions'
         ],
         'vehicletype' => [
-            'label' => 'Type',
-            'label_plural' => 'Vehicle Types'
+            'label' => 'Vehicle Type',
+            'label_plural' => 'Vehicle Types',
+            '_actions' => ' Actions'
         ],
-        'oilproduct' => [
-            'label' => 'Oil Product',
-            'label_plural' => 'Oil Products',
-            'purity' => 'Purity',
-            'octain_content' => 'Octain Content'
+        'warehouse' => [
+            'label' => 'Warehouse',
+            'label_plural' => 'Warehouses',
+            '_actions' => ' Actions'
         ],
-        'stockproduct' => [
-            'label' => 'Product Type Inventory',
-            'label_plural' => 'Product Type Inventories'
+        'productproduct' => [
+            'label_plural' => 'Product Products',
+            'label' => 'Product Product',
+            'sub_product' => 'Sub Product',
+            'quantity' => 'Quantity',
+            '_actions' => ' Actions'
         ],
-        'stock' => [
-            'label' => 'Inventory',
-            'label_plural' => 'Inventories'
-        ],
-        'location' => [
-            'address' => 'Address',
-            'latitude' => 'Latitude',
-            'longitude' => 'Longitude',
-            'parent' => 'Containing facility',
-            'create_area' => 'Create area >>',
-            'add_gps' => 'Set GPS >>',
-            'label' => 'Facility',
-            'label_plural' => 'All Facilities',
-            'initial_location' => 'Initial Facility'
-        ],
-        'lookup' => [
-            'label' => 'Lookup',
-            'label_plural' => 'Lookups',
-            'address' => 'Address',
-            'google_address' => 'Lookup on Google Maps',
-            'vicinity' => 'Vicinity',
-            'city' => 'City',
-            'postalcode' => 'Postal Code',
-            'zip' => 'Postal Code',
-            'country_code' => 'Country Code',
-            'state_code' => 'State Code',
-            'latitude' => 'Latitude',
-            'longitude' => 'Longitude'
-        ],
-        'area' => [
-            'label' => 'Area',
-            'label_plural' => 'Areas',
-            'parent' => 'Containing Area'
-        ],
-        'address' => [
-            'label' => 'Address',
-            'label_plural' => 'Addresses',
-            'number' => 'Number',
-            'street' => 'Street',
-            'longitude' => 'Longitude',
-            'latitude' => 'Latitude',
-            'auto_location' => 'Create an associated Location',
-            'select_existing' => 'Select an existing Address'
-        ],
-        'gps' => [
-            'label' => 'GPS',
-            'label_plural' => 'GPSs',
-            'longitude' => 'Longitude',
-            'latitude' => 'Latitude'
-        ],
-        'areatype' => [
-            'label' => 'Area Type',
-            'label_plural' => 'Area Types'
+        'supplier' => [
+            'label' => 'Supplier',
+            'label_plural' => 'Suppliers',
+            '_actions' => ' Actions'
         ]
     ]
 ];

@@ -2,14 +2,40 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Model;
-use Backend\Models\UserRole;
+use Acorn\Models\Server;
+use Acorn\Collection;
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * Employee Model
  */
 class Employee extends Model
 {
+    /* Generated Fields:
+     * id(uuid)
+     * person_id(uuid)
+     * user_role_id(uuid)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * created_by_user_id(uuid)
+     * response(text)
+     */
+
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
@@ -30,7 +56,10 @@ class Employee extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'person' => 'required',
+        'user_role' => 'required'
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -55,7 +84,6 @@ class Employee extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
@@ -66,41 +94,24 @@ class Employee extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'person' => Person::class,
-        'location' => Location::class,
-        'user_role' => UserRole::class,
+        'person' => [\Acorn\Lojistiks\Models\Person::class, 'key' => 'person_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'user_role' => [\Acorn\User\Models\Role::class, 'key' => 'user_role_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+    ];
     public $attachOne = [];
     public $attachMany = [];
 
-    public function getFullNameAttribute()
-    {
-        return $this->person->fullName();
-    }
-
-    public function fullName()
-    {
-        return $this->full_name;
-    }
-
-    public function getEmploymentAttribute()
-    {
-        $role = $this->user_role->name;
-        $name = $this->person->fullName();
-        return "$name ($role)";
-    }
-
-    public function employment()
-    {
-        return $this->employment;
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
 }
+// Created By acorn-create-system v1.0

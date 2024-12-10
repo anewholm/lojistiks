@@ -1,53 +1,167 @@
 fields:
-    product[name]:
-        label: acorn.lojistiks::lang.models.general.name
-        span: auto
-    #product[image]:
-        #label: acorn.lojistiks::lang.models.general.image
-        #type: mediafinder
-        #mode: image
-        #useCaption: true
-        #imageHeight: 150
-        #imageWidth: 150
-        #thumbOptions:
-            #mode: crop
-            #extension: auto
-        #span: auto
-    product[measurement_unit]:
-        label: acorn.lojistiks::lang.models.measurementunit.label
-        type: dropdown
-        options: \Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
-        select: name
-        span: auto
-        readOnly: true
-        required: true
-    _create_a_new_brand:
-        label: acorn.lojistiks::lang.models.brand.create
-        type: switch
-        span: left
-    product[brand]:
-        label: acorn.lojistiks::lang.models.brand.label
-        type: dropdown
-        options: \Acorn\Lojistiks\Models\Brand::dropdownOptions
-        placeholder: acorn.lojistiks::lang.models.general.select
-        required: true
-        span: right
-        trigger:
-            field: _create_a_new_brand
-            condition: checked
-            action: disable
-    product[brand][name]:
-        label: acorn.lojistiks::lang.models.brand.label
-        span: right
-        trigger:
-            field: _create_a_new_brand
-            condition: checked
-            action: enable
-    product[model_name]:
-        label: acorn.lojistiks::lang.models.product.model
-        span: auto
-    _qrcode:
-        type: partial
-        context: update
-        path: ~/modules/acorn/partials/_qrcode
-        span: auto
+  id:
+    # IdField: From id(uuid)
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">id</div>
+      IdField for column id on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  product:
+    # ForeignIdField: From product_id(uuid), with =[Xto1]> acorn_lojistiks_products(id)
+    label: acorn.lojistiks::lang.models.product.label
+    type: dropdown
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/products'>Product</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/products' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">product</div>
+      ForeignIdField for column product_id on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Lojistiks\Models\Product::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+      - _create_product
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    label: acorn::lang.models.server.label
+    type: dropdown
+    hidden: true
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">server</div>
+      ForeignIdField for column server_id on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Models\Server::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  created_at_event[start]:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: datepicker
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">created_at_event</div>
+      ForeignIdField for column created_at_event_id on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+    dependsOn:
+      - _qrscan
+  voltage:
+    # Field: From voltage(double precision)
+    label: acorn.lojistiks::lang.models.electronicproduct.voltage
+    type: number
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">voltage</div>
+      Field for column voltage on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: dropdown
+    hidden: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">created_by_user</div>
+      ForeignIdField for column created_by_user_id on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\User\Models\User::dropdownOptions
+    placeholder: backend::lang.form.select
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  response:
+    # Field: From response(text)
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">response</div>
+      Field for column response on Lojistiks.ElectronicProduct
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    path: qrcode
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_qrcode</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
+    context:
+      - update
+      - preview
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.electronicproduct._actions
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_actions</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
+tabs:
+  fields:
+    lojistiks_computer_products_electronic_product:
+      # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_computer_products(electronic_product_id)
+      label: acorn.lojistiks::lang.models.computerproduct.label_plural
+      type: relationmanager
+      span: storm
+      cssClass: 'single-tab single-tab-1fromX  col-xs-6'
+      comment: |
+        <div class='debug debug-field'>
+        <div class="title">lojistiks_computer_products_electronic_product</div>
+        Tab multi-select for <[Xto1]= acorn_lojistiks_computer_products(electronic_product_id) on Lojistiks.ElectronicProduct
+        <pre></pre>
+        </div>
+      commentHtml: true
+      tab: acorn.lojistiks::lang.models.computerproduct.label_plural
+      nameFrom: fully_qualified_name

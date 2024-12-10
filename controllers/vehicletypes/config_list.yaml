@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/vehicletype/columns.yaml
 modelClass: Acorn\Lojistiks\Models\VehicleType
 
 # List Title
-title: acorn.lojistiks::lang.models.vehicletype.label_plural
+title: 'acorn.lojistiks::lang.models.vehicletype.label_plural'
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/vehicletypes/update/:id
@@ -48,3 +48,4 @@ toolbar:
     # Search widget configuration
     search:
         prompt: backend::lang.list.search_prompt
+filter: config_filter.yaml

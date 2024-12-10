@@ -1,129 +1,209 @@
-# ===================================
-#  Form Field Definitions
-# ===================================
-
 fields:
-    product:
-        label: acorn.lojistiks::lang.models.product.label
-        type: relation
-        comment: create new
-          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ComputerProducts@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">computer product</a>
-          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'ElectronicProducts@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">electronic product</a>
-          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">product</a>
-          <span data-field-name="_lc_product"/>
-        commentHtml: true
-        placeholder: acorn.lojistiks::lang.models.general.select
-        span: storm
-        cssClass: 'col-xs-8 initial-focus'
-        nameFrom: full_name
-        dependsOn:
-          - _lc_product
-    quantity:
-        label: acorn.lojistiks::lang.models.productinstance.quantity
-        type: number
-        comment: Only relevant for
-          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_product'" data-control="popup" tabindex="-1">products</a> with
-          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'MeasurementUnits@create',fieldName:'_lc_mu'" data-control="popup" tabindex="-1">measurement units</a> that use quantity, like Litres
-        commentHtml: true
-        default: 1
-        span: storm
-        cssClass: 'col-xs-2'
-        dependsOn:
-          - product[measurement_unit]
-    product[measurement_unit]:
-        label: acorn.lojistiks::lang.models.measurementunit.label
-        comment: create new
-          <a href="#" class="popup-add" data-field-name="_lc_mu" data-handler="onPopupRoute" data-request-data="route:'Products@create',fieldName:'_lc_mu'" data-control="popup" tabindex="-1">products</a> to change this
-        commentHtml: true
-        type: dropdown
-        options: Acorn\Lojistiks\Models\MeasurementUnit::dropdownOptions
-        span: storm
-        cssClass: 'col-xs-2'
-        placeholder: acorn.lojistiks::lang.models.general.select
-        disabled: true
-        dependsOn:
-          - product
-          - _lc_mu
-
-    external_identifier:
-        label: acorn.lojistiks::lang.models.product.external_identifier
-        type: text
-        span: left
-        dependsOn:
-          - product[measurement_unit]
-    asset_class:
-        label: acorn.lojistiks::lang.models.product.asset_class
-        type: radio
-        default: F
-        options:
-            F: Fixed
-            C: Current
-        span: auto
-        comment: A <a tabindex="-1" target="_blank" href="https://en.wikipedia.org/wiki/Current_asset">Fixed asset</a> is something long-term that the company uses like a laptop. Current assets are the company's products, temporary things that the company buys and sells, like oil
-        commentHtml: true
-    _qrcode:
-        type: partial
-        context: update
-        path: ~/modules/acorn/partials/_qrcode
-        span: auto
-
-    # Initial Transfer afterCreate()
-    transfer:
-        type: section
-    _source_location:
-        label: acorn.lojistiks::lang.models.transfer.source_location
-        type: dropdown
-        options: Acorn\Lojistiks\Models\Location::dropdownOptions
-        nameFrom: fully_qualified_name
-        context: create
-        span: auto
-        comment: create new
-          <a href="#" class="popup-add" data-handler="onPopupRoute" data-field-name="_lc_source_location" data-request-data="route:'Suppliers@create',fieldName:'_lc_source_location'" data-control="popup" tabindex="-1">supplier</a>
-        commentHtml: true
-        placeholder: acorn.lojistiks::lang.models.general.select
-        dependsOn:
-          - _lc_source_location
-    _destination_location:
-        label: acorn.location::lang.models.location.initial_location
-        type: dropdown
-        options: Acorn\Lojistiks\Models\Location::dropdownOptions
-        nameFrom: fully_qualified_name
-        context: create
-        span: auto
-        comment: create new
-          <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Warehouses@create',fieldName:'_lc_destination_location'" data-control="popup" tabindex="-1">warehouse</a>
-          | <a href="#" class="popup-add" data-handler="onPopupRoute" data-request-data="route:'Offices@create',fieldName:'_lc_destination_location'" data-control="popup" tabindex="-1">office</a>
-          <a tabindex="-1" target="_blank" href="/backend/acorn/lojistiks/locations" class="goto-form-group-selection"></a>
-          <span data-field-name="_lc_destination_location"/>
-        commentHtml: true
-        placeholder: acorn.lojistiks::lang.models.general.select
-        dependsOn:
-            - _lc_destination_location
-
+  id:
+    # IdField: From id(uuid)
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">id</div>
+      IdField for column id on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  product:
+    # ForeignIdField: From product_id(uuid), with =[Xto1]> acorn_lojistiks_products(id)
+    label: acorn.lojistiks::lang.models.product.label
+    type: dropdown
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/products'>Product</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/products' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">product</div>
+      ForeignIdField for column product_id on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Lojistiks\Models\Product::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+      - _create_product
+  quantity:
+    # Field: From quantity(integer)
+    label: acorn.lojistiks::lang.models.productinstance.quantity
+    type: number
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">quantity</div>
+      Field for column quantity on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  external_identifier:
+    # Field: From external_identifier(character varying)
+    label: acorn.lojistiks::lang.models.productinstance.external_identifier
+    type: text
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">external_identifier</div>
+      Field for column external_identifier on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  asset_class:
+    # Field: From asset_class("char")
+    label: acorn.lojistiks::lang.models.productinstance.asset_class
+    type: text
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">asset_class</div>
+      Field for column asset_class on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  image:
+    # Field: From image(character varying)
+    label: acorn.lojistiks::lang.models.productinstance.image
+    type: text
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">image</div>
+      Field for column image on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    label: acorn::lang.models.server.label
+    type: dropdown
+    hidden: true
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">server</div>
+      ForeignIdField for column server_id on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Models\Server::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  created_at_event[start]:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: datepicker
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">created_at_event</div>
+      ForeignIdField for column created_at_event_id on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+    dependsOn:
+      - _qrscan
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: dropdown
+    hidden: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">created_by_user</div>
+      ForeignIdField for column created_by_user_id on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\User\Models\User::dropdownOptions
+    placeholder: backend::lang.form.select
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  response:
+    # Field: From response(text)
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">response</div>
+      Field for column response on Lojistiks.ProductInstance
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    path: qrcode
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_qrcode</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
+    context:
+      - update
+      - preview
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.productinstance._actions
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_actions</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
 tabs:
-    fields:
-      initial_transfer_product_instance[transfer][source_location][fully_qualified_name]:
-          label: acorn.lojistiks::lang.models.supplier.label
-          type: text
-          readOnly: true
-          disabled: true
-          context: update
-          tab: acorn.location::lang.models.location.initial_location
-      initial_transfer_product_instance[transfer][destination_location][fully_qualified_name]:
-          label: acorn.location::lang.models.location.initial_location
-          type: text
-          readOnly: true
-          disabled: true
-          context: update
-          tab: acorn.location::lang.models.location.initial_location
-      #transfers:
-      product_instance_transfer:
-          type: relation
-          #nameFrom: full_name
-          nameFrom: transfer_full_name
-          readOnly: true
-          disabled: true
-          context: update
-          #containerAttributes:
-            # TODO: goto-form-group-selection: /backend/acorn/lojistiks/transfers
-          tab: acorn.lojistiks::lang.models.transfer.label_plural
+  fields:
+    lojistiks_product_instance_transfer_product_instances:
+      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(product_instance_id) through semi [acorn_lojistiks_product_instance_transfer]
+      label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+      type: relationmanager
+      span: storm
+      cssClass: 'single-tab single-tab-1fromX  col-xs-6'
+      comment: |
+        <div class='debug debug-field'>
+        <div class="title">lojistiks_product_instance_transfer_product_instances</div>
+        Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(product_instance_id) through semi [acorn_lojistiks_product_instance_transfer] on Lojistiks.ProductInstance
+        <pre></pre>
+        </div>
+      commentHtml: true
+      tab: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+      nameFrom: fully_qualified_name

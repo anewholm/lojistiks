@@ -8,10 +8,8 @@ list: $/acorn/lojistiks/models/transfer/columns.yaml
 # Model Class name
 modelClass: Acorn\Lojistiks\Models\Transfer
 
-filter: config_filter.yaml
-
 # List Title
-title: acorn.lojistiks::lang.models.transfer.label_plural
+title: 'acorn.lojistiks::lang.models.transfer.label_plural'
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/transfers/update/:id
@@ -50,3 +48,4 @@ toolbar:
     # Search widget configuration
     search:
         prompt: backend::lang.list.search_prompt
+filter: config_filter.yaml

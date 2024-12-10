@@ -1,31 +1,15 @@
-# ===================================
-#  Form Behavior Config
-# ===================================
-
-# Record name
 name: acorn.lojistiks::lang.models.warehouse.label
-
-# Model Form Field configuration
 form: $/acorn/lojistiks/models/warehouse/fields.yaml
-
-# Model Class name
 modelClass: Acorn\Lojistiks\Models\Warehouse
-
-# Default redirect location
 defaultRedirect: acorn/lojistiks/warehouses
-
-# Create page
 create:
-    title: backend::lang.form.create_title
-    redirect: acorn/lojistiks/warehouses/update/:id
-    redirectClose: acorn/lojistiks/warehouses
-
-# Update page
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/warehouses/update/:id
+  redirectClose: acorn/lojistiks/warehouses
 update:
-    title: backend::lang.form.update_title
-    redirect: acorn/lojistiks/warehouses
-    redirectClose: acorn/lojistiks/warehouses
-
-# Preview page
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/warehouses
+  redirectClose: acorn/lojistiks/warehouses
 preview:
-    title: backend::lang.form.preview_title
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

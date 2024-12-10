@@ -1,0 +1,155 @@
+fields:
+  id:
+    # IdField: From id(uuid)
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">id</div>
+      IdField for column id on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  transfer:
+    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acorn_lojistiks_transfers(id)
+    label: acorn.lojistiks::lang.models.transfer.label
+    type: dropdown
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/transfers'>Transfer</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/transfers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">transfer</div>
+      ForeignIdField for column transfer_id on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Lojistiks\Models\Transfer::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+      - _create_transfer
+  product_instance:
+    # ForeignIdField: From product_instance_id(uuid), with =[XtoXSemi]> acorn_lojistiks_product_instances(id)
+    label: acorn.lojistiks::lang.models.productinstance.label
+    type: dropdown
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/productinstances'>ProductInstance</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/productinstances' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">product_instance</div>
+      ForeignIdField for column product_instance_id on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Lojistiks\Models\ProductInstance::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+      - _create_product_instance
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    label: acorn::lang.models.server.label
+    type: dropdown
+    hidden: true
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">server</div>
+      ForeignIdField for column server_id on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Models\Server::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  created_at_event[start]:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: datepicker
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">created_at_event</div>
+      ForeignIdField for column created_at_event_id on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+    dependsOn:
+      - _qrscan
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: dropdown
+    hidden: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">created_by_user</div>
+      ForeignIdField for column created_by_user_id on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\User\Models\User::dropdownOptions
+    placeholder: backend::lang.form.select
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  response:
+    # Field: From response(text)
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">response</div>
+      Field for column response on Lojistiks.ProductInstanceTransfer
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    path: qrcode
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_qrcode</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
+    context:
+      - update
+      - preview
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.productinstancetransfer._actions
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_actions</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true

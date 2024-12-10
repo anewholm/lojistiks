@@ -1,37 +1,73 @@
-# ===================================
-#  List Column Definitions
-# ===================================
-
 columns:
-    location[id]:
-        label: acorn.lojistiks::lang.models.general.centre_id
-        searchable: true
-        invisible: true
-    id:
-        label: acorn.lojistiks::lang.models.general.leaf_id
-        searchable: true
-        invisible: true
-    location[name]:
-        label: acorn.lojistiks::lang.models.general.name
-        searchable: true
-        invisible: true
-    location[type]:
-        label: acorn.lojistiks::lang.models.general.type
-        searchable: true
-        invisible: true
-    location[fully_qualified_name]:
-        label: acorn.location::lang.models.location.label
-        type: text
-        searchable: true
-        sortable: true
-    _qrcode:
-        type: partial
-        path: ~/modules/acorn/partials/_qrcode
-        sortable: false
-        invisible: true
-    created_at:
-        label: acorn.lojistiks::lang.models.general.created_at
-        type: datetime
-        searchable: true
-        sortable: true
-        invisible: true
+  id:
+    # IdField: From id(uuid)
+    # Debug: IdField for column id on Lojistiks.Warehouse
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  location:
+    # ForeignIdField: From location_id(uuid), with =[Xto1]> acorn_location_locations(id)
+    # Debug: ForeignIdField for column location_id on Lojistiks.Warehouse
+    label: acorn.location::lang.models.location.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: false
+    relation: location
+    select: name
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # Debug: ForeignIdField for column server_id on Lojistiks.Warehouse
+    label: acorn::lang.models.server.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: true
+    relation: server
+    select: name
+  created_at_event:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Warehouse
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: timetense
+    searchable: true
+    sortable: true
+    invisible: true
+    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # Debug: ForeignIdField for column created_by_user_id on Lojistiks.Warehouse
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: text
+    valueFrom: name
+    searchable: false
+    sortable: false
+    invisible: true
+    relation: created_by_user
+  response:
+    # Field: From response(text)
+    # Debug: Field for column response on Lojistiks.Warehouse
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: true
+    path: qrcode
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.warehouse._actions
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: actions

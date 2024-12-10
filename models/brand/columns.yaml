@@ -1,45 +1,90 @@
-# ===================================
-#  List Column Definitions
-# ===================================
-
 columns:
-    id:
-        label: acorn.lojistiks::lang.models.general.id
-        type: number
-        searchable: false
-        sortable: true
-        invisible: true
-    name:
-        label: acorn.lojistiks::lang.models.general.name
-        type: text
-        searchable: true
-    image:
-        label: acorn.lojistiks::lang.models.general.image
-        type: image
-        width: 150
-        height: 150
-    created_at:
-        label: acorn.lojistiks::lang.models.general.created_at
-        type: datetime
-        searchable: true
-        sortable: true
-        invisible: true
-    _qrcode:
-        type: partial
-        path: ~/modules/acorn/partials/_qrcode
-        sortable: false
-        invisible: true
-
-    server[name]:
-        label: acorn::lang.models.server.label
-        invisible: true
-        sortable: false
-    server[replicated_source]:
-        label: acorn::lang.models.server.replicated_source
-        invisible: true
-        sortable: false
-    response:
-        label: acorn::lang.models.server.response
-        type: text
-        invisible: true
-        sortable: false
+  id:
+    # IdField: From id(uuid)
+    # Debug: IdField for column id on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  name:
+    # Field: From name(character varying)
+    # Debug: Field for column name on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.general.name
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  image:
+    # Field: From image(character varying)
+    # Debug: Field for column image on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.brand.image
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  response:
+    # Field: From response(text)
+    # Debug: Field for column response on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # Debug: ForeignIdField for column server_id on Lojistiks.Brand
+    label: acorn::lang.models.server.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: true
+    relation: server
+    select: name
+  created_at_event:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: timetense
+    searchable: true
+    sortable: true
+    invisible: true
+    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # Debug: ForeignIdField for column created_by_user_id on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: text
+    valueFrom: name
+    searchable: false
+    sortable: false
+    invisible: true
+    relation: created_by_user
+  lojistiks_products_brand:
+    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_products(brand_id)
+    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_products(brand_id) on Lojistiks.Brand
+    label: acorn.lojistiks::lang.models.product.label_plural
+    type: partial
+    valueFrom: name
+    searchable: true
+    sortable: false
+    invisible: false
+    path: multi
+    relation: lojistiks_products_brand
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: true
+    path: qrcode
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.brand._actions
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: actions

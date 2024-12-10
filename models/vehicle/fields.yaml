@@ -1,76 +1,196 @@
-# ===================================
-#  Form Field Definitions
-# ===================================
-
 fields:
-    _qrcode_large:
-        type: partial
-        context: preview
-        span: right
-        size: 196
-        path: ~/modules/acorn/partials/_qrcode
-    last_transfer[destination_location][fully_qualified_name]:
-        label: acorn.location::lang.models.location.label
-        type: text
-        comment: <a target="_blank" href="../../transfer/create">Transfer</a> the vehicle to another location
-        commentHtml: true
-        disabled: true
-        span: right
-        context: update
-    registration:
-        label: acorn.lojistiks::lang.models.vehicle.registration
-        type: text
-        span: left
-    last_transfer[driver][person][full_name]:
-        label: acorn.lojistiks::lang.models.driver.label
-        type: text
-        disabled: true
-        span: right
-        context: update
-    vehicle_type:
-        label: acorn.lojistiks::lang.models.vehicletype.label
-        type: relation
-        span: left
-    initial_transfer[source_location]:
-        label: acorn.lojistiks::lang.models.supplier.label
-        type: dropdown
-        options: Acorn\Lojistiks\Models\Location::dropdownOptions
-        span: left
-    initial_transfer[destination_location]:
-        label: acorn.location::lang.models.location.initial_location
-        type: dropdown
-        options: Acorn\Lojistiks\Models\Location::dropdownOptions
-        span: left
-    #last_transfer:
-        #type: relation
-        #span: right
-        #context: update
-    image:
-        label: acorn.lojistiks::lang.models.general.image
-        type: fileupload
-        mode: image
-        useCaption: true
-        imageHeight: 150
-        imageWidth: 150
-        thumbOptions:
-            mode: crop
-            extension: auto
-        span: left
-    _qrcode:
-        type: partial
-        context: update
-        path: ~/modules/acorn/partials/_qrcode
-        span: auto
-
-
+  id:
+    # IdField: From id(uuid)
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">id</div>
+      IdField for column id on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  vehicle_type:
+    # ForeignIdField: From vehicle_type_id(uuid), with =[Xto1]> acorn_lojistiks_vehicle_types(id)
+    label: acorn.lojistiks::lang.models.vehicletype.label
+    type: dropdown
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/vehicletypes'>VehicleType</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/vehicletypes' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">vehicle_type</div>
+      ForeignIdField for column vehicle_type_id on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Lojistiks\Models\VehicleType::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+      - _create_vehicle_type
+  registration:
+    # Field: From registration(character varying)
+    label: acorn.lojistiks::lang.models.vehicle.registration
+    type: text
+    required: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">registration</div>
+      Field for column registration on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+  image:
+    # Field: From image(character varying)
+    label: acorn.lojistiks::lang.models.vehicle.image
+    type: text
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">image</div>
+      Field for column image on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    label: acorn::lang.models.server.label
+    type: dropdown
+    hidden: true
+    required: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">server</div>
+      ForeignIdField for column server_id on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\Models\Server::dropdownOptions
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  created_at_event[start]:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: datepicker
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">created_at_event</div>
+      ForeignIdField for column created_at_event_id on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+    dependsOn:
+      - _qrscan
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: dropdown
+    hidden: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-5
+    comment: |
+      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">created_by_user</div>
+      ForeignIdField for column created_by_user_id on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    options: Acorn\User\Models\User::dropdownOptions
+    placeholder: backend::lang.form.select
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
+  response:
+    # Field: From response(text)
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">response</div>
+      Field for column response on Lojistiks.Vehicle
+      <pre></pre>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    path: qrcode
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_qrcode</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
+    context:
+      - update
+      - preview
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.vehicle._actions
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">_actions</div>
+      
+      <pre></pre>
+      </div>
+    commentHtml: true
 tabs:
-    fields:
-        transfers:
-            type: relation
-            nameFrom: full_name
-            disabled: true
-            tab: acorn.lojistiks::lang.models.transfer.label_plural
-            cssClass: selected-only
-            context: update
-            containerAttributes:
-              goto-form-group-selection: ../../transfers
+  fields:
+    lojistiks_transfers_vehicle:
+      # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id)
+      label: acorn.lojistiks::lang.models.transfer.label_plural
+      type: relationmanager
+      span: storm
+      cssClass: 'single-tab single-tab-1fromX  col-xs-6'
+      comment: |
+        <div class='debug debug-field'>
+        <div class="title">lojistiks_transfers_vehicle</div>
+        Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id) on Lojistiks.Vehicle
+        <pre></pre>
+        </div>
+      commentHtml: true
+      tab: acorn.lojistiks::lang.models.transfer.label_plural
+      nameFrom: fully_qualified_name
+    lojistiks_drivers_vehicle:
+      # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(vehicle_id)
+      label: acorn.lojistiks::lang.models.driver.label_plural
+      type: relationmanager
+      span: storm
+      cssClass: 'single-tab single-tab-1fromX  col-xs-6'
+      comment: |
+        <div class='debug debug-field'>
+        <div class="title">lojistiks_drivers_vehicle</div>
+        Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(vehicle_id) on Lojistiks.Vehicle
+        <pre></pre>
+        </div>
+      commentHtml: true
+      tab: acorn.lojistiks::lang.models.driver.label_plural
+      nameFrom: fully_qualified_name

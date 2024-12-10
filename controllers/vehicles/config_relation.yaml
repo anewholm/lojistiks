@@ -1,0 +1,21 @@
+# Created By acorn-create-system v1.0
+lojistiks_transfers_vehicle:
+  label: acorn.lojistiks::lang.models.transfer.label_plural
+  view:
+    list: $/acorn/lojistiks/models/transfer/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/transfer/fields.yaml
+    recordsPerPage: 10
+lojistiks_drivers_vehicle:
+  label: acorn.lojistiks::lang.models.driver.label_plural
+  view:
+    list: $/acorn/lojistiks/models/driver/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/driver/fields.yaml
+    recordsPerPage: 10

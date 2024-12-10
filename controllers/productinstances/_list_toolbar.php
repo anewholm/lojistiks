@@ -18,16 +18,4 @@
         data-stripe-load-indicator>
         <?= e(trans('backend::lang.list.delete_selected')); ?>
     </button>
-
-    <a
-        href="/backend/acorn/lojistiks/findbyqrcode"
-        class="btn btn-primary wn-icon-plus">
-        <?= e(trans('acorn.lojistiks::lang.models.general.find_by_qrcode', ['name' => trans('acorn.lojistiks::lang.general.find_by_qrcode')])); ?>
-    </a>
-
-    <a
-        href="javascript:print()"
-        class="btn btn-primary wn-icon-print">
-        <?= e(trans('acorn.lojistiks::lang.models.general.print', ['name' => trans('acorn.lojistiks::lang.general.print')])); ?>
-    </a>
 </div>

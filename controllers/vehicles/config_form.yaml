@@ -1,31 +1,15 @@
-# ===================================
-#  Form Behavior Config
-# ===================================
-
-# Record name
 name: acorn.lojistiks::lang.models.vehicle.label
-
-# Model Form Field configuration
 form: $/acorn/lojistiks/models/vehicle/fields.yaml
-
-# Model Class name
 modelClass: Acorn\Lojistiks\Models\Vehicle
-
-# Default redirect location
 defaultRedirect: acorn/lojistiks/vehicles
-
-# Create page
 create:
-    title: backend::lang.form.create_title
-    redirect: acorn/lojistiks/vehicles/update/:id
-    redirectClose: acorn/lojistiks/vehicles
-
-# Update page
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/vehicles/update/:id
+  redirectClose: acorn/lojistiks/vehicles
 update:
-    title: backend::lang.form.update_title
-    redirect: acorn/lojistiks/vehicles
-    redirectClose: acorn/lojistiks/vehicles
-
-# Preview page
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/vehicles
+  redirectClose: acorn/lojistiks/vehicles
 preview:
-    title: backend::lang.form.preview_title
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

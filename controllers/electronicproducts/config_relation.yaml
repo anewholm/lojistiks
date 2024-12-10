@@ -1,0 +1,11 @@
+# Created By acorn-create-system v1.0
+lojistiks_computer_products_electronic_product:
+  label: acorn.lojistiks::lang.models.computerproduct.label_plural
+  view:
+    list: $/acorn/lojistiks/models/computerproduct/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/computerproduct/fields.yaml
+    recordsPerPage: 10

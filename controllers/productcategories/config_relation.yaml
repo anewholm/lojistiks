@@ -1,0 +1,21 @@
+# Created By acorn-create-system v1.0
+children:
+  label: acorn.lojistiks::lang.models.productcategory.children
+  view:
+    list: $/acorn/lojistiks/models/productcategory/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productcategory/fields.yaml
+    recordsPerPage: 10
+lojistiks_products_product_categories_product_category:
+  label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
+  view:
+    list: $/acorn/lojistiks/models/productsproductcategory/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productsproductcategory/fields.yaml
+    recordsPerPage: 10

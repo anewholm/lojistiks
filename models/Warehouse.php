@@ -2,17 +2,40 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
+use Acorn\Collection;
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * Warehouse Model
  */
 class Warehouse extends Model
 {
-    use \Winter\Storm\Database\Traits\Validation;
+    /* Generated Fields:
+     * id(uuid)
+     * location_id(uuid)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * created_by_user_id(uuid)
+     * response(text)
+     */
 
-    // public $translatable = ['location[name]', 'location[address][name]'];
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
+    use \Winter\Storm\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
@@ -32,7 +55,9 @@ class Warehouse extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'location' => 'required'
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -57,41 +82,33 @@ class Warehouse extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [
-        'employees'      => Employee::class,
-        'transfers_in'   => [Transfer::class, 'key' => 'destination_location_id'],
-        'transfers_out'  => [Transfer::class, 'key' => 'source_location_id'],
-        'stock'          => Stock::class,
-        'stock_products' => StockProduct::class,
-    ];
+    public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'location' => Location::class,
-        'server' =>Server::class,
+        'location' => [\Acorn\Location\Models\Location::class, 'key' => 'location_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+    ];
     public $attachOne = [];
     public $attachMany = [];
 
-    public function name()
-    {
-        $this->load('location');
-        return $this->location->name();
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
 }
+// Created By acorn-create-system v1.0

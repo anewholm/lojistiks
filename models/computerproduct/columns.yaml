@@ -1,50 +1,105 @@
-# ===================================
-#  List Column Definitions
-# ===================================
-
 columns:
-    id:
-        label: acorn.lojistiks::lang.models.general.id
-        searchable: true
-        invisible: true
-    electronic_product[product][name]:
-        label: acorn.lojistiks::lang.models.general.name
-        type: text
-        searchable: true
-        sortable: true
-    electronic_product[product][brand][name]:
-        label: acorn.lojistiks::lang.models.brand.label
-        type: text
-        searchable: true
-        sortable: true
-    electronic_product[product][model_name]:
-        label: acorn.lojistiks::lang.models.product.model
-        type: text
-        searchable: true
-        sortable: true
-    memory:
-       label: acorn.lojistiks::lang.models.computerproduct.memory
-       type: number
-       searchable: false
-    HDD_size:
-       label: acorn.lojistiks::lang.models.computerproduct.hdd_size
-       type: number
-       searchable: false
-    processor_type:
-       label: acorn.lojistiks::lang.models.computerproduct.processor_type
-       type: text
-       searchable: false
-       select: case when processor_type = 1 then 'Intel' when processor_type = 2 then 'AMD' when processor_type = 3 then 'ARM' end
-    processor_version:
-        label: acorn.lojistiks::lang.models.computerproduct.processor_version
-        type: number
-    created_at:
-        label: acorn.lojistiks::lang.models.general.created_at
-        type: datetime
-        searchable: true
-        sortable: true
-        invisible: true
-    _qrcode:
-        type: partial
-        path: ~/modules/acorn/partials/_qrcode
-        sortable: false
+  id:
+    # IdField: From id(uuid)
+    # Debug: IdField for column id on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  electronic_product:
+    # ForeignIdField: From electronic_product_id(uuid), with =[Xto1]> acorn_lojistiks_electronic_products(id)
+    # Debug: ForeignIdField for column electronic_product_id on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.electronicproduct.label
+    type: text
+    valueFrom: name
+    searchable: false
+    sortable: false
+    invisible: false
+    relation: electronic_product
+  memory:
+    # Field: From memory(bigint)
+    # Debug: Field for column memory on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.computerproduct.memory
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  HDD_size:
+    # Field: From HDD_size(bigint)
+    # Debug: Field for column HDD_size on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.computerproduct.HDD_size
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  processor_version:
+    # Field: From processor_version(double precision)
+    # Debug: Field for column processor_version on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.computerproduct.processor_version
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # Debug: ForeignIdField for column server_id on Lojistiks.ComputerProduct
+    label: acorn::lang.models.server.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: true
+    relation: server
+    select: name
+  created_at_event:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: timetense
+    searchable: true
+    sortable: true
+    invisible: true
+    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # Debug: ForeignIdField for column created_by_user_id on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: text
+    valueFrom: name
+    searchable: false
+    sortable: false
+    invisible: true
+    relation: created_by_user
+  processor_type:
+    # Field: From processor_type(integer)
+    # Debug: Field for column processor_type on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.computerproduct.processor_type
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  response:
+    # Field: From response(text)
+    # Debug: Field for column response on Lojistiks.ComputerProduct
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: true
+    path: qrcode
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.computerproduct._actions
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: actions

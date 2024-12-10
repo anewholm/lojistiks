@@ -4,7 +4,7 @@ use BackendMenu;
 use Acorn\Controller;
 
 /**
- * Brand Backend Controller
+ * Brands Backend Controller
  */
 class Brands extends Controller
 {
@@ -12,8 +12,10 @@ class Brands extends Controller
      * @var array Behaviors that are implemented by this controller.
      */
     public $implement = [
-        \Backend\Behaviors\FormController::class,
-        \Backend\Behaviors\ListController::class,
+        '\Acorn\Behaviors\FormController',
+        '\Acorn\Behaviors\ListController',
+        'Backend\Behaviors\RelationController',
+        '\Acorn\Behaviors\RelationController'
     ];
 
     public function __construct()

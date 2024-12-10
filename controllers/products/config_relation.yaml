@@ -1,0 +1,61 @@
+# Created By acorn-create-system v1.0
+lojistiks_electronic_products_product:
+  label: acorn.lojistiks::lang.models.electronicproduct.label_plural
+  view:
+    list: $/acorn/lojistiks/models/electronicproduct/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/electronicproduct/fields.yaml
+    recordsPerPage: 10
+lojistiks_products_product_categories_product:
+  label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
+  view:
+    list: $/acorn/lojistiks/models/productsproductcategory/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productsproductcategory/fields.yaml
+    recordsPerPage: 10
+lojistiks_product_instances_product:
+  label: acorn.lojistiks::lang.models.productinstance.label_plural
+  view:
+    list: $/acorn/lojistiks/models/productinstance/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productinstance/fields.yaml
+    recordsPerPage: 10
+lojistiks_product_products_product:
+  label: acorn.lojistiks::lang.models.productproduct.label_plural
+  view:
+    list: $/acorn/lojistiks/models/productproduct/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productproduct/fields.yaml
+    recordsPerPage: 10
+lojistiks_product_attributes_product:
+  label: acorn.lojistiks::lang.models.productattribute.label_plural
+  view:
+    list: $/acorn/lojistiks/models/productattribute/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productattribute/fields.yaml
+    recordsPerPage: 10
+lojistiks_product_products_sub_product:
+  label: acorn.lojistiks::lang.models.productproduct.label_plural
+  view:
+    list: $/acorn/lojistiks/models/productproduct/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/productproduct/fields.yaml
+    recordsPerPage: 10

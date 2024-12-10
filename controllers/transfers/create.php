@@ -18,19 +18,10 @@
                 <button
                     type="button"
                     data-request="onSave"
-                    data-request-data="action: 'acorn/lojistiks/transfers/preview'"
                     data-hotkey="ctrl+s, cmd+s"
                     data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.transfer.label')])); ?>"
                     class="btn btn-primary">
-                    <?= e(trans('acorn.lojistiks::lang.models.transfer.send_and_print')); ?>
-                </button>
-                <button
-                    type="button"
-                    data-request="onSave"
-                    data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.transfer.label')])); ?>"
-                    class="btn btn-default">
-                    <?= e(trans('acorn.lojistiks::lang.models.transfer.send')); ?>
+                    <?= e(trans('backend::lang.form.create')); ?>
                 </button>
                 <button
                     type="button"
@@ -39,7 +30,7 @@
                     data-hotkey="ctrl+enter, cmd+enter"
                     data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.transfer.label')])); ?>"
                     class="btn btn-default">
-                    <?= e(trans('acorn.lojistiks::lang.models.transfer.send_and_close')); ?>
+                    <?= e(trans('backend::lang.form.create_and_close')); ?>
                 </button>
                 <span class="btn-text">
                     or <a href="<?= Backend::url('acorn/lojistiks/transfers') ?>"><?= e(trans('backend::lang.form.cancel')); ?></a>

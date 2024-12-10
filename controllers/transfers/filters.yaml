@@ -1,5 +1,0 @@
-scopes:
-    enabled:
-        label: winter.location::lang.locations.disabled_label
-        type: switch
-        scope: isEnabled

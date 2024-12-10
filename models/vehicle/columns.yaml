@@ -1,62 +1,109 @@
-# ===================================
-#  List Column Definitions
-# ===================================
-
 columns:
-    registration:
-        label: acorn.lojistiks::lang.models.vehicle.registration
-        type: text
-        searchable: true
-    vehicle_type:
-        label: acorn.lojistiks::lang.models.vehicletype.label
-        type: text
-        relation: vehicle_type
-        select: name
-        searchable: true
-        sortable: true
-    last_transfer[destination_location][fully_qualified_name]:
-        label: acorn.location::lang.models.location.label
-        type: text
-        searchable: true
-        sortable: true
-    last_transfer[sent_at]:
-        label: acorn.lojistiks::lang.models.transfer.sent_at
-        type: datetime
-    last_transfer[arrived_at]:
-        label: acorn.lojistiks::lang.models.transfer.arrived_at
-        type: datetime
-    last_transfer[driver][person][full_name]:
-        label: acorn.lojistiks::lang.models.driver.label
-        type: text
-        searchable: true
-        sortable: true
-
-    # Invisible
-    id:
-        label: acorn.lojistiks::lang.models.general.id
-        searchable: true
-        invisible: true
-    initial_transfer[source_location][name]:
-        label: acorn.lojistiks::lang.models.transfer.source_location
-        type: text
-        searchable: true
-        sortable: true
-        invisible: true
-    initial_transfer[destination_location][name]:
-        label: acorn.lojistiks::lang.models.transfer.destination_location
-        type: text
-        searchable: true
-        sortable: true
-        invisible: true
-    created_at:
-        label: acorn.lojistiks::lang.models.general.created_at
-        type: datetime
-        searchable: true
-        sortable: true
-        invisible: true
-    _qrcode:
-        type: partial
-        path: ~/modules/acorn/partials/_qrcode
-        sortable: false
-        invisible: true
-
+  id:
+    # IdField: From id(uuid)
+    # Debug: IdField for column id on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  vehicle_type:
+    # ForeignIdField: From vehicle_type_id(uuid), with =[Xto1]> acorn_lojistiks_vehicle_types(id)
+    # Debug: ForeignIdField for column vehicle_type_id on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.vehicletype.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: false
+    relation: vehicle_type
+    select: name
+  registration:
+    # Field: From registration(character varying)
+    # Debug: Field for column registration on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.vehicle.registration
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  image:
+    # Field: From image(character varying)
+    # Debug: Field for column image on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.vehicle.image
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
+  server:
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # Debug: ForeignIdField for column server_id on Lojistiks.Vehicle
+    label: acorn::lang.models.server.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: true
+    relation: server
+    select: name
+  created_at_event:
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: timetense
+    searchable: true
+    sortable: true
+    invisible: true
+    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+  created_by_user:
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # Debug: ForeignIdField for column created_by_user_id on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    type: text
+    valueFrom: name
+    searchable: false
+    sortable: false
+    invisible: true
+    relation: created_by_user
+  response:
+    # Field: From response(text)
+    # Debug: Field for column response on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.general.response
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  lojistiks_transfers_vehicle:
+    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id)
+    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id) on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.transfer.label_plural
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: multi
+    relation: lojistiks_transfers_vehicle
+  lojistiks_drivers_vehicle:
+    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(vehicle_id)
+    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(vehicle_id) on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.driver.label_plural
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: multi
+    relation: lojistiks_drivers_vehicle
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: true
+    path: qrcode
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.vehicle._actions
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: actions

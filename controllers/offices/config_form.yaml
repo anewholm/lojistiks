@@ -1,31 +1,15 @@
-# ===================================
-#  Form Behavior Config
-# ===================================
-
-# Record name
 name: acorn.lojistiks::lang.models.office.label
-
-# Model Form Field configuration
 form: $/acorn/lojistiks/models/office/fields.yaml
-
-# Model Class name
 modelClass: Acorn\Lojistiks\Models\Office
-
-# Default redirect location
 defaultRedirect: acorn/lojistiks/offices
-
-# Create page
 create:
-    title: backend::lang.form.create_title
-    redirect: acorn/lojistiks/offices/update/:id
-    redirectClose: acorn/lojistiks/offices
-
-# Update page
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/offices/update/:id
+  redirectClose: acorn/lojistiks/offices
 update:
-    title: backend::lang.form.update_title
-    redirect: acorn/lojistiks/offices
-    redirectClose: acorn/lojistiks/offices
-
-# Preview page
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/offices
+  redirectClose: acorn/lojistiks/offices
 preview:
-    title: backend::lang.form.preview_title
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

@@ -2,18 +2,42 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
-use Acorn\User\Models\User;
-use System\Models\File;
+use Acorn\Collection;
 use BackendAuth;
-use Str;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * Person Model
  */
 class Person extends Model
 {
+    /* Generated Fields:
+     * id(uuid)
+     * user_id(uuid)
+     * image(character varying)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * created_by_user_id(uuid)
+     * response(text)
+     * last_transfer_location_id(uuid)
+     * last_product_instance_location_id(uuid)
+     */
+
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
@@ -59,97 +83,38 @@ class Person extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [];
+    public $hasMany = [
+        'lojistiks_drivers_person' => [\Acorn\Lojistiks\Models\Driver::class, 'key' => 'person_id', 'type' => '1fromX'],
+        'lojistiks_employees_person' => [\Acorn\Lojistiks\Models\Employee::class, 'key' => 'person_id', 'type' => '1fromX']
+    ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'user' => User::class,
-        'server' => Server::class,
-        // Lasts: see below
-        'last_transfer_source_location' => Location::class,
-        'last_transfer_destination_location' => Location::class,
-        'last_product_instance_source_location' => Location::class,
-        'last_product_instance_destination_location' => Location::class,
+        'user' => [\Acorn\User\Models\User::class, 'key' => 'user_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'last_transfer_location' => [\Acorn\Location\Models\Location::class, 'key' => 'last_transfer_location_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'last_product_instance_location' => [\Acorn\Location\Models\Location::class, 'key' => 'last_product_instance_location_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [
-        'image' => File::class,
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
+    public $attachOne = [];
     public $attachMany = [];
 
-    public function getFullNameAttribute()
-    {
-        $this->load('user');
-        return $this->user->name;
-    }
-
-    public function fullName()
-    {
-        return $this->full_name;
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
-
-    public static function auth()
-    {
-        // Any front-end user associated with this backend account
-        // This is usually through a user_id to the User plugin
-        $user = BackendAuth::user();
-        # TODO: Temporary HACK: to assign lasts. This needs to be moved in to acorn_user_users with a user_id link from backend_users
-        return ($user ? Person::all()->first() : NULL);
-    }
-
-    public static function saveLastsToAuthPerson(Array $lastModels, Model $sectionModel = NULL): void
-    {
-        if ($person = Person::auth()) $person->saveLasts($lastModels, $sectionModel);
-    }
-
-    public function saveLasts(Array $lastModels, Model $sectionModel = NULL): void
-    {
-        $sectionModelName = ($sectionModel ? Str::snake($sectionModel->unqualifiedClassName()) : '');
-        $attributePrefix  = "last_$sectionModelName" . ($sectionModelName ? '_' : '');
-        foreach ($lastModels as $name => $model) {
-            $attributeName        = "$attributePrefix$name";
-            $this->$attributeName = $model;
-        }
-        $this->save();
-    }
-
-    public static function lastsFromAuthPersonFor(Model $sectionModel): array
-    {
-        $person = Person::auth();
-        return ($person ? $person->lastsFor($sectionModel) : []);
-    }
-
-    public function lastsFor(Model $sectionModel): array
-    {
-        // TODO: Move this up in to User plugin
-        $lasts = array();
-        $sectionModelName   = ($sectionModel ? Str::snake($sectionModel->unqualifiedClassName()) : '');
-        $attributePrefix    = "last_$sectionModelName" . ($sectionModelName ? '_' : '');
-        $attributePrefixLen = strlen($attributePrefix);
-        $this->load(array_keys($this->belongsTo));
-        foreach ($this->relations as $name => $model) {
-            if ($model && substr($name, 0, $attributePrefixLen) == $attributePrefix) {
-                $attributeName = substr($name, $attributePrefixLen);
-                $pseudoName    = "_$attributeName";
-                $lasts[$attributeName] = $model;
-                $lasts[$pseudoName]    = $model;
-            }
-        }
-        return $lasts;
-    }
 }
+// Created By acorn-create-system v1.0

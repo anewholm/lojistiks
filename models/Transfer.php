@@ -2,25 +2,44 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
-use Str;
-use Illuminate\Database\Eloquent\Collection;
-use Acorn\Finance\Models\Invoice;
-use Acorn\Finance\Models\Purchase;
-
-// Useful
+use Acorn\Collection;
 use BackendAuth;
-use Acorn\User\Models\User;
-use Acorn\User\Models\UserGroup;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
 use Exception;
 use Flash;
+
+
+use Acorn\Model;
 
 /**
  * Transfer Model
  */
 class Transfer extends Model
 {
+    /* Generated Fields:
+     * id(uuid)
+     * location_id(uuid)
+     * driver_id(uuid)
+     * server_id(uuid)
+     * vehicle_id(uuid)
+     * created_by_user_id(uuid)
+     * created_at_event_id(uuid)
+     * response(text)
+     * pre_marked_arrived(boolean)
+     * sent_at_event_id(uuid)
+     * arrived_at_event_id(uuid)
+     */
+
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
@@ -42,8 +61,7 @@ class Transfer extends Model
      * @var array Validation rules for attributes
      */
     public $rules = [
-        'source_location' => 'required',
-        'destination_location' => 'required',
+        'location' => 'required'
     ];
 
     /**
@@ -69,180 +87,48 @@ class Transfer extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne = [
+        'criminal_defendant_detentions_transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => '1from1'],
+        'criminal_defendant_detentions_actual_release_transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'actual_release_transfer_id', 'type' => '1from1']
+    ];
     public $hasMany = [
-        'product_instance_transfer' => TransferProductInstance::class,
-        'vehicles' => Vehicle::class,
+        'lojistiks_product_instance_transfer_transfers_pivot' => [\Acorn\Lojistiks\Models\ProductInstanceTransfer::class, 'key' => 'transfer_id', 'otherKey' => 'product_instance_id', 'type' => 'XfromXSemi'],
+        'lojistiks_transfer_invoice_transfers_pivot' => [\Acorn\Lojistiks\Models\TransferInvoice::class, 'key' => 'transfer_id', 'otherKey' => 'invoice_id', 'type' => 'XfromXSemi'],
+        'lojistiks_transfer_purchase_transfers_pivot' => [\Acorn\Lojistiks\Models\TransferPurchase::class, 'key' => 'transfer_id', 'otherKey' => 'purchase_id', 'type' => 'XfromXSemi']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'source_location' => Location::class,
-        'destination_location' => Location::class,
-        'vehicle' => Vehicle::class,
-        'driver' => Driver::class,
-        'server' => Server::class,
+        'location' => [\Acorn\Location\Models\Location::class, 'key' => 'location_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'driver' => [\Acorn\Lojistiks\Models\Driver::class, 'key' => 'driver_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'vehicle' => [\Acorn\Lojistiks\Models\Vehicle::class, 'key' => 'vehicle_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'sent_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'sent_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'arrived_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'arrived_at_event_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [
-        'product_instances' => [
-            ProductInstance::class,
-            'table' => 'acorn_lojistiks_product_instance_transfer',
-        ],
-        'invoices' => [
-            Invoice::class,
-            'table' => 'acorn_lojistiks_transfer_invoice',
-        ],
-        'purchases' => [
-            Purchase::class,
-            'table' => 'acorn_lojistiks_transfer_purchase',
-        ],
+        'lojistiks_product_instance_transfer_transfers' => [\Acorn\Lojistiks\Models\ProductInstance::class, 'table' => 'acorn_lojistiks_product_instance_transfer', 'key' => 'transfer_id', 'otherKey' => 'product_instance_id', 'type' => 'XfromXSemi'],
+        'lojistiks_transfer_invoice_transfers' => [\Acorn\Finance\Models\Invoice::class, 'table' => 'acorn_lojistiks_transfer_invoice', 'key' => 'transfer_id', 'otherKey' => 'invoice_id', 'type' => 'XfromXSemi'],
+        'lojistiks_transfer_purchase_transfers' => [\Acorn\Finance\Models\Purchase::class, 'table' => 'acorn_lojistiks_transfer_purchase', 'key' => 'transfer_id', 'otherKey' => 'purchase_id', 'type' => 'XfromXSemi']
     ];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+    ];
     public $attachOne = [];
     public $attachMany = [];
 
-    // --------------------------------------------- Attributes
-    public function getDestinationNameAttribute()
-    {
-        $this->load('destination_location');
-        return $this->destination_location->fullyQualifiedName();
-    }
-
-    public function getSourceNameAttribute()
-    {
-        $this->load('source_location');
-        return $this->source_location->fullyQualifiedName();
-    }
-
-    public function getFullNameAttribute()
-    {
-        return "$this->source_name => $this->destination_name";
-    }
-
-    public function fullName()
-    {
-        return $this->full_name;
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
-
-    // --------------------------------------------- belongsToMany[product_instances]
-    public function setProductInstance(ProductInstance $pi)
-    {
-        $this->setProductInstances(new Collection([$pi]));
-    }
-
-    public function setProductInstances(Collection $pis)
-    {
-        $tpis = new Collection();
-        foreach ($pis as $pi) $tpis->push(TransferProductInstance::create(['transfer' => $this, 'product_instance' => $pi]));
-        $this->product_instance_transfer = $tpis;
-    }
-
-    public function singleTransferProductInstance()
-    {
-        if (count($this->product_instance_transfer) != 1) throw new Exception('Transfer was not singular');
-        return $this->product_instance_transfer[0];
-    }
-
-    public function getProductInstanceCountAttribute()
-    {
-        $this->load('product_instances');
-        return $this->product_instances->count();
-    }
-
-    public function getProductInstanceQuantityAttribute()
-    {
-        $this->load('product_instances');
-        return $this->product_instances->sum('quantity');
-    }
-
-    public function getProductInstanceContentsAttribute()
-    {
-        $this->load('product_instances');
-        return $this->product_instances->pluck('name');
-    }
-
-    public function getProductContentsAttribute()
-    {
-        // TODO: getProductContentsAttribute()
-        $this->load('product_instances');
-        return ''; //$this->product_instances->pluck('name');
-    }
-
-    public function filterFields($fields, $context = NULL)
-    {
-        $is_update = ($context == 'update');
-        $is_create = ($context == 'create');
-        $post      = post('Transfer');
-
-        // -------------------------------------------- Last used values
-        if ($is_create) {
-            // TODO: Make this a plugin UserGroups Person Trait
-            foreach (Person::lastsFromAuthPersonFor($this) as $name => $model) {
-                if (property_exists($fields, $name) && !isset($fields->$name->value)) {
-                    if (method_exists($model, 'id')) $fields->$name->value = $model->id();
-                }
-            }
-        }
-
-        // -------------------------------------------- Transfer[_product]
-        if ($is_update || $is_create) {
-            // Transfer[_product]:
-            // Transfer[_quantity_to_add]:
-            // Custom implementation because of quantity
-            if (isset($post['_product']) && $post['_product']) {
-                if ($product = Product::find($post['_product'])) {
-                    $product_instances = &$fields->product_instances->value;
-                    if (!is_array($product_instances)) $product_instances = array();
-                    $quantity = intval($post['_quantity_to_add']);
-                    $pis      = $product->createInstances($quantity); // TODO: asset class
-                    $product_instances = array_merge($product_instances, $pis->ids());
-                    // Clear the form
-                    $fields->_product->value = NULL;
-                }
-            }
-        }
-
-        // -------------------------------------------- Groups
-        if ($is_update || $is_create) {
-            if (isset($post['_source_user_group']) && $post['_source_user_group']) {
-                if ($group = UserGroup::find($post['_source_user_group'])) {
-                    $locations = Location::whereBelongsTo($group, 'user_group')->get();
-                    $field     = &$fields->source_location;
-                    $nameFrom  = (isset($field->config['nameFrom']) ? $field->config['nameFrom'] : 'name');
-                    $fields->source_location->options = $locations->lists($nameFrom);
-                }
-            }
-            if (isset($post['_destination_user_group']) && $post['_destination_user_group']) {
-                if ($group = UserGroup::find($post['_destination_user_group'])) {
-                    $locations = Location::whereBelongsTo($group, 'user_group')->get();
-                    $field     = &$fields->destination_location;
-                    $nameFrom  = (isset($field->config['nameFrom']) ? $field->config['nameFrom'] : 'name');
-                    $fields->destination_location->options = $locations->lists($nameFrom);
-                }
-            }
-        }
-
-        parent::filterFields($fields, $context);
-    }
-
-    public function afterCreate()
-    {
-        Person::saveLastsToAuthPerson([
-            'source_location' => $this->source_location,
-            'destination_location' => $this->destination_location,
-        ], $this);
-    }
 }
+// Created By acorn-create-system v1.0

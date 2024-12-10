@@ -1,0 +1,15 @@
+name: acorn.lojistiks::lang.models.productproduct.label
+form: $/acorn/lojistiks/models/productproduct/fields.yaml
+modelClass: Acorn\Lojistiks\Models\ProductProduct
+defaultRedirect: acorn/lojistiks/productproducts
+create:
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/productproducts/update/:id
+  redirectClose: acorn/lojistiks/productproducts
+update:
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/productproducts
+  redirectClose: acorn/lojistiks/productproducts
+preview:
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

@@ -1,0 +1,15 @@
+name: acorn.lojistiks::lang.models.productcategorytype.label
+form: $/acorn/lojistiks/models/productcategorytype/fields.yaml
+modelClass: Acorn\Lojistiks\Models\ProductCategoryType
+defaultRedirect: acorn/lojistiks/productcategorytypes
+create:
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/productcategorytypes/update/:id
+  redirectClose: acorn/lojistiks/productcategorytypes
+update:
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/productcategorytypes
+  redirectClose: acorn/lojistiks/productcategorytypes
+preview:
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

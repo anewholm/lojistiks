@@ -1,0 +1,21 @@
+# id (IdField) field !canFilter
+# person (ForeignIdField) field !canFilter
+# user_role (ForeignIdField) field !canFilter
+# server (ForeignIdField) field !canFilter
+scopes:
+  created_at_event:
+    # created_at_event
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: daterange
+    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_event(id) (created_at)
+  created_by_user:
+    # created_by_user
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    nameFrom: fully_qualified_name
+    modelClass: Acorn\User\Models\User
+    # Relation =[Xto1]> acorn_user_users(id) (created_by)
+# response (Field) field !canFilter
+# _qrcode (PseudoField) field !canFilter
+# _actions (PseudoField) field !canFilter

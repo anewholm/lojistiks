@@ -1,0 +1,11 @@
+# Created By acorn-create-system v1.0
+lojistiks_products_measurement_unit:
+  label: acorn.lojistiks::lang.models.product.label_plural
+  view:
+    list: $/acorn/lojistiks/models/product/columns.yaml
+    toolbarButtons: create|delete
+    showCheckboxes: true
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/lojistiks/models/product/fields.yaml
+    recordsPerPage: 10

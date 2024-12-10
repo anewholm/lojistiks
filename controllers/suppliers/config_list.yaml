@@ -9,7 +9,7 @@ list: $/acorn/lojistiks/models/supplier/columns.yaml
 modelClass: Acorn\Lojistiks\Models\Supplier
 
 # List Title
-title: acorn.lojistiks::lang.models.supplier.label_plural
+title: 'acorn.lojistiks::lang.models.supplier.label_plural'
 
 # Link URL for each record
 recordUrl: acorn/lojistiks/suppliers/update/:id
@@ -48,3 +48,4 @@ toolbar:
     # Search widget configuration
     search:
         prompt: backend::lang.list.search_prompt
+filter: config_filter.yaml

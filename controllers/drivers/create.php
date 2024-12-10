@@ -18,15 +18,6 @@
                 <button
                     type="button"
                     data-request="onSave"
-                    data-request-data="action: 'acorn/lojistiks/drivers/preview'"
-                    data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.driver.label')])); ?>"
-                    class="btn btn-primary">
-                    <?= e(trans('acorn.lojistiks::lang.models.general.save_and_print')); ?>
-                </button>
-                <button
-                    type="button"
-                    data-request="onSave"
                     data-hotkey="ctrl+s, cmd+s"
                     data-load-indicator="<?= e(trans('backend::lang.form.creating_name', ['name' => trans('acorn.lojistiks::lang.models.driver.label')])); ?>"
                     class="btn btn-primary">

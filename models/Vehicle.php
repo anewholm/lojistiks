@@ -2,15 +2,41 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
-use System\Models\File;
+use Acorn\Collection;
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * Vehicle Model
  */
 class Vehicle extends Model
 {
+    /* Generated Fields:
+     * id(uuid)
+     * vehicle_type_id(uuid)
+     * registration(character varying)
+     * image(character varying)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * created_by_user_id(uuid)
+     * response(text)
+     */
+
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
@@ -32,7 +58,8 @@ class Vehicle extends Model
      * @var array Validation rules for attributes
      */
     public $rules = [
-        'registration' => 'required',
+        'vehicle_type' => 'required',
+        'registration' => 'required'
     ];
 
     /**
@@ -58,7 +85,6 @@ class Vehicle extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
@@ -66,44 +92,29 @@ class Vehicle extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'transfers' => Transfer::class,
+        'lojistiks_transfers_vehicle' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'vehicle_id', 'type' => '1fromX'],
+        'lojistiks_drivers_vehicle' => [\Acorn\Lojistiks\Models\Driver::class, 'key' => 'vehicle_id', 'type' => '1fromX']
     ];
-    public $hasOneThrough = [
-        'last_transfer' => [
-            Transfer::class,
-            'through' => VehicleLast::class,
-            'throughKey' => 'vehicle_id',
-        ],
-    ];
+    public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'vehicle_type' => VehicleType::class,
-        'initial_transfer' => Transfer::class,
-        'server' => Server::class,
+        'vehicle_type' => [\Acorn\Lojistiks\Models\VehicleType::class, 'key' => 'vehicle_type_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [
-        'image' => File::class,
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
+    public $attachOne = [];
     public $attachMany = [];
 
-    public function getFullNameAttribute()
-    {
-        $this->load('vehicle_type');
-        $type = $this->vehicle_type->name();
-        return "$this->registration ($type)";
-    }
-
-    public function fullName()
-    {
-        return $this->full_name;
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
 }
+// Created By acorn-create-system v1.0

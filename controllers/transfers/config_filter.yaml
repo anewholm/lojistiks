@@ -1,16 +1,58 @@
+# id (IdField) field !canFilter
+# location (ForeignIdField) field !canFilter
+# driver (ForeignIdField) field !canFilter
+# server (ForeignIdField) field !canFilter
+# vehicle (ForeignIdField) field !canFilter
 scopes:
-    source_location:
-        label: acorn.lojistiks::lang.models.transfer.source_location
-        modelClass: Acorn\Lojistiks\Models\Location
-        conditions: source_location_id in (:filtered)
-        nameFrom: fully_qualified_name
-    destination_location:
-        label: acorn.lojistiks::lang.models.transfer.destination_location
-        modelClass: Acorn\Lojistiks\Models\Location
-        conditions: destination_location_id in (:filtered)
-        nameFrom: fully_qualified_name
-    vehicle:
-        label: acorn.lojistiks::lang.models.vehicle.label
-        modelClass: Acorn\Lojistiks\Models\Vehicle
-        conditions: vehicle_id in (:filtered)
-        nameFrom: registration
+  created_by_user:
+    # created_by_user
+    label: acorn.lojistiks::lang.models.general.created_by_user
+    nameFrom: fully_qualified_name
+    modelClass: Acorn\User\Models\User
+    # Relation =[Xto1]> acorn_user_users(id) (created_by)
+  created_at_event:
+    # created_at_event
+    label: acorn.lojistiks::lang.models.general.created_at_event
+    type: daterange
+    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_event(id) (created_at)
+  sent_at_event:
+    # sent_at_event
+    label: acorn.lojistiks::lang.models.transfer.sent_at_event
+    type: daterange
+    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = sent_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_event(id) (sent_at)
+  arrived_at_event:
+    # arrived_at_event
+    label: acorn.lojistiks::lang.models.transfer.arrived_at_event
+    type: daterange
+    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = arrived_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_event(id) (arrived_at)
+  lojistiks_product_instance_transfer_transfers:
+    # lojistiks_product_instance_transfer_transfers
+    label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+    conditions: id in(select acorn_lojistiks_product_instance_transfer.transfer_id from acorn_lojistiks_product_instance_transfer where acorn_lojistiks_product_instance_transfer.product_instance_id in(:filtered))
+    nameFrom: fully_qualified_name
+    modelClass: Acorn\Lojistiks\Models\ProductInstance
+    # Relation <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer]
+  lojistiks_transfer_invoice_transfers:
+    # lojistiks_transfer_invoice_transfers
+    label: acorn.lojistiks::lang.models.transferinvoice.label_plural
+    conditions: id in(select acorn_lojistiks_transfer_invoice.transfer_id from acorn_lojistiks_transfer_invoice where acorn_lojistiks_transfer_invoice.invoice_id in(:filtered))
+    nameFrom: fully_qualified_name
+    modelClass: Acorn\Finance\Models\Invoice
+    # Relation <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice]
+  lojistiks_transfer_purchase_transfers:
+    # lojistiks_transfer_purchase_transfers
+    label: acorn.lojistiks::lang.models.transferpurchase.label_plural
+    conditions: id in(select acorn_lojistiks_transfer_purchase.transfer_id from acorn_lojistiks_transfer_purchase where acorn_lojistiks_transfer_purchase.purchase_id in(:filtered))
+    nameFrom: fully_qualified_name
+    modelClass: Acorn\Finance\Models\Purchase
+    # Relation <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase]
+# response (Field) field !canFilter
+# pre_marked_arrived (Field) field !canFilter
+# _qrcode (PseudoField) field !canFilter
+# _actions (PseudoField) field !canFilter

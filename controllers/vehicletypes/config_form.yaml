@@ -1,31 +1,15 @@
-# ===================================
-#  Form Behavior Config
-# ===================================
-
-# Record name
 name: acorn.lojistiks::lang.models.vehicletype.label
-
-# Model Form Field configuration
 form: $/acorn/lojistiks/models/vehicletype/fields.yaml
-
-# Model Class name
 modelClass: Acorn\Lojistiks\Models\VehicleType
-
-# Default redirect location
 defaultRedirect: acorn/lojistiks/vehicletypes
-
-# Create page
 create:
-    title: backend::lang.form.create_title
-    redirect: acorn/lojistiks/vehicletypes/update/:id
-    redirectClose: acorn/lojistiks/vehicletypes
-
-# Update page
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/vehicletypes/update/:id
+  redirectClose: acorn/lojistiks/vehicletypes
 update:
-    title: backend::lang.form.update_title
-    redirect: acorn/lojistiks/vehicletypes
-    redirectClose: acorn/lojistiks/vehicletypes
-
-# Preview page
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/vehicletypes
+  redirectClose: acorn/lojistiks/vehicletypes
 preview:
-    title: backend::lang.form.preview_title
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

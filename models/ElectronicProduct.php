@@ -2,18 +2,41 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
-use System\Models\File;
+use Acorn\Collection;
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * ElectronicProduct Model
  */
 class ElectronicProduct extends Model
 {
-    use \Winter\Storm\Database\Traits\Validation;
+    /* Generated Fields:
+     * id(uuid)
+     * product_id(uuid)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * voltage(double precision)
+     * created_by_user_id(uuid)
+     * response(text)
+     */
 
-    // public $translatable = ['product[name]', 'product[model_name]', 'product[brand][name]'];
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
+    use \Winter\Storm\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
@@ -33,7 +56,9 @@ class ElectronicProduct extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'product' => 'required'
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -58,7 +83,6 @@ class ElectronicProduct extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
@@ -66,44 +90,28 @@ class ElectronicProduct extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'product_instances' => ProductInstance::class,
+        'lojistiks_computer_products_electronic_product' => [\Acorn\Lojistiks\Models\ComputerProduct::class, 'key' => 'electronic_product_id', 'type' => '1fromX']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product' => Product::class,
-        'server' => Server::class,
+        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [
-        'image' => File::class,
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
+    public $attachOne = [];
     public $attachMany = [];
 
-    public function name()
-    {
-        $this->load('product');
-        return $this->product->name();
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
-
-    public function filterFields($fields, $context = NULL)
-    {
-        // Set default for electronic_product[product][measurement_unit]
-        // Because we are using UUIDs
-        $fieldName = 'product[measurement_unit]';
-        $measurementUnitValue = &$fields->$fieldName->value;
-        if (is_null($measurementUnitValue)) {
-            if ($units = MeasurementUnit::where('name', 'Units')->first()) {
-                $measurementUnitValue = $units->id();
-            }
-        }
-    }
 }
+// Created By acorn-create-system v1.0

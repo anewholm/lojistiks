@@ -1,0 +1,5 @@
+# id (IdField) field !canFilter
+# transfer (ForeignIdField) field !canFilter
+# invoice (ForeignIdField) field !canFilter
+# _qrcode (PseudoField) field !canFilter
+# _actions (PseudoField) field !canFilter

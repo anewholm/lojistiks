@@ -1,31 +1,15 @@
-# ===================================
-#  Form Behavior Config
-# ===================================
-
-# Record name
 name: acorn.lojistiks::lang.models.driver.label
-
-# Model Form Field configuration
 form: $/acorn/lojistiks/models/driver/fields.yaml
-
-# Model Class name
 modelClass: Acorn\Lojistiks\Models\Driver
-
-# Default redirect location
 defaultRedirect: acorn/lojistiks/drivers
-
-# Create page
 create:
-    title: backend::lang.form.create_title
-    redirect: acorn/lojistiks/drivers/update/:id
-    redirectClose: acorn/lojistiks/drivers
-
-# Update page
+  title: backend::lang.form.create_title
+  redirect: acorn/lojistiks/drivers/update/:id
+  redirectClose: acorn/lojistiks/drivers
 update:
-    title: backend::lang.form.update_title
-    redirect: acorn/lojistiks/drivers
-    redirectClose: acorn/lojistiks/drivers
-
-# Preview page
+  title: backend::lang.form.update_title
+  redirect: acorn/lojistiks/drivers
+  redirectClose: acorn/lojistiks/drivers
 preview:
-    title: backend::lang.form.preview_title
+  title: backend::lang.form.preview_title
+actionFunctions: [ ]

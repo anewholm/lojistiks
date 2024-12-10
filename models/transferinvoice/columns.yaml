@@ -1,0 +1,46 @@
+columns:
+  id:
+    # IdField: From id(uuid)
+    # Debug: IdField for column id on Lojistiks.TransferInvoice
+    label: acorn.lojistiks::lang.models.general.id
+    type: text
+    searchable: true
+    sortable: false
+    invisible: true
+  transfer:
+    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acorn_lojistiks_transfers(id)
+    # Debug: ForeignIdField for column transfer_id on Lojistiks.TransferInvoice
+    label: acorn.lojistiks::lang.models.transfer.label
+    type: text
+    valueFrom: name
+    searchable: false
+    sortable: false
+    invisible: false
+    relation: transfer
+  invoice:
+    # ForeignIdField: From invoice_id(uuid), with =[XtoXSemi]> acorn_finance_invoices(id)
+    # Debug: ForeignIdField for column invoice_id on Lojistiks.TransferInvoice
+    label: acorn.finance::lang.models.invoice.label
+    type: text
+    searchable: true
+    sortable: true
+    invisible: false
+    relation: invoice
+    select: name
+  _qrcode:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.general._qrcode
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: true
+    path: qrcode
+    includeContext: exclude
+  _actions:
+    # PseudoField: 
+    label: acorn.lojistiks::lang.models.transferinvoice._actions
+    type: partial
+    searchable: false
+    sortable: false
+    invisible: false
+    path: actions

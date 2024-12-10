@@ -2,17 +2,44 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
+use Acorn\Collection;
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * ComputerProduct Model
  */
-class ComputerProduct extends ElectronicProduct
+class ComputerProduct extends Model
 {
-    use \Winter\Storm\Database\Traits\Validation;
+    /* Generated Fields:
+     * id(uuid)
+     * electronic_product_id(uuid)
+     * memory(bigint)
+     * HDD_size(bigint)
+     * processor_version(double precision)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * created_by_user_id(uuid)
+     * processor_type(integer)
+     * response(text)
+     */
 
-    // public $translatable = ['electronic_product[product][name]', 'electronic_product[product][model_name]', 'electronic_product[product][brand][name]'];
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
+    use \Winter\Storm\Database\Traits\Validation;
 
     /**
      * @var string The database table used by the model.
@@ -32,7 +59,9 @@ class ComputerProduct extends ElectronicProduct
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'electronic_product' => 'required'
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -57,52 +86,33 @@ class ComputerProduct extends ElectronicProduct
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
      * @var array Relations
      */
     public $hasOne = [];
-    public $hasMany = [
-        'product_instances' => ProductInstance::class,
-    ];
+    public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'electronic_product' => ElectronicProduct::class,
-        'server'  => Server::class,
+        'electronic_product' => [\Acorn\Lojistiks\Models\ElectronicProduct::class, 'key' => 'electronic_product_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
-    public $attachOne = [
-        'image' => File::class,
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
+    public $attachOne = [];
     public $attachMany = [];
 
-    public function name()
-    {
-        $this->load('electronic_product');
-        return $this->electronic_product->name();
-    }
-
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
-
-    public function filterFields($fields, $context = NULL)
-    {
-        // Set default for electronic_product[product][measurement_unit]
-        // Because we are using UUIDs
-        $fieldName = 'electronic_product[product][measurement_unit]';
-        $measurementUnitValue = &$fields->$fieldName->value;
-        if (is_null($measurementUnitValue)) {
-            if ($units = MeasurementUnit::where('name', 'Units')->first()) {
-                $measurementUnitValue = $units->id();
-            }
-        }
-    }
 }
+// Created By acorn-create-system v1.0

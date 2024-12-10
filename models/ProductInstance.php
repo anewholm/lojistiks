@@ -2,15 +2,43 @@
 
 namespace Acorn\Lojistiks\Models;
 
-use Acorn\Model;
 use Acorn\Models\Server;
-use Illuminate\Database\Eloquent\Collection;
+use Acorn\Collection;
+use BackendAuth;
+use \Backend\Models\User;
+use \Backend\Models\UserGroup;
+use Exception;
+use Flash;
+
+
+use Acorn\Model;
 
 /**
  * ProductInstance Model
  */
 class ProductInstance extends Model
 {
+    /* Generated Fields:
+     * id(uuid)
+     * product_id(uuid)
+     * quantity(integer)
+     * external_identifier(character varying)
+     * asset_class("char")
+     * image(character varying)
+     * server_id(uuid)
+     * created_at_event_id(uuid)
+     * created_by_user_id(uuid)
+     * response(text)
+     */
+
+    public $hasManyDeep = [];
+    public $actionFunctions = [];
+    use \Winter\Storm\Database\Traits\Revisionable;
+    use \Illuminate\Database\Eloquent\Concerns\HasUuids;
+
+
+    protected $revisionable = [];
+    public $timestamps = 0;
     use \Winter\Storm\Database\Traits\Validation;
 
     /**
@@ -31,7 +59,9 @@ class ProductInstance extends Model
     /**
      * @var array Validation rules for attributes
      */
-    public $rules = [];
+    public $rules = [
+        'product' => 'required'
+    ];
 
     /**
      * @var array Attributes to be cast to native types
@@ -56,7 +86,6 @@ class ProductInstance extends Model
     /**
      * @var array Attributes to be cast to Argon (Carbon) instances
      */
-    public $timestamps = FALSE;
     protected $dates = [];
 
     /**
@@ -64,121 +93,30 @@ class ProductInstance extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'product_instance_transfer' => TransferProductInstance::class,
+        'lojistiks_product_instance_transfer_product_instances_pivot' => [\Acorn\Lojistiks\Models\ProductInstanceTransfer::class, 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
     ];
-    public $hasOneThrough = [
-        // TODO: location
-        'location' => [
-            Location::class,
-            'through' => Stock::class,
-        ],
-    ];
-    public $hasManyThrough = [
-        'transfers' => [
-            Transfer::class,
-            'through' => TransferProductInstance::class,
-        ],
-    ];
+    public $hasOneThrough = [];
+    public $hasManyThrough = [];
     public $belongsTo = [
-        'product'  => Product::class,
-        'server' => Server::class,
-        'initial_transfer_product_instance' => [TransferProductInstance::class, 'key' => 'initial_transfer_product_instance_id'],
+        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'lojistiks_product_instance_transfer_product_instances' => [\Acorn\Lojistiks\Models\Transfer::class, 'table' => 'acorn_lojistiks_product_instance_transfer', 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
+    ];
     public $morphTo = [];
     public $morphOne = [];
-    public $morphMany = [];
+    public $morphMany = [
+        'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
+    ];
     public $attachOne = [];
     public $attachMany = [];
 
-    public static function menuitemCount()
-    {
+    public static function menuitemCount() {
+        # Auto-injected by acorn-create-system
         return self::all()->count();
     }
-
-    public function getUsesQuantityAttribute()
-    {
-        $this->load('product');
-        return $this->product?->usesQuantity();
-    }
-
-    public function usesQuantity()
-    {
-        return $this->uses_quantity;
-    }
-
-    public function getQuantityDescriptionAttribute()
-    {
-        $this->load('product');
-        $this->product?->load('measurement_unit');
-        $miName = $this->product->measurement_unit->name();
-        return ($this->product?->usesQuantity() ? "$this->quantity $miName" : $miName);
-    }
-
-    public function quantityDescription()
-    {
-        return $this->quantity_description;
-    }
-
-    public function getNameAttribute()
-    {
-        $this->load('product');
-        return $this->product->fullName() . " ($this->external_identifier)" . ($this->quantity == 1 ? '' : " x $this->quantity");
-    }
-
-    public function name()
-    {
-        return $this->name;
-    }
-
-    public function afterCreate()
-    {
-        // Create the initial transfer to indicate where the PI is
-        $source_location      = Location::find($this->getOriginalPurgeValue('_source_location'));
-        $destination_location = Location::find($this->getOriginalPurgeValue('_destination_location'));
-
-        // Sometimes we are creating PIs and then saving them to transfers later
-        if ($source_location && $destination_location) {
-            $tr = Transfer::create([
-                'source_location'      => $source_location,
-                'destination_location' => $destination_location,
-                'pre_marked_arrived'   => TRUE
-            ]);
-            $tr->setProductInstance($this);
-            $tr->save();
-
-            // Store result
-            $this->initial_transfer_product_instance = $tr->singleTransferProductInstance();
-            $this->save();
-        }
-
-        Person::saveLastsToAuthPerson([
-            'source_location'      => $source_location,
-            'destination_location' => $destination_location,
-        ], $this);
-    }
-
-    public function filterFields($fields, $context = NULL)
-    {
-        $is_update = ($context == 'update');
-        $is_create = ($context == 'create');
-
-        if ($is_create) {
-            foreach (Person::lastsFromAuthPersonFor($this) as $name => $model) {
-                if (property_exists($fields, $name) && !isset($fields->$name->value)) {
-                    if (method_exists($model, 'id')) $fields->$name->value = $model->id();
-                }
-            }
-        }
-
-        if ($is_update || $is_create) {
-            if ($fields->product->value) {
-                $product = Product::findOrFail($fields->product->value);
-                $fields->quantity->disabled            = !$product->usesQuantity();
-                $fields->external_identifier->disabled = $product->usesQuantity();
-            }
-        }
-
-        parent::filterFields($fields, $context);
-    }
 }
+// Created By acorn-create-system v1.0
