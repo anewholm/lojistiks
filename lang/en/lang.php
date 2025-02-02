@@ -50,8 +50,8 @@
         'product' => [
             'label_plural' => 'Products',
             'label' => 'Product',
-            'image' => 'Image',
             'model_name' => 'Model Name',
+            'image' => 'Image',
             '_actions' => ' Actions'
         ],
         'computerproduct' => [
@@ -130,6 +130,15 @@
             'label_plural' => 'Offices',
             '_actions' => ' Actions'
         ],
+        'productinstance' => [
+            'label' => 'Product Instance',
+            'label_plural' => 'Product Instances',
+            'quantity' => 'Quantity',
+            'external_identifier' => 'External Identifier',
+            'asset_class' => 'Asset Class',
+            'image' => 'Image',
+            '_actions' => ' Actions'
+        ],
         'container' => [
             'label' => 'Container',
             'label_plural' => 'Containers',
@@ -158,13 +167,11 @@
             'label' => 'Products Product Category',
             '_actions' => ' Actions'
         ],
-        'productinstance' => [
-            'label' => 'Product Instance',
-            'label_plural' => 'Product Instances',
+        'productproduct' => [
+            'label_plural' => 'Product Products',
+            'label' => 'Product Product',
+            'sub_product' => 'Sub Product',
             'quantity' => 'Quantity',
-            'external_identifier' => 'External Identifier',
-            'asset_class' => 'Asset Class',
-            'image' => 'Image',
             '_actions' => ' Actions'
         ],
         'vehicletype' => [
@@ -175,13 +182,6 @@
         'warehouse' => [
             'label' => 'Warehouse',
             'label_plural' => 'Warehouses',
-            '_actions' => ' Actions'
-        ],
-        'productproduct' => [
-            'label_plural' => 'Product Products',
-            'label' => 'Product Product',
-            'sub_product' => 'Sub Product',
-            'quantity' => 'Quantity',
             '_actions' => ' Actions'
         ],
         'supplier' => [

@@ -25,14 +25,6 @@ columns:
     searchable: true
     sortable: false
     invisible: false
-  image:
-    # Field: From image(character varying)
-    # Debug: Field for column image on Lojistiks.Vehicle
-    label: acorn.lojistiks::lang.models.vehicle.image
-    type: text
-    searchable: true
-    sortable: false
-    invisible: false
   server:
     # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.Vehicle
@@ -70,6 +62,14 @@ columns:
     searchable: true
     sortable: false
     invisible: true
+  image:
+    # Field: From image(path)
+    # Debug: Field for column image on Lojistiks.Vehicle
+    label: acorn.lojistiks::lang.models.vehicle.image
+    type: image
+    searchable: true
+    sortable: false
+    invisible: false
   lojistiks_transfers_vehicle:
     # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id)
     # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id) on Lojistiks.Vehicle

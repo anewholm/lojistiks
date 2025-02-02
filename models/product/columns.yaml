@@ -35,14 +35,6 @@ columns:
     invisible: false
     relation: brand
     select: name
-  image:
-    # Field: From image(character varying)
-    # Debug: Field for column image on Lojistiks.Product
-    label: acorn.lojistiks::lang.models.product.image
-    type: text
-    searchable: true
-    sortable: false
-    invisible: false
   model_name:
     # Field: From model_name(character varying)
     # Debug: Field for column model_name on Lojistiks.Product
@@ -88,6 +80,14 @@ columns:
     searchable: true
     sortable: false
     invisible: true
+  image:
+    # Field: From image(path)
+    # Debug: Field for column image on Lojistiks.Product
+    label: acorn.lojistiks::lang.models.product.image
+    type: image
+    searchable: true
+    sortable: false
+    invisible: false
   lojistiks_electronic_products_product:
     # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_electronic_products(product_id)
     # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_electronic_products(product_id) on Lojistiks.Product

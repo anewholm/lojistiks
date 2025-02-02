@@ -1,7 +1,6 @@
 # id (IdField) field !canFilter
 # vehicle_type (ForeignIdField) field !canFilter
 # registration (Field) field !canFilter
-# image (Field) field !canFilter
 # server (ForeignIdField) field !canFilter
 scopes:
   created_at_event:
@@ -18,6 +17,7 @@ scopes:
     modelClass: Acorn\User\Models\User
     # Relation =[Xto1]> acorn_user_users(id) (created_by)
 # response (Field) field !canFilter
+# image (Field) field !canFilter
 # lojistiks_transfers_vehicle (PseudoFromForeignIdField) field !canFilter
 # lojistiks_drivers_vehicle (PseudoFromForeignIdField) field !canFilter
 # _qrcode (PseudoField) field !canFilter

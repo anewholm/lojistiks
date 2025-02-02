@@ -576,6 +576,16 @@ CREATE TABLE public.acorn_lojistiks_brands (
 
 
 --
+-- Name: TABLE acorn_lojistiks_brands; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE public.acorn_lojistiks_brands IS 'seeding:
+  - [DEFAULT, ''Lenovo'', NULL, NULL, SERVER_ID]
+  - [DEFAULT, ''Samsung'', NULL, NULL, SERVER_ID]
+  - [DEFAULT, ''Acer'', NULL, NULL, SERVER_ID]';
+
+
+--
 -- Name: acorn_lojistiks_containers; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -633,6 +643,17 @@ CREATE TABLE public.acorn_lojistiks_measurement_units (
     created_by_user_id uuid,
     response text
 );
+
+
+--
+-- Name: TABLE acorn_lojistiks_measurement_units; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE public.acorn_lojistiks_measurement_units IS 'seeding:
+  - [DEFAULT, ''Units'', '''', false, SERVER_ID]
+  - [DEFAULT, ''Litres'', ''l'', true, SERVER_ID]
+  - [DEFAULT, ''Kilograms'', ''kg'', true, SERVER_ID]
+';
 
 
 --
@@ -737,11 +758,11 @@ CREATE TABLE public.acorn_lojistiks_product_instances (
     quantity integer DEFAULT 1 NOT NULL,
     external_identifier character varying(2048),
     asset_class "char" DEFAULT 'C'::"char" NOT NULL,
-    image character varying(2048),
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    image path
 );
 
 
@@ -770,12 +791,12 @@ CREATE TABLE public.acorn_lojistiks_products (
     name character varying(1024) NOT NULL,
     measurement_unit_id uuid NOT NULL,
     brand_id uuid NOT NULL,
-    image character varying(2048),
     model_name character varying(2048),
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    image path
 );
 
 
@@ -929,6 +950,15 @@ CREATE TABLE public.acorn_lojistiks_vehicle_types (
 
 
 --
+-- Name: TABLE acorn_lojistiks_vehicle_types; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE public.acorn_lojistiks_vehicle_types IS 'seeding:
+  - [DEFAULT, ''Car'', SERVER_ID]
+  - [DEFAULT, ''Lorry'', SERVER_ID]';
+
+
+--
 -- Name: acorn_lojistiks_vehicles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -936,12 +966,20 @@ CREATE TABLE public.acorn_lojistiks_vehicles (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     vehicle_type_id uuid NOT NULL,
     registration character varying(1024) NOT NULL,
-    image character varying(2048),
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    image path
 );
+
+
+--
+-- Name: TABLE acorn_lojistiks_vehicles; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE public.acorn_lojistiks_vehicles IS 'methods:
+  name: return $this->registration;';
 
 
 --

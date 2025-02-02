@@ -2,7 +2,6 @@
 # name (Field) field !canFilter
 # measurement_unit (ForeignIdField) field !canFilter
 # brand (ForeignIdField) field !canFilter
-# image (Field) field !canFilter
 # model_name (Field) field !canFilter
 # server (ForeignIdField) field !canFilter
 scopes:
@@ -20,6 +19,7 @@ scopes:
     modelClass: Acorn\User\Models\User
     # Relation =[Xto1]> acorn_user_users(id) (created_by)
 # response (Field) field !canFilter
+# image (Field) field !canFilter
 # lojistiks_electronic_products_product (PseudoFromForeignIdField) field !canFilter
 # lojistiks_products_product_categories_product (PseudoFromForeignIdField) field !canFilter
 # lojistiks_product_instances_product (PseudoFromForeignIdField) field !canFilter

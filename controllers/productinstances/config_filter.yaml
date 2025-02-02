@@ -3,7 +3,6 @@
 # quantity (Field) field !canFilter
 # external_identifier (Field) field !canFilter
 # asset_class (Field) field !canFilter
-# image (Field) field !canFilter
 # server (ForeignIdField) field !canFilter
 scopes:
   created_at_event:
@@ -27,5 +26,6 @@ scopes:
     modelClass: Acorn\Lojistiks\Models\Transfer
     # Relation <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(product_instance_id) through semi [acorn_lojistiks_product_instance_transfer]
 # response (Field) field !canFilter
+# image (Field) field !canFilter
 # _qrcode (PseudoField) field !canFilter
 # _actions (PseudoField) field !canFilter

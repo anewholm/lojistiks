@@ -10,7 +10,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">id</div>
       IdField for column id on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.id">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -22,10 +26,14 @@ fields:
     span: storm
     cssClass: popup-col-xs-6 col-xs-5
     comment: |
-      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/electronicproducts'>ElectronicProduct</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/electronicproducts' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/electronicproducts'>ElectronicProduct</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/electronicproducts' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">electronic_product</div>
       ForeignIdField for column electronic_product_id on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.electronic_product_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.electronic_product_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     options: Acorn\Lojistiks\Models\ElectronicProduct::dropdownOptions
@@ -43,7 +51,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">memory</div>
       Field for column memory on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.memory</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.memory">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -57,7 +69,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">HDD_size</div>
       Field for column HDD_size on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.HDD_size</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.HDD_size">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -71,7 +87,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">processor_version</div>
       Field for column processor_version on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.processor_version</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.processor_version">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -87,7 +107,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">server</div>
       ForeignIdField for column server_id on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.server_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.server_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     options: Acorn\Models\Server::dropdownOptions
@@ -105,7 +129,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">created_at_event</div>
       ForeignIdField for column created_at_event_id on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.created_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.created_at_event_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -119,10 +147,14 @@ fields:
     span: storm
     cssClass: popup-col-xs-6 col-xs-5
     comment: |
-      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
       ForeignIdField for column created_by_user_id on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.created_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.created_by_user_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     options: Acorn\User\Models\User::dropdownOptions
@@ -140,7 +172,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">processor_type</div>
       Field for column processor_type on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.processor_type</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.processor_type">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -155,7 +191,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">response</div>
       Field for column response on Lojistiks.ComputerProduct
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.response</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.response">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -170,7 +210,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">_qrcode</div>
       
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path"></div>
+      <a class="create-system-comment-edit-link" disabled="disabled" href="#" title="">edit</a>
+      </div>
       </div>
     commentHtml: true
     context:
@@ -187,6 +231,10 @@ fields:
       <div class='debug debug-field'>
       <div class="title">_actions</div>
       
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path"></div>
+      <a class="create-system-comment-edit-link" disabled="disabled" href="#" title="">edit</a>
+      </div>
       </div>
     commentHtml: true

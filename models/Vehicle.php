@@ -22,11 +22,11 @@ class Vehicle extends Model
      * id(uuid)
      * vehicle_type_id(uuid)
      * registration(character varying)
-     * image(character varying)
      * server_id(uuid)
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
+     * image(path)
      */
 
     public $hasManyDeep = [];
@@ -109,12 +109,19 @@ class Vehicle extends Model
     public $morphMany = [
         'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => 'System\Models\File'
+    ];
     public $attachMany = [];
 
     public static function menuitemCount() {
         # Auto-injected by acorn-create-system
         return self::all()->count();
+    }
+
+    public function name() {
+        # Auto-injected by acorn-create-system
+        return $this->registration;
     }
 }
 // Created By acorn-create-system v1.0

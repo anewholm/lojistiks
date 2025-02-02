@@ -10,7 +10,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">id</div>
       IdField for column id on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.id">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -22,10 +26,14 @@ fields:
     span: storm
     cssClass: popup-col-xs-6 col-xs-5
     comment: |
-      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/lojistiks/vehicletypes'>VehicleType</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/vehicletypes' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/vehicletypes'>VehicleType</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/vehicletypes' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">vehicle_type</div>
       ForeignIdField for column vehicle_type_id on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.vehicle_type_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.vehicle_type_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     options: Acorn\Lojistiks\Models\VehicleType::dropdownOptions
@@ -44,23 +52,13 @@ fields:
       <div class='debug debug-field'>
       <div class="title">registration</div>
       Field for column registration on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.registration</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.registration">edit</a>
+      </div>
       </div>
     commentHtml: true
-  image:
-    # Field: From image(character varying)
-    label: acorn.lojistiks::lang.models.vehicle.image
-    type: text
-    span: storm
-    cssClass: col-xs-6
-    comment: |
-      <div class='debug debug-field'>
-      <div class="title">image</div>
-      Field for column image on Lojistiks.Vehicle
-      <pre></pre>
-      </div>
-    commentHtml: true
-    placeholder: backend::lang.form.select
   server:
     # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
     label: acorn::lang.models.server.label
@@ -73,7 +71,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">server</div>
       ForeignIdField for column server_id on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.server_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.server_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     options: Acorn\Models\Server::dropdownOptions
@@ -91,7 +93,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">created_at_event</div>
       ForeignIdField for column created_at_event_id on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.created_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.created_at_event_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -105,10 +111,14 @@ fields:
     span: storm
     cssClass: popup-col-xs-6 col-xs-5
     comment: |
-      <span class='view-add-models new-page'>view / add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
       ForeignIdField for column created_by_user_id on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.created_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.created_by_user_id">edit</a>
+      </div>
       </div>
     commentHtml: true
     options: Acorn\User\Models\User::dropdownOptions
@@ -127,7 +137,29 @@ fields:
       <div class='debug debug-field'>
       <div class="title">response</div>
       Field for column response on Lojistiks.Vehicle
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.response</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.response">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  image:
+    # Field: From image(path)
+    label: acorn.lojistiks::lang.models.vehicle.image
+    type: fileupload
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">image</div>
+      Field for column image on Lojistiks.Vehicle
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.image</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.image">edit</a>
+      </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
@@ -142,7 +174,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">_qrcode</div>
       
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path"></div>
+      <a class="create-system-comment-edit-link" disabled="disabled" href="#" title="">edit</a>
+      </div>
       </div>
     commentHtml: true
     context:
@@ -159,7 +195,11 @@ fields:
       <div class='debug debug-field'>
       <div class="title">_actions</div>
       
-      <pre></pre>
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path"></div>
+      <a class="create-system-comment-edit-link" disabled="disabled" href="#" title="">edit</a>
+      </div>
       </div>
     commentHtml: true
 tabs:
@@ -174,7 +214,11 @@ tabs:
         <div class='debug debug-field'>
         <div class="title">lojistiks_transfers_vehicle</div>
         Tab multi-select for <[Xto1]= acorn_lojistiks_transfers(vehicle_id) on Lojistiks.Vehicle
-        <pre></pre>
+        <div class="create-system">
+        <pre class="create-system-comment"></pre>
+        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.foreignkeys.vehicle_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.foreignkeys.vehicle_id">edit</a>
+        </div>
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.transfer.label_plural
@@ -189,7 +233,11 @@ tabs:
         <div class='debug debug-field'>
         <div class="title">lojistiks_drivers_vehicle</div>
         Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(vehicle_id) on Lojistiks.Vehicle
-        <pre></pre>
+        <div class="create-system">
+        <pre class="create-system-comment"></pre>
+        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.drivers.foreignkeys.vehicle_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.drivers.foreignkeys.vehicle_id">edit</a>
+        </div>
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.driver.label_plural

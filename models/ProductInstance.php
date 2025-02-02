@@ -23,12 +23,12 @@ class ProductInstance extends Model
      * product_id(uuid)
      * quantity(integer)
      * external_identifier(character varying)
-     * asset_class("char")
-     * image(character varying)
+     * asset_class(char)
      * server_id(uuid)
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
+     * image(path)
      */
 
     public $hasManyDeep = [];
@@ -60,7 +60,8 @@ class ProductInstance extends Model
      * @var array Validation rules for attributes
      */
     public $rules = [
-        'product' => 'required'
+        'product' => 'required',
+        'asset_class' => 'max:1'
     ];
 
     /**
@@ -111,7 +112,9 @@ class ProductInstance extends Model
     public $morphMany = [
         'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => 'System\Models\File'
+    ];
     public $attachMany = [];
 
     public static function menuitemCount() {

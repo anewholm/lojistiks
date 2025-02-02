@@ -23,12 +23,12 @@ class Product extends Model
      * name(character varying)
      * measurement_unit_id(uuid)
      * brand_id(uuid)
-     * image(character varying)
      * model_name(character varying)
      * server_id(uuid)
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
+     * image(path)
      */
 
     public $hasManyDeep = [];
@@ -116,7 +116,9 @@ class Product extends Model
     public $morphMany = [
         'revision_history' => ['System\Models\Revision', 'name' => 'revisionable']
     ];
-    public $attachOne = [];
+    public $attachOne = [
+        'image' => 'System\Models\File'
+    ];
     public $attachMany = [];
 
     public static function menuitemCount() {

@@ -34,17 +34,9 @@ columns:
     sortable: false
     invisible: false
   asset_class:
-    # Field: From asset_class("char")
+    # Field: From asset_class(char)
     # Debug: Field for column asset_class on Lojistiks.ProductInstance
     label: acorn.lojistiks::lang.models.productinstance.asset_class
-    type: text
-    searchable: true
-    sortable: false
-    invisible: false
-  image:
-    # Field: From image(character varying)
-    # Debug: Field for column image on Lojistiks.ProductInstance
-    label: acorn.lojistiks::lang.models.productinstance.image
     type: text
     searchable: true
     sortable: false
@@ -86,6 +78,14 @@ columns:
     searchable: true
     sortable: false
     invisible: true
+  image:
+    # Field: From image(path)
+    # Debug: Field for column image on Lojistiks.ProductInstance
+    label: acorn.lojistiks::lang.models.productinstance.image
+    type: image
+    searchable: true
+    sortable: false
+    invisible: false
   lojistiks_product_instance_transfer_product_instances:
     # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(product_instance_id) through semi [acorn_lojistiks_product_instance_transfer]
     # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(product_instance_id) through semi [acorn_lojistiks_product_instance_transfer] on Lojistiks.ProductInstance

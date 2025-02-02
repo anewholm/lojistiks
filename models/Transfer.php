@@ -93,8 +93,8 @@ class Transfer extends Model
      * @var array Relations
      */
     public $hasOne = [
-        'criminal_defendant_detentions_transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => '1from1'],
-        'criminal_defendant_detentions_actual_release_transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'actual_release_transfer_id', 'type' => '1from1']
+        'criminal_defendant_detentions_transfer' => [\Acorn\Criminal\Models\DefendantDetention::class, 'key' => 'transfer_id', 'type' => '1from1'],
+        'criminal_defendant_detentions_actual_release_transfer' => [\Acorn\Criminal\Models\DefendantDetention::class, 'key' => 'actual_release_transfer_id', 'type' => '1from1']
     ];
     public $hasMany = [
         'lojistiks_product_instance_transfer_transfers_pivot' => [\Acorn\Lojistiks\Models\ProductInstanceTransfer::class, 'key' => 'transfer_id', 'otherKey' => 'product_instance_id', 'type' => 'XfromXSemi'],
