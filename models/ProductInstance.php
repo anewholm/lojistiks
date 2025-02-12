@@ -29,6 +29,7 @@ class ProductInstance extends Model
      * created_by_user_id(uuid)
      * response(text)
      * image(path)
+     * description(text)
      */
 
     public $hasManyDeep = [];

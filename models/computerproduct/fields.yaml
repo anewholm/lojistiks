@@ -119,7 +119,7 @@ fields:
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
@@ -183,7 +183,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: text
+    type: textarea
     hidden: true
     span: storm
     cssClass: col-xs-6

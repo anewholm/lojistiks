@@ -58,14 +58,14 @@ columns:
     invisible: true
     relation: created_by_user
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Transfer
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: timetense
     searchable: true
     sortable: true
     invisible: true
-    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.Transfer
@@ -84,23 +84,31 @@ columns:
     invisible: false
     path: tick
   sent_at_event:
-    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (sent_at)
+    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (sent_at)
     # Debug: ForeignIdField for column sent_at_event_id on Lojistiks.Transfer
     label: acorn.lojistiks::lang.models.transfer.sent_at_event
     type: timetense
     searchable: true
     sortable: true
     invisible: false
-    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = sent_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = sent_at_event_id order by aacep.start limit 1)
   arrived_at_event:
-    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (arrived_at)
+    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (arrived_at)
     # Debug: ForeignIdField for column arrived_at_event_id on Lojistiks.Transfer
     label: acorn.lojistiks::lang.models.transfer.arrived_at_event
     type: timetense
     searchable: true
     sortable: true
     invisible: false
-    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = arrived_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = arrived_at_event_id order by aacep.start limit 1)
+  description:
+    # Field: From description(text)
+    # Debug: Field for column description on Lojistiks.Transfer
+    label: acorn.lojistiks::lang.models.general.description
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
   lojistiks_product_instance_transfer_transfers:
     # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer]
     # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer] on Lojistiks.Transfer

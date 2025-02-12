@@ -22,6 +22,7 @@ class TransferInvoice extends Model
      * id(uuid)
      * transfer_id(uuid)
      * invoice_id(uuid)
+     * description(text)
      */
 
     public $hasManyDeep = [];

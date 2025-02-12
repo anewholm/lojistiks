@@ -22,6 +22,7 @@ class TransferPurchase extends Model
      * id(uuid)
      * transfer_id(uuid)
      * purchase_id(uuid)
+     * description(text)
      */
 
     public $hasManyDeep = [];

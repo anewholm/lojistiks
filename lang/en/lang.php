@@ -54,25 +54,14 @@
             'image' => 'Image',
             '_actions' => ' Actions'
         ],
-        'computerproduct' => [
-            'label' => 'Computer Product',
-            'label_plural' => 'Computer Products',
-            'memory' => 'Memory',
-            'HDD_size' => 'Hdd Size',
-            'processor_version' => 'Processor Version',
-            'processor_type' => 'Processor Type',
+        'container' => [
+            'label' => 'Container',
+            'label_plural' => 'Containers',
             '_actions' => ' Actions'
         ],
-        'electronicproduct' => [
-            'label' => 'Electronic Product',
-            'label_plural' => 'Electronic Products',
-            'voltage' => 'Voltage',
-            '_actions' => ' Actions'
-        ],
-        'employee' => [
-            'label' => 'Employee',
-            'label_plural' => 'Employees',
-            'user_role' => 'User Role',
+        'driver' => [
+            'label' => 'Driver',
+            'label_plural' => 'Drivers',
             '_actions' => ' Actions'
         ],
         'person' => [
@@ -83,19 +72,6 @@
             'last_product_instance_location' => 'Last Product Instance Location',
             '_actions' => ' Actions'
         ],
-        'transfer' => [
-            'label' => 'Transfer',
-            'label_plural' => 'Transfers',
-            'pre_marked_arrived' => 'Pre Marked Arrived',
-            'sent_at_event' => 'Sent At Event',
-            'arrived_at_event' => 'Arrived At Event',
-            '_actions' => ' Actions'
-        ],
-        'driver' => [
-            'label' => 'Driver',
-            'label_plural' => 'Drivers',
-            '_actions' => ' Actions'
-        ],
         'vehicle' => [
             'label' => 'Vehicle',
             'label_plural' => 'Vehicles',
@@ -103,19 +79,18 @@
             'image' => 'Image',
             '_actions' => ' Actions'
         ],
-        'productinstancetransfer' => [
-            'label_plural' => 'Product Instance Transfer',
-            'label' => 'Product Instance Transfer',
+        'transfer' => [
+            'label_plural' => 'Transfers',
+            'label' => 'Transfer',
+            'pre_marked_arrived' => 'Pre Marked Arrived',
+            'sent_at_event' => 'Sent At Event',
+            'arrived_at_event' => 'Arrived At Event',
             '_actions' => ' Actions'
         ],
-        'transferinvoice' => [
-            'label_plural' => 'Transfer Invoice',
-            'label' => 'Transfer Invoice',
-            '_actions' => ' Actions'
-        ],
-        'transferpurchase' => [
-            'label_plural' => 'Transfer Purchase',
-            'label' => 'Transfer Purchase',
+        'employee' => [
+            'label' => 'Employee',
+            'label_plural' => 'Employees',
+            'user_role' => 'User Role',
             '_actions' => ' Actions'
         ],
         'measurementunit' => [
@@ -125,23 +100,9 @@
             'uses_quantity' => 'Uses Quantity',
             '_actions' => ' Actions'
         ],
-        'offix' => [
-            'label' => 'Offix',
+        'office' => [
+            'label' => 'Office',
             'label_plural' => 'Offices',
-            '_actions' => ' Actions'
-        ],
-        'productinstance' => [
-            'label' => 'Product Instance',
-            'label_plural' => 'Product Instances',
-            'quantity' => 'Quantity',
-            'external_identifier' => 'External Identifier',
-            'asset_class' => 'Asset Class',
-            'image' => 'Image',
-            '_actions' => ' Actions'
-        ],
-        'container' => [
-            'label' => 'Container',
-            'label_plural' => 'Containers',
             '_actions' => ' Actions'
         ],
         'productattribute' => [
@@ -167,11 +128,46 @@
             'label' => 'Products Product Category',
             '_actions' => ' Actions'
         ],
+        'productinstancetransfer' => [
+            'label' => 'Product Instance Transfer',
+            'label_plural' => 'Product Instance Transfer',
+            '_actions' => ' Actions'
+        ],
+        'productinstance' => [
+            'label' => 'Product Instance',
+            'label_plural' => 'Product Instances',
+            'quantity' => 'Quantity',
+            'external_identifier' => 'External Identifier',
+            'asset_class' => 'Asset Class',
+            'image' => 'Image',
+            '_actions' => ' Actions'
+        ],
         'productproduct' => [
-            'label_plural' => 'Product Products',
             'label' => 'Product Product',
+            'label_plural' => 'Product Products',
             'sub_product' => 'Sub Product',
             'quantity' => 'Quantity',
+            '_actions' => ' Actions'
+        ],
+        'electronicproduct' => [
+            'label_plural' => 'Electronic Products',
+            'label' => 'Electronic Product',
+            'voltage' => 'Voltage',
+            '_actions' => ' Actions'
+        ],
+        'supplier' => [
+            'label' => 'Supplier',
+            'label_plural' => 'Suppliers',
+            '_actions' => ' Actions'
+        ],
+        'transferinvoice' => [
+            'label_plural' => 'Transfer Invoice',
+            'label' => 'Transfer Invoice',
+            '_actions' => ' Actions'
+        ],
+        'transferpurchase' => [
+            'label_plural' => 'Transfer Purchase',
+            'label' => 'Transfer Purchase',
             '_actions' => ' Actions'
         ],
         'vehicletype' => [
@@ -184,9 +180,13 @@
             'label_plural' => 'Warehouses',
             '_actions' => ' Actions'
         ],
-        'supplier' => [
-            'label' => 'Supplier',
-            'label_plural' => 'Suppliers',
+        'computerproduct' => [
+            'label' => 'Computer Product',
+            'label_plural' => 'Computer Products',
+            'memory' => 'Memory',
+            'HDD_size' => 'Hdd Size',
+            'processor_version' => 'Processor Version',
+            'processor_type' => 'Processor Type',
             '_actions' => ' Actions'
         ]
     ]

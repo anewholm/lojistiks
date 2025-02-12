@@ -134,7 +134,7 @@ fields:
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
@@ -157,7 +157,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: text
+    type: textarea
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -192,7 +192,7 @@ fields:
     commentHtml: true
     placeholder: backend::lang.form.select
   sent_at_event[start]:
-    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (sent_at)
+    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (sent_at)
     label: acorn.lojistiks::lang.models.transfer.sent_at_event
     type: datepicker
     span: storm
@@ -212,7 +212,7 @@ fields:
     dependsOn:
       - _qrscan
   arrived_at_event[start]:
-    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (arrived_at)
+    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (arrived_at)
     label: acorn.lojistiks::lang.models.transfer.arrived_at_event
     type: datepicker
     span: storm
@@ -231,6 +231,24 @@ fields:
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
+  description:
+    # Field: From description(text)
+    label: acorn.lojistiks::lang.models.general.description
+    type: textarea
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">description</div>
+      Field for column description on Lojistiks.Transfer
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.description">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
   _qrcode:
     # PseudoField: 
     label: acorn.lojistiks::lang.models.general._qrcode
@@ -290,7 +308,10 @@ tabs:
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+      relatedModel: Acorn\Lojistiks\Models\ProductInstance
       nameFrom: fully_qualified_name
+      dependsOn:
+        - _paste
     lojistiks_transfer_invoice_transfers:
       # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice]
       label: acorn.lojistiks::lang.models.transferinvoice.label_plural
@@ -309,7 +330,10 @@ tabs:
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.transferinvoice.label_plural
+      relatedModel: Acorn\Finance\Models\Invoice
       nameFrom: fully_qualified_name
+      dependsOn:
+        - _paste
     lojistiks_transfer_purchase_transfers:
       # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase]
       label: acorn.lojistiks::lang.models.transferpurchase.label_plural
@@ -328,7 +352,10 @@ tabs:
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.transferpurchase.label_plural
+      relatedModel: Acorn\Finance\Models\Purchase
       nameFrom: fully_qualified_name
+      dependsOn:
+        - _paste
   icons:
     "acorn.lojistiks::lang.models.transferinvoice.label_plural": icon-swift
     "acorn.lojistiks::lang.models.transferpurchase.label_plural": icon-wpforms

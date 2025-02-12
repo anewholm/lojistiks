@@ -83,7 +83,7 @@ fields:
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
@@ -129,7 +129,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: text
+    type: textarea
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -159,6 +159,24 @@ fields:
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.image</div>
       <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.image">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  description:
+    # Field: From description(text)
+    label: acorn.lojistiks::lang.models.general.description
+    type: textarea
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">description</div>
+      Field for column description on Lojistiks.Vehicle
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.vehicles.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.vehicles.columns.description">edit</a>
       </div>
       </div>
     commentHtml: true
@@ -222,7 +240,10 @@ tabs:
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.transfer.label_plural
+      relatedModel: Acorn\Lojistiks\Models\Transfer
       nameFrom: fully_qualified_name
+      dependsOn:
+        - _paste
     lojistiks_drivers_vehicle:
       # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(vehicle_id)
       label: acorn.lojistiks::lang.models.driver.label_plural
@@ -241,4 +262,7 @@ tabs:
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.driver.label_plural
+      relatedModel: Acorn\Lojistiks\Models\Driver
       nameFrom: fully_qualified_name
+      dependsOn:
+        - _paste

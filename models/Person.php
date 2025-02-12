@@ -28,6 +28,7 @@ class Person extends Model
      * response(text)
      * last_transfer_location_id(uuid)
      * last_product_instance_location_id(uuid)
+     * description(text)
      */
 
     public $hasManyDeep = [];

@@ -25,6 +25,7 @@ class Warehouse extends Model
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
+     * description(text)
      */
 
     public $hasManyDeep = [];

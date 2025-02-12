@@ -26,6 +26,7 @@ class Brand extends Model
      * server_id(uuid)
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
+     * description(text)
      */
 
     public $hasManyDeep = [];

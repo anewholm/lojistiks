@@ -64,6 +64,24 @@ fields:
     dependsOn:
       - _qrscan
       - _create_invoice
+  description:
+    # Field: From description(text)
+    label: acorn.lojistiks::lang.models.general.description
+    type: textarea
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">description</div>
+      Field for column description on Lojistiks.TransferInvoice
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_invoice.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_invoice.columns.description">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
   _qrcode:
     # PseudoField: 
     label: acorn.lojistiks::lang.models.general._qrcode

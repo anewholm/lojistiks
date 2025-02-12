@@ -9,7 +9,7 @@ fields:
     comment: |
       <div class='debug debug-field'>
       <div class="title">id</div>
-      IdField for column id on Lojistiks.Offix
+      IdField for column id on Lojistiks.Office
       <div class="create-system">
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.id</div>
@@ -28,7 +28,7 @@ fields:
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/location/locations'>Location</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/location/locations' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">location</div>
-      ForeignIdField for column location_id on Lojistiks.Offix
+      ForeignIdField for column location_id on Lojistiks.Office
       <div class="create-system">
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.location_id</div>
@@ -52,7 +52,7 @@ fields:
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
-      ForeignIdField for column server_id on Lojistiks.Offix
+      ForeignIdField for column server_id on Lojistiks.Office
       <div class="create-system">
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.server_id</div>
@@ -65,7 +65,7 @@ fields:
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
@@ -74,7 +74,7 @@ fields:
     comment: |
       <div class='debug debug-field'>
       <div class="title">created_at_event</div>
-      ForeignIdField for column created_at_event_id on Lojistiks.Offix
+      ForeignIdField for column created_at_event_id on Lojistiks.Office
       <div class="create-system">
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.created_at_event_id</div>
@@ -95,7 +95,7 @@ fields:
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
-      ForeignIdField for column created_by_user_id on Lojistiks.Offix
+      ForeignIdField for column created_by_user_id on Lojistiks.Office
       <div class="create-system">
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.created_by_user_id</div>
@@ -111,18 +111,36 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: text
+    type: textarea
     hidden: true
     span: storm
     cssClass: col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">response</div>
-      Field for column response on Lojistiks.Offix
+      Field for column response on Lojistiks.Office
       <div class="create-system">
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.response</div>
       <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.offices.columns.response">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  description:
+    # Field: From description(text)
+    label: acorn.lojistiks::lang.models.general.description
+    type: textarea
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">description</div>
+      Field for column description on Lojistiks.Office
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.offices.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.offices.columns.description">edit</a>
       </div>
       </div>
     commentHtml: true
@@ -151,7 +169,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.offix._actions
+    label: acorn.lojistiks::lang.models.office._actions
     hidden: true
     span: storm
     cssClass: col-xs-6

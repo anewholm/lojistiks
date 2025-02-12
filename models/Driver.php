@@ -26,6 +26,7 @@ class Driver extends Model
      * vehicle_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
+     * description(text)
      */
 
     public $hasManyDeep = [];

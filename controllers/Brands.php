@@ -8,6 +8,7 @@ use Acorn\Controller;
  */
 class Brands extends Controller
 {
+    public $bodyClass = 'compact-container';
     /**
      * @var array Behaviors that are implemented by this controller.
      */

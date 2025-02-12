@@ -30,6 +30,7 @@ class Transfer extends Model
      * pre_marked_arrived(boolean)
      * sent_at_event_id(uuid)
      * arrived_at_event_id(uuid)
+     * description(text)
      */
 
     public $hasManyDeep = [];
@@ -93,8 +94,8 @@ class Transfer extends Model
      * @var array Relations
      */
     public $hasOne = [
-        'criminal_defendant_detentions_transfer' => [\Acorn\Criminal\Models\DefendantDetention::class, 'key' => 'transfer_id', 'type' => '1from1'],
-        'criminal_defendant_detentions_actual_release_transfer' => [\Acorn\Criminal\Models\DefendantDetention::class, 'key' => 'actual_release_transfer_id', 'type' => '1from1']
+        'criminal_defendant_detentions_actual_release_transfer' => [\Acorn\Criminal\Models\DefendantDetention::class, 'key' => 'actual_release_transfer_id', 'type' => '1from1'],
+        'criminal_defendant_detentions_transfer' => [\Acorn\Criminal\Models\DefendantDetention::class, 'key' => 'transfer_id', 'type' => '1from1']
     ];
     public $hasMany = [
         'lojistiks_product_instance_transfer_transfers_pivot' => [\Acorn\Lojistiks\Models\ProductInstanceTransfer::class, 'key' => 'transfer_id', 'otherKey' => 'product_instance_id', 'type' => 'XfromXSemi'],

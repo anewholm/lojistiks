@@ -3,8 +3,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -51,8 +51,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -96,8 +96,8 @@ CREATE FUNCTION public.fn_acorn_lojistiks_is_date(s character varying, d timesta
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -138,8 +138,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -198,8 +198,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -245,8 +245,8 @@ $$;
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
--- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg22.04+1)
+-- Dumped from database version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
+-- Dumped by pg_dump version 16.6 (Ubuntu 16.6-1.pgdg24.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -571,7 +571,8 @@ CREATE TABLE public.acorn_lojistiks_brands (
     response text,
     server_id uuid NOT NULL,
     created_at_event_id uuid,
-    created_by_user_id uuid
+    created_by_user_id uuid,
+    description text
 );
 
 
@@ -595,7 +596,8 @@ CREATE TABLE public.acorn_lojistiks_containers (
     created_at_event_id uuid,
     name character varying(1024),
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -610,7 +612,8 @@ CREATE TABLE public.acorn_lojistiks_drivers (
     created_at_event_id uuid,
     vehicle_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -625,7 +628,8 @@ CREATE TABLE public.acorn_lojistiks_employees (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -641,7 +645,8 @@ CREATE TABLE public.acorn_lojistiks_measurement_units (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -666,7 +671,8 @@ CREATE TABLE public.acorn_lojistiks_offices (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -683,7 +689,8 @@ CREATE TABLE public.acorn_lojistiks_people (
     created_by_user_id uuid,
     response text,
     last_transfer_location_id uuid,
-    last_product_instance_location_id uuid
+    last_product_instance_location_id uuid,
+    description text
 );
 
 
@@ -699,7 +706,8 @@ CREATE TABLE public.acorn_lojistiks_product_attributes (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -715,7 +723,8 @@ CREATE TABLE public.acorn_lojistiks_product_categories (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -729,7 +738,8 @@ CREATE TABLE public.acorn_lojistiks_product_category_types (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -744,7 +754,8 @@ CREATE TABLE public.acorn_lojistiks_product_instance_transfer (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -762,7 +773,8 @@ CREATE TABLE public.acorn_lojistiks_product_instances (
     created_at_event_id uuid,
     created_by_user_id uuid,
     response text,
-    image path
+    image path,
+    description text
 );
 
 
@@ -778,7 +790,8 @@ CREATE TABLE public.acorn_lojistiks_product_products (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -796,7 +809,8 @@ CREATE TABLE public.acorn_lojistiks_products (
     created_at_event_id uuid,
     created_by_user_id uuid,
     response text,
-    image path
+    image path,
+    description text
 );
 
 
@@ -811,7 +825,8 @@ CREATE TABLE public.acorn_lojistiks_products_product_categories (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -825,7 +840,8 @@ CREATE TABLE public.acorn_lojistiks_suppliers (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -840,7 +856,8 @@ CREATE TABLE public.acorn_lojistiks_transfer_container_product_instance (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -869,7 +886,8 @@ CREATE TABLE public.acorn_lojistiks_transfer_containers (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -887,7 +905,8 @@ COMMENT ON TABLE public.acorn_lojistiks_transfer_containers IS 'todo: true';
 CREATE TABLE public.acorn_lojistiks_transfer_invoice (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     transfer_id uuid NOT NULL,
-    invoice_id uuid NOT NULL
+    invoice_id uuid NOT NULL,
+    description text
 );
 
 
@@ -898,7 +917,8 @@ CREATE TABLE public.acorn_lojistiks_transfer_invoice (
 CREATE TABLE public.acorn_lojistiks_transfer_purchase (
     id uuid DEFAULT gen_random_uuid() NOT NULL,
     transfer_id uuid NOT NULL,
-    purchase_id uuid NOT NULL
+    purchase_id uuid NOT NULL,
+    description text
 );
 
 
@@ -917,7 +937,8 @@ CREATE TABLE public.acorn_lojistiks_transfers (
     response text,
     pre_marked_arrived boolean DEFAULT false NOT NULL,
     sent_at_event_id uuid,
-    arrived_at_event_id uuid
+    arrived_at_event_id uuid,
+    description text
 );
 
 
@@ -945,7 +966,8 @@ CREATE TABLE public.acorn_lojistiks_vehicle_types (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -970,7 +992,8 @@ CREATE TABLE public.acorn_lojistiks_vehicles (
     created_at_event_id uuid,
     created_by_user_id uuid,
     response text,
-    image path
+    image path,
+    description text
 );
 
 
@@ -992,7 +1015,8 @@ CREATE TABLE public.acorn_lojistiks_warehouses (
     server_id uuid NOT NULL,
     created_at_event_id uuid,
     created_by_user_id uuid,
-    response text
+    response text,
+    description text
 );
 
 
@@ -2025,7 +2049,7 @@ ALTER TABLE ONLY product.acorn_lojistiks_computer_products
 --
 
 ALTER TABLE ONLY product.acorn_lojistiks_electronic_products
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2033,7 +2057,7 @@ ALTER TABLE ONLY product.acorn_lojistiks_electronic_products
 --
 
 ALTER TABLE ONLY product.acorn_lojistiks_computer_products
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2081,7 +2105,7 @@ ALTER TABLE ONLY product.acorn_lojistiks_electronic_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfers
-    ADD CONSTRAINT arrived_at_event_id FOREIGN KEY (arrived_at_event_id) REFERENCES public.acorn_calendar_event(id) ON DELETE SET NULL NOT VALID;
+    ADD CONSTRAINT arrived_at_event_id FOREIGN KEY (arrived_at_event_id) REFERENCES public.acorn_calendar_events(id) ON DELETE SET NULL NOT VALID;
 
 
 --
@@ -2121,7 +2145,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_containers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2129,7 +2153,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_container_product_instance
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2137,7 +2161,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_containers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_brands
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2145,7 +2169,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_brands
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_employees
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2153,7 +2177,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_employees
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfers
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2161,7 +2185,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_measurement_units
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2169,7 +2193,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_measurement_units
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_offices
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2177,7 +2201,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_offices
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_people
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2185,7 +2209,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_people
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_containers
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2193,7 +2217,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_containers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_attributes
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2201,7 +2225,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_attributes
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_categories
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2209,7 +2233,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_categories
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_category_types
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2217,7 +2241,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_category_types
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2225,7 +2249,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_instance_transfer
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_instances
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2233,7 +2257,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_product_instances
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_drivers
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2241,7 +2265,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_drivers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_products_product_categories
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2249,7 +2273,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_products_product_categories
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_vehicle_types
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2257,7 +2281,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_vehicle_types
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_vehicles
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2265,7 +2289,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_vehicles
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_warehouses
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2273,7 +2297,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_warehouses
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_products
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2281,7 +2305,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_products
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_suppliers
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2289,7 +2313,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_suppliers
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_product_products
-    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_event(id) NOT VALID;
+    ADD CONSTRAINT created_at_event_id FOREIGN KEY (created_at_event_id) REFERENCES public.acorn_calendar_events(id) NOT VALID;
 
 
 --
@@ -2569,7 +2593,7 @@ ALTER TABLE ONLY public.acorn_lojistiks_transfer_purchase
 --
 
 ALTER TABLE ONLY public.acorn_lojistiks_transfers
-    ADD CONSTRAINT sent_at_event_id FOREIGN KEY (sent_at_event_id) REFERENCES public.acorn_calendar_event(id) ON DELETE SET NULL NOT VALID;
+    ADD CONSTRAINT sent_at_event_id FOREIGN KEY (sent_at_event_id) REFERENCES public.acorn_calendar_events(id) ON DELETE SET NULL NOT VALID;
 
 
 --

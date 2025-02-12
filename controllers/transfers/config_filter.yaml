@@ -14,23 +14,23 @@ scopes:
     # created_at_event
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: daterange
-    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by start limit 1) between ':after' and ':before')"
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by start limit 1) between ':after' and ':before')"
     modelClass: Acorn\Calendar\Models\Event
-    # Relation =[Xto1]> acorn_calendar_event(id) (created_at)
+    # Relation =[Xto1]> acorn_calendar_events(id) (created_at)
   sent_at_event:
     # sent_at_event
     label: acorn.lojistiks::lang.models.transfer.sent_at_event
     type: daterange
-    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = sent_at_event_id order by start limit 1) between ':after' and ':before')"
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = sent_at_event_id order by start limit 1) between ':after' and ':before')"
     modelClass: Acorn\Calendar\Models\Event
-    # Relation =[Xto1]> acorn_calendar_event(id) (sent_at)
+    # Relation =[Xto1]> acorn_calendar_events(id) (sent_at)
   arrived_at_event:
     # arrived_at_event
     label: acorn.lojistiks::lang.models.transfer.arrived_at_event
     type: daterange
-    conditions: "((select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = arrived_at_event_id order by start limit 1) between ':after' and ':before')"
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = arrived_at_event_id order by start limit 1) between ':after' and ':before')"
     modelClass: Acorn\Calendar\Models\Event
-    # Relation =[Xto1]> acorn_calendar_event(id) (arrived_at)
+    # Relation =[Xto1]> acorn_calendar_events(id) (arrived_at)
   lojistiks_product_instance_transfer_transfers:
     # lojistiks_product_instance_transfer_transfers
     label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
@@ -54,5 +54,6 @@ scopes:
     # Relation <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase]
 # response (Field) field !canFilter
 # pre_marked_arrived (Field) field !canFilter
+# description (Field) field !canFilter
 # _qrcode (PseudoField) field !canFilter
 # _actions (PseudoField) field !canFilter

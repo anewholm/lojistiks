@@ -25,6 +25,7 @@ class Container extends Model
      * name(character varying)
      * created_by_user_id(uuid)
      * response(text)
+     * description(text)
      */
 
     public $hasManyDeep = [];

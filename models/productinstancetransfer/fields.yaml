@@ -88,7 +88,7 @@ fields:
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
@@ -134,7 +134,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: text
+    type: textarea
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -146,6 +146,24 @@ fields:
       <pre class="create-system-comment"></pre>
       <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.product_instance_transfer.columns.response</div>
       <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.product_instance_transfer.columns.response">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    placeholder: backend::lang.form.select
+  description:
+    # Field: From description(text)
+    label: acorn.lojistiks::lang.models.general.description
+    type: textarea
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">description</div>
+      Field for column description on Lojistiks.ProductInstanceTransfer
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.product_instance_transfer.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.product_instance_transfer.columns.description">edit</a>
       </div>
       </div>
     commentHtml: true

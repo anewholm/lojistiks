@@ -14,9 +14,9 @@ use Flash;
 use Acorn\Model;
 
 /**
- * Offix Model
+ * Office Model
  */
-class Offix extends Model
+class Office extends Model
 {
     /* Generated Fields:
      * id(uuid)
@@ -25,6 +25,7 @@ class Offix extends Model
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
+     * description(text)
      */
 
     public $hasManyDeep = [];

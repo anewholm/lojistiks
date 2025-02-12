@@ -28,14 +28,14 @@ columns:
     relation: server
     select: name
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_event(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ElectronicProduct
     label: acorn.lojistiks::lang.models.general.created_at_event
     type: timetense
     searchable: true
     sortable: true
     invisible: true
-    select: (select aacep.start from acorn_calendar_event_part aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   voltage:
     # Field: From voltage(double precision)
     # Debug: Field for column voltage on Lojistiks.ElectronicProduct

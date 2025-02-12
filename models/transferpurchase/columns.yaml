@@ -27,6 +27,14 @@ columns:
     invisible: false
     relation: purchase
     select: name
+  description:
+    # Field: From description(text)
+    # Debug: Field for column description on Lojistiks.TransferPurchase
+    label: acorn.lojistiks::lang.models.general.description
+    type: text
+    searchable: true
+    sortable: false
+    invisible: false
   _qrcode:
     # PseudoField: 
     label: acorn.lojistiks::lang.models.general._qrcode
