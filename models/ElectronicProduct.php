@@ -28,7 +28,14 @@ class ElectronicProduct extends Model
      * response(text)
      */
 
-    public $hasManyDeep = [];
+    public $hasManyDeep = [
+        'product_lojistiks_product_instances_product' => [\Acorn\Lojistiks\Models\ProductInstance::class, 'throughRelations' => ['product', 'lojistiks_product_instances_product']],
+        'product_lojistiks_product_products_product' => [\Acorn\Lojistiks\Models\ProductProduct::class, 'throughRelations' => ['product', 'lojistiks_product_products_product']],
+        'product_lojistiks_product_attributes_product' => [\Acorn\Lojistiks\Models\ProductAttribute::class, 'throughRelations' => ['product', 'lojistiks_product_attributes_product']],
+        'product_lojistiks_product_products_sub_product' => [\Acorn\Lojistiks\Models\ProductProduct::class, 'throughRelations' => ['product', 'lojistiks_product_products_sub_product']],
+        'product_lojistiks_products_product_category_products' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'throughRelations' => ['product', 'lojistiks_products_product_category_products']],
+        'product_lojistiks_product_product_category_products' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'throughRelations' => ['product', 'lojistiks_product_product_category_products']]
+    ];
     public $actionFunctions = [];
     use \Winter\Storm\Database\Traits\Revisionable;
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -88,17 +95,17 @@ class ElectronicProduct extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
-    public $hasMany = [
-        'lojistiks_computer_products_electronic_product' => [\Acorn\Lojistiks\Models\ComputerProduct::class, 'key' => 'electronic_product_id', 'type' => '1fromX']
+    public $hasOne = [
+        'lojistiks_computer_products_electronic_product' => [\Acorn\Lojistiks\Models\ComputerProduct::class, 'key' => 'electronic_product_id', 'type' => '1from1']
     ];
+    public $hasMany = [];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
+        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => TRUE, 'type' => '1to1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

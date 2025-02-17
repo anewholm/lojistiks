@@ -26,7 +26,6 @@ class ProductsProductCategory extends Model
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
-     * description(text)
      */
 
     public $hasManyDeep = [];
@@ -42,7 +41,7 @@ class ProductsProductCategory extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_products_product_categories';
+    public $table = 'acorn_lojistiks_products_product_category';
 
     /**
      * @var array Guarded fields
@@ -95,11 +94,11 @@ class ProductsProductCategory extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'product_category' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'product_category_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
+        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'type' => 'Xto1'],
+        'product_category' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'product_category_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

@@ -28,6 +28,8 @@ class ProductCategory extends Model
      * created_by_user_id(uuid)
      * response(text)
      * description(text)
+     * updated_at_event_id(uuid)
+     * updated_by_user_id(uuid)
      */
 
     public $hasManyDeep = [];
@@ -93,20 +95,26 @@ class ProductCategory extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'lojistiks_products_product_categories_product_category' => [\Acorn\Lojistiks\Models\ProductsProductCategory::class, 'key' => 'product_category_id', 'type' => '1fromX'],
+        'lojistiks_products_product_category_product_categories_pivot' => [\Acorn\Lojistiks\Models\ProductsProductCategory::class, 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
+        'lojistiks_product_product_category_product_categories_pivot' => [\Acorn\Lojistiks\Models\ProductProductCategory::class, 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
         'children' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product_category_type' => [\Acorn\Lojistiks\Models\ProductCategoryType::class, 'key' => 'product_category_type_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1'],
+        'product_category_type' => [\Acorn\Lojistiks\Models\ProductCategoryType::class, 'key' => 'product_category_type_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1'],
         'parent_product_category' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self'],
         'parent' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self']
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'lojistiks_products_product_category_product_categories' => [\Acorn\Lojistiks\Models\Product::class, 'table' => 'acorn_lojistiks_products_product_category', 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
+        'lojistiks_product_product_category_product_categories' => [\Acorn\Lojistiks\Models\Product::class, 'table' => 'acorn_lojistiks_product_product_category', 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi']
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [

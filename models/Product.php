@@ -30,6 +30,8 @@ class Product extends Model
      * response(text)
      * image(path)
      * description(text)
+     * updated_at_event_id(uuid)
+     * updated_by_user_id(uuid)
      */
 
     public $hasManyDeep = [];
@@ -93,25 +95,32 @@ class Product extends Model
     /**
      * @var array Relations
      */
-    public $hasOne = [];
+    public $hasOne = [
+        'lojistiks_electronic_products_product' => [\Acorn\Lojistiks\Models\ElectronicProduct::class, 'key' => 'product_id', 'type' => '1from1']
+    ];
     public $hasMany = [
-        'lojistiks_electronic_products_product' => [\Acorn\Lojistiks\Models\ElectronicProduct::class, 'key' => 'product_id', 'type' => '1fromX'],
-        'lojistiks_products_product_categories_product' => [\Acorn\Lojistiks\Models\ProductsProductCategory::class, 'key' => 'product_id', 'type' => '1fromX'],
         'lojistiks_product_instances_product' => [\Acorn\Lojistiks\Models\ProductInstance::class, 'key' => 'product_id', 'type' => '1fromX'],
         'lojistiks_product_products_product' => [\Acorn\Lojistiks\Models\ProductProduct::class, 'key' => 'product_id', 'type' => '1fromX'],
         'lojistiks_product_attributes_product' => [\Acorn\Lojistiks\Models\ProductAttribute::class, 'key' => 'product_id', 'type' => '1fromX'],
-        'lojistiks_product_products_sub_product' => [\Acorn\Lojistiks\Models\ProductProduct::class, 'key' => 'sub_product_id', 'type' => '1fromX']
+        'lojistiks_product_products_sub_product' => [\Acorn\Lojistiks\Models\ProductProduct::class, 'key' => 'sub_product_id', 'type' => '1fromX'],
+        'lojistiks_products_product_category_products_pivot' => [\Acorn\Lojistiks\Models\ProductsProductCategory::class, 'key' => 'product_id', 'otherKey' => 'product_category_id', 'type' => 'XfromXSemi'],
+        'lojistiks_product_product_category_products_pivot' => [\Acorn\Lojistiks\Models\ProductProductCategory::class, 'key' => 'product_id', 'otherKey' => 'product_category_id', 'type' => 'XfromXSemi']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'measurement_unit' => [\Acorn\Lojistiks\Models\MeasurementUnit::class, 'key' => 'measurement_unit_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'brand' => [\Acorn\Lojistiks\Models\Brand::class, 'key' => 'brand_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
+        'measurement_unit' => [\Acorn\Lojistiks\Models\MeasurementUnit::class, 'key' => 'measurement_unit_id', 'type' => 'Xto1'],
+        'brand' => [\Acorn\Lojistiks\Models\Brand::class, 'key' => 'brand_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
     ];
-    public $belongsToMany = [];
+    public $belongsToMany = [
+        'lojistiks_products_product_category_products' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'table' => 'acorn_lojistiks_products_product_category', 'key' => 'product_id', 'otherKey' => 'product_category_id', 'type' => 'XfromXSemi'],
+        'lojistiks_product_product_category_products' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'table' => 'acorn_lojistiks_product_product_category', 'key' => 'product_id', 'otherKey' => 'product_category_id', 'type' => 'XfromXSemi']
+    ];
     public $morphTo = [];
     public $morphOne = [];
     public $morphMany = [

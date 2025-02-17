@@ -19,12 +19,12 @@ fields:
     commentHtml: true
     placeholder: backend::lang.form.select
   product:
-    # ForeignIdField: From product_id(uuid), with =[Xto1]> acorn_lojistiks_products(id)
+    # ForeignIdField: From product_id(uuid), with =[1to1]> acorn_lojistiks_products(id)
     label: acorn.lojistiks::lang.models.product.label
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/products'>Product</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/products' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">product</div>
@@ -41,6 +41,8 @@ fields:
     dependsOn:
       - _qrscan
       - _create_product
+    include: 1to1
+    includeModel: \Acorn\Lojistiks\Models\Product
   server:
     # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
     label: acorn::lang.models.server.label
@@ -48,7 +50,7 @@ fields:
     hidden: true
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
@@ -82,6 +84,7 @@ fields:
       </div>
       </div>
     commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
@@ -109,7 +112,7 @@ fields:
     type: dropdown
     hidden: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
@@ -129,7 +132,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: textarea
+    type: richeditor
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -184,27 +187,3 @@ fields:
       </div>
       </div>
     commentHtml: true
-tabs:
-  fields:
-    lojistiks_computer_products_electronic_product:
-      # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_computer_products(electronic_product_id)
-      label: acorn.lojistiks::lang.models.computerproduct.label_plural
-      type: relationmanager
-      span: storm
-      cssClass: 'single-tab single-tab-1fromX  col-xs-6'
-      comment: |
-        <div class='debug debug-field'>
-        <div class="title">lojistiks_computer_products_electronic_product</div>
-        Tab multi-select for <[Xto1]= acorn_lojistiks_computer_products(electronic_product_id) on Lojistiks.ElectronicProduct
-        <div class="create-system">
-        <pre class="create-system-comment"></pre>
-        <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.foreignkeys.electronic_product_id</div>
-        <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.foreignkeys.electronic_product_id">edit</a>
-        </div>
-        </div>
-      commentHtml: true
-      tab: acorn.lojistiks::lang.models.computerproduct.label_plural
-      relatedModel: Acorn\Lojistiks\Models\ComputerProduct
-      nameFrom: fully_qualified_name
-      dependsOn:
-        - _paste

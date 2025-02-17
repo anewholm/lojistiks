@@ -17,6 +17,5 @@ scopes:
     modelClass: Acorn\User\Models\User
     # Relation =[Xto1]> acorn_user_users(id) (created_by)
 # response (Field) field !canFilter
-# description (Field) field !canFilter
 # _qrcode (PseudoField) field !canFilter
 # _actions (PseudoField) field !canFilter

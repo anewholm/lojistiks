@@ -27,7 +27,8 @@ class ProductProduct extends Model
      * created_at_event_id(uuid)
      * created_by_user_id(uuid)
      * response(text)
-     * description(text)
+     * updated_at_event_id(uuid)
+     * updated_by_user_id(uuid)
      */
 
     public $hasManyDeep = [];
@@ -97,11 +98,13 @@ class ProductProduct extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'sub_product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'sub_product_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
+        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'type' => 'Xto1'],
+        'sub_product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'sub_product_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];
@@ -115,6 +118,11 @@ class ProductProduct extends Model
     public static function menuitemCount() {
         # Auto-injected by acorn-create-system
         return self::all()->count();
+    }
+
+    public function name() {
+        # Auto-injected by acorn-create-system
+        return $this->subproduct->name . ' x ' . $this->quantity;
     }
 }
 // Created By acorn-create-system v1.0

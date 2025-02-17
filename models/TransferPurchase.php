@@ -91,8 +91,8 @@ class TransferPurchase extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'purchase' => [\Acorn\Finance\Models\Purchase::class, 'key' => 'purchase_id', 'name' => FALSE, 'type' => 'Xto1']
+        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
+        'purchase' => [\Acorn\Finance\Models\Purchase::class, 'key' => 'purchase_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

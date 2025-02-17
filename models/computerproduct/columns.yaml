@@ -8,7 +8,7 @@ columns:
     sortable: false
     invisible: true
   electronic_product:
-    # ForeignIdField: From electronic_product_id(uuid), with =[Xto1]> acorn_lojistiks_electronic_products(id)
+    # ForeignIdField: From electronic_product_id(uuid), with =[1to1]> acorn_lojistiks_electronic_products(id)
     # Debug: ForeignIdField for column electronic_product_id on Lojistiks.ComputerProduct
     label: acorn.lojistiks::lang.models.electronicproduct.label
     type: text
@@ -17,6 +17,8 @@ columns:
     sortable: false
     invisible: false
     relation: electronic_product
+    include: 1to1
+    includeModel: \Acorn\Lojistiks\Models\ElectronicProduct
   memory:
     # Field: From memory(bigint)
     # Debug: Field for column memory on Lojistiks.ComputerProduct
@@ -55,10 +57,11 @@ columns:
     # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ComputerProduct
     label: acorn.lojistiks::lang.models.general.created_at_event
-    type: timetense
+    type: partial
     searchable: true
     sortable: true
     invisible: true
+    path: datetime
     select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
     # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)

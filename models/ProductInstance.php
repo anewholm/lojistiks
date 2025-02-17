@@ -29,7 +29,8 @@ class ProductInstance extends Model
      * created_by_user_id(uuid)
      * response(text)
      * image(path)
-     * description(text)
+     * updated_at_event_id(uuid)
+     * updated_by_user_id(uuid)
      */
 
     public $hasManyDeep = [];
@@ -100,10 +101,12 @@ class ProductInstance extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
+        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [
         'lojistiks_product_instance_transfer_product_instances' => [\Acorn\Lojistiks\Models\Transfer::class, 'table' => 'acorn_lojistiks_product_instance_transfer', 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
@@ -121,6 +124,11 @@ class ProductInstance extends Model
     public static function menuitemCount() {
         # Auto-injected by acorn-create-system
         return self::all()->count();
+    }
+
+    public function name() {
+        # Auto-injected by acorn-create-system
+        return $this->product->name . ' x ' . $this->amount;
     }
 }
 // Created By acorn-create-system v1.0

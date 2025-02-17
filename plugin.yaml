@@ -1,126 +1,131 @@
 navigation:
   lojistiks-setup:
     label: acorn.lojistiks::lang.plugin.name
-    url: acorn/lojistiks/brands
-    icon: icon-comment-dots
+    url: acorn/lojistiks/productsproductcategory
+    icon: icon-comments
     sideMenu:
-      Brand:
-        label: acorn.lojistiks::lang.models.brand.label_plural
-        url: acorn/lojistiks/brands
+      ProductsProductCategory:
+        label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
+        url: acorn/lojistiks/productsproductcategory
         icon: icon-bell
-        counter: \Acorn\Lojistiks\Models\Brand::menuitemCount
-      Container:
-        label: acorn.lojistiks::lang.models.container.label_plural
-        url: acorn/lojistiks/containers
-        icon: icon-bell-slash
-        counter: \Acorn\Lojistiks\Models\Container::menuitemCount
-      Driver:
-        label: acorn.lojistiks::lang.models.driver.label_plural
-        url: acorn/lojistiks/drivers
-        icon: icon-bookmark
-        counter: \Acorn\Lojistiks\Models\Driver::menuitemCount
-      Employee:
-        label: acorn.lojistiks::lang.models.employee.label_plural
-        url: acorn/lojistiks/employees
-        icon: icon-building
-        counter: \Acorn\Lojistiks\Models\Employee::menuitemCount
-      MeasurementUnit:
-        label: acorn.lojistiks::lang.models.measurementunit.label_plural
-        url: acorn/lojistiks/measurementunits
-        icon: icon-calendar
-        counter: \Acorn\Lojistiks\Models\MeasurementUnit::menuitemCount
-      Office:
-        label: acorn.lojistiks::lang.models.office.label_plural
-        url: acorn/lojistiks/offices
-        icon: icon-calendar-alt
-        counter: \Acorn\Lojistiks\Models\Office::menuitemCount
-      Person:
-        label: acorn.lojistiks::lang.models.person.label_plural
-        url: acorn/lojistiks/people
-        icon: icon-calendar-check
-        counter: \Acorn\Lojistiks\Models\Person::menuitemCount
-      ProductAttribute:
-        label: acorn.lojistiks::lang.models.productattribute.label_plural
-        url: acorn/lojistiks/productattributes
-        icon: icon-calendar-minus
-        counter: \Acorn\Lojistiks\Models\ProductAttribute::menuitemCount
-      ProductCategory:
-        label: acorn.lojistiks::lang.models.productcategory.label_plural
-        url: acorn/lojistiks/productcategories
-        icon: icon-calendar-plus
-        counter: \Acorn\Lojistiks\Models\ProductCategory::menuitemCount
-      ProductCategoryType:
-        label: acorn.lojistiks::lang.models.productcategorytype.label_plural
-        url: acorn/lojistiks/productcategorytypes
-        icon: icon-calendar-times
-        counter: \Acorn\Lojistiks\Models\ProductCategoryType::menuitemCount
+        counter: \Acorn\Lojistiks\Models\ProductsProductCategory::menuitemCount
       ProductInstanceTransfer:
         label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
         url: acorn/lojistiks/productinstancetransfer
-        icon: icon-caret-square-down
+        icon: icon-bell-slash
         counter: \Acorn\Lojistiks\Models\ProductInstanceTransfer::menuitemCount
+      ProductProductCategory:
+        label: acorn.lojistiks::lang.models.productproductcategory.label_plural
+        url: acorn/lojistiks/productproductcategory
+        icon: icon-bookmark
+        counter: \Acorn\Lojistiks\Models\ProductProductCategory::menuitemCount
+      ProductCategoryType:
+        label: acorn.lojistiks::lang.models.productcategorytype.label_plural
+        url: acorn/lojistiks/productcategorytypes
+        icon: icon-building
+        counter: \Acorn\Lojistiks\Models\ProductCategoryType::menuitemCount
+      ElectronicProduct:
+        label: acorn.lojistiks::lang.models.electronicproduct.label_plural
+        url: acorn/lojistiks/electronicproducts
+        icon: icon-calendar
+        counter: \Acorn\Lojistiks\Models\ElectronicProduct::menuitemCount
+      ProductCategory:
+        label: acorn.lojistiks::lang.models.productcategory.label_plural
+        url: acorn/lojistiks/productcategories
+        icon: icon-calendar-alt
+        counter: \Acorn\Lojistiks\Models\ProductCategory::menuitemCount
+      ProductAttribute:
+        label: acorn.lojistiks::lang.models.productattribute.label_plural
+        url: acorn/lojistiks/productattributes
+        icon: icon-calendar-check
+        counter: \Acorn\Lojistiks\Models\ProductAttribute::menuitemCount
+      MeasurementUnit:
+        label: acorn.lojistiks::lang.models.measurementunit.label_plural
+        url: acorn/lojistiks/measurementunits
+        icon: icon-calendar-minus
+        counter: \Acorn\Lojistiks\Models\MeasurementUnit::menuitemCount
+      ComputerProduct:
+        label: acorn.lojistiks::lang.models.computerproduct.label_plural
+        url: acorn/lojistiks/computerproducts
+        icon: icon-calendar-plus
+        counter: \Acorn\Lojistiks\Models\ComputerProduct::menuitemCount
       ProductInstance:
         label: acorn.lojistiks::lang.models.productinstance.label_plural
         url: acorn/lojistiks/productinstances
-        icon: icon-caret-square-left
+        icon: icon-calendar-times
         counter: \Acorn\Lojistiks\Models\ProductInstance::menuitemCount
+      TransferPurchase:
+        label: acorn.lojistiks::lang.models.transferpurchase.label_plural
+        url: acorn/lojistiks/transferpurchase
+        icon: icon-caret-square-down
+        counter: \Acorn\Lojistiks\Models\TransferPurchase::menuitemCount
+      TransferInvoice:
+        label: acorn.lojistiks::lang.models.transferinvoice.label_plural
+        url: acorn/lojistiks/transferinvoice
+        icon: icon-caret-square-left
+        counter: \Acorn\Lojistiks\Models\TransferInvoice::menuitemCount
       ProductProduct:
         label: acorn.lojistiks::lang.models.productproduct.label_plural
         url: acorn/lojistiks/productproducts
         icon: icon-caret-square-right
         counter: \Acorn\Lojistiks\Models\ProductProduct::menuitemCount
-      Product:
-        label: acorn.lojistiks::lang.models.product.label_plural
-        url: acorn/lojistiks/products
+      VehicleType:
+        label: acorn.lojistiks::lang.models.vehicletype.label_plural
+        url: acorn/lojistiks/vehicletypes
         icon: icon-caret-square-up
-        counter: \Acorn\Lojistiks\Models\Product::menuitemCount
-      ProductsProductCategory:
-        label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
-        url: acorn/lojistiks/productsproductcategories
+        counter: \Acorn\Lojistiks\Models\VehicleType::menuitemCount
+      Container:
+        label: acorn.lojistiks::lang.models.container.label_plural
+        url: acorn/lojistiks/containers
         icon: icon-chart-bar
-        counter: \Acorn\Lojistiks\Models\ProductsProductCategory::menuitemCount
+        counter: \Acorn\Lojistiks\Models\Container::menuitemCount
+      Warehouse:
+        label: acorn.lojistiks::lang.models.warehouse.label_plural
+        url: acorn/lojistiks/warehouses
+        icon: icon-check-circle
+        counter: \Acorn\Lojistiks\Models\Warehouse::menuitemCount
       Supplier:
         label: acorn.lojistiks::lang.models.supplier.label_plural
         url: acorn/lojistiks/suppliers
-        icon: icon-check-circle
+        icon: icon-check-square
         counter: \Acorn\Lojistiks\Models\Supplier::menuitemCount
       Transfer:
         label: acorn.lojistiks::lang.models.transfer.label_plural
         url: acorn/lojistiks/transfers
-        icon: icon-check-square
-        counter: \Acorn\Lojistiks\Models\Transfer::menuitemCount
-      VehicleType:
-        label: acorn.lojistiks::lang.models.vehicletype.label_plural
-        url: acorn/lojistiks/vehicletypes
         icon: icon-circle
-        counter: \Acorn\Lojistiks\Models\VehicleType::menuitemCount
+        counter: \Acorn\Lojistiks\Models\Transfer::menuitemCount
+      Employee:
+        label: acorn.lojistiks::lang.models.employee.label_plural
+        url: acorn/lojistiks/employees
+        icon: icon-clipboard
+        counter: \Acorn\Lojistiks\Models\Employee::menuitemCount
       Vehicle:
         label: acorn.lojistiks::lang.models.vehicle.label_plural
         url: acorn/lojistiks/vehicles
-        icon: icon-clipboard
-        counter: \Acorn\Lojistiks\Models\Vehicle::menuitemCount
-      Warehouse:
-        label: acorn.lojistiks::lang.models.warehouse.label_plural
-        url: acorn/lojistiks/warehouses
         icon: icon-clock
-        counter: \Acorn\Lojistiks\Models\Warehouse::menuitemCount
-      TransferInvoice:
-        label: acorn.lojistiks::lang.models.transferinvoice.label_plural
-        url: acorn/lojistiks/transferinvoice
+        counter: \Acorn\Lojistiks\Models\Vehicle::menuitemCount
+      Product:
+        label: acorn.lojistiks::lang.models.product.label_plural
+        url: acorn/lojistiks/products
         icon: icon-clone
-        counter: \Acorn\Lojistiks\Models\TransferInvoice::menuitemCount
-      ComputerProduct:
-        label: acorn.lojistiks::lang.models.computerproduct.label_plural
-        url: acorn/lojistiks/computerproducts
+        counter: \Acorn\Lojistiks\Models\Product::menuitemCount
+      Office:
+        label: acorn.lojistiks::lang.models.office.label_plural
+        url: acorn/lojistiks/offices
         icon: icon-closed-captioning
-        counter: \Acorn\Lojistiks\Models\ComputerProduct::menuitemCount
-      ElectronicProduct:
-        label: acorn.lojistiks::lang.models.electronicproduct.label_plural
-        url: acorn/lojistiks/electronicproducts
+        counter: \Acorn\Lojistiks\Models\Office::menuitemCount
+      Driver:
+        label: acorn.lojistiks::lang.models.driver.label_plural
+        url: acorn/lojistiks/drivers
         icon: icon-comment
-        counter: \Acorn\Lojistiks\Models\ElectronicProduct::menuitemCount
-      TransferPurchase:
-        label: acorn.lojistiks::lang.models.transferpurchase.label_plural
-        url: acorn/lojistiks/transferpurchase
+        counter: \Acorn\Lojistiks\Models\Driver::menuitemCount
+      Brand:
+        label: acorn.lojistiks::lang.models.brand.label_plural
+        url: acorn/lojistiks/brands
         icon: icon-comment-alt
-        counter: \Acorn\Lojistiks\Models\TransferPurchase::menuitemCount
+        counter: \Acorn\Lojistiks\Models\Brand::menuitemCount
+      Person:
+        label: acorn.lojistiks::lang.models.person.label_plural
+        url: acorn/lojistiks/people
+        icon: icon-comment-dots
+        counter: \Acorn\Lojistiks\Models\Person::menuitemCount

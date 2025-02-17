@@ -19,6 +19,7 @@
             'created_at_event' => 'Created At',
             'updated_at_event' => 'Updated At',
             'created_by_user' => 'Created By',
+            'updated_by_user' => 'Updated By',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'created_by' => 'Created By',

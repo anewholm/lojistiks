@@ -24,7 +24,7 @@ fields:
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/transfers'>Transfer</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/transfers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">transfer</div>
@@ -47,7 +47,7 @@ fields:
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/productinstances'>ProductInstance</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/productinstances' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">product_instance</div>
@@ -71,7 +71,7 @@ fields:
     hidden: true
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
@@ -105,6 +105,7 @@ fields:
       </div>
       </div>
     commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
@@ -114,7 +115,7 @@ fields:
     type: dropdown
     hidden: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
@@ -134,7 +135,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: textarea
+    type: richeditor
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -153,7 +154,7 @@ fields:
   description:
     # Field: From description(text)
     label: acorn.lojistiks::lang.models.general.description
-    type: textarea
+    type: richeditor
     span: storm
     cssClass: col-xs-6
     comment: |

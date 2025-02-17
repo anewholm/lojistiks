@@ -16,6 +16,19 @@ scopes:
     nameFrom: fully_qualified_name
     modelClass: Acorn\User\Models\User
     # Relation =[Xto1]> acorn_user_users(id) (created_by)
+  updated_at_event:
+    # updated_at_event
+    label: acorn.lojistiks::lang.models.general.updated_at_event
+    type: daterange
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_events(id) (updated_at)
+  updated_by_user:
+    # updated_by_user
+    label: acorn.lojistiks::lang.models.general.updated_by_user
+    nameFrom: fully_qualified_name
+    modelClass: Acorn\User\Models\User
+    # Relation =[Xto1]> acorn_user_users(id) (updated_by)
 # response (Field) field !canFilter
 # image (Field) field !canFilter
 # description (Field) field !canFilter

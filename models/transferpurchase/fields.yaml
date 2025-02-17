@@ -24,7 +24,7 @@ fields:
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/transfers'>Transfer</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/transfers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">transfer</div>
@@ -47,7 +47,7 @@ fields:
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/finance/purchases'>Purchase</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/finance/purchases' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">purchase</div>
@@ -67,7 +67,7 @@ fields:
   description:
     # Field: From description(text)
     label: acorn.lojistiks::lang.models.general.description
-    type: textarea
+    type: richeditor
     span: storm
     cssClass: col-xs-6
     comment: |

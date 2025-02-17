@@ -17,6 +17,5 @@ scopes:
     # Relation =[Xto1]> acorn_user_users(id) (created_by)
 # voltage (Field) field !canFilter
 # response (Field) field !canFilter
-# lojistiks_computer_products_electronic_product (PseudoFromForeignIdField) field !canFilter
 # _qrcode (PseudoField) field !canFilter
 # _actions (PseudoField) field !canFilter

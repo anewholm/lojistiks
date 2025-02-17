@@ -8,7 +8,7 @@ columns:
     sortable: false
     invisible: true
   product:
-    # ForeignIdField: From product_id(uuid), with =[Xto1]> acorn_lojistiks_products(id)
+    # ForeignIdField: From product_id(uuid), with =[1to1]> acorn_lojistiks_products(id)
     # Debug: ForeignIdField for column product_id on Lojistiks.ElectronicProduct
     label: acorn.lojistiks::lang.models.product.label
     type: text
@@ -17,6 +17,8 @@ columns:
     invisible: false
     relation: product
     select: name
+    include: 1to1
+    includeModel: \Acorn\Lojistiks\Models\Product
   server:
     # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.ElectronicProduct
@@ -31,10 +33,11 @@ columns:
     # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ElectronicProduct
     label: acorn.lojistiks::lang.models.general.created_at_event
-    type: timetense
+    type: partial
     searchable: true
     sortable: true
     invisible: true
+    path: datetime
     select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   voltage:
     # Field: From voltage(double precision)
@@ -62,16 +65,6 @@ columns:
     searchable: true
     sortable: false
     invisible: true
-  lojistiks_computer_products_electronic_product:
-    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_computer_products(electronic_product_id)
-    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_computer_products(electronic_product_id) on Lojistiks.ElectronicProduct
-    label: acorn.lojistiks::lang.models.computerproduct.label_plural
-    type: partial
-    searchable: false
-    sortable: false
-    invisible: false
-    path: multi
-    relation: lojistiks_computer_products_electronic_product
   _qrcode:
     # PseudoField: 
     label: acorn.lojistiks::lang.models.general._qrcode

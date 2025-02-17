@@ -4,9 +4,9 @@ use BackendMenu;
 use Acorn\Controller;
 
 /**
- * Products Product Categories Backend Controller
+ * Product Product Category Backend Controller
  */
-class ProductsProductCategories extends Controller
+class ProductProductCategory extends Controller
 {
     public $bodyClass = 'compact-container';
     /**
@@ -23,6 +23,6 @@ class ProductsProductCategories extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'productsproductcategories');
+        BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'productproductcategory');
     }
 }

@@ -19,12 +19,12 @@ fields:
     commentHtml: true
     placeholder: backend::lang.form.select
   electronic_product:
-    # ForeignIdField: From electronic_product_id(uuid), with =[Xto1]> acorn_lojistiks_electronic_products(id)
+    # ForeignIdField: From electronic_product_id(uuid), with =[1to1]> acorn_lojistiks_electronic_products(id)
     label: acorn.lojistiks::lang.models.electronicproduct.label
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/electronicproducts'>ElectronicProduct</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/electronicproducts' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">electronic_product</div>
@@ -41,6 +41,8 @@ fields:
     dependsOn:
       - _qrscan
       - _create_electronic_product
+    include: 1to1
+    includeModel: \Acorn\Lojistiks\Models\ElectronicProduct
   memory:
     # Field: From memory(bigint)
     label: acorn.lojistiks::lang.models.computerproduct.memory
@@ -102,7 +104,7 @@ fields:
     hidden: true
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
@@ -136,6 +138,7 @@ fields:
       </div>
       </div>
     commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
@@ -145,7 +148,7 @@ fields:
     type: dropdown
     hidden: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
@@ -183,7 +186,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: textarea
+    type: richeditor
     hidden: true
     span: storm
     cssClass: col-xs-6

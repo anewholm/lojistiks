@@ -91,8 +91,8 @@ class TransferInvoice extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'invoice' => [\Acorn\Finance\Models\Invoice::class, 'key' => 'invoice_id', 'name' => FALSE, 'type' => 'Xto1']
+        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
+        'invoice' => [\Acorn\Finance\Models\Invoice::class, 'key' => 'invoice_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

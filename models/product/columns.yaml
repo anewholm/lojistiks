@@ -57,10 +57,11 @@ columns:
     # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Product
     label: acorn.lojistiks::lang.models.general.created_at_event
-    type: timetense
+    type: partial
     searchable: true
     sortable: true
     invisible: true
+    path: datetime
     select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
     # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
@@ -96,26 +97,26 @@ columns:
     searchable: true
     sortable: false
     invisible: false
-  lojistiks_electronic_products_product:
-    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_electronic_products(product_id)
-    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_electronic_products(product_id) on Lojistiks.Product
-    label: acorn.lojistiks::lang.models.electronicproduct.label_plural
+  updated_at_event:
+    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (updated_at)
+    # Debug: ForeignIdField for column updated_at_event_id on Lojistiks.Product
+    label: acorn.lojistiks::lang.models.general.updated_at_event
     type: partial
+    searchable: true
+    sortable: true
+    invisible: true
+    path: datetime
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by aacep.start limit 1)
+  updated_by_user:
+    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (updated_by)
+    # Debug: ForeignIdField for column updated_by_user_id on Lojistiks.Product
+    label: acorn.lojistiks::lang.models.general.updated_by_user
+    type: text
+    valueFrom: name
     searchable: false
     sortable: false
-    invisible: false
-    path: multi
-    relation: lojistiks_electronic_products_product
-  lojistiks_products_product_categories_product:
-    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_products_product_categories(product_id)
-    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_products_product_categories(product_id) on Lojistiks.Product
-    label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
-    type: partial
-    searchable: false
-    sortable: false
-    invisible: false
-    path: multi
-    relation: lojistiks_products_product_categories_product
+    invisible: true
+    relation: updated_by_user
   lojistiks_product_instances_product:
     # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_product_instances(product_id)
     # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_product_instances(product_id) on Lojistiks.Product
@@ -157,6 +158,28 @@ columns:
     invisible: false
     path: multi
     relation: lojistiks_product_products_sub_product
+  lojistiks_products_product_category_products:
+    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_products_product_category(product_id) through semi [acorn_lojistiks_products_product_category]
+    # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_products_product_category(product_id) through semi [acorn_lojistiks_products_product_category] on Lojistiks.Product
+    label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
+    type: partial
+    valueFrom: name
+    searchable: true
+    sortable: false
+    invisible: false
+    path: multi
+    relation: lojistiks_products_product_category_products
+  lojistiks_product_product_category_products:
+    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_product_category(product_id) through semi [acorn_lojistiks_product_product_category]
+    # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_product_category(product_id) through semi [acorn_lojistiks_product_product_category] on Lojistiks.Product
+    label: acorn.lojistiks::lang.models.productproductcategory.label_plural
+    type: partial
+    valueFrom: name
+    searchable: true
+    sortable: false
+    invisible: false
+    path: multi
+    relation: lojistiks_product_product_category_products
   _qrcode:
     # PseudoField: 
     label: acorn.lojistiks::lang.models.general._qrcode

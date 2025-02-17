@@ -19,6 +19,7 @@
             'created_at_event' => 'تم التسجيل في',
             'updated_at_event' => 'تم التحديث في',
             'created_by_user' => 'Created By',
+            'updated_by_user' => 'Updated By',
             'created_at' => 'تم التسجيل في',
             'updated_at' => 'تم التحديث في',
             'created_by' => 'Created By',

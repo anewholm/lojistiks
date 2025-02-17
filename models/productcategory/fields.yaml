@@ -42,7 +42,7 @@ fields:
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/productcategorytypes'>ProductCategoryType</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/productcategorytypes' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">product_category_type</div>
@@ -65,7 +65,7 @@ fields:
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/productcategories'>ProductCategory</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/productcategories' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">parent_product_category</div>
@@ -90,7 +90,7 @@ fields:
     hidden: true
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
@@ -124,6 +124,7 @@ fields:
       </div>
       </div>
     commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
@@ -133,7 +134,7 @@ fields:
     type: dropdown
     hidden: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
@@ -153,7 +154,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: textarea
+    type: richeditor
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -172,7 +173,7 @@ fields:
   description:
     # Field: From description(text)
     label: acorn.lojistiks::lang.models.general.description
-    type: textarea
+    type: richeditor
     span: storm
     cssClass: col-xs-6
     comment: |
@@ -187,6 +188,51 @@ fields:
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
+  updated_at_event[start]:
+    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (updated_at)
+    label: acorn.lojistiks::lang.models.general.updated_at_event
+    type: datepicker
+    hidden: true
+    span: storm
+    cssClass: col-xs-6
+    comment: |
+      <div class='debug debug-field'>
+      <div class="title">updated_at_event</div>
+      ForeignIdField for column updated_at_event_id on Lojistiks.ProductCategory
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.product_categories.columns.updated_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.product_categories.columns.updated_at_event_id">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
+    placeholder: backend::lang.form.select
+    dependsOn:
+      - _qrscan
+  updated_by_user:
+    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (updated_by)
+    label: acorn.lojistiks::lang.models.general.updated_by_user
+    type: dropdown
+    hidden: true
+    span: storm
+    cssClass: popup-col-xs-6 col-xs-6
+    comment: |
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <div class="title">updated_by_user</div>
+      ForeignIdField for column updated_by_user_id on Lojistiks.ProductCategory
+      <div class="create-system">
+      <pre class="create-system-comment"></pre>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.product_categories.columns.updated_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.product_categories.columns.updated_by_user_id">edit</a>
+      </div>
+      </div>
+    commentHtml: true
+    options: Acorn\User\Models\User::dropdownOptions
+    placeholder: backend::lang.form.select
+    nameFrom: fully_qualified_name
+    dependsOn:
+      - _qrscan
   _qrcode:
     # PseudoField: 
     label: acorn.lojistiks::lang.models.general._qrcode
@@ -250,25 +296,47 @@ tabs:
       nameFrom: fully_qualified_name
       dependsOn:
         - _paste
-    lojistiks_products_product_categories_product_category:
-      # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_products_product_categories(product_category_id)
+    lojistiks_products_product_category_product_categories:
+      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_products_product_category(product_category_id) through semi [acorn_lojistiks_products_product_category]
       label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
       type: relationmanager
       span: storm
       cssClass: 'single-tab single-tab-1fromX  col-xs-6'
       comment: |
         <div class='debug debug-field'>
-        <div class="title">lojistiks_products_product_categories_product_category</div>
-        Tab multi-select for <[Xto1]= acorn_lojistiks_products_product_categories(product_category_id) on Lojistiks.ProductCategory
+        <div class="title">lojistiks_products_product_category_product_categories</div>
+        Tab multi-select for <[XtoXSemi]= acorn_lojistiks_products_product_category(product_category_id) through semi [acorn_lojistiks_products_product_category] on Lojistiks.ProductCategory
         <div class="create-system">
         <pre class="create-system-comment"></pre>
-        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.foreignkeys.product_category_id</div>
-        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.foreignkeys.product_category_id">edit</a>
+        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.foreignkeys.product_category_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.foreignkeys.product_category_id">edit</a>
         </div>
         </div>
       commentHtml: true
       tab: acorn.lojistiks::lang.models.productsproductcategory.label_plural
-      relatedModel: Acorn\Lojistiks\Models\ProductsProductCategory
+      relatedModel: Acorn\Lojistiks\Models\Product
+      nameFrom: fully_qualified_name
+      dependsOn:
+        - _paste
+    lojistiks_product_product_category_product_categories:
+      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_product_category(product_category_id) through semi [acorn_lojistiks_product_product_category]
+      label: acorn.lojistiks::lang.models.productproductcategory.label_plural
+      type: relationmanager
+      span: storm
+      cssClass: 'single-tab single-tab-1fromX  col-xs-6'
+      comment: |
+        <div class='debug debug-field'>
+        <div class="title">lojistiks_product_product_category_product_categories</div>
+        Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_product_category(product_category_id) through semi [acorn_lojistiks_product_product_category] on Lojistiks.ProductCategory
+        <div class="create-system">
+        <pre class="create-system-comment"></pre>
+        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.product_product_category.foreignkeys.product_category_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.product_product_category.foreignkeys.product_category_id">edit</a>
+        </div>
+        </div>
+      commentHtml: true
+      tab: acorn.lojistiks::lang.models.productproductcategory.label_plural
+      relatedModel: Acorn\Lojistiks\Models\Product
       nameFrom: fully_qualified_name
       dependsOn:
         - _paste

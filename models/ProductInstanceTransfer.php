@@ -95,11 +95,11 @@ class ProductInstanceTransfer extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'product_instance' => [\Acorn\Lojistiks\Models\ProductInstance::class, 'key' => 'product_instance_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'name' => FALSE, 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'name' => FALSE, 'type' => 'Xto1']
+        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
+        'product_instance' => [\Acorn\Lojistiks\Models\ProductInstance::class, 'key' => 'product_instance_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

@@ -19,11 +19,11 @@ fields:
     commentHtml: true
     placeholder: backend::lang.form.select
   user:
-    # ForeignIdField: From user_id(uuid), with =[Xto1]> acorn_user_users(id)
+    # ForeignIdField: From user_id(uuid), with =[1to1]> acorn_user_users(id)
     label: acorn.user::lang.models.user.label
     type: dropdown
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">user</div>
@@ -40,6 +40,8 @@ fields:
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
+    include: 1to1
+    includeModel: \Acorn\User\Models\User
   image:
     # Field: From image(character varying)
     label: acorn.lojistiks::lang.models.person.image
@@ -65,7 +67,7 @@ fields:
     hidden: true
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
@@ -99,6 +101,7 @@ fields:
       </div>
       </div>
     commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
@@ -108,7 +111,7 @@ fields:
     type: dropdown
     hidden: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
@@ -128,7 +131,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: textarea
+    type: richeditor
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -149,7 +152,7 @@ fields:
     label: acorn.lojistiks::lang.models.person.last_transfer_location
     type: dropdown
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/location/locations'>Location</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/location/locations' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">last_transfer_location</div>
@@ -172,7 +175,7 @@ fields:
     label: acorn.lojistiks::lang.models.person.last_product_instance_location
     type: dropdown
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/location/locations'>Location</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/location/locations' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">last_product_instance_location</div>
@@ -193,7 +196,7 @@ fields:
   description:
     # Field: From description(text)
     label: acorn.lojistiks::lang.models.general.description
-    type: textarea
+    type: richeditor
     span: storm
     cssClass: col-xs-6
     comment: |
@@ -260,7 +263,7 @@ tabs:
         <div class="title">lojistiks_drivers_person</div>
         Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(person_id) on Lojistiks.Person
         <div class="create-system">
-        <pre class="create-system-comment"></pre>
+        <pre class="create-system-comment">name-object:&nbsp;true</pre>
         <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.drivers.foreignkeys.person_id</div>
         <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.drivers.foreignkeys.person_id">edit</a>
         </div>
@@ -282,7 +285,7 @@ tabs:
         <div class="title">lojistiks_employees_person</div>
         Tab multi-select for <[Xto1]= acorn_lojistiks_employees(person_id) on Lojistiks.Person
         <div class="create-system">
-        <pre class="create-system-comment"></pre>
+        <pre class="create-system-comment">name-object:&nbsp;true</pre>
         <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.employees.foreignkeys.person_id</div>
         <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.employees.foreignkeys.person_id">edit</a>
         </div>

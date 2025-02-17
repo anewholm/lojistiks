@@ -12,27 +12,27 @@ fields:
       IdField for column id on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.id">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   product:
-    # ForeignIdField: From product_id(uuid), with =[Xto1]> acorn_lojistiks_products(id)
+    # ForeignIdField: From product_id(uuid), with =[XtoXSemi]> acorn_lojistiks_products(id)
     label: acorn.lojistiks::lang.models.product.label
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/products'>Product</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/products' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">product</div>
       ForeignIdField for column product_id on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.product_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.product_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.product_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.product_id">edit</a>
       </div>
       </div>
     commentHtml: true
@@ -42,20 +42,20 @@ fields:
       - _qrscan
       - _create_product
   product_category:
-    # ForeignIdField: From product_category_id(uuid), with =[Xto1]> acorn_lojistiks_product_categories(id)
+    # ForeignIdField: From product_category_id(uuid), with =[XtoXSemi]> acorn_lojistiks_product_categories(id)
     label: acorn.lojistiks::lang.models.productcategory.label
     type: dropdown
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/productcategories'>ProductCategory</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/productcategories' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">product_category</div>
       ForeignIdField for column product_category_id on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.product_category_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.product_category_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.product_category_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.product_category_id">edit</a>
       </div>
       </div>
     commentHtml: true
@@ -71,15 +71,15 @@ fields:
     hidden: true
     required: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <div class='debug debug-field'>
       <div class="title">server</div>
       ForeignIdField for column server_id on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.server_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.server_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.server_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.server_id">edit</a>
       </div>
       </div>
     commentHtml: true
@@ -100,11 +100,12 @@ fields:
       ForeignIdField for column created_at_event_id on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.created_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.created_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.created_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.created_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
@@ -114,15 +115,15 @@ fields:
     type: dropdown
     hidden: true
     span: storm
-    cssClass: popup-col-xs-6 col-xs-5
+    cssClass: popup-col-xs-6 col-xs-6
     comment: |
       <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
       ForeignIdField for column created_by_user_id on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.created_by_user_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.created_by_user_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.created_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.created_by_user_id">edit</a>
       </div>
       </div>
     commentHtml: true
@@ -134,7 +135,7 @@ fields:
   response:
     # Field: From response(text)
     label: acorn.lojistiks::lang.models.general.response
-    type: textarea
+    type: richeditor
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -144,26 +145,8 @@ fields:
       Field for column response on Lojistiks.ProductsProductCategory
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.response</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.response">edit</a>
-      </div>
-      </div>
-    commentHtml: true
-    placeholder: backend::lang.form.select
-  description:
-    # Field: From description(text)
-    label: acorn.lojistiks::lang.models.general.description
-    type: textarea
-    span: storm
-    cssClass: col-xs-6
-    comment: |
-      <div class='debug debug-field'>
-      <div class="title">description</div>
-      Field for column description on Lojistiks.ProductsProductCategory
-      <div class="create-system">
-      <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_categories.columns.description</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_categories.columns.description">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.products_product_category.columns.response</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.products_product_category.columns.response">edit</a>
       </div>
       </div>
     commentHtml: true
