@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.general.id
+    label: acornassociated.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   user:
-    # ForeignIdField: From user_id(uuid), with =[1to1]> acorn_user_users(id)
+    # ForeignIdField: From user_id(uuid), with =[1to1]> acornassociated_user_users(id)
     # Debug: ForeignIdField for column user_id on Lojistiks.Person
-    label: acorn.user::lang.models.user.label
+    label: acornassociated.user::lang.models.user.label
     type: text
     valueFrom: name
     searchable: false
@@ -18,19 +18,19 @@ columns:
     invisible: false
     relation: user
     include: 1to1
-    includeModel: \Acorn\User\Models\User
+    includeModel: \AcornAssociated\User\Models\User
   image:
     # Field: From image(character varying)
     # Debug: Field for column image on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.person.image
+    label: acornassociated.lojistiks::lang.models.person.image
     type: text
     searchable: true
     sortable: false
     invisible: false
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.Person
-    label: acorn::lang.models.server.label
+    label: acornassociated::lang.models.server.label
     type: text
     searchable: true
     sortable: true
@@ -38,19 +38,19 @@ columns:
     relation: server
     select: name
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.general.created_at_event
+    label: acornassociated.lojistiks::lang.models.general.created_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
     # Debug: ForeignIdField for column created_by_user_id on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.general.created_by_user
+    label: acornassociated.lojistiks::lang.models.general.created_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -60,15 +60,15 @@ columns:
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.general.response
+    label: acornassociated.lojistiks::lang.models.general.response
     type: text
     searchable: true
     sortable: false
     invisible: true
   last_transfer_location:
-    # ForeignIdField: From last_transfer_location_id(uuid), with =[Xto1]> acorn_location_locations(id) (last_transfer)
+    # ForeignIdField: From last_transfer_location_id(uuid), with =[Xto1]> acornassociated_location_locations(id) (last_transfer)
     # Debug: ForeignIdField for column last_transfer_location_id on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.person.last_transfer_location
+    label: acornassociated.lojistiks::lang.models.person.last_transfer_location
     type: text
     searchable: true
     sortable: true
@@ -76,9 +76,9 @@ columns:
     relation: last_transfer_location
     select: name
   last_product_instance_location:
-    # ForeignIdField: From last_product_instance_location_id(uuid), with =[Xto1]> acorn_location_locations(id) (last_product_instance)
+    # ForeignIdField: From last_product_instance_location_id(uuid), with =[Xto1]> acornassociated_location_locations(id) (last_product_instance)
     # Debug: ForeignIdField for column last_product_instance_location_id on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.person.last_product_instance_location
+    label: acornassociated.lojistiks::lang.models.person.last_product_instance_location
     type: text
     searchable: true
     sortable: true
@@ -88,15 +88,15 @@ columns:
   description:
     # Field: From description(text)
     # Debug: Field for column description on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.general.description
+    label: acornassociated.lojistiks::lang.models.general.description
     type: text
     searchable: true
     sortable: false
     invisible: false
   lojistiks_drivers_person:
-    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(person_id)
-    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_drivers(person_id) on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.driver.label_plural
+    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acornassociated_lojistiks_drivers(person_id)
+    # Debug: Tab multi-select for <[Xto1]= acornassociated_lojistiks_drivers(person_id) on Lojistiks.Person
+    label: acornassociated.lojistiks::lang.models.driver.label_plural
     type: partial
     searchable: false
     sortable: false
@@ -104,9 +104,9 @@ columns:
     path: multi
     relation: lojistiks_drivers_person
   lojistiks_employees_person:
-    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acorn_lojistiks_employees(person_id)
-    # Debug: Tab multi-select for <[Xto1]= acorn_lojistiks_employees(person_id) on Lojistiks.Person
-    label: acorn.lojistiks::lang.models.employee.label_plural
+    # PseudoFromForeignIdField: Tab multi-select for <[Xto1]= acornassociated_lojistiks_employees(person_id)
+    # Debug: Tab multi-select for <[Xto1]= acornassociated_lojistiks_employees(person_id) on Lojistiks.Person
+    label: acornassociated.lojistiks::lang.models.employee.label_plural
     type: partial
     searchable: false
     sortable: false
@@ -115,7 +115,7 @@ columns:
     relation: lojistiks_employees_person
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acornassociated.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -124,7 +124,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.person._actions
+    label: acornassociated.lojistiks::lang.models.person._actions
     type: partial
     searchable: false
     sortable: false

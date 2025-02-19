@@ -1,6 +1,6 @@
 <?php
 
-namespace Acorn\Lojistiks;
+namespace AcornAssociated\Lojistiks;
 
 use Backend;
 use Backend\Models\UserRole;
@@ -12,11 +12,11 @@ use System\Classes\PluginBase;
 class Plugin extends PluginBase
 {
     public $require = [
-        'Acorn.Calendar',
-        'Acorn.Location',
-        'Acorn.Messaging',
-        'Acorn.User',
-        'Acorn.Finance'
+        'AcornAssociated.Calendar',
+        'AcornAssociated.Location',
+        'AcornAssociated.Messaging',
+        'AcornAssociated.User',
+        'AcornAssociated.Finance'
     ];
     /**
      * Returns information about this plugin.
@@ -24,9 +24,9 @@ class Plugin extends PluginBase
     public function pluginDetails(): array
     {
         return [
-            'name'        => 'acorn.lojistiks::lang.plugin.name',
-            'description' => 'acorn.lojistiks::lang.plugin.description',
-            'author' => 'Acorn',
+            'name'        => 'acornassociated.lojistiks::lang.plugin.name',
+            'description' => 'acornassociated.lojistiks::lang.plugin.description',
+            'author' => 'Acorn Associated',
             'icon'        => 'icon-leaf'
         ];
     }
@@ -55,7 +55,7 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'Acorn\Lojistiks\Components\MyComponent' => 'myComponent',
+            'AcornAssociated\Lojistiks\Components\MyComponent' => 'myComponent',
         ];
     }
 
@@ -67,9 +67,9 @@ class Plugin extends PluginBase
         return []; // Remove this line to activate
 
         return [
-            'acorn.lojistiks.some_permission' => [
-                'tab' => 'acorn.lojistiks::lang.plugin.name',
-                'label' => 'acorn.lojistiks::lang.permissions.some_permission',
+            'acornassociated.lojistiks.some_permission' => [
+                'tab' => 'acornassociated.lojistiks::lang.plugin.name',
+                'label' => 'acornassociated.lojistiks::lang.permissions.some_permission',
                 'roles' => [UserRole::CODE_DEVELOPER, UserRole::CODE_PUBLISHER],
             ],
         ];
@@ -84,10 +84,10 @@ class Plugin extends PluginBase
 
         return [
             'lojistiks' => [
-                'label'       => 'acorn.lojistiks::lang.plugin.name',
-                'url'         => Backend::url('acorn/lojistiks/mycontroller'),
+                'label'       => 'acornassociated.lojistiks::lang.plugin.name',
+                'url'         => Backend::url('acornassociated/lojistiks/mycontroller'),
                 'icon'        => 'icon-leaf',
-                'permissions' => ['acorn.lojistiks.*'],
+                'permissions' => ['acornassociated.lojistiks.*'],
                 'order'       => 500,
             ],
         ];

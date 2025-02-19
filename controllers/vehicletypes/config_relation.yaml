@@ -1,11 +1,11 @@
 # Created By acorn-create-system v1.0
 lojistiks_vehicles_vehicle_type:
-  label: acorn.lojistiks::lang.models.vehicle.label_plural
+  label: acornassociated.lojistiks::lang.models.vehicle.label_plural
   view:
-    list: $/acorn/lojistiks/models/vehicle/columns.yaml
+    list: $/acornassociated/lojistiks/models/vehicle/columns.yaml
     toolbarButtons: create|delete
     showCheckboxes: true
     recordsPerPage: 10
   manage:
-    form: $/acorn/lojistiks/models/vehicle/fields.yaml
+    form: $/acornassociated/lojistiks/models/vehicle/fields.yaml
     recordsPerPage: 10

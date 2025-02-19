@@ -1,7 +1,7 @@
-<?php namespace Acorn\Lojistiks\Controllers;
+<?php namespace AcornAssociated\Lojistiks\Controllers;
 
 use BackendMenu;
-use Acorn\Controller;
+use AcornAssociated\Controller;
 
 /**
  * Product Categories Backend Controller
@@ -13,16 +13,16 @@ class ProductCategories extends Controller
      * @var array Behaviors that are implemented by this controller.
      */
     public $implement = [
-        '\Acorn\Behaviors\FormController',
-        '\Acorn\Behaviors\ListController',
+        '\AcornAssociated\Behaviors\FormController',
+        '\AcornAssociated\Behaviors\ListController',
         'Backend\Behaviors\RelationController',
-        '\Acorn\Behaviors\RelationController'
+        '\AcornAssociated\Behaviors\RelationController'
     ];
 
     public function __construct()
     {
         parent::__construct();
 
-        BackendMenu::setContext('Acorn.Lojistiks', 'lojistiks', 'productcategories');
+        BackendMenu::setContext('AcornAssociated.Lojistiks', 'lojistiks', 'productcategories');
     }
 }

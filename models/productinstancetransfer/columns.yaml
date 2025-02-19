@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.general.id
+    label: acornassociated.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   transfer:
-    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acorn_lojistiks_transfers(id)
+    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_transfers(id)
     # Debug: ForeignIdField for column transfer_id on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.transfer.label
+    label: acornassociated.lojistiks::lang.models.transfer.label
     type: text
     valueFrom: name
     searchable: false
@@ -18,9 +18,9 @@ columns:
     invisible: false
     relation: transfer
   product_instance:
-    # ForeignIdField: From product_instance_id(uuid), with =[XtoXSemi]> acorn_lojistiks_product_instances(id)
+    # ForeignIdField: From product_instance_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_product_instances(id)
     # Debug: ForeignIdField for column product_instance_id on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.productinstance.label
+    label: acornassociated.lojistiks::lang.models.productinstance.label
     type: text
     valueFrom: name
     searchable: false
@@ -28,9 +28,9 @@ columns:
     invisible: false
     relation: product_instance
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.ProductInstanceTransfer
-    label: acorn::lang.models.server.label
+    label: acornassociated::lang.models.server.label
     type: text
     searchable: true
     sortable: true
@@ -38,19 +38,19 @@ columns:
     relation: server
     select: name
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.general.created_at_event
+    label: acornassociated.lojistiks::lang.models.general.created_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
     # Debug: ForeignIdField for column created_by_user_id on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.general.created_by_user
+    label: acornassociated.lojistiks::lang.models.general.created_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -60,7 +60,7 @@ columns:
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.general.response
+    label: acornassociated.lojistiks::lang.models.general.response
     type: text
     searchable: true
     sortable: false
@@ -68,14 +68,14 @@ columns:
   description:
     # Field: From description(text)
     # Debug: Field for column description on Lojistiks.ProductInstanceTransfer
-    label: acorn.lojistiks::lang.models.general.description
+    label: acornassociated.lojistiks::lang.models.general.description
     type: text
     searchable: true
     sortable: false
     invisible: false
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acornassociated.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -84,7 +84,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.productinstancetransfer._actions
+    label: acornassociated.lojistiks::lang.models.productinstancetransfer._actions
     type: partial
     searchable: false
     sortable: false

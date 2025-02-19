@@ -1,7 +1,7 @@
 fields:
   id:
     # IdField: From id(uuid)
-    label: acorn.lojistiks::lang.models.general.id
+    label: acornassociated.lojistiks::lang.models.general.id
     type: text
     hidden: true
     span: storm
@@ -12,61 +12,61 @@ fields:
       IdField for column id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.id">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   location:
-    # ForeignIdField: From location_id(uuid), with =[Xto1]> acorn_location_locations(id)
-    label: acorn.location::lang.models.location.label
+    # ForeignIdField: From location_id(uuid), with =[Xto1]> acornassociated_location_locations(id)
+    label: acornassociated.location::lang.models.location.label
     type: dropdown
     required: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/location/locations'>Location</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/location/locations' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/location/locations'>Location</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/location/locations' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">location</div>
       ForeignIdField for column location_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.location_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.location_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.location_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.location_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Location\Models\Location::dropdownOptions
+    options: AcornAssociated\Location\Models\Location::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
       - _create_location
   driver:
-    # ForeignIdField: From driver_id(uuid), with =[Xto1]> acorn_lojistiks_drivers(id)
-    label: acorn.lojistiks::lang.models.driver.label
+    # ForeignIdField: From driver_id(uuid), with =[Xto1]> acornassociated_lojistiks_drivers(id)
+    label: acornassociated.lojistiks::lang.models.driver.label
     type: dropdown
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/drivers'>Driver</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/drivers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/lojistiks/drivers'>Driver</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/lojistiks/drivers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">driver</div>
       ForeignIdField for column driver_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.driver_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.driver_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.driver_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.driver_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Lojistiks\Models\Driver::dropdownOptions
+    options: AcornAssociated\Lojistiks\Models\Driver::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
       - _create_driver
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
-    label: acorn::lang.models.server.label
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
+    label: acornassociated::lang.models.server.label
     type: dropdown
     hidden: true
     required: true
@@ -78,64 +78,64 @@ fields:
       ForeignIdField for column server_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.server_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.server_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.server_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.server_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Models\Server::dropdownOptions
+    options: AcornAssociated\Models\Server::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   vehicle:
-    # ForeignIdField: From vehicle_id(uuid), with =[Xto1]> acorn_lojistiks_vehicles(id)
-    label: acorn.lojistiks::lang.models.vehicle.label
+    # ForeignIdField: From vehicle_id(uuid), with =[Xto1]> acornassociated_lojistiks_vehicles(id)
+    label: acornassociated.lojistiks::lang.models.vehicle.label
     type: dropdown
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/vehicles'>Vehicle</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/vehicles' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/lojistiks/vehicles'>Vehicle</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/lojistiks/vehicles' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">vehicle</div>
       ForeignIdField for column vehicle_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.vehicle_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.vehicle_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.vehicle_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.vehicle_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Lojistiks\Models\Vehicle::dropdownOptions
+    options: AcornAssociated\Lojistiks\Models\Vehicle::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
       - _create_vehicle
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
-    label: acorn.lojistiks::lang.models.general.created_by_user
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
+    label: acornassociated.lojistiks::lang.models.general.created_by_user
     type: dropdown
     hidden: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
       ForeignIdField for column created_by_user_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.created_by_user_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.created_by_user_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.created_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.created_by_user_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\User\Models\User::dropdownOptions
+    options: AcornAssociated\User\Models\User::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
-    label: acorn.lojistiks::lang.models.general.created_at_event
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
+    label: acornassociated.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
     span: storm
@@ -146,18 +146,18 @@ fields:
       ForeignIdField for column created_at_event_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.created_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.created_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.created_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.created_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Calendar\Models\Event::dropdownOptions
+    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   response:
     # Field: From response(text)
-    label: acorn.lojistiks::lang.models.general.response
+    label: acornassociated.lojistiks::lang.models.general.response
     type: richeditor
     hidden: true
     span: storm
@@ -168,15 +168,15 @@ fields:
       Field for column response on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment">env:&nbsp;APP_DEBUG</pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.response</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.response">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.response</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.response">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   pre_marked_arrived:
     # Field: From pre_marked_arrived(boolean)
-    label: acorn.lojistiks::lang.models.transfer.pre_marked_arrived
+    label: acornassociated.lojistiks::lang.models.transfer.pre_marked_arrived
     type: switch
     span: storm
     cssClass: col-xs-6
@@ -186,15 +186,15 @@ fields:
       Field for column pre_marked_arrived on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.pre_marked_arrived</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.pre_marked_arrived">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.pre_marked_arrived</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.pre_marked_arrived">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   sent_at_event[start]:
-    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (sent_at)
-    label: acorn.lojistiks::lang.models.transfer.sent_at_event
+    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (sent_at)
+    label: acornassociated.lojistiks::lang.models.transfer.sent_at_event
     type: datepicker
     span: storm
     cssClass: col-xs-6 new-row
@@ -204,18 +204,18 @@ fields:
       ForeignIdField for column sent_at_event_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment">new-row:&nbsp;true</pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.sent_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.sent_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.sent_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.sent_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Calendar\Models\Event::dropdownOptions
+    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   arrived_at_event[start]:
-    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (arrived_at)
-    label: acorn.lojistiks::lang.models.transfer.arrived_at_event
+    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (arrived_at)
+    label: acornassociated.lojistiks::lang.models.transfer.arrived_at_event
     type: datepicker
     span: storm
     cssClass: col-xs-6
@@ -225,18 +225,18 @@ fields:
       ForeignIdField for column arrived_at_event_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.arrived_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.arrived_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.arrived_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.arrived_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Calendar\Models\Event::dropdownOptions
+    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   description:
     # Field: From description(text)
-    label: acorn.lojistiks::lang.models.general.description
+    label: acornassociated.lojistiks::lang.models.general.description
     type: richeditor
     span: storm
     cssClass: col-xs-6
@@ -246,15 +246,15 @@ fields:
       Field for column description on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.description</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.description">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.description">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   updated_at_event[start]:
-    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (updated_at)
-    label: acorn.lojistiks::lang.models.general.updated_at_event
+    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (updated_at)
+    label: acornassociated.lojistiks::lang.models.general.updated_at_event
     type: datepicker
     hidden: true
     span: storm
@@ -265,41 +265,41 @@ fields:
       ForeignIdField for column updated_at_event_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.updated_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.updated_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.updated_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.updated_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\Calendar\Models\Event::dropdownOptions
+    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   updated_by_user:
-    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (updated_by)
-    label: acorn.lojistiks::lang.models.general.updated_by_user
+    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (updated_by)
+    label: acornassociated.lojistiks::lang.models.general.updated_by_user
     type: dropdown
     hidden: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">updated_by_user</div>
       ForeignIdField for column updated_by_user_id on Lojistiks.Transfer
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfers.columns.updated_by_user_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfers.columns.updated_by_user_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfers.columns.updated_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfers.columns.updated_by_user_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: Acorn\User\Models\User::dropdownOptions
+    options: AcornAssociated\User\Models\User::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acornassociated.lojistiks::lang.models.general._qrcode
     type: partial
     path: qrcode
     span: storm
@@ -321,7 +321,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.transfer._actions
+    label: acornassociated.lojistiks::lang.models.transfer._actions
     hidden: true
     span: storm
     cssClass: col-xs-6
@@ -339,71 +339,71 @@ fields:
 tabs:
   fields:
     lojistiks_product_instance_transfer_transfers:
-      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer]
-      label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_product_instance_transfer(transfer_id) through semi [acornassociated_lojistiks_product_instance_transfer]
+      label: acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural
       type: relationmanager
       span: storm
       cssClass: 'single-tab single-tab-1fromX  col-xs-6'
       comment: |
         <div class='debug debug-field'>
         <div class="title">lojistiks_product_instance_transfer_transfers</div>
-        Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer] on Lojistiks.Transfer
+        Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_product_instance_transfer(transfer_id) through semi [acornassociated_lojistiks_product_instance_transfer] on Lojistiks.Transfer
         <div class="create-system">
         <pre class="create-system-comment"></pre>
-        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.product_instance_transfer.foreignkeys.transfer_id</div>
-        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.product_instance_transfer.foreignkeys.transfer_id">edit</a>
+        <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.product_instance_transfer.foreignkeys.transfer_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.product_instance_transfer.foreignkeys.transfer_id">edit</a>
         </div>
         </div>
       commentHtml: true
-      tab: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
-      relatedModel: Acorn\Lojistiks\Models\ProductInstance
+      tab: acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural
+      relatedModel: AcornAssociated\Lojistiks\Models\ProductInstance
       nameFrom: fully_qualified_name
       dependsOn:
         - _paste
     lojistiks_transfer_invoice_transfers:
-      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice]
-      label: acorn.lojistiks::lang.models.transferinvoice.label_plural
+      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_invoice(transfer_id) through semi [acornassociated_lojistiks_transfer_invoice]
+      label: acornassociated.lojistiks::lang.models.transferinvoice.label_plural
       type: relationmanager
       span: storm
       cssClass: 'single-tab single-tab-1fromX  col-xs-6'
       comment: |
         <div class='debug debug-field'>
         <div class="title">lojistiks_transfer_invoice_transfers</div>
-        Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice] on Lojistiks.Transfer
+        Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_invoice(transfer_id) through semi [acornassociated_lojistiks_transfer_invoice] on Lojistiks.Transfer
         <div class="create-system">
         <pre class="create-system-comment"></pre>
-        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_invoice.foreignkeys.transfer_id</div>
-        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_invoice.foreignkeys.transfer_id">edit</a>
+        <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfer_invoice.foreignkeys.transfer_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfer_invoice.foreignkeys.transfer_id">edit</a>
         </div>
         </div>
       commentHtml: true
-      tab: acorn.lojistiks::lang.models.transferinvoice.label_plural
-      relatedModel: Acorn\Finance\Models\Invoice
+      tab: acornassociated.lojistiks::lang.models.transferinvoice.label_plural
+      relatedModel: AcornAssociated\Finance\Models\Invoice
       nameFrom: fully_qualified_name
       dependsOn:
         - _paste
     lojistiks_transfer_purchase_transfers:
-      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase]
-      label: acorn.lojistiks::lang.models.transferpurchase.label_plural
+      # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_purchase(transfer_id) through semi [acornassociated_lojistiks_transfer_purchase]
+      label: acornassociated.lojistiks::lang.models.transferpurchase.label_plural
       type: relationmanager
       span: storm
       cssClass: 'single-tab single-tab-1fromX  col-xs-6'
       comment: |
         <div class='debug debug-field'>
         <div class="title">lojistiks_transfer_purchase_transfers</div>
-        Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase] on Lojistiks.Transfer
+        Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_purchase(transfer_id) through semi [acornassociated_lojistiks_transfer_purchase] on Lojistiks.Transfer
         <div class="create-system">
         <pre class="create-system-comment"></pre>
-        <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_purchase.foreignkeys.transfer_id</div>
-        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_purchase.foreignkeys.transfer_id">edit</a>
+        <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfer_purchase.foreignkeys.transfer_id</div>
+        <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfer_purchase.foreignkeys.transfer_id">edit</a>
         </div>
         </div>
       commentHtml: true
-      tab: acorn.lojistiks::lang.models.transferpurchase.label_plural
-      relatedModel: Acorn\Finance\Models\Purchase
+      tab: acornassociated.lojistiks::lang.models.transferpurchase.label_plural
+      relatedModel: AcornAssociated\Finance\Models\Purchase
       nameFrom: fully_qualified_name
       dependsOn:
         - _paste
   icons:
-    "acorn.lojistiks::lang.models.transferinvoice.label_plural": icon-swift
-    "acorn.lojistiks::lang.models.transferpurchase.label_plural": icon-wpforms
+    "acornassociated.lojistiks::lang.models.transferinvoice.label_plural": icon-swift
+    "acornassociated.lojistiks::lang.models.transferpurchase.label_plural": icon-wpforms

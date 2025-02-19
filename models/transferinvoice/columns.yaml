@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.TransferInvoice
-    label: acorn.lojistiks::lang.models.general.id
+    label: acornassociated.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   transfer:
-    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acorn_lojistiks_transfers(id)
+    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_transfers(id)
     # Debug: ForeignIdField for column transfer_id on Lojistiks.TransferInvoice
-    label: acorn.lojistiks::lang.models.transfer.label
+    label: acornassociated.lojistiks::lang.models.transfer.label
     type: text
     valueFrom: name
     searchable: false
@@ -18,9 +18,9 @@ columns:
     invisible: false
     relation: transfer
   invoice:
-    # ForeignIdField: From invoice_id(uuid), with =[XtoXSemi]> acorn_finance_invoices(id)
+    # ForeignIdField: From invoice_id(uuid), with =[XtoXSemi]> acornassociated_finance_invoices(id)
     # Debug: ForeignIdField for column invoice_id on Lojistiks.TransferInvoice
-    label: acorn.finance::lang.models.invoice.label
+    label: acornassociated.finance::lang.models.invoice.label
     type: text
     searchable: true
     sortable: true
@@ -30,14 +30,14 @@ columns:
   description:
     # Field: From description(text)
     # Debug: Field for column description on Lojistiks.TransferInvoice
-    label: acorn.lojistiks::lang.models.general.description
+    label: acornassociated.lojistiks::lang.models.general.description
     type: text
     searchable: true
     sortable: false
     invisible: false
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acornassociated.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -46,7 +46,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.transferinvoice._actions
+    label: acornassociated.lojistiks::lang.models.transferinvoice._actions
     type: partial
     searchable: false
     sortable: false

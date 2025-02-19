@@ -1,9 +1,9 @@
 <?php
 
-namespace Acorn\Lojistiks\Models;
+namespace AcornAssociated\Lojistiks\Models;
 
-use Acorn\Models\Server;
-use Acorn\Collection;
+use AcornAssociated\Models\Server;
+use AcornAssociated\Collection;
 use BackendAuth;
 use \Backend\Models\User;
 use \Backend\Models\UserGroup;
@@ -11,7 +11,7 @@ use Exception;
 use Flash;
 
 
-use Acorn\Model;
+use AcornAssociated\Model;
 
 /**
  * ProductCategoryType Model
@@ -43,7 +43,7 @@ class ProductCategoryType extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_product_category_types';
+    public $table = 'acornassociated_lojistiks_product_category_types';
 
     /**
      * @var array Guarded fields
@@ -90,16 +90,16 @@ class ProductCategoryType extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'lojistiks_product_categories_product_category_type' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'product_category_type_id', 'type' => '1fromX']
+        'lojistiks_product_categories_product_category_type' => [\AcornAssociated\Lojistiks\Models\ProductCategory::class, 'key' => 'product_category_type_id', 'type' => '1fromX']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
-        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
-        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
+        'server' => [\AcornAssociated\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

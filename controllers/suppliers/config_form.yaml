@@ -1,15 +1,15 @@
-name: acorn.lojistiks::lang.models.supplier.label
-form: $/acorn/lojistiks/models/supplier/fields.yaml
-modelClass: Acorn\Lojistiks\Models\Supplier
-defaultRedirect: acorn/lojistiks/suppliers
+name: acornassociated.lojistiks::lang.models.supplier.label
+form: $/acornassociated/lojistiks/models/supplier/fields.yaml
+modelClass: AcornAssociated\Lojistiks\Models\Supplier
+defaultRedirect: acornassociated/lojistiks/suppliers
 create:
   title: backend::lang.form.create_title
-  redirect: acorn/lojistiks/suppliers/update/:id
-  redirectClose: acorn/lojistiks/suppliers
+  redirect: acornassociated/lojistiks/suppliers/update/:id
+  redirectClose: acornassociated/lojistiks/suppliers
 update:
   title: backend::lang.form.update_title
-  redirect: acorn/lojistiks/suppliers
-  redirectClose: acorn/lojistiks/suppliers
+  redirect: acornassociated/lojistiks/suppliers
+  redirectClose: acornassociated/lojistiks/suppliers
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

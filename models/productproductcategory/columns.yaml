@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.ProductProductCategory
-    label: acorn.lojistiks::lang.models.general.id
+    label: acornassociated.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   product:
-    # ForeignIdField: From product_id(uuid), with =[XtoXSemi]> acorn_lojistiks_products(id)
+    # ForeignIdField: From product_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_products(id)
     # Debug: ForeignIdField for column product_id on Lojistiks.ProductProductCategory
-    label: acorn.lojistiks::lang.models.product.label
+    label: acornassociated.lojistiks::lang.models.product.label
     type: text
     searchable: true
     sortable: true
@@ -18,9 +18,9 @@ columns:
     relation: product
     select: name
   product_category:
-    # ForeignIdField: From product_category_id(uuid), with =[XtoXSemi]> acorn_lojistiks_product_categories(id)
+    # ForeignIdField: From product_category_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_product_categories(id)
     # Debug: ForeignIdField for column product_category_id on Lojistiks.ProductProductCategory
-    label: acorn.lojistiks::lang.models.productcategory.label
+    label: acornassociated.lojistiks::lang.models.productcategory.label
     type: text
     searchable: true
     sortable: true
@@ -28,9 +28,9 @@ columns:
     relation: product_category
     select: name
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.ProductProductCategory
-    label: acorn::lang.models.server.label
+    label: acornassociated::lang.models.server.label
     type: text
     searchable: true
     sortable: true
@@ -38,19 +38,19 @@ columns:
     relation: server
     select: name
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ProductProductCategory
-    label: acorn.lojistiks::lang.models.general.created_at_event
+    label: acornassociated.lojistiks::lang.models.general.created_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
     # Debug: ForeignIdField for column created_by_user_id on Lojistiks.ProductProductCategory
-    label: acorn.lojistiks::lang.models.general.created_by_user
+    label: acornassociated.lojistiks::lang.models.general.created_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -60,14 +60,14 @@ columns:
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.ProductProductCategory
-    label: acorn.lojistiks::lang.models.general.response
+    label: acornassociated.lojistiks::lang.models.general.response
     type: text
     searchable: true
     sortable: false
     invisible: true
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acornassociated.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -76,7 +76,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.productproductcategory._actions
+    label: acornassociated.lojistiks::lang.models.productproductcategory._actions
     type: partial
     searchable: false
     sortable: false

@@ -1,9 +1,9 @@
 <?php
 
-namespace Acorn\Lojistiks\Models;
+namespace AcornAssociated\Lojistiks\Models;
 
-use Acorn\Models\Server;
-use Acorn\Collection;
+use AcornAssociated\Models\Server;
+use AcornAssociated\Collection;
 use BackendAuth;
 use \Backend\Models\User;
 use \Backend\Models\UserGroup;
@@ -11,7 +11,7 @@ use Exception;
 use Flash;
 
 
-use Acorn\Model;
+use AcornAssociated\Model;
 
 /**
  * ProductInstanceTransfer Model
@@ -42,7 +42,7 @@ class ProductInstanceTransfer extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_product_instance_transfer';
+    public $table = 'acornassociated_lojistiks_product_instance_transfer';
 
     /**
      * @var array Guarded fields
@@ -95,11 +95,11 @@ class ProductInstanceTransfer extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
-        'product_instance' => [\Acorn\Lojistiks\Models\ProductInstance::class, 'key' => 'product_instance_id', 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1']
+        'transfer' => [\AcornAssociated\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
+        'product_instance' => [\AcornAssociated\Lojistiks\Models\ProductInstance::class, 'key' => 'product_instance_id', 'type' => 'Xto1'],
+        'server' => [\AcornAssociated\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

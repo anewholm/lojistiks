@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.id
+    label: acornassociated.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   location:
-    # ForeignIdField: From location_id(uuid), with =[Xto1]> acorn_location_locations(id)
+    # ForeignIdField: From location_id(uuid), with =[Xto1]> acornassociated_location_locations(id)
     # Debug: ForeignIdField for column location_id on Lojistiks.Transfer
-    label: acorn.location::lang.models.location.label
+    label: acornassociated.location::lang.models.location.label
     type: text
     searchable: true
     sortable: true
@@ -18,9 +18,9 @@ columns:
     relation: location
     select: name
   driver:
-    # ForeignIdField: From driver_id(uuid), with =[Xto1]> acorn_lojistiks_drivers(id)
+    # ForeignIdField: From driver_id(uuid), with =[Xto1]> acornassociated_lojistiks_drivers(id)
     # Debug: ForeignIdField for column driver_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.driver.label
+    label: acornassociated.lojistiks::lang.models.driver.label
     type: text
     valueFrom: name
     searchable: false
@@ -28,9 +28,9 @@ columns:
     invisible: false
     relation: driver
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.Transfer
-    label: acorn::lang.models.server.label
+    label: acornassociated::lang.models.server.label
     type: text
     searchable: true
     sortable: true
@@ -38,9 +38,9 @@ columns:
     relation: server
     select: name
   vehicle:
-    # ForeignIdField: From vehicle_id(uuid), with =[Xto1]> acorn_lojistiks_vehicles(id)
+    # ForeignIdField: From vehicle_id(uuid), with =[Xto1]> acornassociated_lojistiks_vehicles(id)
     # Debug: ForeignIdField for column vehicle_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.vehicle.label
+    label: acornassociated.lojistiks::lang.models.vehicle.label
     type: text
     valueFrom: name
     searchable: false
@@ -48,9 +48,9 @@ columns:
     invisible: false
     relation: vehicle
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
     # Debug: ForeignIdField for column created_by_user_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.created_by_user
+    label: acornassociated.lojistiks::lang.models.general.created_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -58,19 +58,19 @@ columns:
     invisible: true
     relation: created_by_user
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.created_at_event
+    label: acornassociated.lojistiks::lang.models.general.created_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.response
+    label: acornassociated.lojistiks::lang.models.general.response
     type: text
     searchable: true
     sortable: false
@@ -78,54 +78,54 @@ columns:
   pre_marked_arrived:
     # Field: From pre_marked_arrived(boolean)
     # Debug: Field for column pre_marked_arrived on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.transfer.pre_marked_arrived
+    label: acornassociated.lojistiks::lang.models.transfer.pre_marked_arrived
     type: partial
     searchable: true
     sortable: false
     invisible: false
     path: tick
   sent_at_event:
-    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (sent_at)
+    # ForeignIdField: From sent_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (sent_at)
     # Debug: ForeignIdField for column sent_at_event_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.transfer.sent_at_event
+    label: acornassociated.lojistiks::lang.models.transfer.sent_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: false
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = sent_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = sent_at_event_id order by aacep.start limit 1)
   arrived_at_event:
-    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (arrived_at)
+    # ForeignIdField: From arrived_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (arrived_at)
     # Debug: ForeignIdField for column arrived_at_event_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.transfer.arrived_at_event
+    label: acornassociated.lojistiks::lang.models.transfer.arrived_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: false
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = arrived_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = arrived_at_event_id order by aacep.start limit 1)
   description:
     # Field: From description(text)
     # Debug: Field for column description on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.description
+    label: acornassociated.lojistiks::lang.models.general.description
     type: text
     searchable: true
     sortable: false
     invisible: false
   updated_at_event:
-    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (updated_at)
+    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (updated_at)
     # Debug: ForeignIdField for column updated_at_event_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.updated_at_event
+    label: acornassociated.lojistiks::lang.models.general.updated_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by aacep.start limit 1)
   updated_by_user:
-    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (updated_by)
+    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (updated_by)
     # Debug: ForeignIdField for column updated_by_user_id on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.general.updated_by_user
+    label: acornassociated.lojistiks::lang.models.general.updated_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -133,9 +133,9 @@ columns:
     invisible: true
     relation: updated_by_user
   lojistiks_product_instance_transfer_transfers:
-    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer]
-    # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer] on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_product_instance_transfer(transfer_id) through semi [acornassociated_lojistiks_product_instance_transfer]
+    # Debug: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_product_instance_transfer(transfer_id) through semi [acornassociated_lojistiks_product_instance_transfer] on Lojistiks.Transfer
+    label: acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural
     type: partial
     searchable: false
     sortable: false
@@ -143,9 +143,9 @@ columns:
     path: multi
     relation: lojistiks_product_instance_transfer_transfers
   lojistiks_transfer_invoice_transfers:
-    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice]
-    # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice] on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.transferinvoice.label_plural
+    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_invoice(transfer_id) through semi [acornassociated_lojistiks_transfer_invoice]
+    # Debug: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_invoice(transfer_id) through semi [acornassociated_lojistiks_transfer_invoice] on Lojistiks.Transfer
+    label: acornassociated.lojistiks::lang.models.transferinvoice.label_plural
     type: partial
     valueFrom: name
     searchable: true
@@ -154,9 +154,9 @@ columns:
     path: multi
     relation: lojistiks_transfer_invoice_transfers
   lojistiks_transfer_purchase_transfers:
-    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase]
-    # Debug: Tab multi-select for <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase] on Lojistiks.Transfer
-    label: acorn.lojistiks::lang.models.transferpurchase.label_plural
+    # PseudoFromForeignIdField: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_purchase(transfer_id) through semi [acornassociated_lojistiks_transfer_purchase]
+    # Debug: Tab multi-select for <[XtoXSemi]= acornassociated_lojistiks_transfer_purchase(transfer_id) through semi [acornassociated_lojistiks_transfer_purchase] on Lojistiks.Transfer
+    label: acornassociated.lojistiks::lang.models.transferpurchase.label_plural
     type: partial
     valueFrom: name
     searchable: true
@@ -166,7 +166,7 @@ columns:
     relation: lojistiks_transfer_purchase_transfers
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acornassociated.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -175,7 +175,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.transfer._actions
+    label: acornassociated.lojistiks::lang.models.transfer._actions
     type: partial
     searchable: false
     sortable: false

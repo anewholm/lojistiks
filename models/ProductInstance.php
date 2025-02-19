@@ -1,9 +1,9 @@
 <?php
 
-namespace Acorn\Lojistiks\Models;
+namespace AcornAssociated\Lojistiks\Models;
 
-use Acorn\Models\Server;
-use Acorn\Collection;
+use AcornAssociated\Models\Server;
+use AcornAssociated\Collection;
 use BackendAuth;
 use \Backend\Models\User;
 use \Backend\Models\UserGroup;
@@ -11,7 +11,7 @@ use Exception;
 use Flash;
 
 
-use Acorn\Model;
+use AcornAssociated\Model;
 
 /**
  * ProductInstance Model
@@ -46,7 +46,7 @@ class ProductInstance extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_product_instances';
+    public $table = 'acornassociated_lojistiks_product_instances';
 
     /**
      * @var array Guarded fields
@@ -96,20 +96,20 @@ class ProductInstance extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'lojistiks_product_instance_transfer_product_instances_pivot' => [\Acorn\Lojistiks\Models\ProductInstanceTransfer::class, 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
+        'lojistiks_product_instance_transfer_product_instances_pivot' => [\AcornAssociated\Lojistiks\Models\ProductInstanceTransfer::class, 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product' => [\Acorn\Lojistiks\Models\Product::class, 'key' => 'product_id', 'type' => 'Xto1'],
-        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
-        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
-        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
-        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
-        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
+        'product' => [\AcornAssociated\Lojistiks\Models\Product::class, 'key' => 'product_id', 'type' => 'Xto1'],
+        'server' => [\AcornAssociated\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [
-        'lojistiks_product_instance_transfer_product_instances' => [\Acorn\Lojistiks\Models\Transfer::class, 'table' => 'acorn_lojistiks_product_instance_transfer', 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
+        'lojistiks_product_instance_transfer_product_instances' => [\AcornAssociated\Lojistiks\Models\Transfer::class, 'table' => 'acornassociated_lojistiks_product_instance_transfer', 'key' => 'product_instance_id', 'otherKey' => 'transfer_id', 'type' => 'XfromXSemi']
     ];
     public $morphTo = [];
     public $morphOne = [];

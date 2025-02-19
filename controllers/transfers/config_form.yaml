@@ -1,15 +1,15 @@
-name: acorn.lojistiks::lang.models.transfer.label
-form: $/acorn/lojistiks/models/transfer/fields.yaml
-modelClass: Acorn\Lojistiks\Models\Transfer
-defaultRedirect: acorn/lojistiks/transfers
+name: acornassociated.lojistiks::lang.models.transfer.label
+form: $/acornassociated/lojistiks/models/transfer/fields.yaml
+modelClass: AcornAssociated\Lojistiks\Models\Transfer
+defaultRedirect: acornassociated/lojistiks/transfers
 create:
   title: backend::lang.form.create_title
-  redirect: acorn/lojistiks/transfers/update/:id
-  redirectClose: acorn/lojistiks/transfers
+  redirect: acornassociated/lojistiks/transfers/update/:id
+  redirectClose: acornassociated/lojistiks/transfers
 update:
   title: backend::lang.form.update_title
-  redirect: acorn/lojistiks/transfers
-  redirectClose: acorn/lojistiks/transfers
+  redirect: acornassociated/lojistiks/transfers
+  redirectClose: acornassociated/lojistiks/transfers
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

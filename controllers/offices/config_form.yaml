@@ -1,15 +1,15 @@
-name: acorn.lojistiks::lang.models.office.label
-form: $/acorn/lojistiks/models/office/fields.yaml
-modelClass: Acorn\Lojistiks\Models\Office
-defaultRedirect: acorn/lojistiks/offices
+name: acornassociated.lojistiks::lang.models.office.label
+form: $/acornassociated/lojistiks/models/office/fields.yaml
+modelClass: AcornAssociated\Lojistiks\Models\Office
+defaultRedirect: acornassociated/lojistiks/offices
 create:
   title: backend::lang.form.create_title
-  redirect: acorn/lojistiks/offices/update/:id
-  redirectClose: acorn/lojistiks/offices
+  redirect: acornassociated/lojistiks/offices/update/:id
+  redirectClose: acornassociated/lojistiks/offices
 update:
   title: backend::lang.form.update_title
-  redirect: acorn/lojistiks/offices
-  redirectClose: acorn/lojistiks/offices
+  redirect: acornassociated/lojistiks/offices
+  redirectClose: acornassociated/lojistiks/offices
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

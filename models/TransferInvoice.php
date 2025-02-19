@@ -1,9 +1,9 @@
 <?php
 
-namespace Acorn\Lojistiks\Models;
+namespace AcornAssociated\Lojistiks\Models;
 
-use Acorn\Models\Server;
-use Acorn\Collection;
+use AcornAssociated\Models\Server;
+use AcornAssociated\Collection;
 use BackendAuth;
 use \Backend\Models\User;
 use \Backend\Models\UserGroup;
@@ -11,7 +11,7 @@ use Exception;
 use Flash;
 
 
-use Acorn\Model;
+use AcornAssociated\Model;
 
 /**
  * TransferInvoice Model
@@ -38,7 +38,7 @@ class TransferInvoice extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_lojistiks_transfer_invoice';
+    public $table = 'acornassociated_lojistiks_transfer_invoice';
 
     /**
      * @var array Guarded fields
@@ -91,8 +91,8 @@ class TransferInvoice extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
-        'invoice' => [\Acorn\Finance\Models\Invoice::class, 'key' => 'invoice_id', 'type' => 'Xto1']
+        'transfer' => [\AcornAssociated\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
+        'invoice' => [\AcornAssociated\Finance\Models\Invoice::class, 'key' => 'invoice_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('acorn/lojistiks/containers/create') ?>"
+        href="<?= Backend::url('acornassociated/lojistiks/containers/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.lojistiks::lang.models.container.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acornassociated.lojistiks::lang.models.container.label')])); ?>
     </a>
 
     <button

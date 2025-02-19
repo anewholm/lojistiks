@@ -1,11 +1,11 @@
 # Created By acorn-create-system v1.0
 lojistiks_product_instance_transfer_product_instances:
-  label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+  label: acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural
   view:
-    list: $/acorn/lojistiks/models/transfer/columns.yaml
+    list: $/acornassociated/lojistiks/models/transfer/columns.yaml
     toolbarButtons: create|delete|link|unlink
     showCheckboxes: true
     recordsPerPage: false
   manage:
-    form: $/acorn/lojistiks/models/transfer/fields.yaml
+    form: $/acornassociated/lojistiks/models/transfer/fields.yaml
     recordsPerPage: false

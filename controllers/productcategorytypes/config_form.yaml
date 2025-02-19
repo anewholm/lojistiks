@@ -1,15 +1,15 @@
-name: acorn.lojistiks::lang.models.productcategorytype.label
-form: $/acorn/lojistiks/models/productcategorytype/fields.yaml
-modelClass: Acorn\Lojistiks\Models\ProductCategoryType
-defaultRedirect: acorn/lojistiks/productcategorytypes
+name: acornassociated.lojistiks::lang.models.productcategorytype.label
+form: $/acornassociated/lojistiks/models/productcategorytype/fields.yaml
+modelClass: AcornAssociated\Lojistiks\Models\ProductCategoryType
+defaultRedirect: acornassociated/lojistiks/productcategorytypes
 create:
   title: backend::lang.form.create_title
-  redirect: acorn/lojistiks/productcategorytypes/update/:id
-  redirectClose: acorn/lojistiks/productcategorytypes
+  redirect: acornassociated/lojistiks/productcategorytypes/update/:id
+  redirectClose: acornassociated/lojistiks/productcategorytypes
 update:
   title: backend::lang.form.update_title
-  redirect: acorn/lojistiks/productcategorytypes
-  redirectClose: acorn/lojistiks/productcategorytypes
+  redirect: acornassociated/lojistiks/productcategorytypes
+  redirectClose: acornassociated/lojistiks/productcategorytypes
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

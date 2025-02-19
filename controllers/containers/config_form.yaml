@@ -1,15 +1,15 @@
-name: acorn.lojistiks::lang.models.container.label
-form: $/acorn/lojistiks/models/container/fields.yaml
-modelClass: Acorn\Lojistiks\Models\Container
-defaultRedirect: acorn/lojistiks/containers
+name: acornassociated.lojistiks::lang.models.container.label
+form: $/acornassociated/lojistiks/models/container/fields.yaml
+modelClass: AcornAssociated\Lojistiks\Models\Container
+defaultRedirect: acornassociated/lojistiks/containers
 create:
   title: backend::lang.form.create_title
-  redirect: acorn/lojistiks/containers/update/:id
-  redirectClose: acorn/lojistiks/containers
+  redirect: acornassociated/lojistiks/containers/update/:id
+  redirectClose: acornassociated/lojistiks/containers
 update:
   title: backend::lang.form.update_title
-  redirect: acorn/lojistiks/containers
-  redirectClose: acorn/lojistiks/containers
+  redirect: acornassociated/lojistiks/containers
+  redirectClose: acornassociated/lojistiks/containers
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

@@ -1,31 +1,31 @@
 # Created By acorn-create-system v1.0
 children:
-  label: acorn.lojistiks::lang.models.productcategory.children
+  label: acornassociated.lojistiks::lang.models.productcategory.children
   view:
-    list: $/acorn/lojistiks/models/productcategory/columns.yaml
+    list: $/acornassociated/lojistiks/models/productcategory/columns.yaml
     toolbarButtons: create|delete
     showCheckboxes: true
     recordsPerPage: 10
   manage:
-    form: $/acorn/lojistiks/models/productcategory/fields.yaml
+    form: $/acornassociated/lojistiks/models/productcategory/fields.yaml
     recordsPerPage: 10
 lojistiks_products_product_category_product_categories:
-  label: acorn.lojistiks::lang.models.productsproductcategory.label_plural
+  label: acornassociated.lojistiks::lang.models.productsproductcategory.label_plural
   view:
-    list: $/acorn/lojistiks/models/product/columns.yaml
+    list: $/acornassociated/lojistiks/models/product/columns.yaml
     toolbarButtons: create|delete|link|unlink
     showCheckboxes: true
     recordsPerPage: false
   manage:
-    form: $/acorn/lojistiks/models/product/fields.yaml
+    form: $/acornassociated/lojistiks/models/product/fields.yaml
     recordsPerPage: false
 lojistiks_product_product_category_product_categories:
-  label: acorn.lojistiks::lang.models.productproductcategory.label_plural
+  label: acornassociated.lojistiks::lang.models.productproductcategory.label_plural
   view:
-    list: $/acorn/lojistiks/models/product/columns.yaml
+    list: $/acornassociated/lojistiks/models/product/columns.yaml
     toolbarButtons: create|delete|link|unlink
     showCheckboxes: true
     recordsPerPage: false
   manage:
-    form: $/acorn/lojistiks/models/product/fields.yaml
+    form: $/acornassociated/lojistiks/models/product/fields.yaml
     recordsPerPage: false
