@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.id
+    label: acorn.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   person:
-    # ForeignIdField: From person_id(uuid), with =[Xto1]> acornassociated_lojistiks_people(id)
+    # ForeignIdField: From person_id(uuid), with =[Xto1]> acorn_lojistiks_people(id)
     # Debug: ForeignIdField for column person_id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.person.label
+    label: acorn.lojistiks::lang.models.person.label
     type: text
     valueFrom: name
     searchable: false
@@ -18,9 +18,9 @@ columns:
     invisible: false
     relation: person
   user_role:
-    # ForeignIdField: From user_role_id(uuid), with =[Xto1]> acornassociated_user_roles(id) (user)
+    # ForeignIdField: From user_role_id(uuid), with =[Xto1]> acorn_user_roles(id) (user)
     # Debug: ForeignIdField for column user_role_id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.employee.user_role
+    label: acorn.lojistiks::lang.models.employee.user_role
     type: text
     searchable: true
     sortable: true
@@ -28,9 +28,9 @@ columns:
     relation: user_role
     select: name
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.Employee
-    label: acornassociated::lang.models.server.label
+    label: acorn::lang.models.server.label
     type: text
     searchable: true
     sortable: true
@@ -38,19 +38,19 @@ columns:
     relation: server
     select: name
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.created_at_event
+    label: acorn.lojistiks::lang.models.general.created_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
     # Debug: ForeignIdField for column created_by_user_id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.created_by_user
+    label: acorn.lojistiks::lang.models.general.created_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -60,7 +60,7 @@ columns:
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.response
+    label: acorn.lojistiks::lang.models.general.response
     type: text
     searchable: true
     sortable: false
@@ -68,25 +68,25 @@ columns:
   description:
     # Field: From description(text)
     # Debug: Field for column description on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.description
+    label: acorn.lojistiks::lang.models.general.description
     type: text
     searchable: true
     sortable: false
     invisible: false
   updated_at_event:
-    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (updated_at)
+    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (updated_at)
     # Debug: ForeignIdField for column updated_at_event_id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.updated_at_event
+    label: acorn.lojistiks::lang.models.general.updated_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by aacep.start limit 1)
   updated_by_user:
-    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (updated_by)
+    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (updated_by)
     # Debug: ForeignIdField for column updated_by_user_id on Lojistiks.Employee
-    label: acornassociated.lojistiks::lang.models.general.updated_by_user
+    label: acorn.lojistiks::lang.models.general.updated_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -95,7 +95,7 @@ columns:
     relation: updated_by_user
   _qrcode:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -104,7 +104,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.employee._actions
+    label: acorn.lojistiks::lang.models.employee._actions
     type: partial
     searchable: false
     sortable: false

@@ -1,6 +1,6 @@
-<?php namespace AcornAssociated\Lojistiks\Updates;
+<?php namespace Acorn\Lojistiks\Updates;
 
-use AcornAssociated\Migration;
+use Acorn\Migration;
 
 class CreateFromSQL extends Migration
 {

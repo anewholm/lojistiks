@@ -1,9 +1,9 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Models\Server;
-use AcornAssociated\Collection;
+use Acorn\Models\Server;
+use Acorn\Collection;
 use BackendAuth;
 use \Backend\Models\User;
 use \Backend\Models\UserGroup;
@@ -11,7 +11,7 @@ use Exception;
 use Flash;
 
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * ProductCategory Model
@@ -45,7 +45,7 @@ class ProductCategory extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_product_categories';
+    public $table = 'acorn_lojistiks_product_categories';
 
     /**
      * @var array Guarded fields
@@ -95,25 +95,25 @@ class ProductCategory extends Model
      */
     public $hasOne = [];
     public $hasMany = [
-        'lojistiks_products_product_category_product_categories_pivot' => [\AcornAssociated\Lojistiks\Models\ProductsProductCategory::class, 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
-        'lojistiks_product_product_category_product_categories_pivot' => [\AcornAssociated\Lojistiks\Models\ProductProductCategory::class, 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
-        'children' => [\AcornAssociated\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self']
+        'lojistiks_products_product_category_product_categories_pivot' => [\Acorn\Lojistiks\Models\ProductsProductCategory::class, 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
+        'lojistiks_product_product_category_product_categories_pivot' => [\Acorn\Lojistiks\Models\ProductProductCategory::class, 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
+        'children' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self']
     ];
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'product_category_type' => [\AcornAssociated\Lojistiks\Models\ProductCategoryType::class, 'key' => 'product_category_type_id', 'type' => 'Xto1'],
-        'server' => [\AcornAssociated\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
-        'created_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
-        'created_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
-        'updated_at_event' => [\AcornAssociated\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
-        'updated_by_user' => [\AcornAssociated\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1'],
-        'parent_product_category' => [\AcornAssociated\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self'],
-        'parent' => [\AcornAssociated\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self']
+        'product_category_type' => [\Acorn\Lojistiks\Models\ProductCategoryType::class, 'key' => 'product_category_type_id', 'type' => 'Xto1'],
+        'server' => [\Acorn\Models\Server::class, 'key' => 'server_id', 'type' => 'Xto1'],
+        'created_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'created_at_event_id', 'type' => 'Xto1'],
+        'created_by_user' => [\Acorn\User\Models\User::class, 'key' => 'created_by_user_id', 'type' => 'Xto1'],
+        'updated_at_event' => [\Acorn\Calendar\Models\Event::class, 'key' => 'updated_at_event_id', 'type' => 'Xto1'],
+        'updated_by_user' => [\Acorn\User\Models\User::class, 'key' => 'updated_by_user_id', 'type' => 'Xto1'],
+        'parent_product_category' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self'],
+        'parent' => [\Acorn\Lojistiks\Models\ProductCategory::class, 'key' => 'parent_product_category_id', 'type' => 'Self']
     ];
     public $belongsToMany = [
-        'lojistiks_products_product_category_product_categories' => [\AcornAssociated\Lojistiks\Models\Product::class, 'table' => 'acornassociated_lojistiks_products_product_category', 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
-        'lojistiks_product_product_category_product_categories' => [\AcornAssociated\Lojistiks\Models\Product::class, 'table' => 'acornassociated_lojistiks_product_product_category', 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi']
+        'lojistiks_products_product_category_product_categories' => [\Acorn\Lojistiks\Models\Product::class, 'table' => 'acorn_lojistiks_products_product_category', 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi'],
+        'lojistiks_product_product_category_product_categories' => [\Acorn\Lojistiks\Models\Product::class, 'table' => 'acorn_lojistiks_product_product_category', 'key' => 'product_category_id', 'otherKey' => 'product_id', 'type' => 'XfromXSemi']
     ];
     public $morphTo = [];
     public $morphOne = [];

@@ -1,15 +1,15 @@
-name: acornassociated.lojistiks::lang.models.driver.label
-form: $/acornassociated/lojistiks/models/driver/fields.yaml
-modelClass: AcornAssociated\Lojistiks\Models\Driver
-defaultRedirect: acornassociated/lojistiks/drivers
+name: acorn.lojistiks::lang.models.driver.label
+form: $/acorn/lojistiks/models/driver/fields.yaml
+modelClass: Acorn\Lojistiks\Models\Driver
+defaultRedirect: acorn/lojistiks/drivers
 create:
   title: backend::lang.form.create_title
-  redirect: acornassociated/lojistiks/drivers/update/:id
-  redirectClose: acornassociated/lojistiks/drivers
+  redirect: acorn/lojistiks/drivers/update/:id
+  redirectClose: acorn/lojistiks/drivers
 update:
   title: backend::lang.form.update_title
-  redirect: acornassociated/lojistiks/drivers
-  redirectClose: acornassociated/lojistiks/drivers
+  redirect: acorn/lojistiks/drivers
+  redirectClose: acorn/lojistiks/drivers
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

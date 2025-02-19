@@ -1,31 +1,31 @@
 # Created By acorn-create-system v1.0
 lojistiks_product_instance_transfer_transfers:
-  label: acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural
+  label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
   view:
-    list: $/acornassociated/lojistiks/models/productinstance/columns.yaml
+    list: $/acorn/lojistiks/models/productinstance/columns.yaml
     toolbarButtons: create|delete|link|unlink
     showCheckboxes: true
     recordsPerPage: false
   manage:
-    form: $/acornassociated/lojistiks/models/productinstance/fields.yaml
+    form: $/acorn/lojistiks/models/productinstance/fields.yaml
     recordsPerPage: false
 lojistiks_transfer_invoice_transfers:
-  label: acornassociated.lojistiks::lang.models.transferinvoice.label_plural
+  label: acorn.lojistiks::lang.models.transferinvoice.label_plural
   view:
-    list: $/acornassociated/finance/models/invoice/columns.yaml
+    list: $/acorn/finance/models/invoice/columns.yaml
     toolbarButtons: create|delete|link|unlink
     showCheckboxes: true
     recordsPerPage: false
   manage:
-    form: $/acornassociated/finance/models/invoice/fields.yaml
+    form: $/acorn/finance/models/invoice/fields.yaml
     recordsPerPage: false
 lojistiks_transfer_purchase_transfers:
-  label: acornassociated.lojistiks::lang.models.transferpurchase.label_plural
+  label: acorn.lojistiks::lang.models.transferpurchase.label_plural
   view:
-    list: $/acornassociated/finance/models/purchase/columns.yaml
+    list: $/acorn/finance/models/purchase/columns.yaml
     toolbarButtons: create|delete|link|unlink
     showCheckboxes: true
     recordsPerPage: false
   manage:
-    form: $/acornassociated/finance/models/purchase/fields.yaml
+    form: $/acorn/finance/models/purchase/fields.yaml
     recordsPerPage: false

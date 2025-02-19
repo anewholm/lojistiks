@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/measurementunit/columns.yaml
+list: $/acorn/lojistiks/models/measurementunit/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\MeasurementUnit
+modelClass: Acorn\Lojistiks\Models\MeasurementUnit
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.measurementunit.label_plural'
+title: 'acorn.lojistiks::lang.models.measurementunit.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/measurementunits/update/:id
+recordUrl: acorn/lojistiks/measurementunits/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

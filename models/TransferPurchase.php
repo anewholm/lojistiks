@@ -1,9 +1,9 @@
 <?php
 
-namespace AcornAssociated\Lojistiks\Models;
+namespace Acorn\Lojistiks\Models;
 
-use AcornAssociated\Models\Server;
-use AcornAssociated\Collection;
+use Acorn\Models\Server;
+use Acorn\Collection;
 use BackendAuth;
 use \Backend\Models\User;
 use \Backend\Models\UserGroup;
@@ -11,7 +11,7 @@ use Exception;
 use Flash;
 
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * TransferPurchase Model
@@ -38,7 +38,7 @@ class TransferPurchase extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_lojistiks_transfer_purchase';
+    public $table = 'acorn_lojistiks_transfer_purchase';
 
     /**
      * @var array Guarded fields
@@ -91,8 +91,8 @@ class TransferPurchase extends Model
     public $hasOneThrough = [];
     public $hasManyThrough = [];
     public $belongsTo = [
-        'transfer' => [\AcornAssociated\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
-        'purchase' => [\AcornAssociated\Finance\Models\Purchase::class, 'key' => 'purchase_id', 'type' => 'Xto1']
+        'transfer' => [\Acorn\Lojistiks\Models\Transfer::class, 'key' => 'transfer_id', 'type' => 'Xto1'],
+        'purchase' => [\Acorn\Finance\Models\Purchase::class, 'key' => 'purchase_id', 'type' => 'Xto1']
     ];
     public $belongsToMany = [];
     public $morphTo = [];

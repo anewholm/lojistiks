@@ -1,15 +1,15 @@
-name: acornassociated.lojistiks::lang.models.employee.label
-form: $/acornassociated/lojistiks/models/employee/fields.yaml
-modelClass: AcornAssociated\Lojistiks\Models\Employee
-defaultRedirect: acornassociated/lojistiks/employees
+name: acorn.lojistiks::lang.models.employee.label
+form: $/acorn/lojistiks/models/employee/fields.yaml
+modelClass: Acorn\Lojistiks\Models\Employee
+defaultRedirect: acorn/lojistiks/employees
 create:
   title: backend::lang.form.create_title
-  redirect: acornassociated/lojistiks/employees/update/:id
-  redirectClose: acornassociated/lojistiks/employees
+  redirect: acorn/lojistiks/employees/update/:id
+  redirectClose: acorn/lojistiks/employees
 update:
   title: backend::lang.form.update_title
-  redirect: acornassociated/lojistiks/employees
-  redirectClose: acornassociated/lojistiks/employees
+  redirect: acorn/lojistiks/employees
+  redirectClose: acorn/lojistiks/employees
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

@@ -1,15 +1,15 @@
-name: acornassociated.lojistiks::lang.models.computerproduct.label
-form: $/acornassociated/lojistiks/models/computerproduct/fields.yaml
-modelClass: AcornAssociated\Lojistiks\Models\ComputerProduct
-defaultRedirect: acornassociated/lojistiks/computerproducts
+name: acorn.lojistiks::lang.models.computerproduct.label
+form: $/acorn/lojistiks/models/computerproduct/fields.yaml
+modelClass: Acorn\Lojistiks\Models\ComputerProduct
+defaultRedirect: acorn/lojistiks/computerproducts
 create:
   title: backend::lang.form.create_title
-  redirect: acornassociated/lojistiks/computerproducts/update/:id
-  redirectClose: acornassociated/lojistiks/computerproducts
+  redirect: acorn/lojistiks/computerproducts/update/:id
+  redirectClose: acorn/lojistiks/computerproducts
 update:
   title: backend::lang.form.update_title
-  redirect: acornassociated/lojistiks/computerproducts
-  redirectClose: acornassociated/lojistiks/computerproducts
+  redirect: acorn/lojistiks/computerproducts
+  redirectClose: acorn/lojistiks/computerproducts
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

@@ -1,15 +1,15 @@
-name: acornassociated.lojistiks::lang.models.brand.label
-form: $/acornassociated/lojistiks/models/brand/fields.yaml
-modelClass: AcornAssociated\Lojistiks\Models\Brand
-defaultRedirect: acornassociated/lojistiks/brands
+name: acorn.lojistiks::lang.models.brand.label
+form: $/acorn/lojistiks/models/brand/fields.yaml
+modelClass: Acorn\Lojistiks\Models\Brand
+defaultRedirect: acorn/lojistiks/brands
 create:
   title: backend::lang.form.create_title
-  redirect: acornassociated/lojistiks/brands/update/:id
-  redirectClose: acornassociated/lojistiks/brands
+  redirect: acorn/lojistiks/brands/update/:id
+  redirectClose: acorn/lojistiks/brands
 update:
   title: backend::lang.form.update_title
-  redirect: acornassociated/lojistiks/brands
-  redirectClose: acornassociated/lojistiks/brands
+  redirect: acorn/lojistiks/brands
+  redirectClose: acorn/lojistiks/brands
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

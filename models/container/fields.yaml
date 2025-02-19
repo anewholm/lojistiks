@@ -1,7 +1,7 @@
 fields:
   id:
     # IdField: From id(uuid)
-    label: acornassociated.lojistiks::lang.models.general.id
+    label: acorn.lojistiks::lang.models.general.id
     type: text
     hidden: true
     span: storm
@@ -12,15 +12,15 @@ fields:
       IdField for column id on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.id">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
-    label: acornassociated::lang.models.server.label
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    label: acorn::lang.models.server.label
     type: dropdown
     hidden: true
     required: true
@@ -32,18 +32,18 @@ fields:
       ForeignIdField for column server_id on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.server_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.server_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.server_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.server_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Models\Server::dropdownOptions
+    options: Acorn\Models\Server::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
-    label: acornassociated.lojistiks::lang.models.general.created_at_event
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
+    label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
     span: storm
@@ -54,18 +54,18 @@ fields:
       ForeignIdField for column created_at_event_id on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.created_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.created_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.created_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.created_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   name:
     # Field: From name(character varying)
-    label: acornassociated.lojistiks::lang.models.general.name
+    label: acorn.lojistiks::lang.models.general.name
     type: text
     span: storm
     cssClass: col-xs-6
@@ -75,38 +75,38 @@ fields:
       Field for column name on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.name</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.name">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.name</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.name">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
-    label: acornassociated.lojistiks::lang.models.general.created_by_user
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    label: acorn.lojistiks::lang.models.general.created_by_user
     type: dropdown
     hidden: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
       ForeignIdField for column created_by_user_id on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.created_by_user_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.created_by_user_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.created_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.created_by_user_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\User\Models\User::dropdownOptions
+    options: Acorn\User\Models\User::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   response:
     # Field: From response(text)
-    label: acornassociated.lojistiks::lang.models.general.response
+    label: acorn.lojistiks::lang.models.general.response
     type: richeditor
     hidden: true
     span: storm
@@ -117,15 +117,15 @@ fields:
       Field for column response on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.response</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.response">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.response</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.response">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   description:
     # Field: From description(text)
-    label: acornassociated.lojistiks::lang.models.general.description
+    label: acorn.lojistiks::lang.models.general.description
     type: richeditor
     span: storm
     cssClass: col-xs-6
@@ -135,15 +135,15 @@ fields:
       Field for column description on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.description</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.description">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.description">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   updated_at_event[start]:
-    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (updated_at)
-    label: acornassociated.lojistiks::lang.models.general.updated_at_event
+    # ForeignIdField: From updated_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (updated_at)
+    label: acorn.lojistiks::lang.models.general.updated_at_event
     type: datepicker
     hidden: true
     span: storm
@@ -154,41 +154,41 @@ fields:
       ForeignIdField for column updated_at_event_id on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.updated_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.updated_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.updated_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.updated_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   updated_by_user:
-    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (updated_by)
-    label: acornassociated.lojistiks::lang.models.general.updated_by_user
+    # ForeignIdField: From updated_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (updated_by)
+    label: acorn.lojistiks::lang.models.general.updated_by_user
     type: dropdown
     hidden: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">updated_by_user</div>
       ForeignIdField for column updated_by_user_id on Lojistiks.Container
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.containers.columns.updated_by_user_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.containers.columns.updated_by_user_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.containers.columns.updated_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.containers.columns.updated_by_user_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\User\Models\User::dropdownOptions
+    options: Acorn\User\Models\User::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   _qrcode:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general._qrcode
     type: partial
     path: qrcode
     span: storm
@@ -210,7 +210,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.container._actions
+    label: acorn.lojistiks::lang.models.container._actions
     hidden: true
     span: storm
     cssClass: col-xs-6

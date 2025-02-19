@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/warehouse/columns.yaml
+list: $/acorn/lojistiks/models/warehouse/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Warehouse
+modelClass: Acorn\Lojistiks\Models\Warehouse
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.warehouse.label_plural'
+title: 'acorn.lojistiks::lang.models.warehouse.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/warehouses/update/:id
+recordUrl: acorn/lojistiks/warehouses/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

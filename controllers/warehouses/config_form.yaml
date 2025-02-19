@@ -1,15 +1,15 @@
-name: acornassociated.lojistiks::lang.models.warehouse.label
-form: $/acornassociated/lojistiks/models/warehouse/fields.yaml
-modelClass: AcornAssociated\Lojistiks\Models\Warehouse
-defaultRedirect: acornassociated/lojistiks/warehouses
+name: acorn.lojistiks::lang.models.warehouse.label
+form: $/acorn/lojistiks/models/warehouse/fields.yaml
+modelClass: Acorn\Lojistiks\Models\Warehouse
+defaultRedirect: acorn/lojistiks/warehouses
 create:
   title: backend::lang.form.create_title
-  redirect: acornassociated/lojistiks/warehouses/update/:id
-  redirectClose: acornassociated/lojistiks/warehouses
+  redirect: acorn/lojistiks/warehouses/update/:id
+  redirectClose: acorn/lojistiks/warehouses
 update:
   title: backend::lang.form.update_title
-  redirect: acornassociated/lojistiks/warehouses
-  redirectClose: acornassociated/lojistiks/warehouses
+  redirect: acorn/lojistiks/warehouses
+  redirectClose: acorn/lojistiks/warehouses
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

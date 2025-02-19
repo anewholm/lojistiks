@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/driver/columns.yaml
+list: $/acorn/lojistiks/models/driver/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\Driver
+modelClass: Acorn\Lojistiks\Models\Driver
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.driver.label_plural'
+title: 'acorn.lojistiks::lang.models.driver.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/drivers/update/:id
+recordUrl: acorn/lojistiks/drivers/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

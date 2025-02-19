@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.general.id
+    label: acorn.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   electronic_product:
-    # ForeignIdField: From electronic_product_id(uuid), with =[1to1]> acornassociated_lojistiks_electronic_products(id)
+    # ForeignIdField: From electronic_product_id(uuid), with =[1to1]> acorn_lojistiks_electronic_products(id)
     # Debug: ForeignIdField for column electronic_product_id on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.electronicproduct.label
+    label: acorn.lojistiks::lang.models.electronicproduct.label
     type: text
     valueFrom: name
     searchable: false
@@ -18,11 +18,11 @@ columns:
     invisible: false
     relation: electronic_product
     include: 1to1
-    includeModel: \AcornAssociated\Lojistiks\Models\ElectronicProduct
+    includeModel: \Acorn\Lojistiks\Models\ElectronicProduct
   memory:
     # Field: From memory(bigint)
     # Debug: Field for column memory on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.computerproduct.memory
+    label: acorn.lojistiks::lang.models.computerproduct.memory
     type: text
     searchable: true
     sortable: false
@@ -30,7 +30,7 @@ columns:
   HDD_size:
     # Field: From HDD_size(bigint)
     # Debug: Field for column HDD_size on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.computerproduct.HDD_size
+    label: acorn.lojistiks::lang.models.computerproduct.HDD_size
     type: text
     searchable: true
     sortable: false
@@ -38,15 +38,15 @@ columns:
   processor_version:
     # Field: From processor_version(double precision)
     # Debug: Field for column processor_version on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.computerproduct.processor_version
+    label: acorn.lojistiks::lang.models.computerproduct.processor_version
     type: text
     searchable: true
     sortable: false
     invisible: false
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
     # Debug: ForeignIdField for column server_id on Lojistiks.ComputerProduct
-    label: acornassociated::lang.models.server.label
+    label: acorn::lang.models.server.label
     type: text
     searchable: true
     sortable: true
@@ -54,19 +54,19 @@ columns:
     relation: server
     select: name
   created_at_event:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
     # Debug: ForeignIdField for column created_at_event_id on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.general.created_at_event
+    label: acorn.lojistiks::lang.models.general.created_at_event
     type: partial
     searchable: true
     sortable: true
     invisible: true
     path: datetime
-    select: (select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
+    select: (select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by aacep.start limit 1)
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
     # Debug: ForeignIdField for column created_by_user_id on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.general.created_by_user
+    label: acorn.lojistiks::lang.models.general.created_by_user
     type: text
     valueFrom: name
     searchable: false
@@ -76,7 +76,7 @@ columns:
   processor_type:
     # Field: From processor_type(integer)
     # Debug: Field for column processor_type on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.computerproduct.processor_type
+    label: acorn.lojistiks::lang.models.computerproduct.processor_type
     type: text
     searchable: true
     sortable: false
@@ -84,14 +84,14 @@ columns:
   response:
     # Field: From response(text)
     # Debug: Field for column response on Lojistiks.ComputerProduct
-    label: acornassociated.lojistiks::lang.models.general.response
+    label: acorn.lojistiks::lang.models.general.response
     type: text
     searchable: true
     sortable: false
     invisible: true
   _qrcode:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -100,7 +100,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.computerproduct._actions
+    label: acorn.lojistiks::lang.models.computerproduct._actions
     type: partial
     searchable: false
     sortable: false

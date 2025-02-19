@@ -1,15 +1,15 @@
-name: acornassociated.lojistiks::lang.models.vehicle.label
-form: $/acornassociated/lojistiks/models/vehicle/fields.yaml
-modelClass: AcornAssociated\Lojistiks\Models\Vehicle
-defaultRedirect: acornassociated/lojistiks/vehicles
+name: acorn.lojistiks::lang.models.vehicle.label
+form: $/acorn/lojistiks/models/vehicle/fields.yaml
+modelClass: Acorn\Lojistiks\Models\Vehicle
+defaultRedirect: acorn/lojistiks/vehicles
 create:
   title: backend::lang.form.create_title
-  redirect: acornassociated/lojistiks/vehicles/update/:id
-  redirectClose: acornassociated/lojistiks/vehicles
+  redirect: acorn/lojistiks/vehicles/update/:id
+  redirectClose: acorn/lojistiks/vehicles
 update:
   title: backend::lang.form.update_title
-  redirect: acornassociated/lojistiks/vehicles
-  redirectClose: acornassociated/lojistiks/vehicles
+  redirect: acorn/lojistiks/vehicles
+  redirectClose: acorn/lojistiks/vehicles
 preview:
   title: backend::lang.form.preview_title
 actionFunctions: [ ]

@@ -1,7 +1,7 @@
 fields:
   id:
     # IdField: From id(uuid)
-    label: acornassociated.lojistiks::lang.models.general.id
+    label: acorn.lojistiks::lang.models.general.id
     type: text
     hidden: true
     span: storm
@@ -12,61 +12,61 @@ fields:
       IdField for column id on Lojistiks.TransferPurchase
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfer_purchase.columns.id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfer_purchase.columns.id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_purchase.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_purchase.columns.id">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   transfer:
-    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_transfers(id)
-    label: acornassociated.lojistiks::lang.models.transfer.label
+    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acorn_lojistiks_transfers(id)
+    label: acorn.lojistiks::lang.models.transfer.label
     type: dropdown
     required: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/lojistiks/transfers'>Transfer</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/lojistiks/transfers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/transfers'>Transfer</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/transfers' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">transfer</div>
       ForeignIdField for column transfer_id on Lojistiks.TransferPurchase
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfer_purchase.columns.transfer_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfer_purchase.columns.transfer_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_purchase.columns.transfer_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_purchase.columns.transfer_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Lojistiks\Models\Transfer::dropdownOptions
+    options: Acorn\Lojistiks\Models\Transfer::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
       - _create_transfer
   purchase:
-    # ForeignIdField: From purchase_id(uuid), with =[XtoXSemi]> acornassociated_finance_purchases(id)
-    label: acornassociated.finance::lang.models.purchase.label
+    # ForeignIdField: From purchase_id(uuid), with =[XtoXSemi]> acorn_finance_purchases(id)
+    label: acorn.finance::lang.models.purchase.label
     type: dropdown
     required: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/finance/purchases'>Purchase</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/finance/purchases' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/finance/purchases'>Purchase</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/finance/purchases' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">purchase</div>
       ForeignIdField for column purchase_id on Lojistiks.TransferPurchase
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfer_purchase.columns.purchase_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfer_purchase.columns.purchase_id">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_purchase.columns.purchase_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_purchase.columns.purchase_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Finance\Models\Purchase::dropdownOptions
+    options: Acorn\Finance\Models\Purchase::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
       - _create_purchase
   description:
     # Field: From description(text)
-    label: acornassociated.lojistiks::lang.models.general.description
+    label: acorn.lojistiks::lang.models.general.description
     type: richeditor
     span: storm
     cssClass: col-xs-6
@@ -76,15 +76,15 @@ fields:
       Field for column description on Lojistiks.TransferPurchase
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.public.acornassociated.lojistiks.transfer_purchase.columns.description</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acornassociated.lojistiks.transfer_purchase.columns.description">edit</a>
+      <div class="create-system-db-lang-path">tables.public.acorn.lojistiks.transfer_purchase.columns.description</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.public.acorn.lojistiks.transfer_purchase.columns.description">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   _qrcode:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general._qrcode
     type: partial
     path: qrcode
     span: storm
@@ -106,7 +106,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.transferpurchase._actions
+    label: acorn.lojistiks::lang.models.transferpurchase._actions
     hidden: true
     span: storm
     cssClass: col-xs-6

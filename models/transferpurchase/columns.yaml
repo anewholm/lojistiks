@@ -2,15 +2,15 @@ columns:
   id:
     # IdField: From id(uuid)
     # Debug: IdField for column id on Lojistiks.TransferPurchase
-    label: acornassociated.lojistiks::lang.models.general.id
+    label: acorn.lojistiks::lang.models.general.id
     type: text
     searchable: true
     sortable: false
     invisible: true
   transfer:
-    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acornassociated_lojistiks_transfers(id)
+    # ForeignIdField: From transfer_id(uuid), with =[XtoXSemi]> acorn_lojistiks_transfers(id)
     # Debug: ForeignIdField for column transfer_id on Lojistiks.TransferPurchase
-    label: acornassociated.lojistiks::lang.models.transfer.label
+    label: acorn.lojistiks::lang.models.transfer.label
     type: text
     valueFrom: name
     searchable: false
@@ -18,9 +18,9 @@ columns:
     invisible: false
     relation: transfer
   purchase:
-    # ForeignIdField: From purchase_id(uuid), with =[XtoXSemi]> acornassociated_finance_purchases(id)
+    # ForeignIdField: From purchase_id(uuid), with =[XtoXSemi]> acorn_finance_purchases(id)
     # Debug: ForeignIdField for column purchase_id on Lojistiks.TransferPurchase
-    label: acornassociated.finance::lang.models.purchase.label
+    label: acorn.finance::lang.models.purchase.label
     type: text
     searchable: true
     sortable: true
@@ -30,14 +30,14 @@ columns:
   description:
     # Field: From description(text)
     # Debug: Field for column description on Lojistiks.TransferPurchase
-    label: acornassociated.lojistiks::lang.models.general.description
+    label: acorn.lojistiks::lang.models.general.description
     type: text
     searchable: true
     sortable: false
     invisible: false
   _qrcode:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general._qrcode
     type: partial
     searchable: false
     sortable: false
@@ -46,7 +46,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.transferpurchase._actions
+    label: acorn.lojistiks::lang.models.transferpurchase._actions
     type: partial
     searchable: false
     sortable: false

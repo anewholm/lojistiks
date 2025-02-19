@@ -1,21 +1,21 @@
 # Created By acorn-create-system v1.0
 lojistiks_drivers_person:
-  label: acornassociated.lojistiks::lang.models.driver.label_plural
+  label: acorn.lojistiks::lang.models.driver.label_plural
   view:
-    list: $/acornassociated/lojistiks/models/driver/columns.yaml
+    list: $/acorn/lojistiks/models/driver/columns.yaml
     toolbarButtons: create|delete
     showCheckboxes: true
     recordsPerPage: 10
   manage:
-    form: $/acornassociated/lojistiks/models/driver/fields.yaml
+    form: $/acorn/lojistiks/models/driver/fields.yaml
     recordsPerPage: 10
 lojistiks_employees_person:
-  label: acornassociated.lojistiks::lang.models.employee.label_plural
+  label: acorn.lojistiks::lang.models.employee.label_plural
   view:
-    list: $/acornassociated/lojistiks/models/employee/columns.yaml
+    list: $/acorn/lojistiks/models/employee/columns.yaml
     toolbarButtons: create|delete
     showCheckboxes: true
     recordsPerPage: 10
   manage:
-    form: $/acornassociated/lojistiks/models/employee/fields.yaml
+    form: $/acorn/lojistiks/models/employee/fields.yaml
     recordsPerPage: 10

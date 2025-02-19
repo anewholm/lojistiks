@@ -6,65 +6,65 @@
 scopes:
   created_by_user:
     # created_by_user
-    label: acornassociated.lojistiks::lang.models.general.created_by_user
+    label: acorn.lojistiks::lang.models.general.created_by_user
     nameFrom: fully_qualified_name
-    modelClass: AcornAssociated\User\Models\User
-    # Relation =[Xto1]> acornassociated_user_users(id) (created_by)
+    modelClass: Acorn\User\Models\User
+    # Relation =[Xto1]> acorn_user_users(id) (created_by)
   created_at_event:
     # created_at_event
-    label: acornassociated.lojistiks::lang.models.general.created_at_event
+    label: acorn.lojistiks::lang.models.general.created_at_event
     type: daterange
-    conditions: "((select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by start limit 1) between ':after' and ':before')"
-    modelClass: AcornAssociated\Calendar\Models\Event
-    # Relation =[Xto1]> acornassociated_calendar_events(id) (created_at)
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = created_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_events(id) (created_at)
   sent_at_event:
     # sent_at_event
-    label: acornassociated.lojistiks::lang.models.transfer.sent_at_event
+    label: acorn.lojistiks::lang.models.transfer.sent_at_event
     type: daterange
-    conditions: "((select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = sent_at_event_id order by start limit 1) between ':after' and ':before')"
-    modelClass: AcornAssociated\Calendar\Models\Event
-    # Relation =[Xto1]> acornassociated_calendar_events(id) (sent_at)
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = sent_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_events(id) (sent_at)
   arrived_at_event:
     # arrived_at_event
-    label: acornassociated.lojistiks::lang.models.transfer.arrived_at_event
+    label: acorn.lojistiks::lang.models.transfer.arrived_at_event
     type: daterange
-    conditions: "((select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = arrived_at_event_id order by start limit 1) between ':after' and ':before')"
-    modelClass: AcornAssociated\Calendar\Models\Event
-    # Relation =[Xto1]> acornassociated_calendar_events(id) (arrived_at)
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = arrived_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_events(id) (arrived_at)
   updated_at_event:
     # updated_at_event
-    label: acornassociated.lojistiks::lang.models.general.updated_at_event
+    label: acorn.lojistiks::lang.models.general.updated_at_event
     type: daterange
-    conditions: "((select aacep.start from acornassociated_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by start limit 1) between ':after' and ':before')"
-    modelClass: AcornAssociated\Calendar\Models\Event
-    # Relation =[Xto1]> acornassociated_calendar_events(id) (updated_at)
+    conditions: "((select aacep.start from acorn_calendar_event_parts aacep where aacep.event_id = updated_at_event_id order by start limit 1) between ':after' and ':before')"
+    modelClass: Acorn\Calendar\Models\Event
+    # Relation =[Xto1]> acorn_calendar_events(id) (updated_at)
   updated_by_user:
     # updated_by_user
-    label: acornassociated.lojistiks::lang.models.general.updated_by_user
+    label: acorn.lojistiks::lang.models.general.updated_by_user
     nameFrom: fully_qualified_name
-    modelClass: AcornAssociated\User\Models\User
-    # Relation =[Xto1]> acornassociated_user_users(id) (updated_by)
+    modelClass: Acorn\User\Models\User
+    # Relation =[Xto1]> acorn_user_users(id) (updated_by)
   lojistiks_product_instance_transfer_transfers:
     # lojistiks_product_instance_transfer_transfers
-    label: acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural
-    conditions: id in(select acornassociated_lojistiks_product_instance_transfer.transfer_id from acornassociated_lojistiks_product_instance_transfer where acornassociated_lojistiks_product_instance_transfer.product_instance_id in(:filtered))
+    label: acorn.lojistiks::lang.models.productinstancetransfer.label_plural
+    conditions: id in(select acorn_lojistiks_product_instance_transfer.transfer_id from acorn_lojistiks_product_instance_transfer where acorn_lojistiks_product_instance_transfer.product_instance_id in(:filtered))
     nameFrom: fully_qualified_name
-    modelClass: AcornAssociated\Lojistiks\Models\ProductInstance
-    # Relation <[XtoXSemi]= acornassociated_lojistiks_product_instance_transfer(transfer_id) through semi [acornassociated_lojistiks_product_instance_transfer]
+    modelClass: Acorn\Lojistiks\Models\ProductInstance
+    # Relation <[XtoXSemi]= acorn_lojistiks_product_instance_transfer(transfer_id) through semi [acorn_lojistiks_product_instance_transfer]
   lojistiks_transfer_invoice_transfers:
     # lojistiks_transfer_invoice_transfers
-    label: acornassociated.lojistiks::lang.models.transferinvoice.label_plural
-    conditions: id in(select acornassociated_lojistiks_transfer_invoice.transfer_id from acornassociated_lojistiks_transfer_invoice where acornassociated_lojistiks_transfer_invoice.invoice_id in(:filtered))
+    label: acorn.lojistiks::lang.models.transferinvoice.label_plural
+    conditions: id in(select acorn_lojistiks_transfer_invoice.transfer_id from acorn_lojistiks_transfer_invoice where acorn_lojistiks_transfer_invoice.invoice_id in(:filtered))
     nameFrom: fully_qualified_name
-    modelClass: AcornAssociated\Finance\Models\Invoice
-    # Relation <[XtoXSemi]= acornassociated_lojistiks_transfer_invoice(transfer_id) through semi [acornassociated_lojistiks_transfer_invoice]
+    modelClass: Acorn\Finance\Models\Invoice
+    # Relation <[XtoXSemi]= acorn_lojistiks_transfer_invoice(transfer_id) through semi [acorn_lojistiks_transfer_invoice]
   lojistiks_transfer_purchase_transfers:
     # lojistiks_transfer_purchase_transfers
-    label: acornassociated.lojistiks::lang.models.transferpurchase.label_plural
-    conditions: id in(select acornassociated_lojistiks_transfer_purchase.transfer_id from acornassociated_lojistiks_transfer_purchase where acornassociated_lojistiks_transfer_purchase.purchase_id in(:filtered))
+    label: acorn.lojistiks::lang.models.transferpurchase.label_plural
+    conditions: id in(select acorn_lojistiks_transfer_purchase.transfer_id from acorn_lojistiks_transfer_purchase where acorn_lojistiks_transfer_purchase.purchase_id in(:filtered))
     nameFrom: fully_qualified_name
-    modelClass: AcornAssociated\Finance\Models\Purchase
-    # Relation <[XtoXSemi]= acornassociated_lojistiks_transfer_purchase(transfer_id) through semi [acornassociated_lojistiks_transfer_purchase]
+    modelClass: Acorn\Finance\Models\Purchase
+    # Relation <[XtoXSemi]= acorn_lojistiks_transfer_purchase(transfer_id) through semi [acorn_lojistiks_transfer_purchase]
 # response (Field) field !canFilter
 # pre_marked_arrived (Field) field !canFilter
 # description (Field) field !canFilter

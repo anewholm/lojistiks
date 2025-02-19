@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/lojistiks/models/productinstancetransfer/columns.yaml
+list: $/acorn/lojistiks/models/productinstancetransfer/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\Lojistiks\Models\ProductInstanceTransfer
+modelClass: Acorn\Lojistiks\Models\ProductInstanceTransfer
 
 # List Title
-title: 'acornassociated.lojistiks::lang.models.productinstancetransfer.label_plural'
+title: 'acorn.lojistiks::lang.models.productinstancetransfer.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/lojistiks/productinstancetransfer/update/:id
+recordUrl: acorn/lojistiks/productinstancetransfer/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

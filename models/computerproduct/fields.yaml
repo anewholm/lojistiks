@@ -1,7 +1,7 @@
 fields:
   id:
     # IdField: From id(uuid)
-    label: acornassociated.lojistiks::lang.models.general.id
+    label: acorn.lojistiks::lang.models.general.id
     type: text
     hidden: true
     span: storm
@@ -12,40 +12,40 @@ fields:
       IdField for column id on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.id">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.id">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   electronic_product:
-    # ForeignIdField: From electronic_product_id(uuid), with =[1to1]> acornassociated_lojistiks_electronic_products(id)
-    label: acornassociated.lojistiks::lang.models.electronicproduct.label
+    # ForeignIdField: From electronic_product_id(uuid), with =[1to1]> acorn_lojistiks_electronic_products(id)
+    label: acorn.lojistiks::lang.models.electronicproduct.label
     type: dropdown
     required: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/lojistiks/electronicproducts'>ElectronicProduct</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/lojistiks/electronicproducts' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/lojistiks/electronicproducts'>ElectronicProduct</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/lojistiks/electronicproducts' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">electronic_product</div>
       ForeignIdField for column electronic_product_id on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.electronic_product_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.electronic_product_id">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.electronic_product_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.electronic_product_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Lojistiks\Models\ElectronicProduct::dropdownOptions
+    options: Acorn\Lojistiks\Models\ElectronicProduct::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
       - _create_electronic_product
     include: 1to1
-    includeModel: \AcornAssociated\Lojistiks\Models\ElectronicProduct
+    includeModel: \Acorn\Lojistiks\Models\ElectronicProduct
   memory:
     # Field: From memory(bigint)
-    label: acornassociated.lojistiks::lang.models.computerproduct.memory
+    label: acorn.lojistiks::lang.models.computerproduct.memory
     type: number
     span: storm
     cssClass: col-xs-6
@@ -55,15 +55,15 @@ fields:
       Field for column memory on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.memory</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.memory">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.memory</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.memory">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   HDD_size:
     # Field: From HDD_size(bigint)
-    label: acornassociated.lojistiks::lang.models.computerproduct.HDD_size
+    label: acorn.lojistiks::lang.models.computerproduct.HDD_size
     type: number
     span: storm
     cssClass: col-xs-6
@@ -73,15 +73,15 @@ fields:
       Field for column HDD_size on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.HDD_size</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.HDD_size">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.HDD_size</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.HDD_size">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   processor_version:
     # Field: From processor_version(double precision)
-    label: acornassociated.lojistiks::lang.models.computerproduct.processor_version
+    label: acorn.lojistiks::lang.models.computerproduct.processor_version
     type: number
     span: storm
     cssClass: col-xs-6
@@ -91,15 +91,15 @@ fields:
       Field for column processor_version on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.processor_version</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.processor_version">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.processor_version</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.processor_version">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   server:
-    # ForeignIdField: From server_id(uuid), with =[Xto1]> acornassociated_servers(id)
-    label: acornassociated::lang.models.server.label
+    # ForeignIdField: From server_id(uuid), with =[Xto1]> acorn_servers(id)
+    label: acorn::lang.models.server.label
     type: dropdown
     hidden: true
     required: true
@@ -111,18 +111,18 @@ fields:
       ForeignIdField for column server_id on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.server_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.server_id">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.server_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.server_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Models\Server::dropdownOptions
+    options: Acorn\Models\Server::dropdownOptions
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   created_at_event[start]:
-    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acornassociated_calendar_events(id) (created_at)
-    label: acornassociated.lojistiks::lang.models.general.created_at_event
+    # ForeignIdField: From created_at_event_id(uuid), with =[Xto1]> acorn_calendar_events(id) (created_at)
+    label: acorn.lojistiks::lang.models.general.created_at_event
     type: datepicker
     hidden: true
     span: storm
@@ -133,41 +133,41 @@ fields:
       ForeignIdField for column created_at_event_id on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.created_at_event_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.created_at_event_id">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.created_at_event_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.created_at_event_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\Calendar\Models\Event::dropdownOptions
+    options: Acorn\Calendar\Models\Event::dropdownOptions
     placeholder: backend::lang.form.select
     dependsOn:
       - _qrscan
   created_by_user:
-    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acornassociated_user_users(id) (created_by)
-    label: acornassociated.lojistiks::lang.models.general.created_by_user
+    # ForeignIdField: From created_by_user_id(uuid), with =[Xto1]> acorn_user_users(id) (created_by)
+    label: acorn.lojistiks::lang.models.general.created_by_user
     type: dropdown
     hidden: true
     span: storm
     cssClass: popup-col-xs-6 col-xs-6
     comment: |
-      <span class='view-add-models'>acornassociated::lang.helpblock.view_add <a tabindex='-1' href='/backend/acornassociated/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acornassociated/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
+      <span class='view-add-models'>acorn::lang.helpblock.view_add <a tabindex='-1' href='/backend/acorn/user/users'>User</a></span><a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>                    <div class='debug debug-field'>
       <div class="title">created_by_user</div>
       ForeignIdField for column created_by_user_id on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.created_by_user_id</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.created_by_user_id">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.created_by_user_id</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.created_by_user_id">edit</a>
       </div>
       </div>
     commentHtml: true
-    options: AcornAssociated\User\Models\User::dropdownOptions
+    options: Acorn\User\Models\User::dropdownOptions
     placeholder: backend::lang.form.select
     nameFrom: fully_qualified_name
     dependsOn:
       - _qrscan
   processor_type:
     # Field: From processor_type(integer)
-    label: acornassociated.lojistiks::lang.models.computerproduct.processor_type
+    label: acorn.lojistiks::lang.models.computerproduct.processor_type
     type: number
     span: storm
     cssClass: col-xs-6
@@ -177,15 +177,15 @@ fields:
       Field for column processor_type on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.processor_type</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.processor_type">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.processor_type</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.processor_type">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   response:
     # Field: From response(text)
-    label: acornassociated.lojistiks::lang.models.general.response
+    label: acorn.lojistiks::lang.models.general.response
     type: richeditor
     hidden: true
     span: storm
@@ -196,15 +196,15 @@ fields:
       Field for column response on Lojistiks.ComputerProduct
       <div class="create-system">
       <pre class="create-system-comment"></pre>
-      <div class="create-system-db-lang-path">tables.product.acornassociated.lojistiks.computer_products.columns.response</div>
-      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acornassociated.lojistiks.computer_products.columns.response">edit</a>
+      <div class="create-system-db-lang-path">tables.product.acorn.lojistiks.computer_products.columns.response</div>
+      <a class="create-system-comment-edit-link"  href="#" title="tables.product.acorn.lojistiks.computer_products.columns.response">edit</a>
       </div>
       </div>
     commentHtml: true
     placeholder: backend::lang.form.select
   _qrcode:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general._qrcode
     type: partial
     path: qrcode
     span: storm
@@ -226,7 +226,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acornassociated.lojistiks::lang.models.computerproduct._actions
+    label: acorn.lojistiks::lang.models.computerproduct._actions
     hidden: true
     span: storm
     cssClass: col-xs-6
