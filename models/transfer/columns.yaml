@@ -166,7 +166,7 @@ columns:
     relation: lojistiks_transfer_purchase_transfers
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -175,7 +175,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.transfer._actions
+    label: acorn.lojistiks::lang.models.transfer.actions
     type: partial
     searchable: false
     sortable: false

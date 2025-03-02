@@ -134,7 +134,7 @@ columns:
     relation: lojistiks_product_product_category_product_categories
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -143,7 +143,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.productcategory._actions
+    label: acorn.lojistiks::lang.models.productcategory.actions
     type: partial
     searchable: false
     sortable: false

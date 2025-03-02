@@ -115,7 +115,7 @@ columns:
     relation: lojistiks_employees_person
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -124,7 +124,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.person._actions
+    label: acorn.lojistiks::lang.models.person.actions
     type: partial
     searchable: false
     sortable: false

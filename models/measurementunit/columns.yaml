@@ -111,7 +111,7 @@ columns:
     relation: lojistiks_products_measurement_unit
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -120,7 +120,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.measurementunit._actions
+    label: acorn.lojistiks::lang.models.measurementunit.actions
     type: partial
     searchable: false
     sortable: false

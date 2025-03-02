@@ -101,7 +101,7 @@ columns:
     relation: updated_by_user
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -110,7 +110,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.productattribute._actions
+    label: acorn.lojistiks::lang.models.productattribute.actions
     type: partial
     searchable: false
     sortable: false

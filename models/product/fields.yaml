@@ -270,7 +270,7 @@ fields:
       - _qrscan
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     path: qrcode
     span: storm
@@ -292,7 +292,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.product._actions
+    label: acorn.lojistiks::lang.models.product.actions
     hidden: true
     span: storm
     cssClass: col-xs-6

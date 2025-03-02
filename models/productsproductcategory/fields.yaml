@@ -153,7 +153,7 @@ fields:
     placeholder: backend::lang.form.select
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     path: qrcode
     span: storm
@@ -175,7 +175,7 @@ fields:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.productsproductcategory._actions
+    label: acorn.lojistiks::lang.models.productsproductcategory.actions
     hidden: true
     span: storm
     cssClass: col-xs-6

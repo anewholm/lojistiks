@@ -121,7 +121,7 @@ columns:
     relation: lojistiks_drivers_vehicle
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -130,7 +130,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.vehicle._actions
+    label: acorn.lojistiks::lang.models.vehicle.actions
     type: partial
     searchable: false
     sortable: false

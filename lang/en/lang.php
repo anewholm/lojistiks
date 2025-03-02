@@ -29,8 +29,8 @@
             'actions' => 'Actions',
             'setup' => 'Setup',
             'reports' => 'Reports',
-            '_qrcode' => 'QR Code',
-            '_qrcode_scan' => 'QR Code Scan',
+            'qrcode' => 'QR Code',
+            'qrcode_scan' => 'QR Code Scan',
             'find_by_qrcode' => 'Find by QR code',
             'create' => 'Create',
             'new' => 'New',
@@ -42,29 +42,10 @@
             'replication_debug' => 'Replication Debug',
             'trigger_http_call_response' => 'Trigger HTTP call response'
         ],
-        'productsproductcategory' => [
-            'label' => 'Products Product Category',
-            'label_plural' => 'Products Product Category',
-            '_actions' => ' Actions'
-        ],
-        'product' => [
-            'label' => 'Product',
-            'label_plural' => 'Products',
-            'model_name' => 'Model Name',
-            'image' => 'Image',
-            '_actions' => ' Actions'
-        ],
-        'productcategory' => [
-            'label' => 'Product Category',
-            'label_plural' => 'Product Categories',
-            'parent_product_category' => 'Parent Product Category',
-            'children' => 'Children',
-            '_actions' => ' Actions'
-        ],
         'productinstancetransfer' => [
             'label' => 'Product Instance Transfer',
             'label_plural' => 'Product Instance Transfer',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'transfer' => [
             'label' => 'Transfer',
@@ -72,7 +53,7 @@
             'pre_marked_arrived' => 'Pre Marked Arrived',
             'sent_at_event' => 'Sent At Event',
             'arrived_at_event' => 'Arrived At Event',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'productinstance' => [
             'label' => 'Product Instance',
@@ -81,36 +62,55 @@
             'external_identifier' => 'External Identifier',
             'asset_class' => 'Asset Class',
             'image' => 'Image',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
+        ],
+        'productsproductcategory' => [
+            'label' => 'Products Product Category',
+            'label_plural' => 'Products Product Category',
+            'actions' => ' Actions'
+        ],
+        'product' => [
+            'label' => 'Product',
+            'label_plural' => 'Products',
+            'model_name' => 'Model Name',
+            'image' => 'Image',
+            'actions' => ' Actions'
+        ],
+        'productcategory' => [
+            'label' => 'Product Category',
+            'label_plural' => 'Product Categories',
+            'parent_product_category' => 'Parent Product Category',
+            'children' => 'Children',
+            'actions' => ' Actions'
         ],
         'productproductcategory' => [
             'label' => 'Product Product Category',
             'label_plural' => 'Product Product Category',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'productcategorytype' => [
             'label' => 'Product Category Type',
             'label_plural' => 'Product Category Types',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'electronicproduct' => [
             'label' => 'Electronic Product',
             'label_plural' => 'Electronic Products',
             'voltage' => 'Voltage',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'productattribute' => [
             'label' => 'Product Attribute',
             'label_plural' => 'Product Attributes',
             'value' => 'Value',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'measurementunit' => [
             'label' => 'Measurement Unit',
             'label_plural' => 'Measurement Units',
             'short_name' => 'Short Name',
             'uses_quantity' => 'Uses Quantity',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'computerproduct' => [
             'label' => 'Computer Product',
@@ -119,62 +119,57 @@
             'HDD_size' => 'Hdd Size',
             'processor_version' => 'Processor Version',
             'processor_type' => 'Processor Type',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'transferpurchase' => [
             'label' => 'Transfer Purchase',
             'label_plural' => 'Transfer Purchase',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'transferinvoice' => [
             'label' => 'Transfer Invoice',
             'label_plural' => 'Transfer Invoice',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'productproduct' => [
             'label' => 'Product Product',
             'label_plural' => 'Product Products',
             'sub_product' => 'Sub Product',
             'quantity' => 'Quantity',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'vehicletype' => [
             'label' => 'Vehicle Type',
             'label_plural' => 'Vehicle Types',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'vehicle' => [
             'label_plural' => 'Vehicles',
             'label' => 'Vehicle',
             'registration' => 'Registration',
             'image' => 'Image',
-            '_actions' => ' Actions'
-        ],
-        'container' => [
-            'label' => 'Container',
-            'label_plural' => 'Containers',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'warehouse' => [
             'label' => 'Warehouse',
             'label_plural' => 'Warehouses',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
-        'supplier' => [
-            'label' => 'Supplier',
-            'label_plural' => 'Suppliers',
-            '_actions' => ' Actions'
+        'container' => [
+            'label' => 'Container',
+            'label_plural' => 'Containers',
+            'actions' => ' Actions'
         ],
         'driver' => [
             'label' => 'Driver',
             'label_plural' => 'Drivers',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'employee' => [
             'label' => 'Employee',
             'label_plural' => 'Employees',
             'user_role' => 'User Role',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'person' => [
             'label' => 'Person',
@@ -182,18 +177,23 @@
             'image' => 'Image',
             'last_transfer_location' => 'Last Transfer Location',
             'last_product_instance_location' => 'Last Product Instance Location',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
+        ],
+        'supplier' => [
+            'label' => 'Supplier',
+            'label_plural' => 'Suppliers',
+            'actions' => ' Actions'
         ],
         'brand' => [
             'label' => 'Brand',
             'label_plural' => 'Brands',
             'image' => 'Image',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ],
         'office' => [
             'label' => 'Office',
             'label_plural' => 'Offices',
-            '_actions' => ' Actions'
+            'actions' => ' Actions'
         ]
     ]
 ];

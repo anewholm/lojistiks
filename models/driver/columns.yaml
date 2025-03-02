@@ -105,7 +105,7 @@ columns:
     relation: lojistiks_transfers_driver
   _qrcode:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.general._qrcode
+    label: acorn.lojistiks::lang.models.general.qrcode
     type: partial
     searchable: false
     sortable: false
@@ -114,7 +114,7 @@ columns:
     includeContext: exclude
   _actions:
     # PseudoField: 
-    label: acorn.lojistiks::lang.models.driver._actions
+    label: acorn.lojistiks::lang.models.driver.actions
     type: partial
     searchable: false
     sortable: false
